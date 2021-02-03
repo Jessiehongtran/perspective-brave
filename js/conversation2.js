@@ -1,7 +1,12 @@
 const messages= [
     {
+        name: "Yang",
+        text: "The other members in the team, mostly men participated freely in the conversation but for me, it did not go so well. Step in my shoes, see things from my point of view.",
+        out_speed: 5000
+    },
+    {
         name: "Mike",
-        text: "Okay, I believe we should put some resources behind this. The other members in the team, mostly men participated freely in the conversation but for me, it did not go so well. Step in my shoes, see things from my point of view.",
+        text: "Okay, I believe we should put some resources behind this.",
         out_speed: 5000
     },
     {
@@ -65,7 +70,7 @@ function getMessage(){
         let messageContainer = document.createElement("div")
         messageContainer.style.width = "100%"
         messageContainer.style.display = "flex"
-        messageContainer.style.fontSize = "18px"
+        messageContainer.style.fontSize = "px"
         messageContainer.style.marginTop = "20px"
         messageContainer.style.transition = "all 0.2s linear"
         messageContainer.style.position = "relative"
