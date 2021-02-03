@@ -6,7 +6,7 @@ const messages= [
         out_speed: 5000
     },
     {
-        name: "Emily",
+        name: "Yang",
         text: "I have something to add, when you look at the numbers, you see that we do not have enough data to move forward.",
         out_speed: 5000
     },
@@ -21,7 +21,7 @@ const messages= [
         out_speed: 5000
     },
     {
-        name: "Emily",
+        name: "Yang",
         text: "I have seen the data and I can clearly understand the result.",
         out_speed: 5000
     },
@@ -31,7 +31,7 @@ const messages= [
         out_speed: 5000
     },
     {
-        name: "Emily",
+        name: "Yang",
         text: "We ran that test for a reason. It is a good indicator of what happens if we scale this.",
         out_speed: 5000
     },
@@ -46,7 +46,7 @@ const messages= [
         out_speed: 5000 
     },
     {
-        name: "Emily",
+        name: "Yang",
         text: "What am I here for?...",
         out_speed: 5000
     }
@@ -64,7 +64,7 @@ function speak(text){
         var msg = new SpeechSynthesisUtterance();
         msg.text = text;
         window.speechSynthesis.speak(msg);
-    }else{
+    } else {
         // Speech Synthesis Not Supported 😣
         alert("Sorry, your browser doesn't support text to speech!");
     }
