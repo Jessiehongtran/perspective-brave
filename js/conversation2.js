@@ -70,7 +70,7 @@ function getMessage(){
         let messageContainer = document.createElement("div")
         messageContainer.style.width = "100%"
         messageContainer.style.display = "flex"
-        messageContainer.style.fontSize = "px"
+        messageContainer.style.fontSize = "20px"
         messageContainer.style.marginTop = "20px"
         messageContainer.style.transition = "all 0.2s linear"
         messageContainer.style.position = "relative"

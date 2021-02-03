@@ -30,7 +30,9 @@ function handleKeyDown(e){
     }
 
     if (!isInsideRectangle([{x: 620, y: 290}, {x: 970, y: 450}, {x: 670, y: 690}, {x: 310, y: 480}], {x: x, y: y})){
-        alert("Do not go there")
+      document.getElementById("message").innerHTML = "Do not go there!"
+    } else {
+      document.getElementById("message").innerHTML = "Welcome to Yang office :)"
     }
     
     player.style.left = `${x}px`
