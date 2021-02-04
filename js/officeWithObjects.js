@@ -6,34 +6,72 @@ const tableRight1 = document.getElementById("table-right-1")
 const tableRight2 = document.getElementById("table-right-2")
 const tableRight3 = document.getElementById("table-right-3")
 const player = document.getElementById("player")
+const cupboardLeftTopLeft = document.getElementById("cupboardLeft-top-left")
+const tableLeftTopLeft = document.getElementById("tableLeft-top-left")
+const cupboardRightTopLeft = document.getElementById("cupboardRight-top-left")
+const tableRight1TopLeft = document.getElementById("tableRight1-top-left")
+const tableRight2TopLeft = document.getElementById("tableRight2-top-left")
+const tableRight3TopLeft = document.getElementById("tableRight3-top-left")
 
 const wrapperWidthPercentage = 70
+const cupboardWidth = 300
+const cupboardHeight = 230
+const bigTableWidth = 230
+const bigTableHeight = 200
+const smallTableWidth = 150
+const smallTableHeight = 150
+
 wrapper.style.width = `${wrapperWidthPercentage}%`
-cupboardLeft.style.width = '25%'
-cupboardRight.style.width = '20%'
-tableLeft.style.width = '15%'
-tableRight1.style.width = tableRight2.style.width = tableRight3.style.width = '10%'
+cupboardLeft.style.width = `${cupboardWidth}px`
+cupboardLeft.style.height = `${cupboardHeight}px`
+cupboardRight.style.width = `${cupboardWidth}px`
+cupboardRight.style.height = `${cupboardHeight}px`
+tableLeft.style.width = `${bigTableWidth}px`
+tableLeft.style.height = `${bigTableHeight}px`
+tableRight1.style.width = tableRight2.style.width = tableRight3.style.width = `${smallTableWidth}px`
+tableRight1.style.height = tableRight2.style.height = tableRight3.style.height = `${smallTableHeight}px`
 
-cupboardLeft.style.left = `${7*wrapperWidthPercentage/100}%`
-cupboardLeft.style.top = `${45*wrapperWidthPercentage/100}%`
+const cupboardLeftPosition = {
+    x: 350,
+    y: 320
+}
+cupboardLeft.style.left = cupboardLeftTopLeft.style.left = `${cupboardLeftPosition.x}px`
+cupboardLeft.style.top = cupboardLeftTopLeft.style.top =  `${cupboardLeftPosition.y}px`
 
-cupboardRight.style.left = `${85*wrapperWidthPercentage/100}%`
-cupboardRight.style.top = `${38*wrapperWidthPercentage/100}%`
+const tableLeftPosition = {
+    x: 750,
+    y: 200
+}
+tableLeft.style.left = tableLeftTopLeft.style.left = `${tableLeftPosition.x}px`
+tableLeft.style.top = tableLeftTopLeft.style.top = `${tableLeftPosition.y}px`
 
-tableLeft.style.left = `${55*wrapperWidthPercentage/100}%`
-tableLeft.style.top = `${30*wrapperWidthPercentage/100}%`
+const cupboardRightPosition = {
+    x: 1150,
+    y: 300
+}
+cupboardRight.style.left = cupboardRightTopLeft.style.left = `${cupboardRightPosition.x}px`
+cupboardRight.style.top = cupboardRightTopLeft.style.top = `${cupboardRightPosition.y}px`
 
-const tableRight1Left = 90
-const tableRight1Top = 70
+const tableRight1Position = {
+    x: 1200,
+    y: 500
+}
+tableRight1.style.left = tableRight1TopLeft.style.left = `${tableRight1Position.x}px`
+tableRight1.style.top = tableRight1TopLeft.style.top = `${tableRight1Position.y}px`
 
-tableRight1.style.left = `${tableRight1Left*wrapperWidthPercentage/100}%`
-tableRight1.style.top = `${tableRight1Top*wrapperWidthPercentage/100}%`
+const tableRight2Position = {
+    x: tableRight1Position.x -100,
+    y: tableRight1Position.y + 60
+}
+tableRight2.style.left = tableRight2TopLeft.style.left = `${tableRight2Position.x}px`
+tableRight2.style.top = tableRight2TopLeft.style.top = `${tableRight2Position.y}px`
 
-tableRight2.style.left = `${(tableRight1Left - 10)*wrapperWidthPercentage/100}%`
-tableRight2.style.top = `${(tableRight1Top + 10)*wrapperWidthPercentage/100}%`
-
-tableRight3.style.left = `${(tableRight1Left - 20)*wrapperWidthPercentage/100}%`
-tableRight3.style.top = `${(tableRight1Top + 20)*wrapperWidthPercentage/100}%`
+const tableRight3Position = {
+    x: tableRight1Position.x -100*2,
+    y: tableRight1Position.y + 60*2
+}
+tableRight3.style.left = tableRight3TopLeft.style.left = `${tableRight3Position.x}px`
+tableRight3.style.top = tableRight3TopLeft.style.top = `${tableRight3Position.y}px`
 
 let x = 400;
 let y = 400;
@@ -43,11 +81,11 @@ const character_face_down = "https://res.cloudinary.com/dfulxq7so/image/upload/v
 const character_face_left = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950538/Yang_RightSide_2x_i223zj.png"
 const character_face_right = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950517/Yang_LeftSide_2x_qc1sg5.png"
 
-
 player.style.left = `${x}px`
 player.style.top = `${y}px`
 
 function handleKeyDown(e){
+      console.log('x', x, 'y', y)
       if (e.key === "ArrowRight"){
           playerImg.src = character_face_right
           x = x + 10
@@ -62,10 +100,27 @@ function handleKeyDown(e){
           y = y - 10
       }
   
-      if (!isInsideRectangle([{x: 620, y: 290}, {x: 970, y: 450}, {x: 670, y: 690}, {x: 310, y: 480}], {x: x, y: y})){
-        document.getElementById("message").innerHTML = "Do not go there!"
+      if (
+        isInsideRectangle([{x: cupboardLeftPosition.x, y: cupboardLeftPosition.y}, {x: cupboardLeftPosition.x + cupboardWidth, y: cupboardLeftPosition.y}, {x: cupboardLeftPosition.x + cupboardWidth, y: cupboardLeftPosition.y + cupboardHeight}, {x: cupboardLeftPosition.x, y: cupboardLeftPosition.y + cupboardHeight}], {x: x + 50, y: y + 180})
+        || isInsideRectangle([{x: cupboardRightPosition.x, y: cupboardRightPosition.y}, {x: cupboardRightPosition.x + cupboardWidth, y: cupboardRightPosition.y}, {x: cupboardRightPosition.x + cupboardWidth, y: cupboardRightPosition.y + cupboardHeight}, {x: cupboardRightPosition.x, y: cupboardRightPosition.y + cupboardHeight}], {x: x + 50, y: y + 180})
+      ){
+        document.getElementById("message").innerHTML = "You are about to touch a cupboard. Do not!"
+        document.getElementById("message").style.color = "red"
+      } else if (
+        isInsideRectangle([{x: tableLeftPosition.x, y: tableLeftPosition.y}, {x: tableLeftPosition.x + bigTableWidth, y: tableLeftPosition.y}, {x: tableLeftPosition.x + bigTableWidth, y: tableLeftPosition.y + bigTableHeight}, {x: tableLeftPosition.x, y: tableLeftPosition.y + bigTableHeight}], {x: x + 50, y: y + 180})
+      ){
+        document.getElementById("message").innerHTML = "You are about to touch a big table. Do not!"
+        document.getElementById("message").style.color = "blue"
+      } else if (
+        isInsideRectangle([{x: tableRight1Position.x, y: tableRight1Position.y}, {x: tableRight1Position.x + smallTableWidth, y: tableRight1Position.y}, {x: tableRight1Position.x + smallTableWidth, y: tableRight1Position.y + smallTableHeight}, {x: tableRight1Position.x, y: tableRight1Position.y + smallTableHeight}], {x: x + 50, y: y + 180})
+        || isInsideRectangle([{x: tableRight2Position.x, y: tableRight2Position.y}, {x: tableRight2Position.x + smallTableWidth, y: tableRight2Position.y}, {x: tableRight2Position.x + smallTableWidth, y: tableRight2Position.y + smallTableHeight}, {x: tableRight2Position.x, y: tableRight2Position.y + smallTableHeight}], {x: x + 50, y: y + 180})
+        || isInsideRectangle([{x: tableRight3Position.x, y: tableRight3Position.y}, {x: tableRight3Position.x + smallTableWidth, y: tableRight3Position.y}, {x: tableRight3Position.x + smallTableWidth, y: tableRight3Position.y + smallTableHeight}, {x: tableRight3Position.x, y: tableRight3Position.y + smallTableHeight}], {x: x + 50, y: y + 180})
+      ){
+        document.getElementById("message").innerHTML = "You are about to touch a small table. Do not!"
+        document.getElementById("message").style.color = "purple"
       } else {
         document.getElementById("message").innerHTML = "Welcome to Yang office :)"
+        document.getElementById("message").style.color = "black"
       }
       
       player.style.left = `${x}px`
@@ -94,6 +149,8 @@ function handleKeyDown(e){
       const topRight = rect[1]
       const bottomRight = rect[2]
       const bottomLeft = rect[3]
+
+
   
       if (  triangArea(topLeft.x, topLeft.y, target.x, target.y, bottomLeft.x, bottomLeft.y) 
           + triangArea(topLeft.x, topLeft.y, target.x, target.y, topRight.x, topRight.y)
