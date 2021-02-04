@@ -13,7 +13,18 @@ player.style.top = `${y}px`
 
 document.addEventListener("keydown", handleKeyDown)
 
+
+document.addEventListener("DOMContentLoaded", event => {
+  const audio = document.querySelector("audio");
+  audio.volume = 0.2;
+  audio.play();
+});
+
 function handleKeyDown(e){
+  const audio = document.querySelector("audio");
+  audio.volume = 0.2;
+  audio.play();
+  
     console.log('x', x, 'y', y)
     if (e.key === "ArrowRight"){
         playerImg.src = character_face_right
