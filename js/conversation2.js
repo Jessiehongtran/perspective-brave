@@ -1,11 +1,8 @@
 const messages= [
     {
-        name: "Yang",
-        text: "The other members in the team, mostly men participated freely in the conversation but for me, it did not go so well. Step in my shoes, see things from my point of view.",
-    },
-    {
         name: "Mike",
         text: "Okay, I believe we should put some resources behind this.",
+        VO: ""
     },
     {
         name: "Yang",
@@ -45,6 +42,12 @@ const messages= [
     }
 ]
 
+const MikeLoop = document.getElementById("Mike-loop")
+const JackLoop = document.getElementById("Jack-loop")
+const JayLoop = document.getElementById("Jay-loop")
+const YangLoop = document.getElementById("Yang-loop")
+const intro = document.getElementById("intro")
+
 let typingEffectSpeed = 80
 let durationToNextText = 5000
 
@@ -64,10 +67,29 @@ function getTypingEffect(s, textContainer){
     durationToNextText = typingEffectSpeed*(s.length +5)
 }
 
+// var audio = new Audio('../asset/output.mp3');
+
+// function speak(){
+//     audio.play()
+// }
+
+function speak(text){
+    if ('speechSynthesis' in window) {
+        console.log("trying to speak")
+        // Speech Synthesis supported 🎉
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        window.speechSynthesis.speak(msg);
+    } else {
+        // Speech Synthesis Not Supported 😣
+        alert("Sorry, your browser doesn't support text to speech!");
+    }
+}
+
 let i = 0
 let chat = document.getElementById("chat")
-
 function getMessage(){
+    intro.style.display = 'none'
     if (i < messages.length){
         if (chat.childElementCount === 3){
             while (chat.firstChild) {
@@ -90,9 +112,32 @@ function getMessage(){
         newName.style.marginRight = "10px"
         messageContainer.appendChild(newName)
 
+        if (messages[i].name === "Mike"){
+            MikeLoop.style.display = 'block'
+            JackLoop.style.display = 'none'
+            JayLoop.style.display = 'none'
+            YangLoop.style.display = 'none'
+        } else if (messages[i].name === "Jack"){
+            MikeLoop.style.display = 'none'
+            JackLoop.style.display = 'block'
+            JayLoop.style.display = 'none'
+            YangLoop.style.display = 'none'
+        } else if (messages[i].name === "Jay"){
+            MikeLoop.style.display = 'none'
+            JackLoop.style.display = 'none'
+            JayLoop.style.display = 'block'
+            YangLoop.style.display = 'none'
+        } else if (messages[i].name === "Yang"){
+            MikeLoop.style.display = 'none'
+            JackLoop.style.display = 'none'
+            JayLoop.style.display = 'none'
+            YangLoop.style.display = 'block'
+        }
+
         let newText = document.createElement("div")
         getTypingEffect(messages[i].text, newText)
         messageContainer.appendChild(newText)
+        speak(messages[i].text)
 
         chat.appendChild(messageContainer)
         i ++
@@ -100,4 +145,3 @@ function getMessage(){
     }
 }
 
-getMessage()

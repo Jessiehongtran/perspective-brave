@@ -1,3 +1,45 @@
+//Initiate character movement image variables
+let character_image = {
+  "UP": "",
+  "DOWN": "",
+  "LEFT": "",
+  "RIGHT": ""
+}
+
+//Initiate variables to keep track image index
+let moveInd = {
+  "UP": 0,
+  "DOWN": 0,
+  "LEFT": 0,
+  "RIGHT": 0
+}
+
+//Function to get character image file (that is stored locally)
+function getCharacterImg(dir, id){
+  if (id < 10){
+    id = "0" + id.toString()
+  } 
+  if (dir === "UP"){
+    return `../asset/Yang_Walk_UP/Yang_Walk_UP_000${id}.png`
+  } else if (dir === "DOWN"){
+    return `../asset/Yang_Walk_DN/Yang_Walk_DN_000${id}.png`
+  } else if (dir === "LEFT" || dir === "RIGHT"){
+    return `../asset/Yang_Walk_LR/Yang_Walk_LR_000${id}.png`
+  } 
+}
+
+const maxImageInd = 15
+
+//Function to get a movement
+function getCharacterMove(dir){
+  character_image[dir] = getCharacterImg(dir, moveInd[dir])
+  moveInd[dir] += 1
+  if (moveInd[dir] >= maxImageInd){
+    moveInd[dir] = 0
+  } 
+}
+
+
 //Call DOM elements
 const officeWrapper = document.getElementById("wrapper")
 const cupboardLeft = document.getElementById("cupboard-left")
@@ -109,27 +151,27 @@ const characterPosition = {
 player.style.left = `${characterPosition.x}px`
 player.style.top = `${characterPosition.y}px`
 
-//Set character movement images
-const character_face_up = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950505/Yang_Back_2x_wfa5l1.png"
-const character_face_down = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950509/Yang_Front_2x_j9ad21.png"
-const character_face_left = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950538/Yang_RightSide_2x_i223zj.png"
-const character_face_right = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950517/Yang_LeftSide_2x_qc1sg5.png"
-
 
 //Function to control movements of the character
 function handleKeyDown(e){
       console.log('x', characterPosition.x, 'y', characterPosition.y)
       if (e.key === "ArrowRight"){
-          playerImg.src = character_face_right
+          getCharacterMove("RIGHT")
+          playerImg.src = character_image["RIGHT"]
+          playerImg.style.transform = 'rotateY(360deg)'
           characterPosition.x = characterPosition.x + 10
       } else if (e.key === "ArrowLeft"){
-          playerImg.src = character_face_left
+          getCharacterMove("LEFT")
+          playerImg.src = character_image["LEFT"]
+          playerImg.style.transform = 'rotateY(180deg)'
           characterPosition.x = characterPosition.x - 10
       } else if (e.key === "ArrowDown"){
-          playerImg.src = character_face_down
+          getCharacterMove("DOWN")
+          playerImg.src = character_image["DOWN"]
           characterPosition.y = characterPosition.y + 10
       } else if (e.key === "ArrowUp"){
-          playerImg.src = character_face_up
+          getCharacterMove("UP")
+          playerImg.src = character_image["UP"]
           characterPosition.y = characterPosition.y - 10
       }
 
