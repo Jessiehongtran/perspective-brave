@@ -1,3 +1,4 @@
+//Call DOM elements
 const officeWrapper = document.getElementById("wrapper")
 const cupboardLeft = document.getElementById("cupboard-left")
 const cupboardRight = document.getElementById("cupboard-right")
@@ -13,15 +14,27 @@ const tableRight1TopLeft = document.getElementById("tableRight1-top-left")
 const tableRight2TopLeft = document.getElementById("tableRight2-top-left")
 const tableRight3TopLeft = document.getElementById("tableRight3-top-left")
 const sparkling = document.getElementById("sparkling")
+const hat = document.getElementById("hat")
+const playerImg = document.getElementById("playerImg")
 
+//Initiate width and height variables
 const wrapperWidthPercentage = 70
+const playerImgWidth = 100
+const playerImgHeight = 120
+const hatWidth = 80
+const hatHeight = 50
 const cupboardWidth = 300
 const cupboardHeight = 230
 const bigTableWidth = 230
 const bigTableHeight = 200
 const smallTableWidth = 150
 const smallTableHeight = 150
+const sparklingWidth = 40
+const sparklingHeight = 60
+const chaHalfWidth =  playerImgWidth/2
+const chaTotalHeight = (playerImgHeight + hatHeight)
 
+//Set width and height for objects
 wrapper.style.width = `${wrapperWidthPercentage}%`
 cupboardLeft.style.width = `${cupboardWidth}px`
 cupboardLeft.style.height = `${cupboardHeight}px`
@@ -31,8 +44,14 @@ tableLeft.style.width = `${bigTableWidth}px`
 tableLeft.style.height = `${bigTableHeight}px`
 tableRight1.style.width = tableRight2.style.width = tableRight3.style.width = `${smallTableWidth}px`
 tableRight1.style.height = tableRight2.style.height = tableRight3.style.height = `${smallTableHeight}px`
+sparkling.style.width = `${sparklingWidth}px`
+sparkling.style.height = `${sparklingHeight}px`
+playerImg.style.width = `${playerImgWidth}px`
+playerImg.style.height = `${playerImgHeight}px`
+hat.style.width = `${hatWidth}px`
+hat.style.height = `${hatHeight}px`
 
-
+//Set positions and coordinates for objects
 const cupboardLeftPosition = {
     x: 350,
     y: 320
@@ -87,15 +106,17 @@ const characterPosition = {
   x: 400,
   y: 400
 }
+player.style.left = `${characterPosition.x}px`
+player.style.top = `${characterPosition.y}px`
 
+//Set character movement images
 const character_face_up = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950505/Yang_Back_2x_wfa5l1.png"
 const character_face_down = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950509/Yang_Front_2x_j9ad21.png"
 const character_face_left = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950538/Yang_RightSide_2x_i223zj.png"
 const character_face_right = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950517/Yang_LeftSide_2x_qc1sg5.png"
 
-player.style.left = `${characterPosition.x}px`
-player.style.top = `${characterPosition.y}px`
 
+//Function to control movements of the character
 function handleKeyDown(e){
       console.log('x', characterPosition.x, 'y', characterPosition.y)
       if (e.key === "ArrowRight"){
@@ -111,6 +132,19 @@ function handleKeyDown(e){
           playerImg.src = character_face_up
           characterPosition.y = characterPosition.y - 10
       }
+
+      //if going into the sparkling, transition to the conversation
+      console.log('char', characterPosition, 'sparkling', sparklingPosition)
+      if (characterPosition.x + chaHalfWidth >= sparklingPosition.x 
+          && characterPosition.x + chaHalfWidth <= sparklingPosition.x + sparklingWidth
+          && characterPosition.y + chaTotalHeight  >= sparklingPosition.y 
+          && characterPosition.y + chaTotalHeight  <= sparklingPosition.y + sparklingHeight
+        ){
+          //transition to next page
+          setTimeout(function(){
+            window.location.href = "yangConversation2.html";
+          }, 500)
+        }
   
       if (
         isInsideRectangle(
@@ -120,7 +154,7 @@ function handleKeyDown(e){
             {x: cupboardLeftPosition.x + cupboardWidth, y: cupboardLeftPosition.y + cupboardHeight}, 
             {x: cupboardLeftPosition.x, y: cupboardLeftPosition.y + cupboardHeight}
           ], 
-          {x: characterPosition.x + 50, y: characterPosition.y + 180})
+          {x: characterPosition.x + chaHalfWidth, y: characterPosition.y + chaTotalHeight })
         || isInsideRectangle(
           [
             {x: cupboardRightPosition.x, y: cupboardRightPosition.y}, 
@@ -128,7 +162,7 @@ function handleKeyDown(e){
             {x: cupboardRightPosition.x + cupboardWidth, y: cupboardRightPosition.y + cupboardHeight}, 
             {x: cupboardRightPosition.x, y: cupboardRightPosition.y + cupboardHeight}
           ], 
-          {x: characterPosition.x + 50, y: characterPosition.y + 180})
+          {x: characterPosition.x + chaHalfWidth, y: characterPosition.y + chaTotalHeight })
       ){
         document.getElementById("message").innerHTML = "You are about to touch a cupboard. Do not!"
         document.getElementById("message").style.color = "red"
@@ -140,7 +174,7 @@ function handleKeyDown(e){
             {x: tableLeftPosition.x + bigTableWidth, y: tableLeftPosition.y + bigTableHeight}, 
             {x: tableLeftPosition.x, y: tableLeftPosition.y + bigTableHeight}
           ], 
-          {x: characterPosition.x + 50, y: characterPosition.y + 180})
+          {x: characterPosition.x + chaHalfWidth, y: characterPosition.y + chaTotalHeight })
       ){
         document.getElementById("message").innerHTML = "You are about to touch a big table. Do not!"
         document.getElementById("message").style.color = "blue"
@@ -152,7 +186,7 @@ function handleKeyDown(e){
             {x: tableRight1Position.x + smallTableWidth, y: tableRight1Position.y + smallTableHeight}, 
             {x: tableRight1Position.x, y: tableRight1Position.y + smallTableHeight}
           ], 
-          {x: characterPosition.x + 50, y: characterPosition.y + 180})
+          {x: characterPosition.x + chaHalfWidth, y: characterPosition.y + chaTotalHeight })
         || isInsideRectangle(
           [
             {x: tableRight2Position.x, y: tableRight2Position.y}, 
@@ -160,7 +194,7 @@ function handleKeyDown(e){
             {x: tableRight2Position.x + smallTableWidth, y: tableRight2Position.y + smallTableHeight}, 
             {x: tableRight2Position.x, y: tableRight2Position.y + smallTableHeight}
           ], 
-          {x: characterPosition.x + 50, y: characterPosition.y + 180})
+          {x: characterPosition.x + chaHalfWidth, y: characterPosition.y + chaTotalHeight })
         || isInsideRectangle(
           [
             {x: tableRight3Position.x, y: tableRight3Position.y}, 
@@ -168,7 +202,7 @@ function handleKeyDown(e){
             {x: tableRight3Position.x + smallTableWidth, y: tableRight3Position.y + smallTableHeight}, 
             {x: tableRight3Position.x, y: tableRight3Position.y + smallTableHeight}
           ], 
-          {x: characterPosition.x + 50, y: characterPosition.y + 180})
+          {x: characterPosition.x + chaHalfWidth, y: characterPosition.y + chaTotalHeight })
       ){
         document.getElementById("message").innerHTML = "You are about to touch a small table. Do not!"
         document.getElementById("message").style.color = "purple"
@@ -181,41 +215,42 @@ function handleKeyDown(e){
       player.style.top = `${characterPosition.y}px`
   }
   
-  function rectArea(x1, y1, x2, y2, x3, y3, x4, y4){
-      return Math.floor(Math.sqrt(Math.pow(x1-x4,2) + Math.pow(y1-y4,2))*Math.sqrt(Math.pow(x3-x4,2) + Math.pow(y3-y4,2)))
-    }
-  
-  function dist(x1, y1, x2, y2){
-      return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2))
-    }
-  
-  function triangArea(x1, y1, x2, y2, x3, y3){
-      const a = dist(x1, y1, x2, y2)
-      const b = dist(x1, y1, x3, y3)
-      const c = dist(x2, y2, x3, y3)
-      const p = a + b + c
-      const s = p/2
-      return Math.floor(Math.sqrt(s*(s-a)*(s-b)*(s-c)))
-    }
-  
-  function isInsideRectangle(rect, target){
-      const topLeft = rect[0]
-      const topRight = rect[1]
-      const bottomRight = rect[2]
-      const bottomLeft = rect[3]
+//Function to find area of a rectangular 
+function rectArea(x1, y1, x2, y2, x3, y3, x4, y4){
+    return Math.floor(Math.sqrt(Math.pow(x1-x4,2) + Math.pow(y1-y4,2))*Math.sqrt(Math.pow(x3-x4,2) + Math.pow(y3-y4,2)))
+  }
 
-
+//Function to find distance between 2 points
+function dist(x1, y1, x2, y2){
+    return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2))
+  }
   
-      if (  triangArea(topLeft.x, topLeft.y, target.x, target.y, bottomLeft.x, bottomLeft.y) 
-          + triangArea(topLeft.x, topLeft.y, target.x, target.y, topRight.x, topRight.y)
-          + triangArea(topRight.x, topRight.y, target.x, target.y, bottomRight.x, bottomRight.y)
-          + triangArea(bottomRight.x, bottomRight.y, target.x, target.y, bottomLeft.x, bottomLeft.y) 
-          > rectArea(topLeft.x, topLeft.y, topRight.x, topRight.y, bottomRight.x, bottomRight.y, bottomLeft.x, bottomLeft.y)
-          ) {
-            return false
-          }
-      return true
-    }
+//Function to find area of a triangle 
+function triangArea(x1, y1, x2, y2, x3, y3){
+    const a = dist(x1, y1, x2, y2)
+    const b = dist(x1, y1, x3, y3)
+    const c = dist(x2, y2, x3, y3)
+    const p = a + b + c
+    const s = p/2
+    return Math.floor(Math.sqrt(s*(s-a)*(s-b)*(s-c)))
+  }
+
+//Function to check if a point is inside a rectangular
+function isInsideRectangle(rect, target){
+    const topLeft = rect[0]
+    const topRight = rect[1]
+    const bottomRight = rect[2]
+    const bottomLeft = rect[3]
+    if (  triangArea(topLeft.x, topLeft.y, target.x, target.y, bottomLeft.x, bottomLeft.y) 
+        + triangArea(topLeft.x, topLeft.y, target.x, target.y, topRight.x, topRight.y)
+        + triangArea(topRight.x, topRight.y, target.x, target.y, bottomRight.x, bottomRight.y)
+        + triangArea(bottomRight.x, bottomRight.y, target.x, target.y, bottomLeft.x, bottomLeft.y) 
+        > rectArea(topLeft.x, topLeft.y, topRight.x, topRight.y, bottomRight.x, bottomRight.y, bottomLeft.x, bottomLeft.y)
+        ) {
+          return false
+        }
+    return true
+  }
 
 
 document.addEventListener("keydown", handleKeyDown)
