@@ -2,59 +2,67 @@ const messages= [
     {
         name: "Yang",
         text: "The other members in the team, mostly men participated freely in the conversation but for me, it did not go so well. Step in my shoes, see things from my point of view.",
-        out_speed: 5000
     },
     {
         name: "Mike",
         text: "Okay, I believe we should put some resources behind this.",
-        out_speed: 5000
     },
     {
         name: "Yang",
         text: "I have something to add, when you look at the numbers, you see that we do not have enough data to move forward.",
-        out_speed: 5000
     },
     {
         name: "Jack",
         text: "Well, I am not sure the issue is the data..",
-        out_speed: 5000 
     },
     {
         name: "Mike",
         text: "You do not understand how the test goes, sure it may not seem much but we have got some of really good feedbacks from these folks.",
-        out_speed: 5000
     },
     {
         name: "Yang",
         text: "I have seen the data and I can clearly understand the result.",
-        out_speed: 5000
     },
     {
         name: "Mike",
         text: "Sometimes, you cannot trust the data. If we spend time caring about the number all day long, we are never gonna move forward.",
-        out_speed: 5000
     },
     {
         name: "Yang",
         text: "We ran that test for a reason. It is a good indicator of what happens if we scale this.",
-        out_speed: 5000
     },
     {
         name: "Mike",
         text: "Look, I know this is the right way to go, I got a feeling about this, I have seen this before." ,
-        out_speed: 5000
     },
     {
         name: "Jay",
-        text: "So, Mike is right, we can move forward" ,
-        out_speed: 5000 
+        text: "So, Mike is right, we can move forward" , 
     },
     {
         name: "Yang",
         text: "What am I here for?...",
-        out_speed: 5000
     }
 ]
+
+let typingEffectSpeed = 80
+let durationToNextText = 5000
+
+function getTypingEffect(s, textContainer){
+    let i = 0
+
+    function releaseText(){
+        if (i < s.length){
+            textContainer.innerHTML += s.slice(i,i+1)
+            i += 1
+            setTimeout(releaseText, typingEffectSpeed)
+        }
+    }
+
+    releaseText()
+
+    durationToNextText = typingEffectSpeed*(s.length +5)
+}
 
 let i = 0
 let chat = document.getElementById("chat")
@@ -83,12 +91,12 @@ function getMessage(){
         messageContainer.appendChild(newName)
 
         let newText = document.createElement("div")
-        newText.innerHTML =  messages[i].text
+        getTypingEffect(messages[i].text, newText)
         messageContainer.appendChild(newText)
 
         chat.appendChild(messageContainer)
         i ++
-        setTimeout(getMessage, messages[i].out_speed)
+        setTimeout(getMessage, durationToNextText)
     }
 }
 
