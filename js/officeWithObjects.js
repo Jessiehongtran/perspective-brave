@@ -59,6 +59,10 @@ const sparkling = document.getElementById("sparkling")
 const hat = document.getElementById("hat")
 const playerImg = document.getElementById("playerImg")
 const guide = document.getElementById("guide")
+const arrowUp = document.getElementById("arrow-up")
+const arrowDown = document.getElementById("arrow-down")
+const arrowLeft = document.getElementById("arrow-left")
+const arrowRight = document.getElementById("arrow-right")
 
 //Initiate width and height variables
 const wrapperWidthPercentage = 70
@@ -187,22 +191,30 @@ function handleKeyDown(e){
           playerImg.src = character_image["RIGHT"]
           playerImg.style.transform = 'rotateY(360deg)'
           characterPosition.x = characterPosition.x + 10
+          arrowRight.style.backgroundColor = "aqua"
+          arrowDown.style.backgroundColor = arrowUp.style.backgroundColor = arrowLeft.style.backgroundColor = "#F1F2F3"
       } else if (e.key === "ArrowLeft" && can_go_left){
           curDirection = "LEFT"
           getCharacterMove("LEFT")
           playerImg.src = character_image["LEFT"]
           playerImg.style.transform = 'rotateY(180deg)'
           characterPosition.x = characterPosition.x - 10
+          arrowLeft.style.backgroundColor = "aqua"
+          arrowDown.style.backgroundColor = arrowUp.style.backgroundColor = arrowRight.style.backgroundColor = "#F1F2F3"
       } else if (e.key === "ArrowDown" && can_go_down){
           curDirection = "DOWN"
           getCharacterMove("DOWN")
           playerImg.src = character_image["DOWN"]
           characterPosition.y = characterPosition.y + 10
+          arrowDown.style.backgroundColor = "aqua"
+          arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowLeft.style.backgroundColor = "#F1F2F3"
       } else if (e.key === "ArrowUp" && can_go_up){
           curDirection = "UP"
           getCharacterMove("UP")
           playerImg.src = character_image["UP"]
           characterPosition.y = characterPosition.y - 10
+          arrowUp.style.backgroundColor = "aqua"
+          arrowDown.style.backgroundColor = arrowRight.style.backgroundColor = arrowLeft.style.backgroundColor = "#F1F2F3"
       }
 
       //if going into the sparkling, transition to the conversation
