@@ -58,6 +58,7 @@ const tableRight3TopLeft = document.getElementById("tableRight3-top-left")
 const sparkling = document.getElementById("sparkling")
 const hat = document.getElementById("hat")
 const playerImg = document.getElementById("playerImg")
+const guide = document.getElementById("guide")
 
 //Initiate width and height variables
 const wrapperWidthPercentage = 70
@@ -151,25 +152,54 @@ const characterPosition = {
 player.style.left = `${characterPosition.x}px`
 player.style.top = `${characterPosition.y}px`
 
+//Set permission to move in certain direction
+let can_go_up = true
+let can_go_down = true
+let can_go_left = true
+let can_go_right = true
+
+//Initiate a variable to keep track current direction
+let curDirection = ""
+
+//Function to restrict going further
+function restrict(dir){
+  if (dir === "UP"){
+    can_go_up = can_go_left = can_go_right = false
+    guide.innerHTML = "You can only go DOWN"
+  } else if (dir === "DOWN"){
+    can_go_down = can_go_left = can_go_right = false
+    guide.innerHTML = "You can only go UP"
+  } else if (dir === "LEFT"){
+    can_go_left = can_go_down = can_go_up = false
+    guide.innerHTML = "You can only go RIGHT"
+  } else if (dir === "RIGHT"){
+    can_go_right = can_go_down = can_go_up = false
+    guide.innerHTML = "You can only go LEFT"
+  } 
+}
 
 //Function to control movements of the character
 function handleKeyDown(e){
       console.log('x', characterPosition.x, 'y', characterPosition.y)
-      if (e.key === "ArrowRight"){
+      if (e.key === "ArrowRight" && can_go_right){
+          curDirection = "RIGHT"
           getCharacterMove("RIGHT")
           playerImg.src = character_image["RIGHT"]
           playerImg.style.transform = 'rotateY(360deg)'
           characterPosition.x = characterPosition.x + 10
-      } else if (e.key === "ArrowLeft"){
+      } else if (e.key === "ArrowLeft" && can_go_left){
+          curDirection = "LEFT"
           getCharacterMove("LEFT")
           playerImg.src = character_image["LEFT"]
           playerImg.style.transform = 'rotateY(180deg)'
           characterPosition.x = characterPosition.x - 10
-      } else if (e.key === "ArrowDown"){
+      } else if (e.key === "ArrowDown" && can_go_down){
+          curDirection = "DOWN"
           getCharacterMove("DOWN")
           playerImg.src = character_image["DOWN"]
           characterPosition.y = characterPosition.y + 10
-      } else if (e.key === "ArrowUp"){
+      } else if (e.key === "ArrowUp" && can_go_up){
+          curDirection = "UP"
           getCharacterMove("UP")
           playerImg.src = character_image["UP"]
           characterPosition.y = characterPosition.y - 10
@@ -187,7 +217,8 @@ function handleKeyDown(e){
             window.location.href = "yangConversation2.html";
           }, 500)
         }
-  
+      
+      //check collision with objects
       if (
         isInsideRectangle(
           [
@@ -208,6 +239,7 @@ function handleKeyDown(e){
       ){
         document.getElementById("message").innerHTML = "You are about to touch a cupboard. Do not!"
         document.getElementById("message").style.color = "red"
+        restrict(curDirection)
       } else if (
         isInsideRectangle(
           [
@@ -220,6 +252,7 @@ function handleKeyDown(e){
       ){
         document.getElementById("message").innerHTML = "You are about to touch a big table. Do not!"
         document.getElementById("message").style.color = "blue"
+        restrict(curDirection)
       } else if (
         isInsideRectangle(
           [
@@ -248,9 +281,12 @@ function handleKeyDown(e){
       ){
         document.getElementById("message").innerHTML = "You are about to touch a small table. Do not!"
         document.getElementById("message").style.color = "purple"
+        restrict(curDirection)
       } else {
         document.getElementById("message").innerHTML = "Welcome to Yang office :)"
         document.getElementById("message").style.color = "black"
+        can_go_up = can_go_down = can_go_left = can_go_right = true
+        guide.innerHTML = ""
       }
       
       player.style.left = `${characterPosition.x}px`
