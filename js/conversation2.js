@@ -73,13 +73,31 @@ function getTypingEffect(s, textContainer){
 //     audio.play()
 // }
 
+const speechSynthesis = window.speechSynthesis;
+const speechUtterance = new SpeechSynthesisUtterance();
+
+function isPreferredVoice(voice){
+    return ["Google US English", "Microsoft Jessa Online"].any(preferredVoice => voice.name.startsWith(preferredVoice))
+}
+
+function onVoiceChange(){
+    speechSynthesis.addEventListener("voiceschanged", () => {
+        const voices = speechSynthesis.getVoices();
+        speechUtterance.voice = voices.find(isPreferredVoice);
+        speechUtterance.lang = "en-US";
+        speechUtterance.volume = 1;
+        speechUtterance.pitch = 1;
+        speechUtterance.rate = 3; 
+    })
+}
+
 function speak(text){
     if ('speechSynthesis' in window) {
         console.log("trying to speak")
         // Speech Synthesis supported 🎉
-        var msg = new SpeechSynthesisUtterance();
-        msg.text = text;
-        window.speechSynthesis.speak(msg);
+        onVoiceChange()
+        speechUtterance.text = text;
+        window.speechSynthesis.speak(speechUtterance);
     } else {
         // Speech Synthesis Not Supported 😣
         alert("Sorry, your browser doesn't support text to speech!");
