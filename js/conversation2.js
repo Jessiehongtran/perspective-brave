@@ -87,7 +87,7 @@ function onVoiceChange(){
         speechUtterance.lang = "en-US";
         speechUtterance.volume = 1;
         speechUtterance.pitch = 1;
-        speechUtterance.rate = 3; 
+        speechUtterance.rate = 1.5; 
     })
 }
 
