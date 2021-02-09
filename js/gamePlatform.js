@@ -15,6 +15,8 @@ class Platform{
         this.width = w;
         this.height = h; 
         this.text = text;
+        this.rightTurn = false;
+        this.leftTurn = false;
     }
 
     setup(){
@@ -32,13 +34,37 @@ class Platform{
     }
 
     moveRight(){
-        this.x += 5
+        if (this.x > window.innerWidth -5){
+            this.rightTurn = true
+        } 
+        if (this.x <= 0){
+            this.rightTurn = false
+        }
+
+        if (!this.rightTurn){
+            this.x += 5
+        } else {
+            this.x -= 5
+        }
         this.platform.style.left = `${this.x}px`
         setTimeout(this.moveRight.bind(this), this.speed)
     }
 
     moveLeft(){
-        this.x -= 5
+        if (this.x <= 0){
+            this.leftTurn = true
+        }
+
+        if (this.x > window.innerWidth -5){
+            this.leftTurn = false
+        } 
+        
+
+        if (! this.leftTurn){
+            this.x -= 5
+        } else {
+            this.x += 5
+        }
         this.platform.style.left = `${this.x}px`
         setTimeout(this.moveLeft.bind(this), this.speed)
     }
@@ -88,13 +114,14 @@ container.appendChild(character)
 //function for character to jump
 let countStep = 0
 function jumpRight(){
-    if (countStep < 10) {
+    if (countStep < 20) {
         characterPos.y -= 5
         characterPos.x += 0.1
-    } else if (countStep >= 10 && countStep < 20){
+    } else if (countStep >= 20 && countStep < 40){
         characterPos.y += 5
         characterPos.x += 0.1 
     }   
+    //if touch platform, stop
     countStep += 1
 
     character.style.left = `${characterPos.x}px`
