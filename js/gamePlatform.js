@@ -1,13 +1,11 @@
 const container = document.getElementById("container")
 
-const platformPos = {
-    x: 100,
-    y: 100
-}
+//initiate main variables
 const platformWidth = 100
 const platformHeight = 20
 const platformSpeed = 50; 
 
+//class to create a platform
 class Platform{
     constructor(x, y, w, h, speed, platform){
         this.x = x;
@@ -43,8 +41,10 @@ class Platform{
 
 }
 
+//array to contain platforms
 const platforms = []
 
+//loop to instantiate and create platform
 for (let i = 0; i < 4; i++){
     if (i%2 === 0){
         platforms.push(new Platform(0, 100 + 100*i*2, platformWidth, platformHeight, platformSpeed, document.createElement("div")))
@@ -57,4 +57,27 @@ for (let i = 0; i < 4; i++){
     }
 
 }
+
+//add character
+const character = document.createElement("img");
+const characterSize = {
+    width: 80,
+    height: 100
+}
+const characterPos = {
+    x: window.innerWidth/2 - characterSize.width/2,
+    y: window.innerHeight - characterSize.height - 100,
+}
+const characterDir = {
+    front: "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950509/Yang_Front_2x_j9ad21.png",
+    left: "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950538/Yang_RightSide_2x_i223zj.png",
+    right: "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950517/Yang_LeftSide_2x_qc1sg5.png"
+}
+character.src = characterDir.front;
+character.style.width = `${characterSize.width}px`
+character.style.height = `${characterSize.height}px`
+character.style.position = 'absolute'
+character.style.left = `${characterPos.x}px`
+character.style.top = `${characterPos.y}px`
+container.appendChild(character)
 
