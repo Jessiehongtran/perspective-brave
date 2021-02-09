@@ -81,3 +81,43 @@ character.style.left = `${characterPos.x}px`
 character.style.top = `${characterPos.y}px`
 container.appendChild(character)
 
+//function for character to jump
+let countStep = 0
+function jumpRight(){
+    if (countStep < 10) {
+        characterPos.y -= 5
+        characterPos.x += 0.1
+    } else if (countStep >= 10 && countStep < 20){
+        characterPos.y += 5
+        characterPos.x += 0.1 
+    }   
+    countStep += 1
+
+    character.style.left = `${characterPos.x}px`
+    character.style.top = `${characterPos.y}px`
+    setTimeout(jumpRight, 50)
+}
+
+const keys = {}
+
+function handleKeyDown(e){
+    //if space bar is pressed
+    // if (e.keyCode === 32){
+    //     keys["Space"] = true
+    // } 
+    // if (e.key === "ArrowRight"){
+    //     keys["ArrowRight"] = true
+    // } 
+
+    // if (keys["Space"] && keys["ArrowRight"]){
+    //     countStep = 0
+    //     jumpRight()
+    // }
+
+    if (e.keyCode === 32){
+        countStep = 0
+        jumpRight()
+    }
+}
+
+document.addEventListener("keydown", handleKeyDown)
