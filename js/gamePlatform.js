@@ -7,23 +7,27 @@ const platformSpeed = 50;
 
 //class to create a platform
 class Platform{
-    constructor(x, y, w, h, speed, platform){
+    constructor(x, y, w, h, speed, platform, text){
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.platform = platform;
         this.width = w;
         this.height = h; 
+        this.text = text;
     }
 
     setup(){
         this.platform.style.width = `${this.width}px`
         this.platform.style.height = `${this.height}px`
-        this.platform.style.backgroundColor = 'grey'
         this.platform.style.borderRadius = '20px'
         this.platform.style.position = 'absolute'
         this.platform.style.left = `${this.x}px`
         this.platform.style.top = `${this.y}px`
+        this.platform.style.textAlign = "center"
+        this.platform.style.border = "4px solid grey"
+        this.platform.style.padding = "0px 10px"
+        this.platform.appendChild(document.createTextNode(this.text))
         container.appendChild(this.platform)
     }
 
@@ -47,11 +51,11 @@ const platforms = []
 //loop to instantiate and create platform
 for (let i = 0; i < 4; i++){
     if (i%2 === 0){
-        platforms.push(new Platform(0, 100 + 100*i*2, platformWidth, platformHeight, platformSpeed, document.createElement("div")))
+        platforms.push(new Platform(0, 100 + 100*i*2, platformWidth, platformHeight, platformSpeed, document.createElement("div"), "Team Bias"))
         platforms[i].setup()
         platforms[i].moveRight()
     } else {
-        platforms.push(new Platform(window.innerWidth, 100 + 100*i*2, platformWidth, platformHeight, platformSpeed, document.createElement("div")))
+        platforms.push(new Platform(window.innerWidth, 100 + 100*i*2, platformWidth, platformHeight, platformSpeed, document.createElement("div"), "Team Non-bias"))
         platforms[i].setup()
         platforms[i].moveLeft()
     }
