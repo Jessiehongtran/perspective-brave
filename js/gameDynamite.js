@@ -39,7 +39,7 @@ for (let r = 0; r < 3; r++){
     for (let c = 0; c < 20; c++){
         ball = new Ball
         ball.setup()
-        ball.updateCoors(100 + 80*c, 80*r)
+        ball.updateCoors(100 + 80*c, 40+ 80*r)
         ball.updateText(r*20 + c )
     }
 }
@@ -95,9 +95,9 @@ let mouseY = null;
 const line = new Line;
 line.setup()
 
-const thrownBall = new Ball;
-thrownBall.setup()
-thrownBall.updateText("^")
+const mainBall = new Ball;
+mainBall.setup()
+mainBall.updateText("^")
 
 function onMouseUpdate(e){
     mouseX = e.pageX;
@@ -106,8 +106,18 @@ function onMouseUpdate(e){
     //update position of line
     line.update(mouseX, mouseY, window.innerWidth/2, window.innerHeight - 10)
     //update position of ball
-    thrownBall.updateCoors(mouseX, mouseY)
+    mainBall.updateCoors(mouseX, mouseY)
 }
 
-document.addEventListener('mousemove', onMouseUpdate, false);
+function throwMainBall(){
+    const k = (mouseX - window.innerWidth/2)/(mouseY - window.innerHeight + 10)
+    const b = mouseY - mouseX*k
+    const cutLineY = 240
+    const cutLineX = (cutLineY - b)/k
 
+    mainBall.updateCoors(cutLineX, cutLineY)
+}
+
+
+document.addEventListener('mousemove', onMouseUpdate, false);
+container.addEventListener('click', throwMainBall, false);
