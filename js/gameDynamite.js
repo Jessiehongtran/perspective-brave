@@ -2,13 +2,10 @@ const container = document.getElementById("container")
 
 //class to create a ball
 class Ball {
-    constructor(x, y, color, text){
-        this.x = x;
-        this.y = y;
-        this.color = color;
+    constructor(){
+        this.color = `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`;
         this.size = 80;
         this.ball = document.createElement("div");
-        this.text = text;
     }
 
     setup(){
@@ -17,16 +14,22 @@ class Ball {
         this.ball.style.position = "absolute"
         this.ball.style.width = `${this.size}px`
         this.ball.style.height = `${this.size}px`
-        this.ball.style.left = `${this.x}px`
-        this.ball.style.top = `${this.y}px`
+        container.appendChild(this.ball)
+    }
+
+    updateCoors(x, y){
+        this.ball.style.left = `${x - this.size/2}px`
+        this.ball.style.top = `${y - this.size/2}px`
+    }
+
+    updateText(text){
         this.ball.style.display = "flex"
         this.ball.style.justifyContent = "center"
         this.ball.style.alignItems = "center"
         this.ball.style.textAlign = "center"
         this.ball.style.fontSize = "22px"
         this.ball.style.color = "white"
-        this.ball.appendChild(document.createTextNode(this.text))
-        container.appendChild(this.ball)
+        this.ball.appendChild(document.createTextNode(text))
     }
 }
 
@@ -34,8 +37,10 @@ class Ball {
 let ball ;
 for (let r = 0; r < 3; r++){
     for (let c = 0; c < 20; c++){
-        ball = new Ball(100 + 80*c, 80*r, `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`, r*20 + c )
+        ball = new Ball
         ball.setup()
+        ball.updateCoors(100 + 80*c, 80*r)
+        ball.updateText(r*20 + c )
     }
 }
 
@@ -90,12 +95,19 @@ let mouseY = null;
 const line = new Line;
 line.setup()
 
+const thrownBall = new Ball;
+thrownBall.setup()
+thrownBall.updateText("^")
+
 function onMouseUpdate(e){
     mouseX = e.pageX;
     mouseY = e.pageY;
     
-    //update line
+    //update position of line
     line.update(mouseX, mouseY, window.innerWidth/2, window.innerHeight - 10)
+    //update position of ball
+    thrownBall.updateCoors(mouseX, mouseY)
 }
 
 document.addEventListener('mousemove', onMouseUpdate, false);
+
