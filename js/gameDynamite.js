@@ -110,9 +110,16 @@ function onMouseUpdate(e){
 }
 
 function throwMainBall(){
-    const k = (mouseX - window.innerWidth/2)/(mouseY - window.innerHeight + 10)
+    const k = (mouseY - window.innerHeight + 10)/(mouseX - window.innerWidth/2)
     const b = mouseY - mouseX*k
-    const cutLineY = 240
+    let cutLineY;
+    if (mouseY >= 40 + 80*2){
+        cutLineY = 40 + 80*2
+    } else if (mouseY < 40 + 80*2 && mouseY > 40 + 80*1){
+        cutLineY = 40 + 80*1
+    } else if (mouseY <= 40 + 80*1 && mouseY > 40 ){
+        cutLineY = 40 
+    } 
     const cutLineX = (cutLineY - b)/k
 
     mainBall.updateCoors(cutLineX, cutLineY)
