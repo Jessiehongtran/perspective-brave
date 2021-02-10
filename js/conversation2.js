@@ -48,7 +48,7 @@ const JayLoop = document.getElementById("Jay-loop")
 const YangLoop = document.getElementById("Yang-loop")
 const intro = document.getElementById("intro")
 
-let typingEffectSpeed = 80
+let typingEffectSpeed = 60
 let durationToNextText = 5000
 
 function getTypingEffect(s, textContainer){
