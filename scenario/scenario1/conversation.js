@@ -144,7 +144,7 @@ const intro = document.getElementById("intro")
 let typingEffectSpeed = 60
 let durationToNextText = 0
 
-function getTypingEffect(s, textContainer, id){
+function getTypingEffect(s, textContainer){
     let i = 0
 
     function releaseText(){
@@ -157,7 +157,7 @@ function getTypingEffect(s, textContainer, id){
 
     releaseText()
 
-    durationToNextText = typingEffectSpeed*(s.length +5)*(id+1)
+    durationToNextText = typingEffectSpeed*(s.length +5)
 }
 
 const speechSynthesis = window.speechSynthesis;
@@ -192,12 +192,53 @@ function speak(text){
 }
 
 
-let chat = document.getElementById("chat")
+let chat = document.getElementById("chat");
+let next = "part1";
 let messageArray = []
 let buttonArray = []
 let buttons
-function getMessage2(next){
+let textContainer
+
+let j = 0;
+function showEachMessage(){
+    if (j < messageArray.length){
+        let newMessage = getMessageElement(messageArray[j].name, messageArray[j].text)
+        chat.appendChild(newMessage)
+        j += 1
+        setTimeout(showEachMessage, durationToNextText) //apply recursion
+    } else {
+        addButtons()
+    }
+   
+}
+
+function addButtons(){
+    buttons = document.createElement('div')
+    buttons.style.display = 'flex'
+    buttons.style.width = '100%'
+    buttons.style.justifyContent = 'space-evenly'
+    for (let i = 0; i < buttonArray.length; i++){
+        if (buttonArray[i].text){
+            let button = document.createElement('div')
+            button.style.padding = '8px 15px'
+            button.style.backgroundColor = 'white'
+            button.style.borderRadius = '8px'
+            button.appendChild(document.createTextNode(buttonArray[i].text))
+            button.style.cursor = 'pointer'
+            button.style.marginRight = '20px'
+            button.addEventListener('click', () => {
+                next = buttonArray[i].next
+                getMessages()
+            })
+            buttons.appendChild(button)
+        }
+    }
+    chat.appendChild(buttons)
+}
+
+function getMessages(){
     intro.style.display = 'none'
+    j = 0
     while (chat.firstChild) {
         chat.removeChild(chat.firstChild);
     }
@@ -205,43 +246,20 @@ function getMessage2(next){
     console.log('next', next)
     if (next){
         messageArray = conversation[next].messages
-        console.log('messageArray', messageArray)
-        for (let i = 0; i < messageArray.length; i++){
-            let newMessage = getMessageElement(messageArray[i].name, messageArray[i].text, i)
-            chat.appendChild(newMessage)
-            
-        }
         buttonArray = conversation[next].buttons
-        buttons = document.createElement('div')
-        buttons.style.display = 'flex'
-        buttons.style.width = '100%'
-        buttons.style.justifyContent = 'space-evenly'
-        for (let i = 0; i < buttonArray.length; i++){
-            if (buttonArray[i].text){
-                let button = document.createElement('div')
-                button.style.padding = '8px 15px'
-                button.style.backgroundColor = 'white'
-                button.style.borderRadius = '8px'
-                button.appendChild(document.createTextNode(buttonArray[i].text))
-                button.style.cursor = 'pointer'
-                button.style.marginRight = '20px'
-                button.addEventListener('click', () => getMessage2(buttonArray[i].next))
-                buttons.appendChild(button)
-            }
-        }
-        chat.appendChild(buttons)
+        showEachMessage(next)
         next = null
     }
 
 }
 
 
-function getMessageElement(name, text, id){
+function getMessageElement(name, text){
     const messageContainer = document.createElement("div")
     messageContainer.style.width = "100%"
     messageContainer.style.display = "flex"
     messageContainer.style.fontSize = "20px"
-    messageContainer.style.marginTop = "20px"
+    messageContainer.style.marginTop = "40px"
     messageContainer.style.transition = "all 0.2s linear"
     messageContainer.style.position = "relative"
     messageContainer.style.transform = "translateY(-100%);"
@@ -253,70 +271,8 @@ function getMessageElement(name, text, id){
     messageContainer.appendChild(newName)
 
     let newText = document.createElement("div")
-    newText.innerHTML =  text
-    // getTypingEffect(text, newText, id)
+    getTypingEffect(text, newText)
     messageContainer.appendChild(newText)
 
     return messageContainer
 }
-
-
-
-
-function getMessage(){
-    intro.style.display = 'none'
-    if (i < messages.length){
-        if (chat.childElementCount === 3){
-            while (chat.firstChild) {
-                chat.removeChild(chat.firstChild);
-            }
-        }
-
-        let messageContainer = document.createElement("div")
-        messageContainer.style.width = "100%"
-        messageContainer.style.display = "flex"
-        messageContainer.style.fontSize = "20px"
-        messageContainer.style.marginTop = "20px"
-        messageContainer.style.transition = "all 0.2s linear"
-        messageContainer.style.position = "relative"
-        messageContainer.style.transform = "translateY(-100%);"
-
-        let newName = document.createElement("div")
-        newName.innerHTML =  messages[i].name + ":"
-        newName.style.fontWeight = "bold"
-        newName.style.marginRight = "10px"
-        messageContainer.appendChild(newName)
-
-        if (messages[i].name === "Mike"){
-            MikeLoop.style.display = 'block'
-            JackLoop.style.display = 'none'
-            JayLoop.style.display = 'none'
-            YangLoop.style.display = 'none'
-        } else if (messages[i].name === "Jack"){
-            MikeLoop.style.display = 'none'
-            JackLoop.style.display = 'block'
-            JayLoop.style.display = 'none'
-            YangLoop.style.display = 'none'
-        } else if (messages[i].name === "Jay"){
-            MikeLoop.style.display = 'none'
-            JackLoop.style.display = 'none'
-            JayLoop.style.display = 'block'
-            YangLoop.style.display = 'none'
-        } else if (messages[i].name === "Yang"){
-            MikeLoop.style.display = 'none'
-            JackLoop.style.display = 'none'
-            JayLoop.style.display = 'none'
-            YangLoop.style.display = 'block'
-        }
-
-        let newText = document.createElement("div")
-        getTypingEffect(messages[i].text, newText)
-        messageContainer.appendChild(newText)
-        speak(messages[i].text)
-
-        chat.appendChild(messageContainer)
-        i ++
-        setTimeout(getMessage, durationToNextText)
-    }
-}
-
