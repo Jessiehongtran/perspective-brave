@@ -135,11 +135,8 @@ const conversation= {
     }
 }
 
-const JerryLoop = document.getElementById("Jerry-loop")
-const BobLoop = document.getElementById("Bob-loop")
-const SashaLoop = document.getElementById("Sasha-loop")
-const YangLoop = document.getElementById("Yang-loop")
 const intro = document.getElementById("intro")
+const frames = document.getElementById("frames")
 
 let typingEffectSpeed = 60
 let durationToNextText = 0
@@ -212,9 +209,20 @@ function showEachMessage(){
    
 }
 
+function showFrameAroundCharacter(name){
+    for (let i = 0; i < frames.children.length; i++){
+        if (frames.children[i].id !== name){
+            frames.children[i].style.display = 'none'
+        } else {
+            frames.children[i].style.display = 'block'
+        }
+    }
+}
+
 function addButtons(){
     buttons = document.createElement('div')
     buttons.style.display = 'flex'
+    buttons.style.marginTop = '20px'
     buttons.style.width = '100%'
     buttons.style.justifyContent = 'space-evenly'
     for (let i = 0; i < buttonArray.length; i++){
@@ -272,7 +280,10 @@ function getMessageElement(name, text){
 
     let newText = document.createElement("div")
     getTypingEffect(text, newText)
+    speak(text)
     messageContainer.appendChild(newText)
+
+    showFrameAroundCharacter(name)
 
     return messageContainer
 }
