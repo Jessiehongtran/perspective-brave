@@ -3,18 +3,20 @@ const container = document.getElementById("container")
 //class to create a ball
 class Ball {
     constructor(){
-        this.color = `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`;
         this.size = 80;
         this.ball = document.createElement("div");
     }
 
     setup(){
         this.ball.style.borderRadius = "50%"
-        this.ball.style.backgroundColor = this.color
         this.ball.style.position = "absolute"
         this.ball.style.width = `${this.size}px`
         this.ball.style.height = `${this.size}px`
         container.appendChild(this.ball)
+    }
+
+    updateBgColor(color){
+        this.ball.style.backgroundColor = color
     }
 
     updateCoors(x, y){
@@ -33,16 +35,40 @@ class Ball {
     }
 }
 
+const balls = []
+const totalRow = 3
+const totalCol = 20
+let ballRow;
+
 //create balls
 let ball ;
-for (let r = 0; r < 3; r++){
-    for (let c = 0; c < 20; c++){
+for (let r = 0; r < totalRow ; r++){
+    ballRow = []
+    for (let c = 0; c < totalCol ; c++){
         ball = new Ball
-        ball.setup()
-        ball.updateCoors(100 + 80*c, 40+ 80*r)
-        ball.updateText(r*20 + c )
+        ballRow.push(ball)
+    }
+    balls.push(ballRow)
+}
+
+function showBalls(){
+    for (let r = 0; r < totalRow ; r++){
+        for (let c = 0; c < totalCol ; c++){
+            if (balls[r][c] != 0){
+                const randomColor = `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`
+                balls[r][c].setup()
+                balls[r][c].updateBgColor(randomColor)
+                // balls[r][c].updateText(r*20 + c )
+            } else {
+                balls[r][c].setup()
+                balls[r][c].updateBgColor("white")
+            }
+            balls[r][c].updateCoors(100 + 80*c, 40+ 80*r)
+        }
     }
 }
+
+showBalls()
 
 //class to create and update a line
 class Line {
@@ -96,7 +122,9 @@ const line = new Line;
 line.setup()
 
 const mainBall = new Ball;
+const mainBallRandomColor = `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`
 mainBall.setup()
+mainBall.updateBgColor(mainBallRandomColor)
 mainBall.updateText("^")
 
 function onMouseUpdate(e){
@@ -109,6 +137,22 @@ function onMouseUpdate(e){
     mainBall.updateCoors(mouseX, mouseY)
 }
 
+const ballSize = 80
+
+function isTouchingABall(x, y){
+    for (let r = 0; r < totalRow ; r++){
+        for (let c = 0; c < totalCol ; c++){
+            if (x >= 100 + 80*c && x <=  100 + 80*c + ballSize && y >= 40 + 80*r && y <= 40 + 80*r + ballSize
+                || x + ballSize >= 100 + 80*c && x + ballSize <=  100 + 80*c + ballSize && y >= 40 + 80*r && y <= 40 + 80*r + ballSize){
+                    balls[r][c] = 0
+                    return true
+            }
+        }
+    }
+    return false
+}
+
+//function to throw ball
 function throwMainBall(){
     const k = (mouseY - window.innerHeight + 10)/(mouseX - window.innerWidth/2)
     const b = mouseY - mouseX*k
@@ -123,6 +167,13 @@ function throwMainBall(){
     const cutLineX = (cutLineY - b)/k
 
     mainBall.updateCoors(cutLineX, cutLineY)
+
+    //if touch a ball, turn ball in balls array into 0
+    if (isTouchingABall(cutLineX, cutLineY)){
+        console.log('balls', balls)
+        showBalls()
+    }
+
 }
 
 
