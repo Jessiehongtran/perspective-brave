@@ -76,7 +76,7 @@ const conversation= {
         ],
         buttons: [
             {
-                text: null,
+                text: "Okay",
                 next: null
             }
         ]
@@ -102,7 +102,7 @@ const conversation= {
         ],
         buttons: [
             {
-                text: null,
+                text: "Okay",
                 next: null
             }
         ]
@@ -128,7 +128,7 @@ const conversation= {
         ],
         buttons: [
             {
-                text: null,
+                text: "Okay",
                 next: null
             }
         ]
@@ -236,7 +236,11 @@ function addButtons(){
             button.style.marginRight = '20px'
             button.addEventListener('click', () => {
                 next = buttonArray[i].next
-                getMessages()
+                if (next){
+                    getMessages()
+                } else {
+                    window.location.href = "../../games/balloon/intro.html"
+                }
             })
             buttons.appendChild(button)
         }

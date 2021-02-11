@@ -4,8 +4,23 @@
         <title>Perspective 2.0</title>
     </head>
     <body>
-        <div id="container" style="display: flex; justify-content: center; width: 100%">
-            
+        <div id="container" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; width: 100%">
+            <div id="text" style="top: 0; position: absolute; height: 20%; width: 100%; background-color: #E2E2E2;">
+
+            </div>
+            <div id="ground" style="display: flex; flex-direction: column; align-items: center;">
+                <div id="ballons" style="width: 60%; position: absolute; top: 24%;  display: flex; justify-content: space-between;">
+                    <img style="width: 15%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613074397/Group_33_ykzt4r.png"/>
+                    <img style="width: 15%"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613074399/Group_34_ong0lb.png"/>
+                    <img style="width: 15%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613074401/Group_35_uowx7d.png"/>
+                </div>
+                <div id="player" style="width: 100%;z-index: 1; ">
+                    <img style="width: 10%; position: absolute; left: 10%; top: 68%;" id="playerImg" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1611950517/Yang_LeftSide_2x_qc1sg5.png"  />
+                </div>
+                <div id="land" style="top: 80%; position: absolute; width: 100%; ">
+                    <img style="width: 100%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613073890/Group_42_py2g0q.png"/>
+                </div>
+            </div>
         </div>
         <script src="./gameBalloon.js"></script>
     </body>
