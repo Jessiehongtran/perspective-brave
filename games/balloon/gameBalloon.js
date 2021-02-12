@@ -13,7 +13,7 @@ const summary = document.getElementById("summary")
 const gapBetweenBalloons = 10
 const maxImageInd = 15
 const skyLandingHeight = 10
-let onSky = false
+
 
 const moveInd = { 
     right: 0,
@@ -87,7 +87,6 @@ function getCharacterImg(id){
 
 //function to get character and blue balloon fall down
 function skyLandCharacterAndBalloon(){
-    onSky = true
     console.log("invokinggggg", characterPos.y, blueBalloonPos.y)
     blueBalloonPos.y -= 2
     characterPos.y -= 2
@@ -137,7 +136,7 @@ function showSky(){
     character.style.top =  `${characterPos.y}%`
     // blueBalloon.style.zIndex = 3
     // character.style.zIndex = 2
-    setTimeout(skyLandCharacterAndBalloon, 500)
+    setTimeout(skyLandCharacterAndBalloon, 410)
 }
 
 //Fly character
@@ -149,7 +148,7 @@ function flyCharacter(){
     character.style.top = `${characterPos.y}%`
 
     //recursion
-    if (characterPos.y > - characterSize.height - 10 && !onSky){
+    if (characterPos.y > - characterSize.height - 10 ){
         setTimeout(flyCharacter, balloonFlyingSpeed)
     }
 }
@@ -183,7 +182,7 @@ function flyBlue(){
     blueBalloon.style.top = `${blueBalloonPos.y}%`
 
     //fly character and play sound
-    if (blueBalloonPos.y < 15 && letSoundPlay && !onSky){
+    if (blueBalloonPos.y < 15 && letSoundPlay ){
         flyCharacter() //realize that as long as this function is called, flyBlue is called as well >> very interesting
         playSound('../../asset/sounds/Cheer.mp3')
     }
