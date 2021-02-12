@@ -43,6 +43,11 @@ const purpleBalloonPos = {
     y: 20
 }
 
+const balloonExplodeCostume = {
+    red: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613147601/redExplode_hqjuxt.png",
+    purple: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613147747/purpleExplode_jc94h3.png"
+}
+
 let playerImageInd = 0
 
 character.style.width = `${characterSize.width}%`
@@ -60,9 +65,9 @@ purpleBalloon.style.top = `${purpleBalloonPos.y}%`
 
 let timeKeyDown
 let timeKeyUp
-let balloonSelected = false
 const balloonFlyingSpeed = 30
 const balloonFlyingChange = 5
+let letSoundPlay = true
 
 //Function to get character image file (that is stored locally)
 function getCharacterImg(id){
@@ -72,23 +77,62 @@ function getCharacterImg(id){
     return `../../asset/Yang_Walk_LR/Yang_Walk_LR_000${id}.png`
   }
 
+//Fly character
+function flyCharacter(){
+    console.log("fly character")
+    characterPos.y -= balloonFlyingChange
+    character.style.top = `${characterPos.y}%`
+
+    if (characterPos.y > - characterSize.height - 10){
+        setTimeout(flyCharacter, balloonFlyingSpeed)
+    }
+}
+
+
 //Functions to fly the balloons
 function flyRed(){
+    console.log("flying red", redBalloonPos.y)
     redBalloonPos.y -= balloonFlyingChange
     redBalloon.style.top = `${redBalloonPos.y}%`
-    setTimeout(flyRed, balloonFlyingSpeed)
+
+    if (redBalloonPos.y < 15 && letSoundPlay){
+        changeCostume("red")
+        playSound('../../asset/sounds/Explode.mp3')
+    }
+
+    if (redBalloonPos.y > - balloonSize.height - 10){
+        setTimeout(flyRed, balloonFlyingSpeed)
+    } 
 }
 
 function flyBlue(){
+    console.log("flying blue", blueBalloonPos.y)
     blueBalloonPos.y -= balloonFlyingChange
     blueBalloon.style.top = `${blueBalloonPos.y}%`
-    setTimeout(flyBlue, balloonFlyingSpeed)
+
+    if (blueBalloonPos.y < 15 && letSoundPlay){
+        flyCharacter() //realize that as long as this function is called, flyBlue is called as well >> very interesting
+        playSound('../../asset/sounds/Cheer.mp3')
+    }
+
+    if (blueBalloonPos.y > - balloonSize.height - 10){
+        setTimeout(flyBlue, balloonFlyingSpeed)  
+    } 
 }
 
 function flyPurple(){
+    console.log("flying purple", purpleBalloonPos.y)
     purpleBalloonPos.y -= balloonFlyingChange
     purpleBalloon.style.top = `${purpleBalloonPos.y}%`
-    setTimeout(flyPurple, balloonFlyingSpeed)
+
+    if (purpleBalloonPos.y < 15 && letSoundPlay){
+        changeCostume("purple")
+        playSound('../../asset/sounds/Explode.mp3')
+    }
+
+    if (purpleBalloonPos.y > - balloonSize.height - 10){
+        setTimeout(flyPurple, balloonFlyingSpeed)
+    } 
 }
 
 
@@ -99,6 +143,25 @@ function getCharacterMove(dir){
    
 }
 
+//function to play sound
+function playSound(file){
+    var audio = new Audio(file);
+    audio.play()
+    letSoundPlay = false
+}
+
+//function to change costume
+function changeCostume(balloonColor){
+    console.log("changing costume", balloonColor)
+    if (balloonColor === "red"){
+        console.log("changing costume of red")
+        redBalloon.style.backgroundImage = `url(${balloonExplodeCostume.red})`
+    } else if (balloonColor === "purple"){
+        console.log("changing costume of purple")
+        purpleBalloon.style.backgroundImage = `url(${balloonExplodeCostume.purple})`
+    }
+}
+
 //function to check if character touches a balloon
 function checkTouchBalloon(){
     if (characterPos.x + characterSize.width/2 >= redBalloonPos.x 
@@ -107,7 +170,6 @@ function checkTouchBalloon(){
         && characterPos.y <= redBalloonPos.y + balloonSize.height/2){
             console.log("touch red")
             flyRed()
-            balloonSelected = true
         } 
     else if (characterPos.x + characterSize.width/2 >= blueBalloonPos.x 
         && characterPos.x + characterSize.width/2 <= blueBalloonPos.x + balloonSize.width
@@ -115,7 +177,6 @@ function checkTouchBalloon(){
         && characterPos.y <= blueBalloonPos.y + balloonSize.height/2){
             console.log("touch blue")
             flyBlue()
-            balloonSelected = true
         }
     else if (characterPos.x + characterSize.width/2 >= purpleBalloonPos.x 
         && characterPos.x + characterSize.width/2 <= purpleBalloonPos.x + balloonSize.width
@@ -123,7 +184,6 @@ function checkTouchBalloon(){
         && characterPos.y <= purpleBalloonPos.y + balloonSize.height/2){
             console.log("touch purple")
             flyPurple()
-            balloonSelected = true
         }
 
 }
@@ -146,11 +206,7 @@ function jump(){
     character.style.left = `${characterPos.x}%`
     character.style.top = `${characterPos.y}%`
 
-    console.log(balloonSelected)
-
-    if (!balloonSelected ){
-        checkTouchBalloon()
-    }
+    checkTouchBalloon()
 
     if (countStep <= totalStep*2) {
         setTimeout(jump, 50)
@@ -185,6 +241,7 @@ function handleKeyDown(e){
     } 
     //jump
     if (e.keyCode === 32){
+        letSoundPlay = true 
         countStep = 0
         if (character.src === character_face.right){
             change = 1
