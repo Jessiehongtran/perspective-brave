@@ -35,11 +35,11 @@ const redBalloonPos = {
     y: 20
 }
 const blueBalloonPos = {
-    x: redBalloonPos.x + balloonSize.width + gapBetweenBalloons,
+    x: 20 + balloonSize.width + gapBetweenBalloons,
     y: 20
 }
 const purpleBalloonPos = {
-    x: redBalloonPos.x + balloonSize.width*2 + gapBetweenBalloons*2,
+    x: 20 + balloonSize.width*2 + gapBetweenBalloons*2,
     y: 20
 }
 
@@ -60,6 +60,9 @@ purpleBalloon.style.top = `${purpleBalloonPos.y}%`
 
 let timeKeyDown
 let timeKeyUp
+let balloonSelected = false
+const balloonFlyingSpeed = 30
+const balloonFlyingChange = 5
 
 //Function to get character image file (that is stored locally)
 function getCharacterImg(id){
@@ -71,21 +74,21 @@ function getCharacterImg(id){
 
 //Functions to fly the balloons
 function flyRed(){
-    redBalloonPos.y -= 2
+    redBalloonPos.y -= balloonFlyingChange
     redBalloon.style.top = `${redBalloonPos.y}%`
-    setTimeout(flyRed, 100)
+    setTimeout(flyRed, balloonFlyingSpeed)
 }
 
 function flyBlue(){
-    blueBalloonPos.y -= 2
+    blueBalloonPos.y -= balloonFlyingChange
     blueBalloon.style.top = `${blueBalloonPos.y}%`
-    setTimeout(flyBlue, 100)
+    setTimeout(flyBlue, balloonFlyingSpeed)
 }
 
 function flyPurple(){
-    purpleBalloonPos.y -= 2
+    purpleBalloonPos.y -= balloonFlyingChange
     purpleBalloon.style.top = `${purpleBalloonPos.y}%`
-    setTimeout(flyPurple, 100)
+    setTimeout(flyPurple, balloonFlyingSpeed)
 }
 
 
@@ -101,24 +104,28 @@ function checkTouchBalloon(){
     if (characterPos.x + characterSize.width/2 >= redBalloonPos.x 
         && characterPos.x + characterSize.width/2 <= redBalloonPos.x + balloonSize.width
         && characterPos.y >= redBalloonPos.y 
-        && characterPos.y <= redBalloonPos.y + balloonSize.height){
+        && characterPos.y <= redBalloonPos.y + balloonSize.height/2){
             console.log("touch red")
             flyRed()
+            balloonSelected = true
         } 
     else if (characterPos.x + characterSize.width/2 >= blueBalloonPos.x 
         && characterPos.x + characterSize.width/2 <= blueBalloonPos.x + balloonSize.width
         && characterPos.y >= blueBalloonPos.y 
-        && characterPos.y <= blueBalloonPos.y + balloonSize.height){
+        && characterPos.y <= blueBalloonPos.y + balloonSize.height/2){
             console.log("touch blue")
             flyBlue()
+            balloonSelected = true
         }
     else if (characterPos.x + characterSize.width/2 >= purpleBalloonPos.x 
         && characterPos.x + characterSize.width/2 <= purpleBalloonPos.x + balloonSize.width
         && characterPos.y >= purpleBalloonPos.y 
-        && characterPos.y <= purpleBalloonPos.y + balloonSize.height){
+        && characterPos.y <= purpleBalloonPos.y + balloonSize.height/2){
             console.log("touch purple")
             flyPurple()
+            balloonSelected = true
         }
+
 }
 
 //function for character to jump
@@ -138,12 +145,19 @@ function jump(){
 
     character.style.left = `${characterPos.x}%`
     character.style.top = `${characterPos.y}%`
-    checkTouchBalloon()
-    setTimeout(jump, 50)
+
+    console.log(balloonSelected)
+
+    if (!balloonSelected ){
+        checkTouchBalloon()
+    }
+
+    if (countStep <= totalStep*2) {
+        setTimeout(jump, 50)
+    }  
 }
 
 function handleKeyDown(e){
-    console.log("down")
     timeKeyDown = new Date()
 
     //move right
