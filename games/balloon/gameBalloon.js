@@ -7,7 +7,8 @@ const text = document.getElementById("text")
 const cloud = document.getElementById("cloud")
 const land = document.getElementById("land")
 const skyLanding = document.getElementById("sky-landing")
-
+const skyLandingImg = document.getElementById("skyLandingImg")
+const summary = document.getElementById("summary")
 
 const gapBetweenBalloons = 10
 const maxImageInd = 15
@@ -94,7 +95,24 @@ function fallCharacterAndBalloon(){
 
     if (characterPos.y + characterSize.height < 45 - characterSize.height - skyLandingHeight){
         setTimeout(fallCharacterAndBalloon, balloonFlyingSpeed)
+    } else {
+        setTimeout(zoomSkyLanding, 1000)
     }
+}
+
+//Function to zoom into sky landing
+function zoomSkyLanding(){
+    skyLandingImg.style.left = '0%'
+    skyLandingImg.style.top = '90%'
+    skyLandingImg.style.width = '120%'
+
+    setTimeout(showSummary, 2000)
+}
+
+//Function to show Summary of answer
+function showSummary(){
+    skyLanding.style.display = character.style.display = blueBalloon.style.display = 'none'
+    summary.style.display = 'block'
 }
 
 //Function to show sky setup
