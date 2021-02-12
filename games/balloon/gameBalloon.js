@@ -6,9 +6,12 @@ const purpleBalloon = document.getElementById("purple")
 const text = document.getElementById("text")
 const cloud = document.getElementById("cloud")
 const land = document.getElementById("land")
+const skyLanding = document.getElementById("sky-landing")
+
 
 const gapBetweenBalloons = 10
 const maxImageInd = 15
+const skyLandingHeight = 10
 
 const moveInd = { 
     right: 0,
@@ -80,12 +83,46 @@ function getCharacterImg(id){
     return `../../asset/Yang_Walk_LR/Yang_Walk_LR_000${id}.png`
   }
 
+//function to get character and blue balloon fall down
+function fallCharacterAndBalloon(){
+    console.log("invokinggggg", characterPos.y, blueBalloonPos.y)
+    blueBalloonPos.y += 5
+    characterPos.y += 5
+
+    blueBalloon.style.top = `${blueBalloonPos.y}%`
+    character.style.top =  `${characterPos.y}%`
+
+    if (characterPos.y + characterSize.height < 45 - characterSize.height - skyLandingHeight){
+        setTimeout(fallCharacterAndBalloon, balloonFlyingSpeed)
+    }
+}
+
+//Function to show sky setup
+function showSky(){
+    //hide text, red and purple balloons and land
+    text.style.display = redBalloon.style.display = purpleBalloon.style.display =  land.style.display =  'none'
+
+    //show cloud
+    cloud.style.display = 'block'
+
+    //show sky landing
+    skyLanding.style.display = 'block'
+    skyLanding.style.transition = 'all 1s ease'
+    skyLanding.style.height = `${skyLandingHeight}%`
+
+    //show character falling
+    fallCharacterAndBalloon()
+}
+
 //Fly character
 function flyCharacter(){
     console.log("fly character")
+
+     //update character coordinates
     characterPos.y -= balloonFlyingChange
     character.style.top = `${characterPos.y}%`
 
+    //recursion
     if (characterPos.y > - characterSize.height - 10){
         setTimeout(flyCharacter, balloonFlyingSpeed)
     }
@@ -95,14 +132,18 @@ function flyCharacter(){
 //Functions to fly the balloons
 function flyRed(){
     console.log("flying red", redBalloonPos.y)
+
+     //update balloon coordinates
     redBalloonPos.y -= balloonFlyingChange
     redBalloon.style.top = `${redBalloonPos.y}%`
 
+     //change costume and play sound
     if (redBalloonPos.y < 15 && letSoundPlay){
         changeCostume("red")
         playSound('../../asset/sounds/Explode.mp3')
     }
 
+    //recursion
     if (redBalloonPos.y > - balloonSize.height - 10){
         setTimeout(flyRed, balloonFlyingSpeed)
     } 
@@ -110,20 +151,21 @@ function flyRed(){
 
 function flyBlue(){
     console.log("flying blue", blueBalloonPos.y)
+
+    //update balloon coordinates
     blueBalloonPos.y -= balloonFlyingChange
     blueBalloon.style.top = `${blueBalloonPos.y}%`
 
-    //hide text, red and purple balloons and land
-    text.style.display = redBalloon.style.display = purpleBalloon.style.display =  land.style.display =  'none'
-
-    //show cloud
-    cloud.style.display = 'block'
-
+    //fly character and play sound
     if (blueBalloonPos.y < 15 && letSoundPlay){
         flyCharacter() //realize that as long as this function is called, flyBlue is called as well >> very interesting
         playSound('../../asset/sounds/Cheer.mp3')
     }
 
+    //change background to sky
+    setTimeout(showSky, 1000)
+
+    //recursion
     if (blueBalloonPos.y > - balloonSize.height - 10){
         setTimeout(flyBlue, balloonFlyingSpeed)  
     } 
@@ -131,14 +173,18 @@ function flyBlue(){
 
 function flyPurple(){
     console.log("flying purple", purpleBalloonPos.y)
+
+    //update balloon coordinates
     purpleBalloonPos.y -= balloonFlyingChange
     purpleBalloon.style.top = `${purpleBalloonPos.y}%`
 
+    //change costume and play sound
     if (purpleBalloonPos.y < 15 && letSoundPlay){
         changeCostume("purple")
         playSound('../../asset/sounds/Explode.mp3')
     }
 
+    //recursion
     if (purpleBalloonPos.y > - balloonSize.height - 10){
         setTimeout(flyPurple, balloonFlyingSpeed)
     } 
