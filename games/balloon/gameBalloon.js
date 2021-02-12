@@ -3,6 +3,9 @@ const character = document.getElementById("playerImg")
 const redBalloon = document.getElementById("red")
 const blueBalloon = document.getElementById("blue")
 const purpleBalloon = document.getElementById("purple")
+const text = document.getElementById("text")
+const cloud = document.getElementById("cloud")
+const land = document.getElementById("land")
 
 const gapBetweenBalloons = 10
 const maxImageInd = 15
@@ -109,6 +112,12 @@ function flyBlue(){
     console.log("flying blue", blueBalloonPos.y)
     blueBalloonPos.y -= balloonFlyingChange
     blueBalloon.style.top = `${blueBalloonPos.y}%`
+
+    //hide text, red and purple balloons and land
+    text.style.display = redBalloon.style.display = purpleBalloon.style.display =  land.style.display =  'none'
+
+    //show cloud
+    cloud.style.display = 'block'
 
     if (blueBalloonPos.y < 15 && letSoundPlay){
         flyCharacter() //realize that as long as this function is called, flyBlue is called as well >> very interesting
