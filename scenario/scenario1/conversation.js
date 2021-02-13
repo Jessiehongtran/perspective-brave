@@ -204,7 +204,7 @@ let buttons
 let textContainer
 let talkingDude 
 let currentMessage
-
+let audioInd = 1
 
 let j = 0;
 function showEachMessage(){
@@ -219,15 +219,6 @@ function showEachMessage(){
    
 }
 
-function showFrameAroundCharacter(name){
-    for (let i = 0; i < frames.children.length; i++){
-        if (frames.children[i].id !== name){
-            frames.children[i].style.display = 'none'
-        } else {
-            frames.children[i].style.display = 'block'
-        }
-    }
-}
 
 function getNameHolder(){
     if (talkingDude === "BOB"){
@@ -265,6 +256,12 @@ function getCharacterMouthMove(){
     if (mouthMoveInd[nameHolder] < currentMessage.length){
         setTimeout(getCharacterMouthMove, 120)
     }
+}
+
+function playAudio(file){
+    var audio = new Audio(file);
+    audio.play()
+    audio.volume = 1;
 }
 
 function addButtons(){
@@ -333,9 +330,15 @@ function getMessageElement(name, text){
 
     let newText = document.createElement("div")
     getTypingEffect(text, newText)
-    speak(text)
     messageContainer.appendChild(newText)
     currentMessage = text
+
+    if (name === "JERRY"){
+        playAudio(`../../asset/VOfiles/PerspectivesVO_jerry0${audioInd}.wav`)
+        audioInd += 1
+    } else {
+        speak(text)
+    }
 
     if (text.length > 0){
         mouthMoveInd[getNameHolder()] = 0 
