@@ -203,6 +203,7 @@ let buttonArray = []
 let buttons
 let textContainer
 let talkingDude 
+let currentMessage
 
 
 let j = 0;
@@ -228,28 +229,41 @@ function showFrameAroundCharacter(name){
     }
 }
 
+function getNameHolder(){
+    if (talkingDude === "BOB"){
+        return  "Bob"
+    } else if (talkingDude === "JERRY"){
+        return "Jerry"
+    } else if (talkingDude === "SASHA"){
+        return "Sasha"
+    } else if (talkingDude === "YOU"){
+        return "Yang"
+    }
+}
+
 function getCharacterMouthMove(){
     let nameHolder
     let ind
-    if (talkingDude === "BOB"){
-        nameHolder = "Bob"
-    } else if (talkingDude === "JERRY"){
-        nameHolder = "Jerry"
-    } else if (talkingDude === "SASHA"){
-        nameHolder = "Sasha"
-    } else if (talkingDude === "YOU"){
-        nameHolder = "Yang"
-    }
-    if (mouthMoveInd[nameHolder] < 10){
-        ind = "0" + mouthMoveInd[nameHolder].toString()
+    
+    nameHolder = getNameHolder()
+
+    if (mouthMoveInd[nameHolder] > 71){
+        ind = mouthMoveInd[nameHolder] - 71*(Math.floor(mouthMoveInd[nameHolder]/71))
     } else {
         ind = mouthMoveInd[nameHolder]
     }
+
+    if (ind < 10){
+        ind = "0" + ind
+    } 
+
+    console.log('mouthMoveInd[nameHolder]', 'currentMessage.length', currentMessage.length,  mouthMoveInd[nameHolder], ind)
+
     document.getElementById(nameHolder).src = `../../asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_000${ind}.png`
     mouthMoveInd[nameHolder] += 1
-
-    if (mouthMoveInd[nameHolder] < 71){
-        setTimeout(getCharacterMouthMove, 30)
+    
+    if (mouthMoveInd[nameHolder] < currentMessage.length){
+        setTimeout(getCharacterMouthMove, 120)
     }
 }
 
@@ -315,14 +329,18 @@ function getMessageElement(name, text){
     newName.style.fontWeight = "bold"
     newName.style.marginRight = "10px"
     messageContainer.appendChild(newName)
+    talkingDude = name
 
     let newText = document.createElement("div")
     getTypingEffect(text, newText)
     speak(text)
     messageContainer.appendChild(newText)
+    currentMessage = text
 
-    talkingDude = name
-    getCharacterMouthMove()
+    if (text.length > 0){
+        mouthMoveInd[getNameHolder()] = 0 
+        getCharacterMouthMove()
+    }
 
     return messageContainer
 }
