@@ -138,6 +138,13 @@ const conversation= {
 const intro = document.getElementById("intro")
 const frames = document.getElementById("frames")
 
+const mouthMoveInd = {
+    Jerry: 1,
+    Bob: 1,
+    Sasha: 1,
+    Yang: 1
+}
+
 let typingEffectSpeed = 60
 let durationToNextText = 0
 
@@ -195,6 +202,8 @@ let messageArray = []
 let buttonArray = []
 let buttons
 let textContainer
+let talkingDude 
+
 
 let j = 0;
 function showEachMessage(){
@@ -216,6 +225,31 @@ function showFrameAroundCharacter(name){
         } else {
             frames.children[i].style.display = 'block'
         }
+    }
+}
+
+function getCharacterMouthMove(){
+    let nameHolder
+    let ind
+    if (talkingDude === "BOB"){
+        nameHolder = "Bob"
+    } else if (talkingDude === "JERRY"){
+        nameHolder = "Jerry"
+    } else if (talkingDude === "SASHA"){
+        nameHolder = "Sasha"
+    } else if (talkingDude === "YOU"){
+        nameHolder = "Yang"
+    }
+    if (mouthMoveInd[nameHolder] < 10){
+        ind = "0" + mouthMoveInd[nameHolder].toString()
+    } else {
+        ind = mouthMoveInd[nameHolder]
+    }
+    document.getElementById(nameHolder).src = `../../asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_000${ind}.png`
+    mouthMoveInd[nameHolder] += 1
+
+    if (mouthMoveInd[nameHolder] < 71){
+        setTimeout(getCharacterMouthMove, 30)
     }
 }
 
@@ -287,7 +321,8 @@ function getMessageElement(name, text){
     speak(text)
     messageContainer.appendChild(newText)
 
-    showFrameAroundCharacter(name)
+    talkingDude = name
+    getCharacterMouthMove()
 
     return messageContainer
 }
