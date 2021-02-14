@@ -226,7 +226,7 @@ function handleKeyDown(e){
         ){
           //transition to next page
           setTimeout(function(){
-            window.location.href = "yangConversation2.html";
+            window.location.href = "../../scenario/scenario1/yangConversation.html";
           }, 500)
         }
       
