@@ -2,9 +2,11 @@
 <html>
     <head>
         <title>Perspective 2.0</title>
+        <link rel="stylesheet" href="../fontawesome/css/all.css"> 
     </head>
     <body>
         <div class="container" style="width: 105%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: Helvetica Neue; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613232904/welcome_bg_hypqjr.png); background-size: cover; background-repeat: no-repeat; margin-top: -10px;">
+            <i class="fas fa-volume-up" style="font-size: 20px; margin-bottom: 20px; cursor: pointer;" onclick="speak()"></i>
             <div class="title" style="width: 100%; display: flex; justify-content: center;">
                 <img style="width: 30%; z-index: 1;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613231721/Perspective_title_i8bmmb.svg" />
             </div>
@@ -18,6 +20,11 @@
             </div>
         </div>
         <script>
+            function speak(){
+                var audio = new Audio('../asset/VOfiles/PerspectivesVO_appoverview.wav');
+                audio.volume = 1;
+                audio.play()
+            }
         </script>
     </body>
 </html>

@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Perspective 2.0</title>
+        <link rel="stylesheet" href="../../fontawesome/css/all.css"> 
     </head>
     <body>
         <div class="conversation-container" style="display: flex; font-family: Calibre-R, Optimistic Text, Optimistic Display, Optimistic App, 'Facebook Reader', Montserrat, Arial;;" >
@@ -20,10 +21,14 @@
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; min-height: 40%; background-color: #E2E2E2; ">
                     <div id="intro" style="font-size: 20px; width: 60%">
-                        <p>The other members in the team, mostly men participated freely in the conversation but for me, it did not go so well. </p>
+                        <p style="line-height: 1.8;">
+                            Yang joins a meeting about launching a new product. Jerry wants to move forward but Yang has gathered some data that goes against this decision. She wants 
+                            to voice her opinion to her team.
+                            <i class="fas fa-volume-up" style="font-size: 20px; margin-left: 10px; cursor: pointer;" onclick="speakVO()"></i>
+                        </p>
                         <p>
-                            To see things from my point of view
-                            <button onclick="getMessages()" style="background-color: white; color: black; font-size: 20px; padding: 8px 15px; border-radius: 6px; border: none; cursor: pointer">step in my shoes</button>
+                            To see things from Yang's point of view
+                            <button onclick="getMessages()" style="background-color: white; color: black; font-size: 20px; padding: 8px 15px; border-radius: 6px; border: none; cursor: pointer">step in Yang's shoes</button>
                         </p>
                     </div>
                     <div id="chat" style="width: 60%; overflow: hidden; padding-bottom: 40px ">

@@ -2,13 +2,15 @@
 <html>
     <head>
         <title>Perspective 2.0</title>
+        <link rel="stylesheet" href="../../fontawesome/css/all.css"> 
     </head>
     <body>
         <div id="container" style="height: 100vh; font-family: Helvetica Neue; display: flex; flex-direction: column; justify-content: center; width: 100%">
             <div id="text" style="top: 0; display: flex; justify-content: center; align-items: center; position: absolute; height: 20%; width: 100%; background-color: #E2E2E2;">
                 <div id="text-wrapper" style="width: 70%">
-                    <p>Use SPACE BAR to jump on the balloon that you think is the correct answer:</p>
+                    <p>Use LEFT and RIGHT key arrows to move and SPACE BAR to jump on the balloon that you think is the correct answer:</p>
                     <p style="font-weight: bold; font-size: 22px; line-height: 1.5;">How many do you think are planning to leave when they do perceive bias in the workplace?</p>
+                    <i class="fas fa-volume-up" style="font-size: 20px; cursor: pointer; margin-bottom: 10px" onclick="speakVO()"></i>
                 </div>
             </div>
             <div id="ground" style="display: flex; flex-direction: column; align-items: center; height: 80%">

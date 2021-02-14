@@ -153,6 +153,13 @@ function flyCharacter(){
     }
 }
 
+//Function to ignite VO
+function speakVO(){
+    var audio = new Audio('../../asset/VOfiles/PerspectivesVO_minigameoverview.wav');
+    audio.volume = 1;
+    audio.play()
+}
+
 
 //Functions to fly the balloons
 function flyRed(){
