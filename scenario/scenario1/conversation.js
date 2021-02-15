@@ -211,6 +211,7 @@ let textContainer
 let talkingDude 
 let currentMessage
 let audioInd = 1
+const mouthMoveSpeed = 30
 
 let j = 0;
 function showEachMessage(){
@@ -254,13 +255,15 @@ function getCharacterMouthMove(){
         ind = "0" + ind
     } 
 
-    console.log('mouthMoveInd[nameHolder]', 'currentMessage.length', currentMessage.length,  mouthMoveInd[nameHolder], ind)
+    console.log('mouthMoveInd[nameHolder]', 'currentMessage.length', currentMessage.length,  mouthMoveInd[nameHolder], ind, 'mouthMoveSpeed', mouthMoveSpeed)
 
     document.getElementById(nameHolder).src = `../../asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_000${ind}.png`
-    mouthMoveInd[nameHolder] += 1
     
-    if (mouthMoveInd[nameHolder] < currentMessage.length){
-        setTimeout(getCharacterMouthMove, 120)
+    if (mouthMoveInd[nameHolder] < currentMessage.length*1.8){
+        mouthMoveInd[nameHolder] += 1
+        setTimeout(getCharacterMouthMove, mouthMoveSpeed)
+    } else {
+        document.getElementById(nameHolder).src = `../../asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_00001.png`
     }
 }
 
