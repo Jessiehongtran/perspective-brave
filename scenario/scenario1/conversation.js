@@ -213,7 +213,7 @@ let textContainer
 let talkingDude 
 let currentMessage
 let audioInd = 1
-const mouthMoveSpeed = 30
+const mouthMoveSpeed = 100
 
 let j = 0;
 function showEachMessage(){
