@@ -135,6 +135,8 @@ const conversation= {
     }
 }
 
+const deployedApp = 'https://nervous-ride-0cfa88.netlify.app' 
+
 const intro = document.getElementById("intro")
 const frames = document.getElementById("frames")
 
@@ -257,7 +259,7 @@ function getCharacterMouthMove(){
 
     console.log('mouthMoveInd[nameHolder]', 'currentMessage.length', currentMessage.length,  mouthMoveInd[nameHolder], ind, 'mouthMoveSpeed', mouthMoveSpeed)
 
-    document.getElementById(nameHolder).src = `../../asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_000${ind}.png`
+    document.getElementById(nameHolder).src = `${deployedApp}/asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_000${ind}.png`
     
     console.log('document.getElementById(nameHolder).src', document.getElementById(nameHolder), document.getElementById(nameHolder).src)
 
@@ -265,7 +267,7 @@ function getCharacterMouthMove(){
         mouthMoveInd[nameHolder] += 1
         setTimeout(getCharacterMouthMove, mouthMoveSpeed)
     } else {
-        document.getElementById(nameHolder).src = `../../asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_00001.png`
+        document.getElementById(nameHolder).src = `${deployedApp}/asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_00001.png`
     }
 }
 

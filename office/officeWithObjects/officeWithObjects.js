@@ -1,3 +1,5 @@
+const deployedApp = 'https://nervous-ride-0cfa88.netlify.app' 
+
 //Initiate character movement image variables
 let character_image = {
   "UP": "",
@@ -20,11 +22,11 @@ function getCharacterImg(dir, id){
     id = "0" + id.toString()
   } 
   if (dir === "UP"){
-    return `../../asset/Yang_Walk_UP/Yang_Walk_UP_000${id}.png`
+    return `${deployedApp}/asset/Yang_Walk_UP/Yang_Walk_UP_000${id}.png`
   } else if (dir === "DOWN"){
-    return `../../asset/Yang_Walk_DN/Yang_Walk_DN_000${id}.png`
+    return `${deployedApp}/asset/Yang_Walk_DN/Yang_Walk_DN_000${id}.png`
   } else if (dir === "LEFT" || dir === "RIGHT"){
-    return `../../asset/Yang_Walk_LR/Yang_Walk_LR_000${id}.png`
+    return `${deployedApp}/asset/Yang_Walk_LR/Yang_Walk_LR_000${id}.png`
   } 
 }
 
