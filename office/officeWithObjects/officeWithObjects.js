@@ -42,6 +42,7 @@ function getCharacterMove(dir){
 
 //Call DOM elements
 const officeWrapper = document.getElementById("wrapper")
+const office = document.getElementById("office")
 const cupboardLeft = document.getElementById("cupboard-left")
 const cupboardRight = document.getElementById("cupboard-right")
 const tableLeft = document.getElementById("table-left")
@@ -99,10 +100,19 @@ hat.style.width = `${hatWidth}px`
 hat.style.height = `${hatHeight}px`
 
 //Set positions and coordinates for objects
+const officePosition = {
+    x: 250,
+    y: 0
+}
+
+office.style.left = `${officePosition.x}px`
+office.style.top = `${officePosition.y}px`
+
 const cupboardLeftPosition = {
     x: 350,
     y: 320
 }
+
 cupboardLeft.style.left = cupboardLeftTopLeft.style.left = `${cupboardLeftPosition.x}px`
 cupboardLeft.style.top = cupboardLeftTopLeft.style.top =  `${cupboardLeftPosition.y}px`
 
