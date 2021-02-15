@@ -18,6 +18,7 @@ let moveInd = {
 
 //Function to get character image file (that is stored locally)
 function getCharacterImg(dir, id){
+  console.log('process.env.NODE_ENV', process.env.NODE_ENV)
   if (id < 10){
     id = "0" + id.toString()
   } 
