@@ -259,7 +259,7 @@ function getCharacterMouthMove(){
 
     document.getElementById(nameHolder).src = `../../asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_000${ind}.png`
     
-    console.log('document.getElementById(nameHolder).src', document.getElementById(nameHolder).src)
+    console.log('document.getElementById(nameHolder).src', document.getElementById(nameHolder), document.getElementById(nameHolder).src)
 
     if (mouthMoveInd[nameHolder] < currentMessage.length*1.8){
         mouthMoveInd[nameHolder] += 1
