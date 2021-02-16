@@ -28,6 +28,10 @@
     animation: move 0.7s ;
 }
 
+#yangImage:hover {
+    animation: move 0.6s ;
+}
+
 
 
 @keyframes move {
