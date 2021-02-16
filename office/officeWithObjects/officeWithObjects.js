@@ -307,25 +307,36 @@ function handleKeyDown(e){
         //prevent touching edge left
         isInsideRectangle(
           [
-            {x: 250, y: 570}, 
-            {x: 900 , y: 950}, 
-            {x: 800, y: 1100}, 
-            {x: 150, y: 720}
+            {x: 250, y: 570}, {x: 900 , y: 950}, {x: 800, y: 1100}, {x: 150, y: 720}
           ], 
           {x: characterPosition.x + chaHalfWidth, y: characterPosition.y + chaTotalHeight })
         //prevent touching edge right
         || isInsideRectangle(
             [
-              {x: 900, y: 950}, 
-              {x: 1560 , y: 570}, 
-              {x: 1700, y: 750}, 
-              {x: 1040, y: 1130}
+              {x: 900, y: 950}, {x: 1560 , y: 570}, {x: 1700, y: 750}, {x: 1040, y: 1130}
             ], 
             {x: characterPosition.x + chaHalfWidth, y: characterPosition.y + chaTotalHeight })
         ){
           document.getElementById("message").innerHTML = "You are about to touch the edge. Do not!"
           document.getElementById("message").style.color = "red"
           restrict(curDirection)
+      } else if (
+          //prevent touching wall left
+          isInsideRectangle(
+            [
+               {x: 250 , y: 580}, {x: 910, y: 205}, {x: 840, y: 40}, {x: 160, y: 410}
+            ], 
+            {x: characterPosition.x + chaHalfWidth, y: characterPosition.y + chaTotalHeight })
+          //prevent touching wall right
+          || isInsideRectangle(
+              [
+                {x: 920, y: 210}, {x: 1560 , y: 580}, {x: 1620, y: 390}, {x: 980, y: 20}
+              ], 
+              {x: characterPosition.x + chaHalfWidth, y: characterPosition.y + chaTotalHeight })
+          ){
+            document.getElementById("message").innerHTML = "You are about to touch the wall. Do not!"
+            document.getElementById("message").style.color = "red"
+            restrict(curDirection)
       } else {
         document.getElementById("message").innerHTML = "Welcome to Yang office :)"
         document.getElementById("message").style.color = "black"
