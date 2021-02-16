@@ -1,0 +1,25 @@
+#rect{
+    animation: rotation 40s infinite linear;
+}
+
+#ellipse {
+    animation: rotation 50s infinite linear;
+}
+
+#group1, #group2 {
+    animation: rotation 60s infinite linear;
+}
+
+#polygon {
+    animation: rotation 80s infinite linear;
+}
+
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(180deg);
+    }
+  }
