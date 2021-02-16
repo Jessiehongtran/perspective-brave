@@ -5,23 +5,19 @@
         <link rel="stylesheet" href="../fontawesome/css/all.css"> 
     </head>
     <body>
-        <div class="container" role="container" style="width: 105%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: Helvetica Neue; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613232904/welcome_bg_hypqjr.png); background-size: cover; background-repeat: no-repeat; margin-top: -10px;">
-            <a href="../index.html" role="backButton" style="position: absolute; left: 3%; top: 5%; text-decoration: none;color: white">
-                <button style="border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; color: white; padding: 10px 30px; text-align: center; font-size: 16px; ">
-                    Back
-                </button>
+        <div class="container" role="container" style="width: 105%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: Helvetica Neue; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613232904/welcome_bg_hypqjr.png); background-position: center; background-size: cover; background-repeat: no-repeat; margin-top: -10px;">
+            <a href="../index.html" role="backButton">
+                <img id="leftSlide" style="z-index: 1; position: absolute; left: 5%; top: 45%; width: 7%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504280/leftSlide_lhdarx.svg"/>
+            </a>
+            <a href="characterSelection.html" role="nextButton">
+                <img id="rightSlide" style="z-index: 1; position: absolute; left: 92%; top: 45%; width: 7%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
             </a>
             <i class="fas fa-volume-up" role="speakerIcon" style="font-size: 20px; margin-bottom: 20px; cursor: pointer;" onclick="speak()"></i>
-            <div class="header" role="header" style="width: 100%; display: flex; justify-content: center;">
+            <div class="header" role="header" style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
                 <img style="width: 30%; z-index: 1;" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613231721/Perspective_title_i8bmmb.svg" />
             </div>
             <div class="subtitle" role="text" style="width: 40%; margin: 40px; text-align: center; font-size: 36px; color: #1E2228">
                 Welcome to Perspectives, an interactive learning game that goes over a variety of bias in the workplace.
-            </div>
-            <div class="play-button" role="playButton">
-                <a href="characterSelection.html"> 
-                    <img src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613233068/play-button_urxy73.svg" />
-                </a>
             </div>
         </div>
         <script>
