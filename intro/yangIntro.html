@@ -5,31 +5,31 @@
         <link rel="stylesheet" href="../fontawesome/css/all.css"> 
     </head>
     <body>
-        <div class="container" style="width: 100%; height: 100vh; display: flex;  flex-direction: column; align-items: center; justify-content: center; font-family: Helvetica Neue; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613268450/yangIntro_landing2_w1m6di.png); background-size: 100% 100%; background-repeat: no-repeat; margin-top: -10px;">
-            <a href="./characterSelection.html" style="position: absolute; left: 3%; top: 3%; text-decoration: none;color: white">
+        <div class="container" role="container" style="width: 100%; height: 100vh; display: flex;  flex-direction: column; align-items: center; justify-content: center; font-family: Helvetica Neue; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613268450/yangIntro_landing2_w1m6di.png); background-size: 100% 100%; background-repeat: no-repeat; margin-top: -10px;">
+            <a href="./characterSelection.html" role="backButton" style="position: absolute; left: 3%; top: 3%; text-decoration: none;color: white">
                 <button style="border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; color: white; padding: 10px 30px; text-align: center; font-size: 16px; ">
                     Back
                 </button>
             </a>
-            <img class="header" style="width: 30%; margin-top: 0%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613231721/Perspective_title_i8bmmb.svg"/>
-            <i class="fas fa-volume-up" style="font-size: 20px; margin-top: 20px; cursor: pointer;" onclick="speak()"></i>
-            <div class="wrapper" style="font-family: Montserrat; margin-top: 2%; display: flex; justify-content: flex-end; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613268777/Group_90_v2w0ib.png); width: 75%; height: 100%; background-size: 100%; background-repeat: no-repeat">
+            <img class="header" role="Perspective logo" style="width: 30%; margin-top: 0%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613231721/Perspective_title_i8bmmb.svg"/>
+            <i class="fas fa-volume-up" role="speakerIcon" style="font-size: 20px; margin-top: 20px; cursor: pointer;" onclick="speak()"></i>
+            <div class="wrapper" role="wrapper" style="font-family: Montserrat; margin-top: 2%; display: flex; justify-content: flex-end; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613268777/Group_90_v2w0ib.png); width: 75%; height: 100%; background-size: 100%; background-repeat: no-repeat">
                 <div style="width: 50%; height: 50%; margin-top: 5%; margin-right: 5%; ">
-                    <div class="name" style=" display: flex; align-items: center;">
-                        <div style="font-size: 20px; width: 100px; text-align: right; margin-right: 20px;">Name</div>
-                        <img style="width: 20%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613269392/Group_91_oj881v.svg" />
+                    <div class="name" role="character" style=" display: flex; align-items: center;">
+                        <div role="text" style="font-size: 20px; width: 100px; text-align: right; margin-right: 20px;">Name</div>
+                        <img alt="charater name" style="width: 20%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613269392/Group_91_oj881v.svg" />
                     </div>
-                    <div class="occupation" style="font-family: Montserrat; margin-top: 20px; display: flex; align-items: center;">
-                        <div style="font-size: 20px; width: 100px; text-align: right; margin-right: 20px">Occupation</div>
-                        <img style="width: 50%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613269768/Group_92_huwyho.svg" />
+                    <div class="occupation" role="occupation" style="font-family: Montserrat; margin-top: 20px; display: flex; align-items: center;">
+                        <div role="title" style="font-size: 20px; width: 100px; text-align: right; margin-right: 20px">Occupation</div>
+                        <img alt="occupation name" style="width: 50%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613269768/Group_92_huwyho.svg" />
                     </div>
-                    <div class="bias" style="font-family: Montserrat; margin-top: 20px; display: flex; align-items: center;">
-                        <div style="font-size: 20px; width: 100px; text-align: right; margin-right: 20px">Bias</div>
-                        <img style="width: 30%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613269837/bias_o4vpmx.svg" />
+                    <div class="bias" role="biasLevel" style="font-family: Montserrat; margin-top: 20px; display: flex; align-items: center;">
+                        <div role="title" style="font-size: 20px; width: 100px; text-align: right; margin-right: 20px">Bias</div>
+                        <img alt="bias level" style="width: 30%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613269837/bias_o4vpmx.svg" />
                     </div>
-                    <div class="" style="font-family: Montserrat; margin-top: 20px; display: flex; align-items: center;">
+                    <div class="" role="characterBiography" style="font-family: Montserrat; margin-top: 20px; display: flex; align-items: center;">
                         <div style="width: 100px; text-align: right; margin-right: 20px"></div>
-                        <div style="font-size: 18px; background-color: #DCEBEB; width: 400px; color: black; padding: 5px 20px ">
+                        <div role="characterIntroduction" style="font-size: 18px; background-color: #DCEBEB; width: 400px; color: black; padding: 5px 20px ">
                             <p>
                                 She constantly deals with bias at the workplace due to her gender. 
                             </p>
@@ -40,9 +40,9 @@
                     </div>
                 </div>
             </div>
-            <div style="font-family: Montserrat; font-size: 22px; margin-top: -23%; display: flex; flex-direction: column; align-items: flex-start;">
+            <div role="direction" style="font-family: Montserrat; font-size: 22px; margin-top: -23%; display: flex; flex-direction: column; align-items: flex-start;">
                 Click the start button to start a normal day in Yang’s work life
-                <a href="../office/officeWithObjects/yangOfficeWithObjects.html" style="color: white; text-decoration: none; ">
+                <a role="startButton" href="../office/officeWithObjects/yangOfficeWithObjects.html" style="color: white; text-decoration: none; ">
                     <button style="cursor: pointer; font-family: Montserrat; margin-top: 15px; border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; color: white; padding: 10px 40px;  text-align: center; font-size: 20px; ">
                             Start
                     </button>

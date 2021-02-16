@@ -5,51 +5,51 @@
         <link rel="stylesheet" href="../fontawesome/css/all.css"> 
     </head>
     <body>
-        <div class="container" style="width: 105%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: Helvetica Neue; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613247828/characterSlect_bg_ee4cow.png); background-size: cover; background-repeat: no-repeat; margin-top: -10px;">
-            <a href="./welcome.html" style="position: absolute; left: 3%; top: 5%; text-decoration: none;color: white">
+        <div class="container" role="container" style="width: 105%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: Helvetica Neue; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613247828/characterSlect_bg_ee4cow.png); background-size: cover; background-repeat: no-repeat; margin-top: -10px;">
+            <a href="./welcome.html" role="backButton" style="position: absolute; left: 3%; top: 5%; text-decoration: none;color: white">
                 <button style="border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; color: white; padding: 10px 30px; text-align: center; font-size: 16px; ">
                     Back
                 </button>
             </a>
-            <div class="title" style="width: 100%; display: flex; justify-content: center;">
-                <img style="width: 30%; z-index: 1;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613231721/Perspective_title_i8bmmb.svg" />
+            <div class="header" role="header" style="width: 100%; display: flex; justify-content: center;">
+                <img style="width: 30%; z-index: 1;" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613231721/Perspective_title_i8bmmb.svg" />
             </div>
-            <div class="subtitle" style="width: 40%; margin: 40px; text-align: center; font-size: 36px; color: #1E2228">
+            <div class="direction" role="direction" style="width: 40%; margin: 40px; text-align: center; font-size: 36px; color: #1E2228">
                 Please select the character you would like to start with.
-                <i class="fas fa-volume-up" style="font-size: 20px; margin-bottom: 20px; cursor: pointer;" onclick="speak()"></i>
+                <i class="fas fa-volume-up" role="speakerIcon" style="font-size: 20px; margin-bottom: 20px; cursor: pointer;" onclick="speak()"></i>
             </div>
-            <div class="characters" style="margin-top: 60px; display: flex; justify-content: space-between; margin-left: 10%;  width: 80%; height: 40vh; ">
-                <div class="black-male" style=" width: 400px; height: 400px; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613248115/bm_esew1h.png); background-size: 100%; background-repeat: no-repeat;">
-                    <div class="content" style="font-family: Montserrat;  font-size: 18px;  margin-left: -100px; margin-top: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                        <div class="header">
+            <div class="characters" role="characterHolder" style="margin-top: 60px; display: flex; justify-content: space-between; margin-left: 10%;  width: 80%; height: 40vh; ">
+                <div class="black-male" role="wrapper" style=" width: 400px; height: 400px; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613248115/bm_esew1h.png); background-size: 100%; background-repeat: no-repeat;">
+                    <div class="content" role="content" style="font-family: Montserrat;  font-size: 18px;  margin-left: -100px; margin-top: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div class="title" role="title">
                             Black male
                         </div>
-                        <img style="width: 180px; height: 230px; margin: 10px 0 15px 0;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
+                        <img alt="black male image" style="width: 180px; height: 230px; margin: 10px 0 15px 0;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
                         <button style="border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; color: white; padding: 10px 10px; width: 25%; text-align: center; font-size: 16px; ">
                             Jevon
                         </button>
                     </div>
                 </div>
-                <div class="women-in-tech" style="width: 400px; height: 400px; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613248186/wit_aedbqc.png); background-size: 74%; background-repeat: no-repeat;">
-                    <div class="content" style="font-family: Montserrat;  font-size: 18px;  margin-left: -100px; margin-top: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                        <div class="header">
+                <div class="women-in-tech" role="wrapper" style="width: 400px; height: 400px; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613248186/wit_aedbqc.png); background-size: 74%; background-repeat: no-repeat;">
+                    <div class="content" role="content" style="font-family: Montserrat;  font-size: 18px;  margin-left: -100px; margin-top: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div class="header" role="title">
                             Woman in tech
                         </div>
-                        <img style="width: 180px; height: 230px; margin: 10px 0 15px 0;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
-                            <button style="border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; color: white; padding: 10px 10px; width: 25%; text-align: center; font-size: 16px; ">
-                                <a href="yangIntro.html" style="color: white; text-decoration: none;" >
-                                Yang
-                                </a>
-                            </button>
+                        <img alt="women in tech image" style="width: 180px; height: 230px; margin: 10px 0 15px 0;" alt="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
+                        <button style="border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; color: white; padding: 10px 10px; width: 25%; text-align: center; font-size: 16px; ">
+                            <a href="yangIntro.html" style="color: white; text-decoration: none;" >
+                            Yang
+                            </a>
+                        </button>
                         </a>
                     </div>
                 </div>
-                <div class="trans-gender" style="width: 400px; height: 400px; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613248128/trans_nae3tj.png); background-size: 100%; background-repeat: no-repeat;">
-                    <div class="content" style="font-family: Montserrat;  font-size: 18px;  margin-left: -100px; margin-top: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                        <div class="header">
+                <div class="trans-gender" role="wrapper" style="width: 400px; height: 400px; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613248128/trans_nae3tj.png); background-size: 100%; background-repeat: no-repeat;">
+                    <div class="content" role="content" style="font-family: Montserrat;  font-size: 18px;  margin-left: -100px; margin-top: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div class="header" role="title">
                             Transgender
                         </div>
-                        <img style="width: 180px ; height: 230px; margin: 10px 0 15px 0;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
+                        <img alt="transgender image" style="width: 180px ; height: 230px; margin: 10px 0 15px 0;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
                         <button style="border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; color: white; padding: 10px 10px; width: 25%; text-align: center; font-size: 16px; ">
                             Elijah
                         </button>
