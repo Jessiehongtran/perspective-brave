@@ -52,12 +52,6 @@ const tableRight1 = document.getElementById("table-right-1")
 const tableRight2 = document.getElementById("table-right-2")
 const tableRight3 = document.getElementById("table-right-3")
 const player = document.getElementById("player")
-const cupboardLeftTopLeft = document.getElementById("cupboardLeft-top-left")
-const tableLeftTopLeft = document.getElementById("tableLeft-top-left")
-const cupboardRightTopLeft = document.getElementById("cupboardRight-top-left")
-const tableRight1TopLeft = document.getElementById("tableRight1-top-left")
-const tableRight2TopLeft = document.getElementById("tableRight2-top-left")
-const tableRight3TopLeft = document.getElementById("tableRight3-top-left")
 const sparkling = document.getElementById("sparkling")
 const hat = document.getElementById("hat")
 const playerImg = document.getElementById("playerImg")
@@ -66,6 +60,8 @@ const arrowUp = document.getElementById("arrow-up")
 const arrowDown = document.getElementById("arrow-down")
 const arrowLeft = document.getElementById("arrow-left")
 const arrowRight = document.getElementById("arrow-right")
+
+console.log('cupboardLeft', cupboardLeft)
 
 //Initiate width and height variables
 const wrapperWidthPercentage = 70
@@ -115,43 +111,43 @@ const cupboardLeftPosition = {
     y: 320
 }
 
-cupboardLeft.style.left = cupboardLeftTopLeft.style.left = `${cupboardLeftPosition.x}px`
-cupboardLeft.style.top = cupboardLeftTopLeft.style.top =  `${cupboardLeftPosition.y}px`
+cupboardLeft.style.left =  `${cupboardLeftPosition.x}px`
+cupboardLeft.style.top =  `${cupboardLeftPosition.y}px`
 
 const tableLeftPosition = {
     x: 750,
     y: 200
 }
-tableLeft.style.left = tableLeftTopLeft.style.left = `${tableLeftPosition.x}px`
-tableLeft.style.top = tableLeftTopLeft.style.top = `${tableLeftPosition.y}px`
+tableLeft.style.left =  `${tableLeftPosition.x}px`
+tableLeft.style.top = `${tableLeftPosition.y}px`
 
 const cupboardRightPosition = {
     x: 1150,
     y: 300
 }
-cupboardRight.style.left = cupboardRightTopLeft.style.left = `${cupboardRightPosition.x}px`
-cupboardRight.style.top = cupboardRightTopLeft.style.top = `${cupboardRightPosition.y}px`
+cupboardRight.style.left =  `${cupboardRightPosition.x}px`
+cupboardRight.style.top =  `${cupboardRightPosition.y}px`
 
 const tableRight1Position = {
     x: 1200,
     y: 500
 }
-tableRight1.style.left = tableRight1TopLeft.style.left = `${tableRight1Position.x}px`
-tableRight1.style.top = tableRight1TopLeft.style.top = `${tableRight1Position.y}px`
+tableRight1.style.left =  `${tableRight1Position.x}px`
+tableRight1.style.top = `${tableRight1Position.y}px`
 
 const tableRight2Position = {
     x: tableRight1Position.x -100,
     y: tableRight1Position.y + 60
 }
-tableRight2.style.left = tableRight2TopLeft.style.left = `${tableRight2Position.x}px`
-tableRight2.style.top = tableRight2TopLeft.style.top = `${tableRight2Position.y}px`
+tableRight2.style.left =  `${tableRight2Position.x}px`
+tableRight2.style.top =  `${tableRight2Position.y}px`
 
 const tableRight3Position = {
     x: tableRight1Position.x -100*2,
     y: tableRight1Position.y + 60*2
 }
-tableRight3.style.left = tableRight3TopLeft.style.left = `${tableRight3Position.x}px`
-tableRight3.style.top = tableRight3TopLeft.style.top = `${tableRight3Position.y}px`
+tableRight3.style.left =  `${tableRight3Position.x}px`
+tableRight3.style.top =  `${tableRight3Position.y}px`
 
 const sparklingPosition = {
   x: 940,
