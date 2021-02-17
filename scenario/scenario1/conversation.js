@@ -177,12 +177,6 @@ function getTypingEffect(s, textContainer){
     durationToNextText = typingEffectSpeed*(s.length +5)
 }
 
-// function speakVO(){
-//     var audio = new Audio('../../asset/VOfiles/PerspectivesVO_scenario1overview.wav');
-//     audio.volume = 1;
-//     audio.play()
-// }
-
 
 //Instantiate Web Speech API
 const speechSynthesis = window.speechSynthesis;
