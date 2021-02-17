@@ -197,7 +197,7 @@ function onVoiceChange(){
         const voices = speechSynthesis.getVoices();
         speechUtterance.voice = voices.find(isPreferredVoice);
         speechUtterance.lang = "en-US";
-        speechUtterance.volume = 1;
+        speechUtterance.volume = 0.5;
         speechUtterance.pitch = 1;
         speechUtterance.rate = 1.5; 
     })
