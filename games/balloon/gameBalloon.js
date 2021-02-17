@@ -235,6 +235,7 @@ function flyBlue(){
         setTimeout(flyBlue, balloonFlyingSpeed)  
     } 
     
+    
 }
 
 function flyPurple(){
@@ -305,6 +306,7 @@ function checkTouchBalloon(){
         && characterPos.y >= blueBalloonPos.y 
         && characterPos.y <= blueBalloonPos.y + balloonSize.height/2){
             console.log("touch blue")
+            blueDropInd = 0
             flyBlue()
         }
     else if (characterPos.x + characterSize.width/2 >= purpleBalloonPos.x 
