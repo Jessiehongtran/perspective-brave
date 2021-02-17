@@ -111,7 +111,6 @@ const cupboardLeftPosition = {
     y: 320
 }
 
-
 cupboardLeft.style.left =  `${cupboardLeftPosition.x}px`
 cupboardLeft.style.top =  `${cupboardLeftPosition.y}px`
 

@@ -1,3 +1,4 @@
+//Initiate the dialogue
 const conversation= {
     part1: {
         messages: [
@@ -135,8 +136,7 @@ const conversation= {
     }
 }
 
-const deployedApp = 'https://nervous-ride-0cfa88.netlify.app' 
-
+//Call DOM elements and set variables
 const intro = document.getElementById("intro")
 const frames = document.getElementById("frames")
 
@@ -146,10 +146,21 @@ const mouthMoveInd = {
     Sasha: 1,
     Yang: 1
 }
-
 let typingEffectSpeed = 60
 let durationToNextText = 0
+let chat = document.getElementById("chat");
+let next = "part1";
+let messageArray = []
+let buttonArray = []
+let buttons
+let textContainer
+let talkingDude 
+let currentMessage
+let audioInd = 1
+const mouthMoveSpeed = 110
 
+
+//Function to get typing effect
 function getTypingEffect(s, textContainer){
     let i = 0
 
@@ -166,12 +177,14 @@ function getTypingEffect(s, textContainer){
     durationToNextText = typingEffectSpeed*(s.length +5)
 }
 
-function speakVO(){
-    var audio = new Audio('../../asset/VOfiles/PerspectivesVO_scenario1overview.wav');
-    audio.volume = 1;
-    audio.play()
-}
+// function speakVO(){
+//     var audio = new Audio('../../asset/VOfiles/PerspectivesVO_scenario1overview.wav');
+//     audio.volume = 1;
+//     audio.play()
+// }
 
+
+//Instantiate Web Speech API
 const speechSynthesis = window.speechSynthesis;
 const speechUtterance = new SpeechSynthesisUtterance();
 
@@ -203,18 +216,7 @@ function speak(text){
     }
 }
 
-
-let chat = document.getElementById("chat");
-let next = "part1";
-let messageArray = []
-let buttonArray = []
-let buttons
-let textContainer
-let talkingDude 
-let currentMessage
-let audioInd = 1
-const mouthMoveSpeed = 110
-
+//Function to show each message at a time
 let j = 0;
 function showEachMessage(){
     if (j < messageArray.length){
@@ -228,7 +230,7 @@ function showEachMessage(){
    
 }
 
-
+//Function to program for name
 function getNameHolder(){
     if (talkingDude === "BOB"){
         return  "Bob"
@@ -241,6 +243,7 @@ function getNameHolder(){
     }
 }
 
+//Function to get character mouth moving animation
 function getCharacterMouthMove(){
     let nameHolder
     let ind
@@ -267,12 +270,14 @@ function getCharacterMouthMove(){
     }
 }
 
+//Function to play audio
 function playAudio(file){
     var audio = new Audio(file);
     audio.play()
     audio.volume = 1;
 }
 
+//Function to add button as a DOM element
 function addButtons(){
     buttons = document.createElement('div')
     buttons.style.display = 'flex'
@@ -302,6 +307,7 @@ function addButtons(){
     chat.appendChild(buttons)
 }
 
+//Function to get messages of each part
 function getMessages(){
     intro.style.display = 'none'
     j = 0
@@ -320,7 +326,7 @@ function getMessages(){
 
 }
 
-
+//Function to initiate message DOM elements
 function getMessageElement(name, text){
     const messageContainer = document.createElement("div")
     messageContainer.style.width = "100%"
@@ -356,6 +362,7 @@ function getMessageElement(name, text){
         }
     }
 
+    //ignite mouth moving animation
     if (text.length > 0){
         mouthMoveInd[getNameHolder()] = 0 
         getCharacterMouthMove()
