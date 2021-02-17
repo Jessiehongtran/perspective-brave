@@ -158,6 +158,7 @@ let talkingDude
 let currentMessage
 let audioInd = 1
 const mouthMoveSpeed = 110
+const totalTalkAnimatedInd = 71
 
 
 //Function to get typing effect
@@ -244,8 +245,8 @@ function getCharacterMouthMove(){
     
     nameHolder = getNameHolder()
 
-    if (mouthMoveInd[nameHolder] > 71){
-        ind = mouthMoveInd[nameHolder] - 71*(Math.floor(mouthMoveInd[nameHolder]/71))
+    if (mouthMoveInd[nameHolder] > totalTalkAnimatedInd){
+        ind = mouthMoveInd[nameHolder] - totalTalkAnimatedInd*(Math.floor(mouthMoveInd[nameHolder]/totalTalkAnimatedInd))
     } else {
         ind = mouthMoveInd[nameHolder]
     }
