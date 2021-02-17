@@ -343,12 +343,17 @@ function getMessageElement(name, text){
     messageContainer.appendChild(newText)
     currentMessage = text
 
-    if (name === "JERRY"){
-        playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
-    } else if (name === "YOU" && text.length > 0){
-        playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
-    } else {
-        speak(text)
+    //initiate VO
+    if (text.length > 0){
+        if (name === "JERRY"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
+        } else if (name === "YOU"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
+        } else if (name === "SASHA"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_sasha${audioInd}.mp3`)
+        } else {
+            speak(text)
+        }
     }
 
     if (text.length > 0){
