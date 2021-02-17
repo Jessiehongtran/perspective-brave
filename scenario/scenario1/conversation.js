@@ -37,7 +37,7 @@ const conversation= {
             },
             {
                 name: "JERRY",
-                text: "You do not understand how these tests go Yang. Sure, it does not look like much, but we got some feedback that some of those folks like the direction we are talking. Sometimes you cannot rely on the data.",
+                text: "You do not understand how these tests go Yang. Sure, it does not look like much, but we got some feedback that some of those folks like the direction we are taking. Sometimes you cannot rely on the data.",
             },
             {
                 name: "YOU",
@@ -313,6 +313,7 @@ function getMessages(){
     if (next){
         messageArray = conversation[next].messages
         buttonArray = conversation[next].buttons
+        audioInd =  next.slice(4, next.length) //update audio ind
         showEachMessage(next)
         next = null
     }
@@ -343,8 +344,7 @@ function getMessageElement(name, text){
     currentMessage = text
 
     if (name === "JERRY"){
-        playAudio(`../../asset/VOfiles/PerspectivesVO_jerry0${audioInd}.wav`)
-        audioInd += 1
+        playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
     } else {
         speak(text)
     }
