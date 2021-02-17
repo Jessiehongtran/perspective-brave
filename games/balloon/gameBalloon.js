@@ -13,6 +13,7 @@ const summary = document.getElementById("summary")
 const gapBetweenBalloons = 10
 const maxImageInd = 15
 const skyLandingHeight = 10
+let curWalkingDir; 
 
 
 const moveInd = { 
@@ -161,24 +162,56 @@ function speakVO(){
 }
 
 
+let balloonAniInd = 21
+let balloonPopColor; 
+function getBalloonPopAnimation(){
+    if (balloonAniInd < 90){
+        character.src = `../../asset/Yang_Balloon-pop_${balloonPopColor}/Yang_Balloon-pop_${balloonPopColor}_000${balloonAniInd}.png`
+        character.style.height = '50%'
+        character.style.marginTop = '-15%'
+        balloonAniInd += 1
+    } 
+
+    if (characterPos.y < 63){
+        setTimeout(getBalloonPopAnimation, 30)
+    } else {
+        character.style.marginTop = '0'
+        character.src = character_face[curWalkingDir]
+        character.style.height = '22%'
+    }
+}
+
+
 //Functions to fly the balloons
 function flyRed(){
     console.log("flying red", redBalloonPos.y)
 
-     //update balloon coordinates
+    //update balloon coordinates
     redBalloonPos.y -= balloonFlyingChange
     redBalloon.style.top = `${redBalloonPos.y}%`
 
-     //change costume and play sound
-    if (redBalloonPos.y < 15 && letSoundPlay){
-        changeCostume("red")
+    //change costume and play sound
+    // if (redBalloonPos.y < 15 && letSoundPlay){
+    //     changeCostume("red")
+    //     playSound('../../asset/sounds/Explode.mp3')
+    // }
+
+    if (letSoundPlay){
         playSound('../../asset/sounds/Explode.mp3')
     }
 
     //recursion
-    if (redBalloonPos.y > - balloonSize.height - 10){
+    // if (redBalloonPos.y > - balloonSize.height - 10){
+    //     setTimeout(flyRed, balloonFlyingSpeed)
+    // } 
+    if (redBalloonPos.y > 15){
         setTimeout(flyRed, balloonFlyingSpeed)
-    } 
+    } else {
+        redBalloon.style.backgroundImage = 'none'
+        balloonAniInd = 21
+        balloonPopColor = "red"
+        getBalloonPopAnimation()
+    }
 }
 
 function flyBlue(){
@@ -201,6 +234,7 @@ function flyBlue(){
     if (blueBalloonPos.y > - balloonSize.height - 10){
         setTimeout(flyBlue, balloonFlyingSpeed)  
     } 
+    
 }
 
 function flyPurple(){
@@ -211,15 +245,26 @@ function flyPurple(){
     purpleBalloon.style.top = `${purpleBalloonPos.y}%`
 
     //change costume and play sound
-    if (purpleBalloonPos.y < 15 && letSoundPlay){
-        changeCostume("purple")
+    // if (purpleBalloonPos.y < 15 && letSoundPlay){
+    //     changeCostume("purple")
+    //     playSound('../../asset/sounds/Explode.mp3')
+    // }
+    if (letSoundPlay){
         playSound('../../asset/sounds/Explode.mp3')
     }
 
     //recursion
-    if (purpleBalloonPos.y > - balloonSize.height - 10){
+    // if (purpleBalloonPos.y > - balloonSize.height - 10){
+    //     setTimeout(flyPurple, balloonFlyingSpeed)
+    // } 
+    if (purpleBalloonPos.y > 15){
         setTimeout(flyPurple, balloonFlyingSpeed)
-    } 
+    } else {
+        purpleBalloon.style.backgroundImage = 'none'
+        balloonAniInd = 21
+        balloonPopColor = "purple"
+        getBalloonPopAnimation("purple")
+    }
 }
 
 
@@ -239,12 +284,9 @@ function playSound(file){
 
 //function to change costume
 function changeCostume(balloonColor){
-    console.log("changing costume", balloonColor)
     if (balloonColor === "red"){
-        console.log("changing costume of red")
         redBalloon.style.backgroundImage = `url(${balloonExplodeCostume.red})`
     } else if (balloonColor === "purple"){
-        console.log("changing costume of purple")
         purpleBalloon.style.backgroundImage = `url(${balloonExplodeCostume.purple})`
     }
 }
@@ -309,6 +351,7 @@ function handleKeyDown(e){
         character_face.right = getCharacterImg(moveInd.right)
         character.src = character_face.right
         character.style.transform = 'rotateY(360deg)'
+        curWalkingDir = "right"
         moveInd.right += 1
         if (moveInd.right >= maxImageInd){
             moveInd.right = 0
@@ -321,6 +364,7 @@ function handleKeyDown(e){
         character_face.left = getCharacterImg(moveInd.left)
         character.src = character_face.left
         character.style.transform = 'rotateY(180deg)'
+        curWalkingDir = "left"
         moveInd.left += 1
         if (moveInd.left >= maxImageInd){
             moveInd.left = 0
