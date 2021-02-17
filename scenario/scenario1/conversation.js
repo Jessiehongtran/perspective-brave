@@ -157,7 +157,7 @@ let textContainer
 let talkingDude 
 let currentMessage
 let audioInd = 1
-const mouthMoveSpeed = 110
+const mouthMoveSpeed = 130
 const totalTalkAnimatedInd = 71
 
 
