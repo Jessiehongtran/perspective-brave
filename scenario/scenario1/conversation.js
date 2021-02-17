@@ -85,7 +85,7 @@ const conversation= {
         messages: [
             {
                 name: "YOU",
-                text: "What do you mean, I do not understand? I have seen the data and I can clearly understand the results. We ran that test for a reason. It is a good indicator of what happens if we scale this and.." , 
+                text: "I have seen the data and I can clearly understand the results. We ran that test for a reason. It is a good indicator of what happens if we scale this and.." , 
             },
             {
                 name: "JERRY",
@@ -111,7 +111,7 @@ const conversation= {
         messages: [
             {
                 name: "YOU",
-                text: "Excuse me? I am bringing data to you rather than a hunch." , 
+                text: "What am I here for?.." , 
             },
             {
                 name: "JERRY",
@@ -345,6 +345,8 @@ function getMessageElement(name, text){
 
     if (name === "JERRY"){
         playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
+    } else if (name === "YOU" && text.length > 0){
+        playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
     } else {
         speak(text)
     }
