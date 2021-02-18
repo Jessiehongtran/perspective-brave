@@ -16,11 +16,14 @@
 
 
 @keyframes rotation {
-    from {
-      transform: rotate(0deg);
+    0% {
+      transform: rotate(10deg);
     }
-    to {
-      transform: rotate(180deg);
+    50% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(10deg);
     }
   }
 
