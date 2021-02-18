@@ -86,7 +86,7 @@ const conversation= {
         messages: [
             {
                 name: "YOU",
-                text: "I have seen the data and I can clearly understand the results. We ran that test for a reason. It is a good indicator of what happens if we scale this and.." , 
+                text: "I have seen the data and I can clearly understand the results. We ran that test for a reason. It is a good indicator of what happens if we scale this.." , 
             },
             {
                 name: "JERRY",
@@ -146,7 +146,7 @@ const mouthMoveInd = {
     Sasha: 1,
     Yang: 1
 }
-let typingEffectSpeed = 60
+let typingEffectSpeed = 50
 let durationToNextText = 0
 let chat = document.getElementById("chat");
 let next = "part1";
@@ -352,6 +352,8 @@ function getMessageElement(name, text){
             playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
         } else if (name === "SASHA"){
             playAudio(`../../asset/VOfiles/PerspectivesVO_sasha${audioInd}.mp3`)
+        } else if (name === "BOB"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_bob${audioInd}.mp3`)
         } else {
             speak(text)
         }
