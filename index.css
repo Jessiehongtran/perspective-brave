@@ -10,8 +10,20 @@ body {
     animation: rotation 50s infinite linear;
 }
 
-#group1, #group2 {
+#group1 {
     animation: rotation 60s infinite linear;
+}
+
+#group2 {
+  animation: specialRotation 60s infinite linear;
+}
+
+#group3 {
+  animation: verySpecialRotation 60s infinite linear;
+}
+
+#group4 {
+  animation: veryVerySpecialRotation 60s infinite linear;
 }
 
 #polygon {
@@ -28,6 +40,42 @@ body {
     }
     100% {
       transform: rotate(10deg);
+    }
+  }
+
+@keyframes specialRotation {
+    0% {
+      transform: rotate(90deg);
+    }
+    50% {
+      transform: rotate(80deg);
+    }
+    100% {
+      transform: rotate(90deg);
+    }
+  }
+
+@keyframes verySpecialRotation {
+    0% {
+      transform: rotate(-10deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-10deg);
+    }
+  }
+
+@keyframes veryVerySpecialRotation {
+    0% {
+      transform: rotate(-120deg);
+    }
+    50% {
+      transform: rotate(-90deg);
+    }
+    100% {
+      transform: rotate(-120deg);
     }
   }
 
