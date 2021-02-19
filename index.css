@@ -1,3 +1,7 @@
+body {
+  margin: 0
+}
+
 #rect{
     animation: rotation 40s infinite linear;
 }
