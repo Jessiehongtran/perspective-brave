@@ -75,36 +75,35 @@ function getCharacterMove(dir){
 
 function handleKeyDown(e){
     if (e.key === "ArrowRight"){
-        // playerImg.src = character_face_right
         arrowRight.style.backgroundColor = "#111F47"
-        arrowLeft.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = "#EFF5F5"
+        arrowLeft.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enter.style.backgroundColor = "#EFF5F5"
         characterPos.x = characterPos.x + 1
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
     } else if (e.key === "ArrowLeft"){
-        // playerImg.src = character_face_left
         arrowLeft.style.backgroundColor = "#111F47"
-        arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = "#EFF5F5"
+        arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enter.style.backgroundColor  = "#EFF5F5"
         characterPos.x = characterPos.x - 1
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
     } else if (e.key === "ArrowDown"){
-        // playerImg.src = character_face_down
         arrowDown.style.backgroundColor = "#111F47"
-        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = "#EFF5F5"
+        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = enter.style.backgroundColor  = "#EFF5F5"
         characterPos.y = characterPos.y + 1
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
     } else if (e.key === "ArrowUp"){
-        // playerImg.src = character_face_up
         arrowUp.style.backgroundColor = "#111F47"
-        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = "#EFF5F5"
+        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = enter.style.backgroundColor  = "#EFF5F5"
         characterPos.y = characterPos.y - 1
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
-    }
+    } else if (e.key === "Enter"){
+        enter.style.backgroundColor = "#111F47"
+        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = arrowUp.style.backgroundColor  = "#EFF5F5"
+  }
 
     
     player.style.left = `${characterPos.x}%`
@@ -129,6 +128,14 @@ function removeTutorial(){
     //remove arrow keys from current holder and move to new position
     let originalArrowKeys  = arrowKeyHolder.removeChild(arrowKeys)
     newArrowKeyPlaceHolder.appendChild(originalArrowKeys)
+    //show enter
+    const enter = document.getElementById("enter")
+    enter.style.display = 'flex'
+    enter.style.alignItems = 'center'
+    enter.style.justifyContent = 'center'
+    newArrowKeyPlaceHolder.appendChild(enter)
+    newArrowKeyPlaceHolder.style.display = 'flex'
+    newArrowKeyPlaceHolder.style.alignItems = 'flex-end'
 }
 
 function addTutorial(){
