@@ -1,6 +1,10 @@
+let x = 50;
+let y = 60;
 
-let x = 500;
-let y = 500;
+const arrowLeft = document.getElementById("arrow-left")
+const arrowDown = document.getElementById("arrow-down")
+const arrowRight = document.getElementById("arrow-right")
+const arrowUp = document.getElementById("arrow-up")
 const character_face_up = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950505/Yang_Back_2x_wfa5l1.png"
 const character_face_down = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950509/Yang_Front_2x_j9ad21.png"
 const character_face_left = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950538/Yang_RightSide_2x_i223zj.png"
@@ -8,46 +12,38 @@ const character_face_right = "https://res.cloudinary.com/dfulxq7so/image/upload/
 
 const player = document.getElementById("player");
 const playerImg = document.getElementById("playerImg");
-player.style.left = `${x}px`
-player.style.top = `${y}px`
+player.style.left = `${x}%`
+player.style.top = `${y}%`
 
 document.addEventListener("keydown", handleKeyDown)
 
 
-document.addEventListener("DOMContentLoaded", event => {
-  const audio = document.querySelector("audio");
-  audio.volume = 0.2;
-  audio.play();
-});
-
 function handleKeyDown(e){
-  const audio = document.querySelector("audio");
-  audio.volume = 0.2;
-  audio.play();
-  
-    console.log('x', x, 'y', y)
     if (e.key === "ArrowRight"){
         playerImg.src = character_face_right
-        x = x + 10
+        arrowRight.style.backgroundColor = "#111F47"
+        arrowLeft.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = "#EFF5F5"
+        x = x + 1
     } else if (e.key === "ArrowLeft"){
         playerImg.src = character_face_left
-        x = x - 10
+        arrowLeft.style.backgroundColor = "#111F47"
+        arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = "#EFF5F5"
+        x = x - 1
     } else if (e.key === "ArrowDown"){
         playerImg.src = character_face_down
-        y = y + 10
+        arrowDown.style.backgroundColor = "#111F47"
+        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = "#EFF5F5"
+        y = y + 1
     } else if (e.key === "ArrowUp"){
         playerImg.src = character_face_up
-        y = y - 10
+        arrowUp.style.backgroundColor = "#111F47"
+        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = "#EFF5F5"
+        y = y - 1
     }
 
-    if (!isInsideRectangle([{x: 620, y: 290}, {x: 970, y: 450}, {x: 670, y: 690}, {x: 310, y: 480}], {x: x, y: y})){
-      document.getElementById("message").innerHTML = "Do not go there!"
-    } else {
-      document.getElementById("message").innerHTML = "Welcome to Yang office :)"
-    }
     
-    player.style.left = `${x}px`
-    player.style.top = `${y}px`
+    player.style.left = `${x}%`
+    player.style.top = `${y}%`
 }
 
 function rectArea(x1, y1, x2, y2, x3, y3, x4, y4){
