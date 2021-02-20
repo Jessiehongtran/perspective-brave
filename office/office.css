@@ -2,19 +2,20 @@ body {
     margin: 0
 }
 
-.instruction {
+#instruction {
     position: relative;
 }
 
-.instruction:after {
+#instruction:after {
     content: ' ';
     position: absolute;
     width: 0;
     height: 0;
     left: auto;
-    right: -40px;
+    right: -30px;
     top: 40%;
     bottom: auto;
-    border: 40px solid;
+    border: 30px solid;
+    z-index: 1;
     border-color:  #A8D0CE  transparent transparent transparent;
 }
