@@ -7,43 +7,61 @@
     </head>
     <body>
         <div class="office-container" style="overflow: hidden; font-family: Montserrat; display: flex; flex-direction: column; height: 100vh; align-items: center; padding: 40px; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613785093/Group_160_uxai8d.png); background-position: center; background-size: 100% 100%; background-repeat: no-repeat; ">
-            <div class="header" role="header" style="width: 100%; display: flex; justify-content: center;  margin-bottom: 20px">
+            <div class="header" role="header" style="margin-top: 40px; width: 100%; display: flex; justify-content: center;  margin-bottom: 20px">
                 <img style="width: 30%; z-index: 1;" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613231721/Perspective_title_i8bmmb.svg" />
             </div>
             <div id="message" style="font-size: 26px;">
                 Welcome to Yang's office!
             </div>
-            <img role="backButton" id="leftSlide" onclick="addTutorial()" style="display: none; z-index: 2; position: absolute; left: 2%; top: 45%; width: 5%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504280/leftSlide_lhdarx.svg"/>
-            <img role="nextButton" id="rightSlide" onclick="removeTutorial()" style="z-index: 1; position: absolute; left: 93.5%; top: 45%; width: 5%; cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
-            <div class="wrapper" style="width: 100%; height: 100%; display: flex; margin-top: 40px;align-items: flex-start; ">
-                <div id="instruction" style="z-index: 1;  max-width: 250px; background-color: #A8D0CE; border-radius: 10px; padding: 30px; display: flex; flex-direction: column; align-items: center; margin-right: 20px; ">
+            <a href="../../intro/yangIntro.html" role="backButton">
+                <img id="leftSlide1" style="z-index: 1; position: absolute; left: 2%; top: 45%; width: 5%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504280/leftSlide_lhdarx.svg"/>
+            </a>
+            <img role="backButton" id="leftSlide2" onclick="addTutorial()" style="display: none; z-index: 2; position: absolute; left: 2%; top: 45%; width: 5%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504280/leftSlide_lhdarx.svg"/>
+            <img role="nextButton" id="rightSlide1" onclick="removeTutorial()" style="z-index: 1; position: absolute; left: 93.5%; top: 45%; width: 5%; cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
+            <a href="../../intro/yangIntro.html" role="backButton">
+                <img role="nextButton" id="rightSlide2" style="display: none; z-index: 1; position: absolute; left: 88.5%; top: 45%; width: 10%; cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613782382/Component_1_1_cvhdp4.svg"/>
+            </a>
+            <div id="guideToSparkling" style="display: none; width: 400px; position: absolute; left: 10%; top: 20%; font-weight: bolder; font-size: 20px; line-height: 1.8;">
+                <p>Please go to the sparkling spot in Yang's office. Once you are there, press "Enter" to start the first scenario. </p>
+                <img role="speakerIcon" style="font-size: 20px;  cursor: pointer; width: 12%; margin-top: 0px;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
+            </div>
+            <div id="newArrowKeyPlaceHolder" style="position: absolute; left: 80%; top: 20%">
+
+            </div>
+            <div class="wrapper" style="width: 100%; margin-top: 70px; height: 100%; display: flex; align-items: flex-start; ">
+                <div id="instruction" style=" margin-left: 100px; max-width: 250px; background-color: #A8D0CE; border-radius: 10px; padding: 30px; display: flex; flex-direction: column; align-items: center; margin-right: 20px; ">
                     <div class="tutorial" style="font-weight: bolder; font-size: 18px; display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 20px;">
                         <p style="">Use the arrow keys to move around in Yang’s Office.</p>
                         <p style="margin-top: 0;">Once you feel comfortable moving around the office, please proceed to the next page.</p>
                     </div>
-                    <div id="arrow-keys" role="arrowKeys" >
-                        <div style="width: 190px; display: flex; justify-content: center; margin-bottom: 10px;">
-                            <div id="arrow-up" role="upArrow" style="padding: 8px; border-radius: 8px;  width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
-                                <img alt="up arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_136_zkhhuy.svg" style="width: 30px; height: 20px"/>
-                            </div>
+                    <div id="arrowKeyHolder" style="width: 190px; height: 140px">
+
+                    </div>
+                </div>
+                <div id="arrow-keys" role="arrowKeys" style="" >
+                    <div style="width: 190px; display: flex; justify-content: center; margin-bottom: 10px;">
+                        <div id="arrow-up" role="upArrow" style="padding: 8px; border-radius: 8px;  width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
+                            <img alt="up arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_136_zkhhuy.svg" style="width: 30px; height: 20px"/>
                         </div>
-                        <div style="display: flex; justify-content: space-between; width: 190px ">
-                            <div id="arrow-left" role="leftArrow" style=" padding: 8px; border-radius: 8px;  width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
-                                <img alt="left arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_139_w5fhcu.svg" style="width: 20px; height: 30px"/>
-                            </div>
-                            <div id="arrow-down"  role="downArrow" style=" padding: 8px;  border-radius: 8px;  width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
-                                <img alt="down arrow icon"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_137_tizmtr.svg" style="width: 30px; height: 20px"/>
-                            </div>
-                            <div id="arrow-right" role="rightArrow" style="padding: 8px; border-radius: 8px;  width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; "> 
-                                <img alt="right arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_138_gmdsg1.svg" style="width: 20px; height: 30px"/>
-                            </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; width: 190px ">
+                        <div id="arrow-left" role="leftArrow" style=" padding: 8px; border-radius: 8px;  width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
+                            <img alt="left arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_139_w5fhcu.svg" style="width: 20px; height: 30px"/>
+                        </div>
+                        <div id="arrow-down"  role="downArrow" style=" padding: 8px;  border-radius: 8px;  width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
+                            <img alt="down arrow icon"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_137_tizmtr.svg" style="width: 30px; height: 20px"/>
+                        </div>
+                        <div id="arrow-right" role="rightArrow" style="padding: 8px; border-radius: 8px;  width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; "> 
+                            <img alt="right arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_138_gmdsg1.svg" style="width: 20px; height: 30px"/>
                         </div>
                     </div>
                 </div>
-                <div style="position: absolute; left: 15%; top: 50%; z-index: 1;">x</div>
-                <div class="office" style=" background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613785732/Group_146_tdavel.svg); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; width: 100%; min-height: 100vh;">
+                <div class="office" style="width: 100%; min-height: 100vh; display: flex; flex-direction: column; ">
                     <div id="player" style="position: absolute; display: flex; flex-direction: column; align-items: center; width: 8%; height: 9%">
                         <img id="playerImg" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" style="width: 65%; height: 100%" />
+                    </div>
+                    <div id="office" style="display: flex; justify-content: center; width: 100%">
+                        <img src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613785732/Group_146_tdavel.svg" />
                     </div>
                 </div>
             </div>

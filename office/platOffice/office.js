@@ -3,12 +3,23 @@ const characterPos = {
   y: 60
 }
 
+console.log('characterPos.x', characterPos.x, 'characterPos.y', characterPos.y)
+console.log(window.innerWidth, window.innerHeight)
+
 const arrowLeft = document.getElementById("arrow-left")
 const arrowDown = document.getElementById("arrow-down")
 const arrowRight = document.getElementById("arrow-right")
 const arrowUp = document.getElementById("arrow-up")
 const instruction = document.getElementById("instruction")
-const leftSlide = document.getElementById("leftSlide")
+const leftSlide1 = document.getElementById("leftSlide1")
+const leftSlide2 = document.getElementById("leftSlide2")
+const rightSlide1 = document.getElementById("rightSlide1")
+const rightSlide2 = document.getElementById("rightSlide2")
+const guideToSparkling = document.getElementById("guideToSparkling")
+const arrowKeys = document.getElementById("arrow-keys")
+const arrowKeyHolder = document.getElementById("arrowKeyHolder")
+const newArrowKeyPlaceHolder = document.getElementById("newArrowKeyPlaceHolder")
+arrowKeyHolder.appendChild(arrowKeys)
 
 const character_face_up = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950505/Yang_Back_2x_wfa5l1.png"
 const character_face_down = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950509/Yang_Front_2x_j9ad21.png"
@@ -108,12 +119,25 @@ function removeTutorial(){
     characterPos.y = 50
     player.style.left = `${characterPos.x}%`
     player.style.top = `${characterPos.y}%`
-    //show left slide
-    leftSlide.style.display = 'block'
+    //show left slide 2
+    leftSlide2.style.display = 'block'
+    //hide right slide 1 and show right slide 2
+    rightSlide1.style.display = 'none'
+    rightSlide2.style.display = 'block'
+    //show guideToSparkling
+    guideToSparkling.style.display = 'block'
+    //remove arrow keys from current holder and move to new position
+    let originalArrowKeys  = arrowKeyHolder.removeChild(arrowKeys)
+    newArrowKeyPlaceHolder.appendChild(originalArrowKeys)
 }
 
 function addTutorial(){
+    //show instruction
     instruction.style.display = 'block'
+    //hide left slide 1
+    leftSlide1.style.display = 'none'
+    //add arrow keys
+    arrowKeyHolder.appendChild(arrowKeys)
 }
 
 function rectArea(x1, y1, x2, y2, x3, y3, x4, y4){
