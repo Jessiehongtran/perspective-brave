@@ -338,6 +338,14 @@ function handleKeyDown(e){
             restrict(curDirection)
       } else {
         document.getElementById("message").innerHTML = "Welcome to Yang office :)"
+        const sparkingGuide = document.createElement('div')
+        const guideText = document.createTextNode("Use arrow keys to move around and enter sparkling area to go next")
+        sparkingGuide.appendChild(guideText)
+        sparkingGuide.style.fontSize = "20px"
+        sparkingGuide.style.maxWidth = "400px"
+        sparkingGuide.style.marginTop = "10px"
+        document.getElementById("message").appendChild(sparkingGuide)
+        console.log(document.getElementById("message"))
         document.getElementById("message").style.color = "black"
         can_go_up = can_go_down = can_go_left = can_go_right = true
         guide.innerHTML = ""
