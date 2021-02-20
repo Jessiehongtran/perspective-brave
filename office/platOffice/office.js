@@ -5,6 +5,8 @@ const arrowLeft = document.getElementById("arrow-left")
 const arrowDown = document.getElementById("arrow-down")
 const arrowRight = document.getElementById("arrow-right")
 const arrowUp = document.getElementById("arrow-up")
+const instruction = document.getElementById("instruction")
+
 const character_face_up = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950505/Yang_Back_2x_wfa5l1.png"
 const character_face_down = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950509/Yang_Front_2x_j9ad21.png"
 const character_face_left = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950538/Yang_RightSide_2x_i223zj.png"
@@ -44,6 +46,10 @@ function handleKeyDown(e){
     
     player.style.left = `${x}%`
     player.style.top = `${y}%`
+}
+
+function removeTutorial(){
+    instruction.style.display = 'none'
 }
 
 function rectArea(x1, y1, x2, y2, x3, y3, x4, y4){
