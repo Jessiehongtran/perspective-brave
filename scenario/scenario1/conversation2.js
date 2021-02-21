@@ -13,10 +13,6 @@ const messageData= {
                 name: "BOB",
                 text: "Oh, this is above my pay grade!",
             },
-            {
-                name: "YANG",
-                text: "",
-            },
         ],
         buttons: [
             {
@@ -38,10 +34,6 @@ const messageData= {
             {
                 name: "JERRY",
                 text: "You do not understand how these tests go Yang. Sure, it does not look like much, but we got some feedback that some of those folks like the direction we are taking. Sometimes you cannot rely on the data.",
-            },
-            {
-                name: "YANG",
-                text: "" ,
             },
         ],
         buttons: [
@@ -167,7 +159,8 @@ function getMessagesForEachPart(){
     if (next){
        messages = messageData[next].messages;
        buttons = messageData[next].buttons;
-       showEachMessage()
+       console.log()
+       showEachMessage('messages', messages, 'buttons', buttons)
        next = null
     }
     
@@ -180,7 +173,7 @@ function showEachMessage(){
         let newMessage
         if (messages[j].name === "YANG"){
             newMessage = getMessageElement(messages[j].name, messages[j].text, "right")
-            durationToNextMessage = 10*(messages[j].text.length)
+            durationToNextMessage = 100*(messages[j].text.length)
         } else {
             newMessage = getMessageElement(messages[j].name, messages[j].text, "left")
             durationToNextMessage = 100*(messages[j].text.length)
@@ -208,7 +201,7 @@ function getMessageElement(name, messageText, side){
     faceTextContainer.style.display = 'flex'
     faceTextContainer.style.alignItems = 'center'
     faceTextContainer.style.width = '100%'
-    faceTextContainer.style.margin = '0px'
+    faceTextContainer.style.margin = '3px 0 0 0'
     //face div
     const faceContainer = document.createElement("div")
     faceContainer.setAttribute('class', 'face')
@@ -225,6 +218,7 @@ function getMessageElement(name, messageText, side){
     textMessageContainer.style.alignItems = 'center'
     textMessageContainer.style.borderRadius = '12px'
     textMessageContainer.style.padding = '15px 30px'
+    textMessageContainer.style.maxWidth = '60%'
     //append
     faceContainer.appendChild(faceImg)
     messageContainer.appendChild(nameContainer)
@@ -255,6 +249,34 @@ function getMessageElement(name, messageText, side){
 }
 
 function addButtons(){
-
+    buttonsContainer = document.createElement('div')
+    buttonsContainer.style.display = 'flex'
+    buttonsContainer.style.marginTop = '30px'
+    buttonsContainer.style.width = '100%'
+    buttonsContainer.style.justifyContent = 'space-evenly'
+    for (let i = 0; i < buttons.length; i++){
+        if (buttons[i].text){
+            let button = document.createElement('div')
+            button.style.padding = '10px 20px'
+            button.style.backgroundColor = '#111F47'
+            button.style.color = 'white'
+            button.style.borderRadius = '20px'
+            button.style.boxShadow = 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'
+            button.appendChild(document.createTextNode(buttons[i].text))
+            button.style.cursor = 'pointer'
+            button.style.marginRight = '20px'
+            button.addEventListener('click', () => {
+                next = buttons[i].next
+                if (next){
+                    j = 0
+                    getMessagesForEachPart()
+                } else {
+                    window.location.href = "../../games/balloon/intro.html"
+                }
+            })
+            buttonsContainer.appendChild(button)
+        }
+    }
+    chat.appendChild(buttonsContainer)
 }
 
