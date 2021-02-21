@@ -2,21 +2,51 @@
 <html>
     <head>
         <title>Perspective 2.0</title>
+        <link rel="stylesheet" href="./conversation.css">
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     </head>
     <body>
-        <div class="conversation-container" role="container" style="display: flex; flex-direction: column; align-items: center; min-height: 100vh; width: 100%; font-family: Montserrat; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png) ; background-size: 100% 100%; background-position: center; background-repeat: no-repeat " >
-            <div class="header" role="header" style="margin-top: 60px; width: 100%; display: flex; justify-content: center;  margin-bottom: 20px">
-                <img style="width: 30%; z-index: 1;" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613231721/Perspective_title_i8bmmb.svg" />
+        <div id="conversation-container" role="container" style="display: flex; flex-direction: column; align-items: center; min-height: 100vh; width: 100%; font-family: Montserrat; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png) ; background-size: 100% 100%; background-position: center; background-repeat: no-repeat " >
+            <div class="header" role="header" style="margin-top: 40px; width: 100%; display: flex; justify-content: center;  margin-bottom: 20px">
+                <img style="width: 25%; z-index: 1;" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613231721/Perspective_title_i8bmmb.svg" />
             </div>
-            <div class="intro" style="display: flex; flex-direction: column; align-items: center;background-color: #111F47; color: white; width: 60%; height: 60vh; margin-top: 40px; padding: 60px">
-                <div class="close-icon" style="width: 100%; display: flex; justify-content: flex-end;">
+            <div id="intro" style="display: flex; flex-direction: column; align-items: center;background-color: #111F47; color: white; width: 60%; height: 60vh; margin-top: 40px; padding: 60px">
+                <div class="close-icon" onclick="showConversation()" style="width: 100%; display: flex; justify-content: flex-end;">
                     <img style="width: 3%; cursor: pointer;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613857471/Group_143_kdgqdt.svg"/>
                 </div>
                 <div class="text-wrapper" style="width: 80%; margin-top: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;">    
                     <div class="title" style="width: 100%; text-align: center; font-size: 40px;">Scenario One</div>
-                    <p style="margin-top: 40px; line-height: 2; font-size: 22px;">Yang joins a meeting about launching a new product. Jerry wants to move forward but Yang has gathered some data that goes against this decision. She wants to voice her opinion to her team. Listen in on how that goes…</p>
+                    <p style="margin-top: 40px; line-height: 2; font-size: 22px; text-align: center;">Yang joins a meeting about launching a new product. Jerry wants to move forward but Yang has gathered some data that goes against this decision. She wants to voice her opinion to her team. Listen in on how that goes…</p>
                     <img role="speakerIcon" style="font-size: 20px;  cursor: pointer; width: 12%; margin-top: 20px;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
+                </div>
+            </div>
+            <div id="conversation" style="display: none; width: 100%; margin-top: 40px;">
+                <div id="characters" style="display: flex; justify-content: center;">
+                    <img style="width: 45%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613859275/Group_150_rp9itr.svg" />
+                </div>
+                <div id="chat" style="padding-left: 10%; padding-right: 10%; padding-top: 40px">
+                    <!-- <div id="left-message-container" style="margin-top: 20px">
+                        <div class="name" style="margin-left: 80px; font-weight: 700; width: 100%; text-align: left;">JERRY</div>
+                        <div class="face-text" style="display: flex; align-items: center;  margin-top: 0px; width: 100%; justify-content: flex-start">
+                            <div class="face" style="width: 60px; height: 60px; margin-right: 20px; ">
+                                <img style="width: 100%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613860312/JerryFace_unk49c.svg"/>
+                            </div>
+                            <div id="text-message-left" style="display: flex; align-items: center; background-color: #DCEBEB; border-radius: 12px; padding: 15px 30px; ;">
+                                I say we put more resources behind this effort. We have enough to go on.
+                            </div>
+                        </div>
+                    </div>
+                    <div id="right-message-container" style="margin-top: 20px">
+                        <div class="name" style="margin-right: 80px; font-weight: 700; text-align: right;">JERRY</div>
+                        <div class="face-text" style="display: flex; align-items: center;width: 100%; justify-content: flex-end;  margin-top: 0px">
+                            <div id="text-message-right" style="display: flex; align-items: center; background-color: #A8D0CE; border-radius: 12px; padding: 15px 30px; ;">
+                                I say we put more resources behind this effort. We have enough to go on.
+                            </div>
+                            <div class="face" style="width: 60px; height: 60px; margin-left: 20px; ">
+                                <img style="width: 100%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613860312/JerryFace_unk49c.svg"/>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
             <a href="../../office/platOffice/yangOffice.html" role="backButton">
@@ -26,6 +56,6 @@
                 <img role="nextButton" id="rightSlide" style=" z-index: 1; position: absolute; left: 88.5%; top: 45%; width: 10%; cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613782382/Component_1_1_cvhdp4.svg"/>
             </a>
         </div>
-        <script src="./conversation.js"></script>
+        <script src="./conversation2.js"></script>
     </body>
 </html>

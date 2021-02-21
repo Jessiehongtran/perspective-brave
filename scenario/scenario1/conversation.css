@@ -1,0 +1,35 @@
+body {
+    margin: 0
+}
+
+#text-message-left, #text-message-right {
+    position: relative;
+}
+
+#text-message-left:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: auto;
+    left: -10px;
+    top: 40%;
+    bottom: auto;
+    border: 15px solid;
+    z-index: 1;
+    border-color:   #DCEBEB transparent  transparent   transparent ;
+}
+
+#text-message-right:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -10px;
+    top: 40%;
+    bottom: auto;
+    border: 15px solid;
+    z-index: 1;
+    border-color:   #A8D0CE transparent  transparent   transparent ;
+}
