@@ -183,7 +183,7 @@ function showEachMessage(){
             durationToNextMessage = 10*(messages[j].text.length)
         } else {
             newMessage = getMessageElement(messages[j].name, messages[j].text, "left")
-            durationToNextMessage = 10*(messages[j].text.length)
+            durationToNextMessage = 100*(messages[j].text.length)
         }
         chat.appendChild(newMessage)
         j += 1
@@ -202,8 +202,6 @@ function getMessageElement(name, messageText, side){
     nameContainer.setAttribute('class', 'name')
     nameContainer.innerHTML = name
     nameContainer.style.fontWeight = 'bold'
-    nameContainer.style.width = '100%'
-    nameContainer.style.border = '1px solid grey'
     //face-text div
     const faceTextContainer = document.createElement("div")
     faceTextContainer.setAttribute('class', 'face-text')
@@ -211,7 +209,6 @@ function getMessageElement(name, messageText, side){
     faceTextContainer.style.alignItems = 'center'
     faceTextContainer.style.width = '100%'
     faceTextContainer.style.margin = '0px'
-    faceTextContainer.style.border = '1px solid grey'
     //face div
     const faceContainer = document.createElement("div")
     faceContainer.setAttribute('class', 'face')
@@ -234,7 +231,7 @@ function getMessageElement(name, messageText, side){
     messageContainer.appendChild(faceTextContainer, nameContainer)
     if (side === "left"){
         messageContainer.setAttribute('id', 'left-message-container')
-        nameContainer.style.marginLeft = '80px'
+        nameContainer.style.paddingLeft = '80px'
         nameContainer.style.textAlign = 'left'
         faceTextContainer.style.justifyContent = 'flex-start'
         faceContainer.style.marginRight = '20px'
@@ -244,7 +241,7 @@ function getMessageElement(name, messageText, side){
         faceTextContainer.appendChild(textMessageContainer)
     } else {
         messageContainer.setAttribute('id', 'right-message-container')
-        nameContainer.style.marginRight = '80px'
+        nameContainer.style.paddingRight = '80px'
         nameContainer.style.textAlign = 'right'
         faceTextContainer.style.justifyContent = 'flex-end'
         faceContainer.style.marginLeft = '20px'
