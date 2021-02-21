@@ -159,8 +159,8 @@ function getMessagesForEachPart(){
     if (next){
        messages = messageData[next].messages;
        buttons = messageData[next].buttons;
-       console.log()
-       showEachMessage('messages', messages, 'buttons', buttons)
+       audioInd =  next.slice(4, next.length) //update audio ind
+       showEachMessage()
        next = null
     }
     
@@ -173,10 +173,10 @@ function showEachMessage(){
         let newMessage
         if (messages[j].name === "YANG"){
             newMessage = getMessageElement(messages[j].name, messages[j].text, "right")
-            durationToNextMessage = 100*(messages[j].text.length)
+            durationToNextMessage = 80*(messages[j].text.length)
         } else {
             newMessage = getMessageElement(messages[j].name, messages[j].text, "left")
-            durationToNextMessage = 100*(messages[j].text.length)
+            durationToNextMessage = 80*(messages[j].text.length)
         }
         chat.appendChild(newMessage)
         j += 1
@@ -245,6 +245,20 @@ function getMessageElement(name, messageText, side){
         faceTextContainer.insertBefore(textMessageContainer, faceContainer)
     }
 
+    //initiate VO
+    if (messageText.length > 0){
+        if (name === "JERRY"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
+        } else if (name === "YANG"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
+        } else if (name === "SASHA"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_sasha${audioInd}.mp3`)
+        } else if (name === "BOB"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_bob${audioInd}.mp3`)
+        } 
+    }
+
+
     return messageContainer
 }
 
@@ -280,3 +294,10 @@ function addButtons(){
     chat.appendChild(buttonsContainer)
 }
 
+
+//Function to play audio
+function playAudio(file){
+    var audio = new Audio(file);
+    audio.play()
+    audio.volume = 1;
+}
