@@ -16,7 +16,7 @@ const messageData= {
         ],
         buttons: [
             {
-                text: "I have something to add",
+                text: "I have something to add...",
                 next: "part2"
             }
         ]
@@ -46,7 +46,7 @@ const messageData= {
                 next: "part32"
             }, 
             {
-                text: "Execus me?",
+                text: "Execuse me?",
                 next: "part33"
             }
         ]
@@ -272,7 +272,7 @@ function addButtons(){
         if (buttons[i].text){
             let button = document.createElement('div')
             button.style.padding = '10px 20px'
-            button.style.backgroundColor = '#111F47'
+            button.style.backgroundColor = '#E85552'
             button.style.color = 'white'
             button.style.borderRadius = '20px'
             button.style.boxShadow = 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'
