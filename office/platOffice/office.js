@@ -3,9 +3,8 @@ const characterPos = {
   y: 60
 }
 
-console.log('characterPos.x', characterPos.x, 'characterPos.y', characterPos.y)
-console.log(window.innerWidth, window.innerHeight)
 
+const container = document.getElementById("office-container")
 const arrowLeft = document.getElementById("arrow-left")
 const arrowDown = document.getElementById("arrow-down")
 const arrowRight = document.getElementById("arrow-right")
@@ -13,12 +12,19 @@ const arrowUp = document.getElementById("arrow-up")
 const instruction = document.getElementById("instruction")
 const leftSlide1 = document.getElementById("leftSlide1")
 const leftSlide2 = document.getElementById("leftSlide2")
+const leftSlide3 = document.getElementById("leftSlide3")
 const rightSlide1 = document.getElementById("rightSlide1")
 const rightSlide2 = document.getElementById("rightSlide2")
-const guideToSparkling = document.getElementById("guideToSparkling")
 const arrowKeys = document.getElementById("arrow-keys")
 const arrowKeyHolder = document.getElementById("arrowKeyHolder")
 const newArrowKeyPlaceHolder = document.getElementById("newArrowKeyPlaceHolder")
+const detailInstruction = document.getElementById("detail-instruction")
+const welcome = document.getElementById("welcome")
+const office = document.getElementById("office")
+const keys = document.getElementById("keys")
+const enterKey = document.getElementById("enter")
+const header = document.getElementById("header")
+const sparkling = document.getElementById("sparkling")
 arrowKeyHolder.appendChild(arrowKeys)
 
 const character_face_up = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950505/Yang_Back_2x_wfa5l1.png"
@@ -74,77 +80,112 @@ function getCharacterMove(dir){
 
 
 function handleKeyDown(e){
+    console.log(arrowUp, arrowLeft, arrowRight, arrowDown)
     if (e.key === "ArrowRight"){
         arrowRight.style.backgroundColor = "#111F47"
-        arrowLeft.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enter.style.backgroundColor = "#EFF5F5"
+        arrowLeft.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor = "#EFF5F5"
         characterPos.x = characterPos.x + 1
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
     } else if (e.key === "ArrowLeft"){
         arrowLeft.style.backgroundColor = "#111F47"
-        arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enter.style.backgroundColor  = "#EFF5F5"
+        arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
         characterPos.x = characterPos.x - 1
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
     } else if (e.key === "ArrowDown"){
         arrowDown.style.backgroundColor = "#111F47"
-        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = enter.style.backgroundColor  = "#EFF5F5"
+        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
         characterPos.y = characterPos.y + 1
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
     } else if (e.key === "ArrowUp"){
         arrowUp.style.backgroundColor = "#111F47"
-        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = enter.style.backgroundColor  = "#EFF5F5"
+        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
         characterPos.y = characterPos.y - 1
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
     } else if (e.key === "Enter"){
-        enter.style.backgroundColor = "#111F47"
+        enterKey.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = arrowUp.style.backgroundColor  = "#EFF5F5"
   }
-
-    
     player.style.left = `${characterPos.x}%`
     player.style.top = `${characterPos.y}%`
 }
 
 function removeTutorial(){
-    //hide instruction
-    instruction.style.display = 'none'
+  //change background
+  container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613955122/Group_201_rfbx6m.png)"
+  //make sure header is there
+  header.style.display = 'flex'
+  header.style.justifyContent = 'center'
+  //hide left slide 3 and show left slide 2
+  leftSlide3.style.display = 'none'
+  leftSlide2.style.display = 'block'
+  //remove welcome line
+  welcome.style.display = 'none'
+  //remove instruction
+  instruction.style.display = 'none'
+  //hide office
+  office.style.display = 'none'
+  //add arrowkeys and enter keys to keys div
+  keys.appendChild(arrowKeys)
+  enterKey.style.display = 'flex'
+  enterKey.style.justifyContent = 'center'
+  enterKey.style.alignItems = 'center'
+  keys.appendChild(enterKey)
+  //show detail instruction
+  detailInstruction.style.display = 'flex'
+  detailInstruction.style.flexDirection = 'column'
+  detailInstruction.style.alignItems = 'center'
+  //hide right slide 1 and show right slide 2
+  rightSlide1.style.display = 'none'
+  rightSlide2.style.display = 'block'
+}
+
+function enterOffice(){
+    //hide detail instruction
+    detailInstruction.style.display = 'none'
+    //hide Perspective header
+    header.style.display = 'none'
     //change character position
     characterPos.x = 40
     characterPos.y = 50
     player.style.left = `${characterPos.x}%`
     player.style.top = `${characterPos.y}%`
-    //show left slide 2
-    leftSlide2.style.display = 'block'
-    //hide right slide 1 and show right slide 2
-    rightSlide1.style.display = 'none'
-    rightSlide2.style.display = 'block'
-    //show guideToSparkling
-    guideToSparkling.style.display = 'block'
-    //remove arrow keys from current holder and move to new position
-    let originalArrowKeys  = arrowKeyHolder.removeChild(arrowKeys)
-    newArrowKeyPlaceHolder.appendChild(originalArrowKeys)
-    //show enter
-    const enter = document.getElementById("enter")
-    enter.style.display = 'flex'
-    enter.style.alignItems = 'center'
-    enter.style.justifyContent = 'center'
-    newArrowKeyPlaceHolder.appendChild(enter)
-    newArrowKeyPlaceHolder.style.display = 'flex'
-    newArrowKeyPlaceHolder.style.alignItems = 'flex-end'
+    //hide left slide 2 and show left slide 3
+    leftSlide2.style.display = 'none'
+    leftSlide3.style.display = 'block'
+    //change office image, adjust bg position
+    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613968078/Group_147_l7ltkk.svg)"
+    container.style.backgroundPosition = "90% 10%"
+    //show player
+    player.style.display = 'block'
+    //show sparkling
+    sparkling.style.display = 'block'
 }
 
-function addTutorial(){
-    //show instruction
+function showTutorial(){
+    //reset background 
+    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613785093/Group_160_uxai8d.png)"
+    //add welcome title
+    welcome.style.display = 'block'
+    //hide detail instruction
+    detailInstruction.style.display = 'none'
+    //show tutorial
     instruction.style.display = 'block'
-    //hide left slide 1
-    leftSlide1.style.display = 'none'
-    //add arrow keys
-    arrowKeyHolder.appendChild(arrowKeys)
+    arrowKeyHolder.appendChild(arrowKeys) //fix arrow key changing color and character not moving
+    //show office
+    office.style.display = 'block'
+    //hide left slide 2 and show left slide 1
+    leftSlide2.style.display = 'none'
+    leftSlide1.style.display = 'block'
+    //show right slide 1 and hide right slide 2
+    rightSlide1.style.display = 'block'
+    rightSlide2.style.display = 'none'
+
 }
 
 function rectArea(x1, y1, x2, y2, x3, y3, x4, y4){
