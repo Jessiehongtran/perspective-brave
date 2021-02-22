@@ -9,6 +9,9 @@ const land = document.getElementById("land")
 const skyLanding = document.getElementById("sky-landing")
 const skyLandingImg = document.getElementById("skyLandingImg")
 const summary = document.getElementById("summary")
+const arrowLeft = document.getElementById("arrow-left")
+const arrowRight = document.getElementById("arrow-right")
+const spaceBar = document.getElementById("spaceBar")
 
 const gapBetweenBalloons = 10
 const maxImageInd = 15
@@ -349,6 +352,8 @@ function handleKeyDown(e){
 
     //move right
     if (e.key === "ArrowRight"){
+        arrowRight.style.backgroundColor = "#111F47"
+        arrowLeft.style.backgroundColor = spaceBar.style.backgroundColor = "#EFF5F5"
         characterPos.x += 1
         character_face.right = getCharacterImg(moveInd.right)
         character.src = character_face.right
@@ -362,6 +367,8 @@ function handleKeyDown(e){
     } 
     //move left
     else  if (e.key === "ArrowLeft"){
+        arrowLeft.style.backgroundColor = "#111F47"
+        arrowRight.style.backgroundColor = spaceBar.style.backgroundColor  = "#EFF5F5"
         characterPos.x -= 1
         character_face.left = getCharacterImg(moveInd.left)
         character.src = character_face.left
@@ -374,6 +381,8 @@ function handleKeyDown(e){
     } 
     //jump
     if (e.keyCode === 32){
+        spaceBar.style.backgroundColor = "#111F47"
+        arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor   = "#EFF5F5"
         letSoundPlay = true 
         countStep = 0
         if (character.src === character_face.right){

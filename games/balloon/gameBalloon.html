@@ -11,7 +11,26 @@
             </a>
             <div id="text" role="guidelineAndQuestion" style="top: 0; display: flex; justify-content: center; align-items: flex-start; position: absolute; height: 20%; width: 100%; background-color: #E2E2E2; padding-top: 20px;">
                 <div id="text-wrapper" role="textWrapper" style="width: 70%">
-                    <p role="keyboardGuideline">Use LEFT and RIGHT key arrows to move and SPACE BAR to jump on the balloon that you think is the correct answer:</p>
+                    <div class="navigation" style="display: flex; align-items: center; ">
+                        <p role="keyboardGuideline" style="margin-right: 10px; font-size: 18px;">
+                            Jump on the balloon that you think is the correct answer using 
+                        </p>
+                        <div class="keys" style="display: flex; align-items: flex-end;  z-index: 1;  ">
+                            <div id="arrow-keys" role="arrowKeys" style="margin-right: 10px;" >
+                                <div style="display: flex; justify-content: space-between;  ">
+                                    <div id="arrow-left" role="leftArrow" style=" padding: 8px; margin-right: 10px; border-radius: 8px;  width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
+                                        <img alt="left arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_139_w5fhcu.svg" style="width: 20px; height: 30px"/>
+                                    </div>
+                                    <div id="arrow-right" role="rightArrow" style="padding: 8px; border-radius: 8px;  width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; "> 
+                                        <img alt="right arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_138_gmdsg1.svg" style="width: 20px; height: 30px"/>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div id="spaceBar" role="spaceBar" style="color: #688989; font-weight: bold; margin-left: 0px; font-size: 16px;  padding: 8px; border-radius: 8px; display: flex; align-items: center; justify-content: center; height: 30px; text-align: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
+                                Space bar
+                            </div>
+                        </div> 
+                    </div>
                     <p style="font-weight: bold; font-size: 22px; line-height: 1.5;" role="question">How many do you think are planning to leave when they do perceive bias in the workplace?</p>
                     <i role="speakerIcon" class="fas fa-volume-up" style="font-size: 20px; cursor: pointer; margin-bottom: 10px" onclick="speakVO()"></i>
                 </div>
