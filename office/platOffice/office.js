@@ -3,6 +3,20 @@ const characterPos = {
   y: 60
 }
 
+const characterSize = {
+  w: 8,
+  h: 9
+}
+
+const sparklingPos = {
+  x: 32,
+  y: 47
+}
+
+const sparklingSize = {
+  w: 5,
+  h: 10
+}
 
 const container = document.getElementById("office-container")
 const arrowLeft = document.getElementById("arrow-left")
@@ -25,6 +39,9 @@ const keys = document.getElementById("keys")
 const enterKey = document.getElementById("enter")
 const header = document.getElementById("header")
 const sparkling = document.getElementById("sparkling")
+const player = document.getElementById("player");
+const playerImg = document.getElementById("playerImg");
+
 arrowKeyHolder.appendChild(arrowKeys)
 
 const character_face_up = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950505/Yang_Back_2x_wfa5l1.png"
@@ -32,10 +49,15 @@ const character_face_down = "https://res.cloudinary.com/dfulxq7so/image/upload/v
 const character_face_left = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950538/Yang_RightSide_2x_i223zj.png"
 const character_face_right = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950517/Yang_LeftSide_2x_qc1sg5.png"
 
-const player = document.getElementById("player");
-const playerImg = document.getElementById("playerImg");
+
 player.style.left = `${characterPos.x}%`
 player.style.top = `${characterPos.y}%`
+player.style.width = `${characterSize.w}%`
+player.style.height = `${characterPos.h}%`
+sparkling.style.left = `${sparklingPos.x}%`
+sparkling.style.top = `${sparklingPos.y}%`
+sparkling.style.width = `${sparklingPos.w}%`
+sparkling.style.height = `${sparklingPos.h}%`
 
 //Initiate character movement image variables
 let character_image = {
@@ -80,7 +102,6 @@ function getCharacterMove(dir){
 
 
 function handleKeyDown(e){
-    console.log(arrowUp, arrowLeft, arrowRight, arrowDown)
     if (e.key === "ArrowRight"){
         arrowRight.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor = "#EFF5F5"
@@ -110,7 +131,15 @@ function handleKeyDown(e){
     } else if (e.key === "Enter"){
         enterKey.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = arrowUp.style.backgroundColor  = "#EFF5F5"
-  }
+    }
+
+    if (characterPos.x + characterSize.w/2 >= sparklingPos.x  && characterPos.x + characterSize.w/2 <= sparklingPos.x + sparklingSize.w
+      && characterPos.y + characterSize.h >= sparklingPos.y && characterPos.y + characterSize.h <= sparklingPos.y + sparklingSize.h
+      && e.key === "Enter"
+      ){
+        window.location.href = '../../scenario/scenario1/yangConversation2.html'
+      }
+
     player.style.left = `${characterPos.x}%`
     player.style.top = `${characterPos.y}%`
 }
@@ -143,6 +172,8 @@ function removeTutorial(){
   //hide right slide 1 and show right slide 2
   rightSlide1.style.display = 'none'
   rightSlide2.style.display = 'block'
+  //hide player
+  player.style.display = 'none'
 }
 
 function enterOffice(){
@@ -185,6 +216,13 @@ function showTutorial(){
     //show right slide 1 and hide right slide 2
     rightSlide1.style.display = 'block'
     rightSlide2.style.display = 'none'
+    //show player
+    player.style.display = 'block'
+    //hide sparkling
+    sparkling.style.display = 'none'
+    //reset player position
+    player.style.left = '50%'
+    player.style.top = '60%'
 
 }
 
