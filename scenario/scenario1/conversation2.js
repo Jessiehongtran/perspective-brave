@@ -13,6 +13,10 @@ const messageData= {
                 name: "BOB",
                 text: "Oh, this is above my pay grade!",
             },
+            {
+                name: "YANG",
+                text: "",
+            },
         ],
         buttons: [
             {
@@ -34,6 +38,10 @@ const messageData= {
             {
                 name: "JERRY",
                 text: "You do not understand how these tests go Yang. Sure, it does not look like much, but we got some feedback that some of those folks like the direction we are taking. Sometimes you cannot rely on the data.",
+            },
+            {
+                name: "YANG",
+                text: "",
             },
         ],
         buttons: [
@@ -64,7 +72,11 @@ const messageData= {
             {
                 name: "SASHA",
                 text: "Let see how we can make this work with the timeline.",
-            }
+            },
+            {
+                name: "YANG",
+                text: "",
+            },
         ],
         buttons: [
             {
@@ -222,7 +234,7 @@ function getMessageElement(name, messageText, side){
     //append
     faceContainer.appendChild(faceImg)
     messageContainer.appendChild(nameContainer)
-    messageContainer.appendChild(faceTextContainer, nameContainer)
+    messageContainer.appendChild(faceTextContainer)
     if (side === "left"){
         messageContainer.setAttribute('id', 'left-message-container')
         nameContainer.style.paddingLeft = '80px'
