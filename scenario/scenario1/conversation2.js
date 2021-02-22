@@ -54,7 +54,7 @@ const messageData= {
                 next: "part32"
             }, 
             {
-                text: "Execuse me?",
+                text: "Excuse me?",
                 next: "part33"
             }
         ]
