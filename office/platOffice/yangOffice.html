@@ -20,7 +20,7 @@
             <img role="backButton" id="leftSlide2" onclick="showTutorial()" style="display: none; z-index: 2; position: absolute; left: 2%; top: 45%; width: 5%; cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504280/leftSlide_lhdarx.svg"/>
             <img role="backButton" id="leftSlide3" onclick="removeTutorial()" style="display: none; z-index: 2; position: absolute; left: 2%; top: 45%; width: 5%; cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504280/leftSlide_lhdarx.svg"/>
             <img role="nextButton" id="rightSlide1" onclick="removeTutorial()" style="z-index: 1; position: absolute; left: 93.5%; top: 45%; width: 5%; cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
-            <img role="nextButton" id="rightSlide2" style="display: none; z-index: 1; position: absolute; left: 88.5%; top: 45%; width: 10%; cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613782382/Component_1_1_cvhdp4.svg"/>
+            <img role="nextButton" id="rightSlide2" onclick="enterOffice()"  style="display: none; z-index: 1; position: absolute; left: 93.5%; top: 45%; width: 5%;cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
             <div id="enter" role="enter" style="color: #688989; font-weight: bold; margin-left: 10px; font-size: 18px; display: none; padding: 8px; border-radius: 8px;  width: 80px; height: 40px; text-align: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
                 Enter
             </div>
@@ -62,15 +62,12 @@
                     <img alt="sparklingImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1612541162/Group_26_u9dmag.svg"/>
                 </div>
                 <div id="detail-instruction" style="z-index: 1; display: none; background-color: #A8D0CE; color: black; width: 60%; height: 60vh; padding: 60px">
-                    <div class="close-icon" onclick="enterOffice()" style="width: 100%; display: flex; justify-content: flex-end;">
-                        <img style="width: 3%; cursor: pointer;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613966571/Group_143_k9wpgb.svg"/>
-                    </div>
                     <div class="text-wrapper" style="width: 80%; margin-top: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;">  
                         <div id="keys" style="display: flex; align-items: flex-end;">
                         </div> 
                         <p style="margin-top: 40px; line-height: 2; font-size: 22px; text-align: center; font-weight: 500;">Please go to the sparkling spot in Yang’s office. Once you are there, press “Enter” to start the first scenario.</p>
                         <!-- add later when there is VO -->
-                        <!-- <img role="speakerIcon" style="font-size: 20px;  cursor: pointer; width: 12%; margin-top: 20px; padding-bottom: 20px;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" /> -->
+                        <!-- <img role="speakerIcon" style="font-size: 20px;  cursor: pointer; width: 12%; margin-top: 20px; padding-bottom: 20px;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614101783/Group_229_yj9wej.svg" /> -->
                     </div>
                 </div>
                 <div id="enter" role="enter" style="color: #688989; font-weight: bold; margin-left: 10px; font-size: 18px;  padding: 8px; border-radius: 8px; display: none; width: 80px; height: 40px; text-align: center; background-color: #EFF5F5; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
