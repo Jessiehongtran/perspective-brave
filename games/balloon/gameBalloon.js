@@ -1,5 +1,6 @@
 const container = document.getElementById("container")
 const character = document.getElementById("playerImg")
+const balloons = document.getElementById("balloons")
 const redBalloon = document.getElementById("red")
 const blueBalloon = document.getElementById("blue")
 const purpleBalloon = document.getElementById("purple")
@@ -199,6 +200,17 @@ function flyRed(){
     //     playSound('../../asset/sounds/Explode.mp3')
     // }
 
+    const feedback = document.createElement("div")
+    feedback.innerHTML = "Incorrect :("
+    feedback.style.position = 'absolute'
+    feedback.style.left = '23%'
+    feedback.style.top = '40%'
+    feedback.style.fontSize = '28px'
+    balloons.appendChild(feedback)
+    feedback.setAttribute('id', 'incorrect')
+
+    console.log('balloons', balloons)
+
     if (letSoundPlay){
         playSound('../../asset/sounds/Explode.mp3')
     }
@@ -253,6 +265,16 @@ function flyPurple(){
     //     changeCostume("purple")
     //     playSound('../../asset/sounds/Explode.mp3')
     // }
+
+    const feedback = document.createElement("div")
+    feedback.innerHTML = "Incorrect :("
+    feedback.style.position = 'absolute'
+    feedback.style.left = '72%'
+    feedback.style.top = '40%'
+    feedback.style.fontSize = '28px'
+    feedback.setAttribute('id', 'incorrect')
+    balloons.appendChild(feedback)
+
     if (letSoundPlay){
         playSound('../../asset/sounds/Explode.mp3')
     }
