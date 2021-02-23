@@ -18,6 +18,8 @@ const sparklingSize = {
   h: 10
 }
 
+const characterMovingSpeed = 2
+
 const container = document.getElementById("office-container")
 const arrowLeft = document.getElementById("arrow-left")
 const arrowDown = document.getElementById("arrow-down")
@@ -105,27 +107,27 @@ function handleKeyDown(e){
     if (e.key === "ArrowRight"){
         arrowRight.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor = "#EFF5F5"
-        characterPos.x = characterPos.x + 1
+        characterPos.x = characterPos.x + characterMovingSpeed
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
     } else if (e.key === "ArrowLeft"){
         arrowLeft.style.backgroundColor = "#111F47"
         arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
-        characterPos.x = characterPos.x - 1
+        characterPos.x = characterPos.x - characterMovingSpeed
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
     } else if (e.key === "ArrowDown"){
         arrowDown.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
-        characterPos.y = characterPos.y + 1
+        characterPos.y = characterPos.y + characterMovingSpeed
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
     } else if (e.key === "ArrowUp"){
         arrowUp.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
-        characterPos.y = characterPos.y - 1
+        characterPos.y = characterPos.y - characterMovingSpeed
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
     } else if (e.key === "Enter"){

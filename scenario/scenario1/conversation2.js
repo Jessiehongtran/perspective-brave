@@ -286,6 +286,7 @@ function addButtons(){
             button.style.padding = '10px 20px'
             button.style.backgroundColor = '#111F47'
             button.style.color = 'white'
+            button.setAttribute('id', 'message-btn')
             button.style.borderRadius = '20px'
             button.style.boxShadow = 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'
             button.appendChild(document.createTextNode(buttons[i].text))
