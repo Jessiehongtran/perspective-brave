@@ -143,6 +143,7 @@ function showSky(){
     // character.style.zIndex = 2
     setTimeout(skyLandCharacterAndBalloon, 410)
 
+    //remove incorrect noti
     balloons.removeChild(document.getElementById("incorrect"))
 }
 
