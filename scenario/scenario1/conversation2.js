@@ -185,10 +185,10 @@ function showEachMessage(){
         let newMessage
         if (messages[j].name === "YANG"){
             newMessage = getMessageElement(messages[j].name, messages[j].text, "right")
-            durationToNextMessage = 70*(messages[j].text.length)
+            durationToNextMessage = 50*(messages[j].text.length)
         } else {
             newMessage = getMessageElement(messages[j].name, messages[j].text, "left")
-            durationToNextMessage = 70*(messages[j].text.length)
+            durationToNextMessage = 50*(messages[j].text.length)
         }
         chat.appendChild(newMessage)
         j += 1
