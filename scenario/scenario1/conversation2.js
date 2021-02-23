@@ -15,7 +15,7 @@ const messageData= {
             },
             {
                 name: "YANG",
-                text: "",
+                text: "...",
             },
         ],
         buttons: [
@@ -41,7 +41,7 @@ const messageData= {
             },
             {
                 name: "YANG",
-                text: "",
+                text: "...",
             },
         ],
         buttons: [
@@ -75,7 +75,7 @@ const messageData= {
             },
             {
                 name: "YANG",
-                text: "",
+                text: "...",
             },
         ],
         buttons: [
@@ -84,7 +84,7 @@ const messageData= {
                 next: "part2"
             },
             {
-                text: "Escape",
+                text: "Next",
                 next: null
             }
         ]
@@ -114,7 +114,7 @@ const messageData= {
                 next: "part2"
             },
             {
-                text: "Escape",
+                text: "Next",
                 next: null
             }
         ]
@@ -144,7 +144,7 @@ const messageData= {
                 next: "part2"
             },
             {
-                text: "Escape",
+                text: "Next",
                 next: null
             }
         ]
@@ -270,7 +270,7 @@ function getMessageElement(name, messageText, side){
     }
 
     //initiate VO
-    if (messageText.length > 0){
+    if (messageText[0] != "."){
         if (name === "JERRY"){
             playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
         } else if (name === "YANG"){
@@ -289,9 +289,10 @@ function getMessageElement(name, messageText, side){
 function addButtons(){
     buttonsContainer = document.createElement('div')
     buttonsContainer.style.display = 'flex'
-    buttonsContainer.style.marginTop = '30px'
+    buttonsContainer.style.marginTop = '20px'
     buttonsContainer.style.width = '100%'
     buttonsContainer.style.justifyContent = 'space-evenly'
+    buttonsContainer.style.marginBottom= '30px'
     for (let i = 0; i < buttons.length; i++){
         if (buttons[i].text){
             let button = document.createElement('div')

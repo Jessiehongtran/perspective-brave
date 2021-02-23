@@ -40,17 +40,36 @@ body {
 
 
 #message-btn {
-    animation: pulse 1.5s;
+    animation: pulse 0.8s;
     /* When the animation is finished, start again */
     animation-iteration-count: infinite;
 }
 
 @keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    0%, 100%{
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
+        bottom: 0px
       }
-      100% {
+
+    
+    50% {
         box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+        bottom: 10px
+      }
+    
+    60% {
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+        bottom: 5px
+      }
+    
+    80% {
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+        bottom: 8px
+      }
+    
+    90% {
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+        bottom: 5px
       }
    
   }
