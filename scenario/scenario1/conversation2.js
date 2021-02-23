@@ -80,7 +80,11 @@ const messageData= {
         ],
         buttons: [
             {
-                text: "Okay",
+                text: "Try a different response",
+                next: "part2"
+            },
+            {
+                text: "Escape",
                 next: null
             }
         ]
@@ -106,7 +110,11 @@ const messageData= {
         ],
         buttons: [
             {
-                text: "Okay",
+                text: "Try a different response",
+                next: "part2"
+            },
+            {
+                text: "Escape",
                 next: null
             }
         ]
@@ -132,7 +140,11 @@ const messageData= {
         ],
         buttons: [
             {
-                text: "Okay",
+                text: "Try a different response",
+                next: "part2"
+            },
+            {
+                text: "Escape",
                 next: null
             }
         ]
