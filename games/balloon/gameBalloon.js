@@ -142,6 +142,8 @@ function showSky(){
     // blueBalloon.style.zIndex = 3
     // character.style.zIndex = 2
     setTimeout(skyLandCharacterAndBalloon, 410)
+
+    balloons.removeChild(document.getElementById("incorrect"))
 }
 
 //Fly character
