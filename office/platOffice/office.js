@@ -102,6 +102,17 @@ function getCharacterMove(dir){
   } 
 }
 
+let sparklingInd 
+//Function to show sparkling
+function showSparkling(){
+  sparklingInd = 0
+  displaySparklingImg()
+}
+
+function displaySparklingImg(){
+  
+}
+
 
 function handleKeyDown(e){
     if (e.key === "ArrowRight"){
