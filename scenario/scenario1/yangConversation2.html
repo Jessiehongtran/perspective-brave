@@ -24,8 +24,8 @@
             </div>
             <div id="choose-different-response" style="display: none; width: 70%; text-align: center; height: 100%">
                 <p style="color: white; font-size: 22px; ">If you'd like to try another response, click below.</p>
-                <a style="background-color: #DEECEC; padding: 10px 30px; border-radius: 20px; color: black">Try again</a>
-                <p style="color: white; font-size: 22px; margin-top: 60px;">If you'd like to continue, click the arrow on the right to proceed to the next page</p>
+                <button style="background-color: #DEECEC; padding: 10px 30px; border-radius: 20px; color: black; cursor: pointer; border: none; font-family: Montserrat; font-size: 18px;" onclick="showPart2Again()">Try again</button>
+                <p style="color: white; font-size: 22px; margin-top: 60px;">If you'd like to continue, click the button on the right to proceed to the next page</p>
             </div>
             <div id="conversation" style="display: none; width: 100%; margin-top: 0px;">
                 <div id="characters" style="display: flex; justify-content: center;">
@@ -38,7 +38,10 @@
             <a href="../../office/platOffice/yangOffice.html" role="backButton">
                 <img id="leftSlide" style="z-index: 1; position: absolute; left: 2%; top: 45%; width: 5%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504280/leftSlide_lhdarx.svg"/>
             </a>
-            <img role="nextButton" id="rightSlide" style=" z-index: 1; position: absolute; left: 93.5%; top: 45%; width:5%; cursor: pointer"  onclick="showConversation()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
+            <img role="nextButton" id="rightSlide1" style=" z-index: 1; position: absolute; left: 93.5%; top: 45%; width:5%; cursor: pointer"  onclick="showConversation()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
+            <a href="../../games/balloon/intro.html" role="nextButton" id="rightSlide2" style="display: none">
+                <img role="nextButton" style=" z-index: 1; position: absolute; left: 93.5%; top: 45%; width:5%; cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
+            </a>
         </div>
         <script src="./conversation2.js"></script>
     </body>

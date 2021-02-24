@@ -4,18 +4,22 @@ const messageData= {
             {
                 name: "JERRY",
                 text: "I say we put more resources behind this effort. We have enough to go on.",
+                speedInd: 50
             },
             {
                 name: "SASHA",
                 text: "Bob, what do you think?",
+                speedInd: 50
             },
             {
                 name: "BOB",
                 text: "Oh, this is above my pay grade!",
+                speedInd: 50
             },
             {
                 name: "YANG",
                 text: "...",
+                speedInd: 0
             },
         ],
         buttons: [
@@ -30,18 +34,22 @@ const messageData= {
             {
                 name: "YANG",
                 text: "When you look at the numbers, we don't have enough data from our first test to move forward with any certainty.",
+                speedInd: 40
             },
             {
                 name: "BOB",
                 text: "Well, I wouldn't say the issue is the data..",
+                speedInd: 50
             },
             {
                 name: "JERRY",
                 text: "You do not understand how these tests go Yang. Sure, it does not look like much, but we got some feedback that some of those folks like the direction we are taking. Sometimes you cannot rely on the data.",
+                speedInd: 40
             },
             {
                 name: "YANG",
                 text: "...",
+                speedInd: 0
             },
         ],
         buttons: [
@@ -64,18 +72,17 @@ const messageData= {
             {
                 name: "BOB",
                 text: "Sold. Jerry is right. It is full speed ahead!" , 
+                speedInd: 50
             },
             {
                 name: "JERRY",
                 text: "That is what I am talking about.",
+                speedInd: 50
             },
             {
                 name: "SASHA",
                 text: "Let see how we can make this work with the timeline.",
-            },
-            {
-                name: "YANG",
-                text: "",
+                speedInd: 50
             },
         ],
         buttons: []
@@ -85,18 +92,22 @@ const messageData= {
             {
                 name: "YANG",
                 text: "I have seen the data and I can clearly understand the results. We ran that test for a reason. It is a good indicator of what happens if we scale this.." , 
+                speedInd: 40
             },
             {
                 name: "JERRY",
                 text: "Look, I know this is the way to go I can feel it! I have done this before.",
+                speedInd: 50
             },
             {
                 name: "BOB",
                 text: "Sold. Jerry is right. It is full speed ahead!",
+                speedInd: 70
             },
             {
                 name: "SASHA",
                 text: "Yang, why do not you stay after the meeting so we can talk.",
+                speedInd: 50
             }
         ],
         buttons: []
@@ -106,18 +117,22 @@ const messageData= {
             {
                 name: "YANG",
                 text: "What am I here for?.." , 
+                speedInd: 40
             },
             {
                 name: "JERRY",
                 text: "I do not understand why you are being so aggressive to this and do not really appreciate it.",
+                speedInd: 50
             },
             {
                 name: "BOB",
                 text: "Yeah Yang, Jerry has been doing this for a lot longer than you so you should trust his thoughts.",
+                speedInd: 60
             },
             {
                 name: "SASHA",
                 text: "Yang, why do not you stay after the meeting so we can talk.",
+                speedInd: 50
             }
         ],
         buttons: []
@@ -129,9 +144,11 @@ const intro = document.getElementById("intro")
 const chat = document.getElementById("chat")
 const conversation = document.getElementById("conversation")
 const leftSlide = document.getElementById("leftSlide")
-const rightSlide = document.getElementById("rightSlide")
+const rightSlide1 = document.getElementById("rightSlide1")
+const rightSlide2 = document.getElementById("rightSlide2")
 const chooseDifferentResponse = document.getElementById("choose-different-response")
 const textWrapper = document.getElementById("text-wrapper")
+const rightSlideWrapper = document.getElementById("rightSlideWrapper")
 
 const characterFace = {
     JERRY: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860312/JerryFace_unk49c.svg",
@@ -173,12 +190,11 @@ function showEachMessage(){
     if (j < messages.length){
         let newMessage
         if (messages[j].name === "YANG"){
-            newMessage = getMessageElement(messages[j].name, messages[j].text, "right")
-            durationToNextMessage = 50*(messages[j].text.length)
+            newMessage = getMessageElement(messages[j].name, messages[j].text, "right", messages[j].speedInd)
         } else {
-            newMessage = getMessageElement(messages[j].name, messages[j].text, "left")
-            durationToNextMessage = 50*(messages[j].text.length)
+            newMessage = getMessageElement(messages[j].name, messages[j].text, "left", messages[j].speedInd)
         }
+        durationToNextMessage = messages[j].speedInd*(messages[j].text.length)
         chat.appendChild(newMessage)
         j += 1
         setTimeout(showEachMessage, durationToNextMessage) //apply recursion
@@ -199,8 +215,9 @@ function tryDifferentResponseOrNext(){
     container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png)"
     //remove slide left 
     leftSlide.style.display = 'none'
-    //remove slide right
-    // rightSlide.style.display = 'none'
+    //hide rightSlide1 and show rightSlide2
+    rightSlide1.style.display = 'none'
+    rightSlide2.style.display = 'block'
     //append choose-different-response to intro
     intro.style.display = 'flex'
     intro.removeChild(textWrapper)
@@ -209,9 +226,23 @@ function tryDifferentResponseOrNext(){
     chooseDifferentResponse.style.flexDirection = 'column'
     chooseDifferentResponse.style.alignItems = 'center'
     chooseDifferentResponse.style.justifyContent = 'center'
+
 }
 
-function getMessageElement(name, messageText, side){
+function showPart2Again(){
+    //update next
+    next = "part2"
+    //adjust speedind to 0 to show all text of part 2
+    let part2Messages = messageData[next].messages
+    for (let i = 0; i < part2Messages.length; i++){
+        part2Messages[i].speedInd = 0
+    }
+    //show conversation
+    j = 0
+    showConversation() 
+}
+
+function getMessageElement(name, messageText, side, speedInd){
     //message div
     const messageContainer = document.createElement("div")
     messageContainer.style.marginTop = '10px'
@@ -271,7 +302,7 @@ function getMessageElement(name, messageText, side){
     }
 
     //initiate VO
-    if (messageText[0] != "."){
+    if (messageText[0] != "." && speedInd !== 0){
         if (name === "JERRY"){
             playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
         } else if (name === "YANG"){
