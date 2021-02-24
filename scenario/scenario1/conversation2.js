@@ -75,19 +75,10 @@ const messageData= {
             },
             {
                 name: "YANG",
-                text: "...",
+                text: "",
             },
         ],
-        buttons: [
-            {
-                text: "Try a different response",
-                next: "part2"
-            },
-            {
-                text: "Next",
-                next: null
-            }
-        ]
+        buttons: []
     },
     part32: {
         messages: [
@@ -108,16 +99,7 @@ const messageData= {
                 text: "Yang, why do not you stay after the meeting so we can talk.",
             }
         ],
-        buttons: [
-            {
-                text: "Try a different response",
-                next: "part2"
-            },
-            {
-                text: "Next",
-                next: null
-            }
-        ]
+        buttons: []
     },
     part33: {
         messages: [
@@ -138,16 +120,7 @@ const messageData= {
                 text: "Yang, why do not you stay after the meeting so we can talk.",
             }
         ],
-        buttons: [
-            {
-                text: "Try a different response",
-                next: "part2"
-            },
-            {
-                text: "Next",
-                next: null
-            }
-        ]
+        buttons: []
     }
 }
 
@@ -206,7 +179,11 @@ function showEachMessage(){
         j += 1
         setTimeout(showEachMessage, durationToNextMessage) //apply recursion
     } else {
-        addButtons()
+        if (buttons.length >0){
+            addButtons()
+        } else {
+            //show try a different respond or next
+        }
     }
 }
 
