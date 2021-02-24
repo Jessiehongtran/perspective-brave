@@ -43,6 +43,7 @@ const header = document.getElementById("header")
 const sparkling = document.getElementById("sparkling")
 const player = document.getElementById("player");
 const playerImg = document.getElementById("playerImg");
+const sparklingImage = document.getElementById("sparklingImage")
 
 arrowKeyHolder.appendChild(arrowKeys)
 
@@ -110,7 +111,21 @@ function showSparkling(){
 }
 
 function displaySparklingImg(){
-  
+  let fillInd = sparklingInd
+  if (sparklingInd < 150){
+    if (sparklingInd < 10){
+      fillInd = "00" + sparklingInd.toString()
+    } else if (sparklingInd >= 10 && sparklingInd < 100){
+      fillInd = "0" + sparklingInd.toString()
+    } 
+    sparklingImage.src = `../../asset/Sparkles/Sparkles_00${fillInd}.png`
+    sparklingInd += 1
+  } else {
+    sparklingInd = 0
+  }
+
+  setTimeout(displaySparklingImg, 30)
+
 }
 
 
@@ -187,6 +202,8 @@ function removeTutorial(){
   rightSlide2.style.display = 'block'
   //hide player
   player.style.display = 'none'
+  // //show sparkling
+  // showSparkling()
 }
 
 function enterOffice(){
@@ -236,7 +253,7 @@ function showTutorial(){
     //reset player position
     player.style.left = '50%'
     player.style.top = '60%'
-
+    
 }
 
 function rectArea(x1, y1, x2, y2, x3, y3, x4, y4){
@@ -274,3 +291,4 @@ function isInsideRectangle(rect, target){
   }
 
 document.addEventListener("keydown", handleKeyDown)
+showSparkling()
