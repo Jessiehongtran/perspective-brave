@@ -44,6 +44,8 @@ const sparkling = document.getElementById("sparkling")
 const player = document.getElementById("player");
 const playerImg = document.getElementById("playerImg");
 const sparklingImages = document.getElementsByClassName("sparklingImage")
+const infoIcon = document.getElementById("infoIcon");
+const hoverState = document.getElementById("hoverState")
 
 arrowKeyHolder.appendChild(arrowKeys)
 
@@ -174,7 +176,7 @@ function handleKeyDown(e){
     player.style.top = `${characterPos.y}%`
 }
 
-function removeTutorial(){
+function removeTutorialShowInstruction(){
   //change background
   container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613955122/Group_201_rfbx6m.png)"
   //make sure header is there
@@ -187,6 +189,8 @@ function removeTutorial(){
   welcome.style.display = 'none'
   //remove instruction
   instruction.style.display = 'none'
+  //hide infoIcon
+  infoIcon.style.display = 'none'
   //hide office
   office.style.display = 'none'
   //add arrowkeys and enter keys to keys div
@@ -213,6 +217,8 @@ function enterOffice(){
     detailInstruction.style.display = 'none'
     //hide Perspective header
     header.style.display = 'none'
+    //show infoIcon
+    infoIcon.style.display = 'block'
     //change character position
     characterPos.x = 40
     characterPos.y = 50
@@ -236,6 +242,8 @@ function showTutorial(){
     container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613785093/Group_160_uxai8d.png)"
     //add welcome title
     welcome.style.display = 'block'
+    //hide infoIcon
+    infoIcon.style.display = 'none'
     //hide detail instruction
     detailInstruction.style.display = 'none'
     //show tutorial
@@ -257,6 +265,14 @@ function showTutorial(){
     player.style.left = '50%'
     player.style.top = '60%'
     
+}
+
+function toggleExplain(){
+  if (hoverState.style.display === 'none'){
+    hoverState.style.display = 'block'
+  } else {
+    hoverState.style.display = 'none'
+  }
 }
 
 function rectArea(x1, y1, x2, y2, x3, y3, x4, y4){
