@@ -128,6 +128,10 @@ const container = document.getElementById("conversation-container")
 const intro = document.getElementById("intro")
 const chat = document.getElementById("chat")
 const conversation = document.getElementById("conversation")
+const leftSlide = document.getElementById("leftSlide")
+const rightSlide = document.getElementById("rightSlide")
+const chooseDifferentResponse = document.getElementById("choose-different-response")
+const textWrapper = document.getElementById("text-wrapper")
 
 const characterFace = {
     JERRY: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860312/JerryFace_unk49c.svg",
@@ -183,8 +187,28 @@ function showEachMessage(){
             addButtons()
         } else {
             //show try a different respond or next
+            tryDifferentResponseOrNext()
         }
     }
+}
+
+function tryDifferentResponseOrNext(){
+    //hide conversation
+    conversation.style.display = 'none'
+    //change background for container
+    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png)"
+    //remove slide left 
+    leftSlide.style.display = 'none'
+    //remove slide right
+    // rightSlide.style.display = 'none'
+    //append choose-different-response to intro
+    intro.style.display = 'flex'
+    intro.removeChild(textWrapper)
+    intro.appendChild(chooseDifferentResponse)
+    chooseDifferentResponse.style.display = 'flex'
+    chooseDifferentResponse.style.flexDirection = 'column'
+    chooseDifferentResponse.style.alignItems = 'center'
+    chooseDifferentResponse.style.justifyContent = 'center'
 }
 
 function getMessageElement(name, messageText, side){
