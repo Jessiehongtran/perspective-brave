@@ -34,16 +34,6 @@ body {
     border-color:   #A8D0CE transparent  transparent   transparent ;
 }
 
-/* #message-btn {
-    position: relative;
-}
-
-
-#message-btn {
-    animation: pulse 2s;
-    When the animation is finished, start again
-    animation-iteration-count: infinite;
-} */
 
 @keyframes pulse {
     0%, 100%{
@@ -55,27 +45,5 @@ body {
         box-shadow: 0 0 40px 10px  rgba(129, 140, 172, 0.68);
         transform: scale(1);
       }
-
-/*     
-    50% {
-        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
-        bottom: 10px
-      }
-    
-    60% {
-        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
-        bottom: 5px
-      }
-    
-    80% {
-        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
-        bottom: 8px
-      }
-    
-    90% {
-        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
-        bottom: 5px
-      } */
-   
   }
 
