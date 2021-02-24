@@ -43,7 +43,7 @@ const header = document.getElementById("header")
 const sparkling = document.getElementById("sparkling")
 const player = document.getElementById("player");
 const playerImg = document.getElementById("playerImg");
-const sparklingImage = document.getElementById("sparklingImage")
+const sparklingImages = document.getElementsByClassName("sparklingImage")
 
 arrowKeyHolder.appendChild(arrowKeys)
 
@@ -104,9 +104,11 @@ function getCharacterMove(dir){
 }
 
 let sparklingInd 
+let imgInd
 //Function to show sparkling
-function showSparkling(){
+function showSparkling(i){
   sparklingInd = 0
+  imgInd = i
   displaySparklingImg()
 }
 
@@ -118,7 +120,7 @@ function displaySparklingImg(){
     } else if (sparklingInd >= 10 && sparklingInd < 100){
       fillInd = "0" + sparklingInd.toString()
     } 
-    sparklingImage.src = `../../asset/Sparkles/Sparkles_00${fillInd}.png`
+    sparklingImages[parseInt(imgInd)].src = `../../asset/Sparkles/Sparkles_00${fillInd}.png`
     sparklingInd += 1
   } else {
     sparklingInd = 0
@@ -202,8 +204,8 @@ function removeTutorial(){
   rightSlide2.style.display = 'block'
   //hide player
   player.style.display = 'none'
-  // //show sparkling
-  // showSparkling()
+  //show sparkling
+  showSparkling(1)
 }
 
 function enterOffice(){
@@ -226,6 +228,7 @@ function enterOffice(){
     player.style.display = 'block'
     //show sparkling
     sparkling.style.display = 'block'
+    showSparkling(0)
 }
 
 function showTutorial(){
@@ -291,4 +294,3 @@ function isInsideRectangle(rect, target){
   }
 
 document.addEventListener("keydown", handleKeyDown)
-showSparkling()
