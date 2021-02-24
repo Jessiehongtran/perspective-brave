@@ -222,7 +222,7 @@ function enterOffice(){
     leftSlide2.style.display = 'none'
     leftSlide3.style.display = 'block'
     //change office image, adjust bg position
-    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613968078/Group_147_l7ltkk.svg)"
+    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614115627/Mask_Group_2_xxpycu.svg)"
     container.style.backgroundPosition = "90% 10%"
     //show player
     player.style.display = 'block'
