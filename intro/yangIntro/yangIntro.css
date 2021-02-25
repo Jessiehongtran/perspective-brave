@@ -1,0 +1,130 @@
+.container {
+    width: 100%;
+    font-family: Montserrat; 
+    height: 100vh; 
+    display: flex;  
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    font-family: Montserrat; 
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613512200/Group_100_df9sqr.png); 
+    background-size: 100% 100%; 
+    background-repeat: no-repeat; 
+    margin-top: -10px;
+}
+
+#leftSlide {
+    z-index: 2; 
+    position: absolute; 
+    left: 2%; 
+    top: 45%; 
+    width: 5%
+}
+
+#rightSlide {
+    z-index: 2; 
+    position: absolute; 
+    left: 93.5%; 
+    top: 45%; 
+    width: 5%
+}
+
+#group2 {
+    position: absolute; 
+    left: 92%; 
+    top: 80%; 
+    width: 10%; 
+    transform: rotate(80deg)
+}
+
+#ellipse {
+    position: absolute; 
+    left: 85%; 
+    top: -11%; 
+    width: 10%
+}
+
+#polygon {
+    position: absolute; 
+    left: 15%; 
+    top: 10%; 
+    width: 5%
+}
+
+#ellipse {
+    position: absolute; 
+    left: -10%; 
+    top: 70%; 
+    width: 14%
+}
+
+.header {
+    width: 20%; 
+    margin-top: 3%
+}
+
+.direction {
+    width: 40%; 
+    margin: 40px 40px 20px 40px; 
+    font-weight: 500; 
+    text-align: center; 
+    font-size: 26px; 
+    color: #1E2228
+}
+
+.intro-wrapper {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613515299/Group_900_vqfefl.png); 
+    width: 65%; 
+    height: 100%; 
+    background-size: 90% 70%; 
+    background-position: center; 
+    background-repeat: no-repeat
+}
+
+#yangImage {
+    z-index: 1; 
+    width: 40%; 
+    height: 80%; 
+    margin-left: -15%;
+}
+
+.intro {
+    width: 70%; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    margin-top: -5%;
+}
+
+.name {
+    font-size: 40px; 
+    font-weight: bolder;
+}
+
+.title {
+    font-size: 20px; 
+    margin-top: -20px; 
+    font-weight: bold; 
+    font-weight: bold;
+}
+
+.bio {
+    font-family: Montserrat; 
+    margin-top: 20px; 
+    display: flex; 
+    align-items: center;
+}
+
+.bio-wrapper {
+    font-weight: 500; 
+    font-size: 18px; 
+    background-color: #DCEBEB; 
+    border-radius: 20px; 
+    width: 70%; 
+    color: black; 
+    padding: 10px 40px
+}
