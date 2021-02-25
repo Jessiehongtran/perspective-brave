@@ -7,14 +7,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="conversation-container" role="container" style="display: flex; flex-direction: column; align-items: center; min-height: 100vh; width: 100%; font-family: Montserrat; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png) ; background-size: 100% 100%; background-position: center; background-repeat: no-repeat " >
-            <div class="header" role="header" style="margin-top: 40px; width: 100%; display: flex; justify-content: center;  margin-bottom: 40px">
-                <img style="width: 20%; z-index: 1;" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614191904/Group_45_oh8syt.svg" />
+        <div id="conversation-container" role="container" >
+            <div class="header" role="header" >
+                <img  class="logo" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614191904/Group_45_oh8syt.svg" />
             </div>
-            <div id="intro" style="display: flex; flex-direction: column; align-items: center;background-color: #111F47; color: white; width: 60%; height: 60vh; margin-top: 40px; padding: 60px">
-                <div id="text-wrapper" style="width: 70%; margin-top: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center;">    
-                    <div class="title" style="width: 100%; text-align: center; font-size: 40px;">Scenario One</div>
-                    <p style="margin-top: 40px; line-height: 2; font-size: 22px; text-align: center;">
+            <div id="intro" >
+                <div id="text-wrapper" >    
+                    <div class="title" >Scenario One</div>
+                    <p  class="scenario-text">
                         Yang joins a team meeting. The agenda at this meeting is to discuss launching a new product. Jerry, Yang’s coworker advocates to move forward. Yang is hesitant as she has gathered some data that goes against this decision. She wants to voice her opinion to her team. 
                         Listen in on how that goes…
                     </p>
@@ -22,25 +22,25 @@
                     <!-- <img role="speakerIcon" style="font-size: 20px;  cursor: pointer; width: 12%; margin-top: 20px; padding-bottom: 20px;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614101783/Group_229_yj9wej.svg" /> -->
                 </div>
             </div>
-            <div id="choose-different-response" style="display: none; width: 70%; text-align: center; height: 100%">
-                <p style="color: white; font-size: 22px; ">If you'd like to try another response, click below.</p>
-                <button style="background-color: #DEECEC; padding: 10px 30px; border-radius: 20px; color: black; cursor: pointer; border: none; font-family: Montserrat; font-size: 18px;" onclick="showPart2Again()">Try again</button>
-                <p style="color: white; font-size: 22px; margin-top: 60px;">If you'd like to continue, click the button on the right to proceed to the next page</p>
+            <div id="choose-different-response" >
+                <p  class="choose-text">If you'd like to try another response, click below.</p>
+                <button class="tryButton" onclick="showPart2Again()">Try again</button>
+                <p class="next-text">If you'd like to continue, click the button on the right to proceed to the next page</p>
             </div>
-            <div id="conversation" style="display: none; width: 100%; margin-top: 0px;">
-                <div id="characters" style="display: flex; justify-content: center;">
-                    <img style="width: 40%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613859275/Group_150_rp9itr.svg" />
+            <div id="conversation" >
+                <div id="characters" >
+                    <img id="character-table" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613859275/Group_150_rp9itr.svg" />
                 </div>
-                <div id="chat" style="padding-left: 15%; padding-right: 15%; padding-top: 20px">
+                <div id="chat" >
                     
                 </div>
             </div>
             <a href="../../office/platOffice/yangOffice.html" role="backButton">
-                <img id="leftSlide" style="z-index: 1; position: absolute; left: 2%; top: 45%; width: 5%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504280/leftSlide_lhdarx.svg"/>
+                <img id="leftSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504280/leftSlide_lhdarx.svg"/>
             </a>
-            <img role="nextButton" id="rightSlide1" style=" z-index: 1; position: absolute; left: 93.5%; top: 45%; width:5%; cursor: pointer"  onclick="showConversation()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
-            <a href="../../games/balloon/intro.html" role="nextButton" id="rightSlide2" style="display: none">
-                <img role="nextButton" style=" z-index: 1; position: absolute; left: 93.5%; top: 45%; width:5%; cursor: pointer" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
+            <img role="nextButton" id="rightSlide1"  onclick="showConversation()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
+            <a href="../../games/balloon/intro.html" role="nextButton" id="rightSlide2" >
+                <img role="nextButton" class="rightSlide2-icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504297/rightSlide_djihdk.svg"/>
             </a>
         </div>
         <script src="./conversation.js"></script>

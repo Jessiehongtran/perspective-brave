@@ -2,6 +2,146 @@ body {
     margin: 0
 }
 
+#conversation-container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100vh; 
+    width: 100%; 
+    font-family: Montserrat; 
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png) ; 
+    background-size: 100% 100%; 
+    background-position: center; 
+    background-repeat: no-repeat
+}
+
+.header {
+    margin-top: 40px; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center;  
+    margin-bottom: 40px
+}
+
+.logo {
+    width: 20%; 
+    z-index: 1;
+}
+
+#intro {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    background-color: #111F47; 
+    color: white; 
+    width: 60%; 
+    height: 60vh; 
+    margin-top: 40px; 
+    padding: 60px
+}
+
+#text-wrapper {
+    width: 70%; 
+    margin-top: 60px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.title {
+    width: 100%; 
+    text-align: center; 
+    font-size: 40px;
+}
+
+.scenario-text {
+    margin-top: 40px; 
+    line-height: 2; 
+    font-size: 22px; 
+    text-align: center;
+}
+
+#choose-different-response {
+    display: none; 
+    width: 70%; 
+    text-align: center; 
+    height: 100%
+}
+
+.choose-text {
+    color: white; 
+    font-size: 22px;
+}
+
+.tryButton {
+    background-color: #DEECEC; 
+    padding: 10px 30px; 
+    border-radius: 20px; 
+    color: black; 
+    cursor: pointer; 
+    border: none; 
+    font-family: Montserrat; 
+    font-size: 18px;
+}
+
+.next-text {
+    color: white; 
+    font-size: 22px; 
+    margin-top: 60px;
+}
+
+#conversation {
+    display: none; 
+    width: 100%; 
+    margin-top: 0px;
+}
+
+#characters {
+    display: flex; 
+    justify-content: center;
+}
+
+#character-table {
+    width: 40%
+}
+
+#chat {
+    padding-left: 15%; 
+    padding-right: 15%; 
+    padding-top: 20px
+}
+
+#leftSlide {
+    z-index: 1; 
+    position: absolute; 
+    left: 2%; 
+    top: 45%; 
+    width: 5%
+}
+
+#rightSlide1 {
+    z-index: 1; 
+    position: absolute; 
+    left: 93.5%; 
+    top: 45%; 
+    width:5%; 
+    cursor: pointer
+}
+
+#rightSlide2 {
+    display: none
+}
+
+.rightSlide2-icon {
+    z-index: 1; 
+    position: absolute; 
+    left: 93.5%; 
+    top: 45%; 
+    width:5%; 
+    cursor: pointer
+}
+
 #text-message-left, #text-message-right {
     position: relative;
 }
