@@ -1,0 +1,300 @@
+#office-container {
+    overflow: hidden; 
+    font-family: Montserrat; 
+    display: flex; 
+    flex-direction: column; 
+    height: 100vh; 
+    align-items: center; 
+    padding: 40px; 
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613785093/Group_160_uxai8d.png); 
+    background-position: center; 
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+}
+
+#header {
+    margin-top: 0px; 
+    width: 60%; 
+    display: flex; 
+    justify-content: center;  
+    margin-bottom: 20px
+}
+
+.logo {
+    width: 20%; 
+    z-index: 1;
+}
+
+#welcome {
+    font-size: 26px; 
+    margin-top: 20px;
+}
+
+#leftSlide1 {
+    z-index: 1; 
+    position: absolute; 
+    left: 2%; 
+    top: 45%; 
+    width: 5%
+}
+
+#infoIcon {
+    position: absolute; 
+    left: 2%; 
+    top: 3%; 
+    display: none; 
+    cursor: pointer; 
+    width: 5%
+}
+
+#hoverState {
+    display: none; 
+    position: absolute; 
+    left: 7.5%; 
+    top: 3%; 
+    background-color: #DCEBEB; 
+    padding: 15px 30px; 
+    border-radius: 12px; 
+    z-index: 2
+}
+
+#leftSlide2 {
+    display: none; 
+    z-index: 2; 
+    position: absolute; 
+    left: 2%; 
+    top: 45%; 
+    width: 5%; 
+    cursor: pointer
+}
+
+#leftSlide3 {
+    display: none; 
+    z-index: 2; 
+    position: absolute; 
+    left: 2%; 
+    top: 45%; 
+    width: 5%; 
+    cursor: pointer
+}
+
+#rightSlide1 {
+    z-index: 1; 
+    position: absolute; 
+    left: 93.5%; 
+    top: 45%; 
+    width: 5%; 
+    cursor: pointer
+}
+
+#rightSlide2 {
+    display: none; 
+    z-index: 1; 
+    position: absolute; 
+    left: 93.5%; 
+    top: 45%; 
+    width: 5%;
+    cursor: pointer
+}
+
+#enter {
+    color: #688989; 
+    font-weight: bold; 
+    margin-left: 10px; 
+    font-size: 18px; 
+    display: none; 
+    padding: 8px; 
+    border-radius: 8px;  
+    width: 80px; 
+    height: 40px; 
+    text-align: center; 
+    background-color: #EFF5F5; 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; 
+}
+
+.wrapper {
+    width: 100%; 
+    margin-top: 70px; 
+    height: 100%; 
+    display: flex; 
+    align-items: flex-start; 
+    justify-content: center; 
+}
+
+#instruction {
+    margin-left: 100px; 
+    max-width: 250px; 
+    background-color: #A8D0CE; 
+    border-radius: 10px; 
+    padding: 30px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-right: 20px; 
+}
+
+.tutorial {
+    font-weight: bolder; 
+    font-size: 18px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-bottom: 20px;
+}
+
+#arrowKeyHolder {
+    width: 190px; 
+    height: 140px
+}
+
+.row-top {
+    width: 190px; 
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 10px;
+}
+
+#arrow-up {
+    padding: 8px; 
+    border-radius: 8px;  
+    width: 40px; 
+    height: 40px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #EFF5F5; 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; 
+}
+
+#arrow-icon {
+    width: 30px; 
+    height: 20px
+}
+
+.row-bottom {
+    display: flex; 
+    justify-content: space-between; 
+    width: 190px 
+}
+
+#arrow-left {
+    padding: 8px; 
+    border-radius: 8px;  
+    width: 40px; 
+    height: 40px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #EFF5F5; 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+#arrow-down {
+    padding: 8px;  
+    border-radius: 8px;  
+    width: 40px; 
+    height: 40px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #EFF5F5; 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; 
+}
+
+#arrow-right {
+    padding: 8px; 
+    border-radius: 8px;  
+    width: 40px; 
+    height: 40px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #EFF5F5; 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; 
+}
+
+#office {
+    width: 100%; 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613785732/Group_146_tdavel.svg); 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 100% 100% 
+}
+
+#player {
+    position: absolute; 
+    display: flex; 
+    flex-direction: column; 
+    z-index: 2;
+    align-items: center;
+}
+
+#playerImg {
+    width: 65%; 
+    height: 100%
+}
+
+#sparkling {
+    position: absolute; 
+    display: none;
+}
+
+.sparklingImage {
+    width: 15%
+}
+
+.sparklingImage.inText {
+    width: 10%
+}
+
+#detail-instruction {
+    z-index: 1; 
+    display: none; 
+    background-color: #A8D0CE; 
+    color: black; 
+    width: 60%; 
+    height: 60vh; 
+    padding: 60px
+}
+
+.text-wrapper {
+    width: 80%; 
+    margin-top: 60px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
+
+#keys {
+    display: flex; 
+    align-items: flex-end;
+}
+
+.inner-text {
+    margin-top: 40px; 
+    line-height: 2; 
+    font-size: 22px; 
+    text-align: center; 
+    font-weight: 500;
+}
+
+
+
+#enter {
+    color: #688989; 
+    font-weight: bold; 
+    margin-left: 10px; 
+    font-size: 18px;  
+    padding: 8px; 
+    border-radius: 8px; 
+    display: none; 
+    width: 80px; 
+    height: 40px; 
+    text-align: center; 
+    background-color: #EFF5F5; 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; 
+}
