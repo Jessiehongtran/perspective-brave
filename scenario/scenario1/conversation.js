@@ -1,27 +1,30 @@
-//Initiate the dialogue
-const conversation= {
+const messageData= {
     part1: {
         messages: [
             {
                 name: "JERRY",
                 text: "I say we put more resources behind this effort. We have enough to go on.",
+                speedInd: 50
             },
             {
                 name: "SASHA",
                 text: "Bob, what do you think?",
+                speedInd: 50
             },
             {
                 name: "BOB",
                 text: "Oh, this is above my pay grade!",
+                speedInd: 50
             },
             {
-                name: "YOU",
-                text: "",
+                name: "YANG",
+                text: "...",
+                speedInd: 0
             },
         ],
         buttons: [
             {
-                text: "I have something to add",
+                text: "I have something to add...",
                 next: "part2"
             }
         ]
@@ -29,20 +32,24 @@ const conversation= {
     part2: {
         messages: [
             {
-                name: "YOU",
+                name: "YANG",
                 text: "When you look at the numbers, we don't have enough data from our first test to move forward with any certainty.",
+                speedInd: 40
             },
             {
                 name: "BOB",
                 text: "Well, I wouldn't say the issue is the data..",
+                speedInd: 50
             },
             {
                 name: "JERRY",
                 text: "You do not understand how these tests go Yang. Sure, it does not look like much, but we got some feedback that some of those folks like the direction we are taking. Sometimes you cannot rely on the data.",
+                speedInd: 40
             },
             {
-                name: "YOU",
-                text: "" ,
+                name: "YANG",
+                text: "...",
+                speedInd: 0
             },
         ],
         buttons: [
@@ -55,7 +62,7 @@ const conversation= {
                 next: "part32"
             }, 
             {
-                text: "Execus me?",
+                text: "Excuse me?",
                 next: "part33"
             }
         ]
@@ -65,305 +72,293 @@ const conversation= {
             {
                 name: "BOB",
                 text: "Sold. Jerry is right. It is full speed ahead!" , 
+                speedInd: 50
             },
             {
                 name: "JERRY",
                 text: "That is what I am talking about.",
+                speedInd: 50
             },
             {
                 name: "SASHA",
                 text: "Let see how we can make this work with the timeline.",
-            }
+                speedInd: 50
+            },
         ],
-        buttons: [
-            {
-                text: "Okay",
-                next: null
-            }
-        ]
+        buttons: []
     },
     part32: {
         messages: [
             {
-                name: "YOU",
+                name: "YANG",
                 text: "I have seen the data and I can clearly understand the results. We ran that test for a reason. It is a good indicator of what happens if we scale this.." , 
+                speedInd: 40
             },
             {
                 name: "JERRY",
                 text: "Look, I know this is the way to go I can feel it! I have done this before.",
+                speedInd: 50
             },
             {
                 name: "BOB",
                 text: "Sold. Jerry is right. It is full speed ahead!",
+                speedInd: 70
             },
             {
                 name: "SASHA",
                 text: "Yang, why do not you stay after the meeting so we can talk.",
+                speedInd: 50
             }
         ],
-        buttons: [
-            {
-                text: "Okay",
-                next: null
-            }
-        ]
+        buttons: []
     },
     part33: {
         messages: [
             {
-                name: "YOU",
+                name: "YANG",
                 text: "What am I here for?.." , 
+                speedInd: 40
             },
             {
                 name: "JERRY",
                 text: "I do not understand why you are being so aggressive to this and do not really appreciate it.",
+                speedInd: 50
             },
             {
                 name: "BOB",
                 text: "Yeah Yang, Jerry has been doing this for a lot longer than you so you should trust his thoughts.",
+                speedInd: 60
             },
             {
                 name: "SASHA",
                 text: "Yang, why do not you stay after the meeting so we can talk.",
+                speedInd: 50
             }
         ],
-        buttons: [
-            {
-                text: "Okay",
-                next: null
-            }
-        ]
+        buttons: []
     }
 }
 
-//Call DOM elements and set variables
+const container = document.getElementById("conversation-container")
 const intro = document.getElementById("intro")
-const frames = document.getElementById("frames")
+const chat = document.getElementById("chat")
+const conversation = document.getElementById("conversation")
+const leftSlide = document.getElementById("leftSlide")
+const rightSlide1 = document.getElementById("rightSlide1")
+const rightSlide2 = document.getElementById("rightSlide2")
+const chooseDifferentResponse = document.getElementById("choose-different-response")
+const textWrapper = document.getElementById("text-wrapper")
+const rightSlideWrapper = document.getElementById("rightSlideWrapper")
 
-const mouthMoveInd = {
-    Jerry: 1,
-    Bob: 1,
-    Sasha: 1,
-    Yang: 1
+const characterFace = {
+    JERRY: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860312/JerryFace_unk49c.svg",
+    SASHA: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860312/Sasha_qk8xra.svg",
+    BOB: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860311/Bob_hvqnq7.svg",
+    YANG: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860311/YangFace_evfdgk.svg"
+
 }
-let typingEffectSpeed = 50
-let durationToNextText = 0
-let chat = document.getElementById("chat");
-let next = "part1";
-let messageArray = []
-let buttonArray = []
-let buttons
-let textContainer
-let talkingDude 
-let currentMessage
-let audioInd = 1
-const mouthMoveSpeed = 130
-const totalTalkAnimatedInd = 71
 
+let next = 'part1'
+let messages = []
+let buttons = []
 
-//Function to get typing effect
-function getTypingEffect(s, textContainer){
-    let i = 0
+function showConversation(){
+    intro.style.display = 'none'
+    container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613859076/Group_181_tuayld.png)'
+    conversation.style.display = 'block'
+    getMessagesForEachPart()
+}
 
-    function releaseText(){
-        if (i < s.length){
-            textContainer.innerHTML += s.slice(i,i+1)
-            i += 1
-            setTimeout(releaseText, typingEffectSpeed)
-        }
+function getMessagesForEachPart(){
+    while (chat.firstChild) {
+        chat.removeChild(chat.firstChild);
     }
 
-    releaseText()
-
-    durationToNextText = typingEffectSpeed*(s.length +5)
-}
-
-
-//Instantiate Web Speech API
-const speechSynthesis = window.speechSynthesis;
-const speechUtterance = new SpeechSynthesisUtterance();
-
-function isPreferredVoice(voice){
-    return ["Google US English", "Microsoft Jessa Online"].any(preferredVoice => voice.name.startsWith(preferredVoice))
-}
-
-function onVoiceChange(){
-    speechSynthesis.addEventListener("voiceschanged", () => {
-        const voices = speechSynthesis.getVoices();
-        speechUtterance.voice = voices.find(isPreferredVoice);
-        speechUtterance.lang = "en-US";
-        speechUtterance.volume = 0.5;
-        speechUtterance.pitch = 1;
-        speechUtterance.rate = 1.5; 
-    })
-}
-
-function speak(text){
-    if ('speechSynthesis' in window) {
-        console.log("trying to speak")
-        // Speech Synthesis supported 🎉
-        onVoiceChange()
-        speechUtterance.text = text;
-        window.speechSynthesis.speak(speechUtterance);
-    } else {
-        // Speech Synthesis Not Supported 😣
-        alert("Sorry, your browser doesn't support text to speech!");
+    if (next){
+       messages = messageData[next].messages;
+       buttons = messageData[next].buttons;
+       audioInd =  next.slice(4, next.length) //update audio ind
+       showEachMessage()
+       next = null
     }
+    
 }
 
-//Function to show each message at a time
-let j = 0;
+let j = 0
+let durationToNextMessage = 0
 function showEachMessage(){
-    if (j < messageArray.length){
-        let newMessage = getMessageElement(messageArray[j].name, messageArray[j].text)
+    if (j < messages.length){
+        let newMessage
+        if (messages[j].name === "YANG"){
+            newMessage = getMessageElement(messages[j].name, messages[j].text, "right", messages[j].speedInd)
+        } else {
+            newMessage = getMessageElement(messages[j].name, messages[j].text, "left", messages[j].speedInd)
+        }
+        durationToNextMessage = messages[j].speedInd*(messages[j].text.length)
         chat.appendChild(newMessage)
         j += 1
-        setTimeout(showEachMessage, durationToNextText) //apply recursion
+        setTimeout(showEachMessage, durationToNextMessage) //apply recursion
     } else {
-        addButtons()
-    }
-   
-}
-
-//Function to program for name
-function getNameHolder(){
-    if (talkingDude === "BOB"){
-        return  "Bob"
-    } else if (talkingDude === "JERRY"){
-        return "Jerry"
-    } else if (talkingDude === "SASHA"){
-        return "Sasha"
-    } else if (talkingDude === "YOU"){
-        return "Yang"
+        if (buttons.length >0){
+            addButtons()
+        } else {
+            //show try a different respond or next
+            tryDifferentResponseOrNext()
+        }
     }
 }
 
-//Function to get character mouth moving animation
-function getCharacterMouthMove(){
-    let nameHolder
-    let ind
-    
-    nameHolder = getNameHolder()
+function tryDifferentResponseOrNext(){
+    //hide conversation
+    conversation.style.display = 'none'
+    //change background for container
+    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png)"
+    //remove slide left 
+    leftSlide.style.display = 'none'
+    //hide rightSlide1 and show rightSlide2
+    rightSlide1.style.display = 'none'
+    rightSlide2.style.display = 'block'
+    //append choose-different-response to intro
+    intro.style.display = 'flex'
+    intro.removeChild(textWrapper)
+    intro.appendChild(chooseDifferentResponse)
+    chooseDifferentResponse.style.display = 'flex'
+    chooseDifferentResponse.style.flexDirection = 'column'
+    chooseDifferentResponse.style.alignItems = 'center'
+    chooseDifferentResponse.style.justifyContent = 'center'
 
-    if (mouthMoveInd[nameHolder] > totalTalkAnimatedInd){
-        ind = mouthMoveInd[nameHolder] - totalTalkAnimatedInd*(Math.floor(mouthMoveInd[nameHolder]/totalTalkAnimatedInd))
-    } else {
-        ind = mouthMoveInd[nameHolder]
-    }
-
-    if (ind < 10){
-        ind = "0" + ind
-    } 
-
-    document.getElementById(nameHolder).src = `../../asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_000${ind}.png`
-
-    if (mouthMoveInd[nameHolder] < currentMessage.length){
-        mouthMoveInd[nameHolder] += 1
-        setTimeout(getCharacterMouthMove, mouthMoveSpeed)
-    } else {
-        document.getElementById(nameHolder).src = `../../asset/${nameHolder}_Seated_Talk/${nameHolder}_Seated_Talk_00001.png`
-    }
 }
+
+function showPart2Again(){
+    //update next
+    next = "part2"
+    //adjust speedind to 0 to show all text of part 2
+    let part2Messages = messageData[next].messages
+    for (let i = 0; i < part2Messages.length; i++){
+        part2Messages[i].speedInd = 0
+    }
+    //show conversation
+    j = 0
+    showConversation() 
+}
+
+function getMessageElement(name, messageText, side, speedInd){
+    //message div
+    const messageContainer = document.createElement("div")
+    messageContainer.style.marginTop = '10px'
+    //name div
+    const nameContainer = document.createElement("div")
+    nameContainer.setAttribute('class', 'name')
+    nameContainer.innerHTML = name
+    nameContainer.style.fontWeight = 'bold'
+    //face-text div
+    const faceTextContainer = document.createElement("div")
+    faceTextContainer.setAttribute('class', 'face-text')
+    faceTextContainer.style.display = 'flex'
+    faceTextContainer.style.alignItems = 'center'
+    faceTextContainer.style.width = '100%'
+    faceTextContainer.style.margin = '3px 0 0 0'
+    //face div
+    const faceContainer = document.createElement("div")
+    faceContainer.setAttribute('class', 'face')
+    faceContainer.style.width = '60px'
+    faceContainer.style.height = '60px'
+    //face img
+    const faceImg = document.createElement("img")
+    faceImg.style.width = '100%'
+    faceImg.src = `${characterFace[name]}`
+    //text message div
+    const textMessageContainer = document.createElement("div")
+    textMessageContainer.innerHTML = messageText
+    textMessageContainer.style.display = 'flex'
+    textMessageContainer.style.alignItems = 'center'
+    textMessageContainer.style.borderRadius = '12px'
+    textMessageContainer.style.padding = '15px 30px'
+    textMessageContainer.style.maxWidth = '60%'
+    //append
+    faceContainer.appendChild(faceImg)
+    messageContainer.appendChild(nameContainer)
+    messageContainer.appendChild(faceTextContainer)
+    if (side === "left"){
+        messageContainer.setAttribute('id', 'left-message-container')
+        nameContainer.style.paddingLeft = '80px'
+        nameContainer.style.textAlign = 'left'
+        faceTextContainer.style.justifyContent = 'flex-start'
+        faceContainer.style.marginRight = '20px'
+        textMessageContainer.setAttribute('id', 'text-message-left')
+        textMessageContainer.style.backgroundColor = '#DCEBEB'
+        faceTextContainer.appendChild(faceContainer)
+        faceTextContainer.appendChild(textMessageContainer)
+    } else {
+        messageContainer.setAttribute('id', 'right-message-container')
+        nameContainer.style.paddingRight = '80px'
+        nameContainer.style.textAlign = 'right'
+        faceTextContainer.style.justifyContent = 'flex-end'
+        faceContainer.style.marginLeft = '20px'
+        textMessageContainer.setAttribute('id', 'text-message-right')
+        textMessageContainer.style.backgroundColor = '#A8D0CE'
+        faceTextContainer.appendChild(faceContainer)
+        faceTextContainer.insertBefore(textMessageContainer, faceContainer)
+    }
+
+    //initiate VO
+    if (messageText[0] != "." && speedInd !== 0){
+        if (name === "JERRY"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
+        } else if (name === "YANG"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
+        } else if (name === "SASHA"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_sasha${audioInd}.mp3`)
+        } else if (name === "BOB"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_bob${audioInd}.mp3`)
+        } 
+    }
+
+
+    return messageContainer
+}
+
+function addButtons(){
+    buttonsContainer = document.createElement('div')
+    buttonsContainer.style.display = 'flex'
+    buttonsContainer.style.marginTop = '20px'
+    buttonsContainer.style.width = '100%'
+    buttonsContainer.style.justifyContent = 'space-evenly'
+    buttonsContainer.style.marginBottom= '30px'
+    for (let i = 0; i < buttons.length; i++){
+        if (buttons[i].text){
+            let button = document.createElement('div')
+            button.style.padding = '12px 30px'
+            button.style.backgroundColor = '#111F47'
+            button.style.color = 'white'
+            button.setAttribute('id', 'message-btn')
+            setTimeout(function(){
+                button.style.animation = 'pulse 2s infinite'
+            }, 3000)
+            button.style.borderRadius = '26px'
+            button.style.boxShadow = 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'
+            button.appendChild(document.createTextNode(buttons[i].text))
+            button.style.cursor = 'pointer'
+            button.style.marginRight = '20px'
+            button.addEventListener('click', () => {
+                next = buttons[i].next
+                if (next){
+                    j = 0
+                    getMessagesForEachPart()
+                } else {
+                    window.location.href = "../../games/balloon/intro.html"
+                }
+            })
+            buttonsContainer.appendChild(button)
+        }
+    }
+    chat.appendChild(buttonsContainer)
+}
+
 
 //Function to play audio
 function playAudio(file){
     var audio = new Audio(file);
     audio.play()
     audio.volume = 1;
-}
-
-//Function to add button as a DOM element
-function addButtons(){
-    buttons = document.createElement('div')
-    buttons.style.display = 'flex'
-    buttons.style.marginTop = '20px'
-    buttons.style.width = '100%'
-    buttons.style.justifyContent = 'space-evenly'
-    for (let i = 0; i < buttonArray.length; i++){
-        if (buttonArray[i].text){
-            let button = document.createElement('div')
-            button.style.padding = '8px 15px'
-            button.style.backgroundColor = 'white'
-            button.style.borderRadius = '8px'
-            button.appendChild(document.createTextNode(buttonArray[i].text))
-            button.style.cursor = 'pointer'
-            button.style.marginRight = '20px'
-            button.addEventListener('click', () => {
-                next = buttonArray[i].next
-                if (next){
-                    getMessages()
-                } else {
-                    window.location.href = "../../games/balloon/intro.html"
-                }
-            })
-            buttons.appendChild(button)
-        }
-    }
-    chat.appendChild(buttons)
-}
-
-//Function to get messages of each part
-function getMessages(){
-    intro.style.display = 'none'
-    j = 0
-    while (chat.firstChild) {
-        chat.removeChild(chat.firstChild);
-    }
-
-    console.log('next', next)
-    if (next){
-        messageArray = conversation[next].messages
-        buttonArray = conversation[next].buttons
-        audioInd =  next.slice(4, next.length) //update audio ind
-        showEachMessage(next)
-        next = null
-    }
-
-}
-
-//Function to initiate message DOM elements
-function getMessageElement(name, text){
-    const messageContainer = document.createElement("div")
-    messageContainer.style.width = "100%"
-    messageContainer.style.display = "flex"
-    messageContainer.style.fontSize = "20px"
-    messageContainer.style.marginTop = "40px"
-    messageContainer.style.transition = "all 0.2s linear"
-    messageContainer.style.position = "relative"
-    messageContainer.style.transform = "translateY(-100%);"
-
-    const newName = document.createElement("div")
-    newName.innerHTML =  name + ":"
-    newName.style.fontWeight = "bold"
-    newName.style.marginRight = "10px"
-    messageContainer.appendChild(newName)
-    talkingDude = name
-
-    let newText = document.createElement("div")
-    getTypingEffect(text, newText)
-    messageContainer.appendChild(newText)
-    currentMessage = text
-
-    //initiate VO
-    if (text.length > 0){
-        if (name === "JERRY"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
-        } else if (name === "YOU"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
-        } else if (name === "SASHA"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_sasha${audioInd}.mp3`)
-        } else if (name === "BOB"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_bob${audioInd}.mp3`)
-        } else {
-            speak(text)
-        }
-    }
-
-    //ignite mouth moving animation
-    if (text.length > 0){
-        mouthMoveInd[getNameHolder()] = 0 
-        getCharacterMouthMove()
-    }
-
-    return messageContainer
 }

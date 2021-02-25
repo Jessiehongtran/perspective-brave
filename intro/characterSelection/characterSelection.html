@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Perspective 2.0</title>
+        <link rel="stylesheet" href="../index.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container" role="container" style="width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: Montserrat; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614273137/Mask_Group_5_uimgni.svg); background-size: cover; background-repeat: no-repeat; margin-top: -10px;">
+            <a href="../welcome/welcome.html" role="backButton">
+                <img id="leftSlide" style="z-index: 1; position: absolute; left: 2%; top: 45%; width: 5%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613504280/leftSlide_lhdarx.svg"/>
+            </a>
+            <img id="group4" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg" style="position: absolute; left: -5%; top: 15%; width: 10%; "/>
+            <img id="rect" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213857/Rectangle_137.1_ckfftx.svg" style="position: absolute; left: 30%; top: -4%; width: 5%"/>
+            <img id="polygon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614273033/Polygon_8.1_gse2nw.svg" style="position: absolute; left: 75%; top: 10%; width: 5%"/>
+            <img id="ellipse" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213869/Ellipse_25.1_c18oph.svg" style="position: absolute; left: 97%; top: 20%; width: 10%"/>
+            <div class="header" role="header" style=" width: 100%; display: flex; justify-content: center; margin-top: 40px;">
+                <img style="width: 20%; z-index: 1;" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614191904/Group_45_oh8syt.svg" />
+            </div>
+            <div class="direction" role="direction" style="width: 40%; margin: 40px 40px 20px 40px; text-align: center; font-size: 26px; color: #1E2228">
+                Please select the character you would like to start with.
+            </div>
+            <div class="fake-container" style="width: 75%; height: 450px" ></div>
+            <img role="speakerIcon" style="font-size: 20px; margin-bottom: 20px; cursor: pointer; width: 4%; margin-top: 0px;" onclick="speak()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614101783/Group_229_yj9wej.svg" />
+            <div class="characters" role="characterHolder" style="margin-top: 30px; ">
+                <div class="black-male" role="wrapper" style=" width: 25%; left: 16%; top: 40%; position: absolute;  height: 380px; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685445/Group_56_mfmrwe.png); background-size: 100% 100%; background-repeat: no-repeat; ">
+                    <div class="content" role="content" style="font-family: Montserrat;  font-size: 18px;   margin-top: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div class="title" role="title" style="margin-bottom: 10px">
+                            Black male
+                        </div>
+                        <a href="" style="text-decoration: none; " >
+                            <img alt="black male image" id="characterImage" style="width: 100%; height: 230px; margin: 10px 0 15px 0; " src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
+                        </a>
+                        <a href="" style="color: white; text-decoration: none;  " >
+                            <button disabled style="border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; opacity: 0.5; color: white; padding: 10px 40px;  text-align: center; font-size: 16px; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; ">
+                                Jevon
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div style="position: absolute; left: 16%; top: 40.9%; width: 24.5%; height: 373px; background-color: #E2E2E2;  opacity: 0.59;"></div>
+
+                <div class="women-in-tech" role="wrapper" style="position: absolute; left: 40%;top: 40%;  width: 25%; height: 380px; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685529/Group_79_k9x6xx.png); background-size: 100% 100%; background-repeat: no-repeat;">
+                    <div class="content" role="content" style="font-family: Montserrat;  font-size: 18px;   margin-top: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div class="header" role="title" style="margin-bottom: 10px">
+                            Woman in tech
+                        </div>
+                        <a href="../yangIntro/yangIntro.html" style="text-decoration: none; " >
+                            <img alt="women in tech image" id="characterImage" style="width: 100%; height: 230px; margin: 10px 0 15px 0;" alt="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
+                        </a>
+                        <a href="../yangIntro/yangIntro.html" style="color: white; text-decoration: none;  " >
+                            <button style="border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; color: white; padding: 10px 40px; text-align: center; font-size: 16px; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;">
+                                Yang
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="trans-gender" role="wrapper" style="position: absolute; left: 66%; top: 40%; width: 25%; height: 380px; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685450/Group_58_s9dmk9.png); background-size: 100% 100%; background-repeat: no-repeat;">
+                    <div class="content" role="content" style="font-family: Montserrat;  font-size: 18px;   margin-top: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div class="header" role="title" style="margin-bottom: 10px">
+                            Transgender
+                        </div>
+                        <a href="" style="text-decoration: none; " >
+                            <img alt="transgender image" id="characterImage" style="width: 100%; height: 230px; margin: 10px 0 15px 0;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
+                        </a>
+                        <a href="" style="text-decoration: none; " >
+                            <button disabled style="border-radius: 20px; cursor: pointer; border: none; background-color: #111F47; opacity: 0.5; color: white; padding: 10px 40px; text-align: center; font-size: 16px; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;">
+                                Elijah
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div style="position: absolute; left: 66%; top: 40.9%; width: 24.5%; height: 373px; background-color: #E2E2E2;  opacity: 0.59;"></div>
+            </div>
+        </div>
+        <script>
+            function speak(){
+                console.log('speak function is invoked')
+                var audio = new Audio('../asset/VOfiles/PerspectivesVO_chooseacharacter.wav');
+                audio.volume = 1;
+                audio.play()
+            }
+        </script>
+    </body>
+</html>

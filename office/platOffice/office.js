@@ -122,7 +122,7 @@ function displaySparklingImg(){
     } else if (sparklingInd >= 10 && sparklingInd < 100){
       fillInd = "0" + sparklingInd.toString()
     } 
-    sparklingImages[parseInt(imgInd)].src = `../../asset/Sparkles/Sparkles_00${fillInd}.png`
+    sparklingImages[parseInt(imgInd)].src = `../../asset/Blue_Sparkles/Sparkles_00${fillInd}.png`
     sparklingInd += 1
   } else {
     sparklingInd = 0
@@ -169,7 +169,7 @@ function handleKeyDown(e){
       && characterPos.y + characterSize.h >= sparklingPos.y && characterPos.y + characterSize.h <= sparklingPos.y + sparklingSize.h
       && e.key === "Enter"
       ){
-        window.location.href = '../../scenario/scenario1/yangConversation2.html'
+        window.location.href = '../../scenario/scenario1/yangConversation.html'
       }
 
     player.style.left = `${characterPos.x}%`
