@@ -82,11 +82,12 @@ body {
 }
 
 .subtitle {
-    width: 40%; 
+    width: 30%; 
     margin: 40px; 
     text-align: center; 
     font-size: 26px; 
-    color: #1E2228
+    color: #1E2228;
+    line-height: 1.8;
 }
 
 .speakerIcon {
@@ -95,3 +96,22 @@ body {
     cursor: pointer; 
     width: 4%
 }
+
+
+@media only screen and (max-width: 1200px) {
+    .subtitle {
+      font-size: 20px !important;
+      margin: 20px 40px 10px 40px;
+      width: 40%
+    }
+  }
+  
+@media only screen and (max-width: 700px) {
+    .subtitle {
+      font-size: 14px !important;
+      margin: 10px 40px 5px 40px;
+      width: 40%
+    }
+
+    
+  }

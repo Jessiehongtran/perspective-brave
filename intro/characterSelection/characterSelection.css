@@ -1,5 +1,6 @@
 body {
-    margin: 0
+    margin: 0;
+    height: 100%;
 }
 
 .container {
@@ -13,7 +14,6 @@ body {
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614273137/Mask_Group_5_uimgni.svg); 
     background-size: cover; 
     background-repeat: no-repeat; 
-    margin-top: -10px;
 }
 
 #leftSlide {
@@ -89,16 +89,39 @@ body {
     margin-top: 30px;
 }
 
-.black-male {
-    width: 25%; 
-    left: 16%; 
-    top: 40%; 
+.character{
+    width: 20%;
+    height: 40vh; 
+    top: 40%;   
     position: absolute;  
-    height: 380px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.black-male {  
+    left: 16%; 
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685445/Group_56_mfmrwe.png); 
     background-size: 100% 100%; 
     background-repeat: no-repeat;
 }
+
+.women-in-tech {
+    left: 42%;
+    top: 40%;   
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685529/Group_79_k9x6xx.png); 
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+}
+
+.trans-gender {
+    left: 68%; 
+    top: 40%; 
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685450/Group_58_s9dmk9.png); 
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+}
+
 
 .content {
     font-family: Montserrat;  
@@ -111,16 +134,21 @@ body {
 }
 
 .title {
-    margin-bottom: 10px
+    /* margin-bottom: 20px; */
+    text-align: center;
+    height: 15%;
 }
 
 .characterImage-link {
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    height: 70%;
 }
 
-.characterImage {
-    width: 100%; 
-    height: 230px; 
+#characterImage {
+    width: 70%; 
+    height: 85%;
     margin: 10px 0 15px 0; 
 }
 
@@ -132,53 +160,69 @@ body {
 .characterButton {
     border-radius: 20px; 
     cursor: pointer; 
+    padding: 7px 30px; 
     border: none; 
     background-color: #111F47; 
     color: white; 
-    padding: 10px 40px; 
     text-align: center; 
     font-size: 16px; 
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; 
+}
+
+.cover {
+    width: 19.5%;
+    height: 39vh; 
 }
 
 .cover.blackMale {
     position: absolute; 
     left: 16%; 
     top: 40.9%; 
-    width: 24.5%; 
-    height: 373px; 
     background-color: #E2E2E2;  
     opacity: 0.59;
-}
-
-.women-in-tech {
-    position: absolute; 
-    left: 40%;
-    top: 40%;  
-    width: 25%; 
-    height: 380px; 
-    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685529/Group_79_k9x6xx.png); 
-    background-size: 100% 100%; 
-    background-repeat: no-repeat;
-}
-
-.trans-gender {
-    position: absolute; 
-    left: 66%; 
-    top: 40%; 
-    width: 25%; 
-    height: 380px; 
-    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685450/Group_58_s9dmk9.png); 
-    background-size: 100% 100%; 
-    background-repeat: no-repeat;
 }
 
 .cover.transgender {
     position: absolute; 
-    left: 66%; 
-    top: 40.9%; 
-    width: 24.5%; 
-    height: 373px; 
+    left: 68%; 
+    top: 40.9%;  
     background-color: #E2E2E2;  
     opacity: 0.59;
 }
+
+
+@media only screen and (max-width: 1200px) {
+    .title {
+      font-size: 16px !important;
+    }
+
+    .characterButton {
+        font-size: 14px; 
+    }
+
+    .direction {
+        font-size: 20px;
+    }
+  }
+
+@media only screen and (max-height: 700px) {
+
+    .characterButton-link {
+        display: none
+    }
+  }
+  
+@media only screen and (max-width: 700px) {
+    .title {
+      font-size: 14px !important;
+    }
+
+    .characterButton {
+        font-size: 10px; 
+    }
+
+    .direction {
+        font-size: 16px;
+        width: 60%; 
+    }
+  }
