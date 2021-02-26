@@ -214,6 +214,8 @@ function removeTutorialShowInstruction(){
   player.style.display = 'none'
   //show sparkling
   showSparkling(1)
+  //return arrow keys to original colors
+  arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor = "#EFF5F5"
 }
 
 function enterOffice(){
@@ -239,6 +241,7 @@ function enterOffice(){
     //show sparkling
     sparkling.style.display = 'block'
     showSparkling(0)
+    
 }
 
 function showTutorial(){
@@ -268,7 +271,6 @@ function showTutorial(){
     //reset player position
     player.style.left = '50%'
     player.style.top = '60%'
-    
 }
 
 function toggleExplain(){

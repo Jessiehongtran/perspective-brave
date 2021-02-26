@@ -167,6 +167,8 @@ function showConversation(){
     container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613859076/Group_181_tuayld.png)'
     conversation.style.display = 'block'
     getMessagesForEachPart()
+    //hide rightSlide1
+    rightSlide1.style.display = 'none'
 }
 
 function getMessagesForEachPart(){
