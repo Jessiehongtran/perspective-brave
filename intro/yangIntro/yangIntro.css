@@ -5,16 +5,23 @@ body {
 .container {
     width: 100%;
     font-family: Montserrat; 
-    height: 100vh; 
+    height: 100%; 
+    min-height: 100vh;
     display: flex;  
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
     font-family: Montserrat; 
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613512200/Group_100_df9sqr.png); 
-    background-size: 100% 100%; 
+    background-size: cover; 
     background-repeat: no-repeat; 
-    margin-top: -10px;
+}
+
+.speakerIcon {
+    cursor: pointer; 
+    width: 4%; 
+    margin-top: 0px;
+    margin-bottom: 20px;
 }
 
 #leftSlide {
@@ -63,17 +70,23 @@ body {
 }
 
 .header {
-    width: 20%; 
-    margin-top: 3%
+    width: 70%; 
+    display: flex; 
+    justify-content: center; 
+    margin-top: 20px;
+}
+
+.logo {
+    width: 30%; 
+    z-index: 1;
 }
 
 .direction {
     width: 40%; 
-    margin: 40px 40px 20px 40px; 
-    font-weight: 500; 
+    margin: 40px 40px 20px 40px;  
     text-align: center; 
     font-size: 26px; 
-    color: #1E2228
+    color: #1E2228;
 }
 
 .intro-wrapper {
@@ -81,17 +94,18 @@ body {
     justify-content: space-between; 
     align-items: center; 
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613515299/Group_900_vqfefl.png); 
-    width: 65%; 
+    width: 70%; 
     height: 100%; 
-    background-size: 90% 70%; 
+    background-size: 90% 90%; 
     background-position: center; 
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
+    padding: 20px;
 }
 
 #yangImage {
     z-index: 1; 
-    width: 40%; 
-    height: 80%; 
+    width: 35%; 
+    height: 75%; 
     margin-left: -15%;
 }
 
@@ -106,14 +120,12 @@ body {
 
 .name {
     font-size: 40px; 
-    font-weight: bolder;
 }
 
 .title {
     font-size: 20px; 
     margin-top: -20px; 
-    font-weight: bold; 
-    font-weight: bold;
+    font-weight: bolder;
 }
 
 .bio {
@@ -121,6 +133,7 @@ body {
     margin-top: 20px; 
     display: flex; 
     align-items: center;
+    font-weight: bolder;
 }
 
 .bio-wrapper {
@@ -131,4 +144,70 @@ body {
     width: 70%; 
     color: black; 
     padding: 10px 40px
+}
+
+@media only screen and (max-width: 1400px) {
+    .direction {
+        font-size: 20px;
+    }
+    .name {
+        font-size: 34px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .bio-wrapper {
+        font-size: 14px;
+        margin-top: -20px;
+    }
+
+    .intro-wrapper {
+        width: 90%;
+        background-size: 90% 100%;
+    }
+
+    #yangImage  {
+        width: 30%;
+        height: 85%;
+        margin-left: -10%;
+    }
+  }
+  
+@media only screen and (max-width: 700px) {
+    
+    
+  }
+
+@media only screen and (max-height: 600px),
+            screen and (max-width: 800px) {
+
+    .direction {
+        font-size: 16px;
+    }
+
+    .name {
+        font-size: 30px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .bio-wrapper {
+        font-size: 12px;
+        margin-top: -20px;
+    }
+
+    .intro-wrapper {
+        width: 90%;
+        background-size: 90% 100%;
+    }
+
+    #yangImage  {
+        width: 30%;
+        height: 100%;
+        margin-left: -10%;
+    }
 }
