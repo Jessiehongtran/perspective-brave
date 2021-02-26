@@ -25,9 +25,28 @@
     z-index: 1;
 }
 
+#platform {
+    width: 100%; 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614367680/Group_254_pqzszn.svg);
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
 #welcome {
     font-size: 26px; 
     margin-top: 20px;
+}
+
+.speakerIcon {
+    font-size: 20px;  
+    cursor: pointer; 
+    width: 12%; 
+    margin-top: 20px; 
+    padding-bottom: 20px;
 }
 
 #leftSlide1 {
