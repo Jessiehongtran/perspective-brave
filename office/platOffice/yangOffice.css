@@ -171,6 +171,11 @@
     height: 20px
 }
 
+#arrow-icon.leftRight {
+    width: 20px; 
+    height: 30px
+}
+
 .row-bottom {
     display: flex; 
     justify-content: space-between; 

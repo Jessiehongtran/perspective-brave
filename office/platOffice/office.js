@@ -174,6 +174,10 @@ function handleKeyDown(e){
 
     player.style.left = `${characterPos.x}%`
     player.style.top = `${characterPos.y}%`
+
+    if (isInsideRectangle([{ x: 43, y: 62 }, { x: 49, y: 67 }, { x: 54, y: 63 }, { x: 48, y: 57 }], { x: characterPos.x, y: characterPos.y })){
+      console.log('touch table')
+    }
 }
 
 function removeTutorialShowInstruction(){
