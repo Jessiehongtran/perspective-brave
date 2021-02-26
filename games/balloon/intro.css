@@ -4,7 +4,8 @@ body {
 
 #container {
     font-family: Montserrat; 
-    display: flex; 
+    display: flex;
+    flex-direction: column; 
     justify-content: center; 
     width: 100%; 
     height: 100vh; 
@@ -15,6 +16,53 @@ body {
     background-repeat: no-repeat;
 }
 
+.introToBias {
+    width: 25%; 
+    min-height: 90vh;
+    font-size: 26px; 
+    line-height: 2.0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* border: 1px solid grey */
+}
+
+.dots {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    width: 15%;
+    height: 5%;
+    /* border: 1px solid blue */
+}
+
+.each-dot {
+    border-radius: 50%;
+    background-color: #0C193B;
+    width: 15px;
+    height: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#info {
+    /* border: 1px solid pink; */
+    height: 40%;
+    transition:all 1s ease;
+}
+
+.speakerIcon {
+    cursor: pointer; 
+    width: 10%;
+    /* border: 1px solid brown; */
+    height: 15%;
+}
+
+.each-dot.active {
+    background-color: #F64141
+}
+
 #leftSlide {
     z-index: 1; 
     position: absolute; 
@@ -23,21 +71,28 @@ body {
     width: 5%
 }
 
-.introToBias {
-    width: 25%; 
-    font-size: 26px; 
-    line-height: 2.0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+#rightSlide {
+    display: none;
+    z-index: 1; 
+    position: absolute; 
+    left: 93.5%; 
+    top: 45%; 
+    width: 5%
 }
 
-.speakerIcon {
-    cursor: pointer; 
-    width: 10%
+.header {
+    margin-top: 40px; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center;  
 }
+
+.logo {
+    width: 20%; 
+    z-index: 1;
+}
+
+
 
 .learnMoreIcon {
     padding: 8px 15px; 
@@ -57,15 +112,17 @@ body {
 #group1 {
     position: absolute; 
     left: 90%; 
-    top: 95%;
-    width: 10%
+    top: 90%;
+    width: 10%;
+    transform: rotate(180deg);
 }
 
 #group2 {
     position: absolute; 
     left: 20%; 
-    top: 95%; 
+    top: 90%; 
     width: 10%; 
+    transform: rotate(180deg);
 }
 
 #polygon {
