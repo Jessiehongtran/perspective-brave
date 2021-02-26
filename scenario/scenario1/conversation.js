@@ -4,12 +4,12 @@ const messageData= {
             {
                 name: "JERRY",
                 text: "I say we put more resources behind this effort. We have enough to go on.",
-                speedInd: 50
+                speedInd: 40
             },
             {
                 name: "SASHA",
                 text: "Bob, what do you think?",
-                speedInd: 50
+                speedInd: 120
             },
             {
                 name: "BOB",
@@ -107,7 +107,7 @@ const messageData= {
             {
                 name: "SASHA",
                 text: "Yang, why do not you stay after the meeting so we can talk.",
-                speedInd: 50
+                speedInd: 100
             }
         ],
         buttons: []
@@ -132,7 +132,7 @@ const messageData= {
             {
                 name: "SASHA",
                 text: "Yang, why do not you stay after the meeting so we can talk.",
-                speedInd: 50
+                speedInd: 100
             }
         ],
         buttons: []
