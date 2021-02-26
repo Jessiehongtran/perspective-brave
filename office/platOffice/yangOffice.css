@@ -1,3 +1,7 @@
+body {
+    margin: 0
+}
+
 #container {
     overflow: hidden; 
     font-family: Montserrat; 
@@ -26,33 +30,37 @@
 }
 
 #platform {
-    width: 100%; 
+    /* width: 100%;  
     min-height: 100vh; 
     display: flex; 
     flex-direction: column;
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614367680/Group_254_pqzszn.svg);
     background-position: center;
     background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
+
+
 
 .each-balloon {
     position: absolute;
+    z-index:2
 }
 
 .each-balloon.red {
     left: 59%;
     top: 1%
+
 }
 
 .each-balloon.yellow {
-    left: 73.5%;
-    top: 28%
+    left: 77%;
+    top: 36%
 }
 
 .each-balloon.green {
-    left: 45.5%;
-    top: 28%
+    left: 42%;
+    top: 36%
 }
 
 #welcome {
