@@ -36,6 +36,25 @@
     background-repeat: no-repeat;
 }
 
+.each-balloon {
+    position: absolute;
+}
+
+.each-balloon.red {
+    left: 59%;
+    top: 1%
+}
+
+.each-balloon.yellow {
+    left: 73.5%;
+    top: 28%
+}
+
+.each-balloon.green {
+    left: 45.5%;
+    top: 28%
+}
+
 #welcome {
     font-size: 26px; 
     margin-top: 20px;
