@@ -1,5 +1,5 @@
 const characterPos = {
-  x: 50,
+  x: 60,
   y: 60
 }
 
@@ -18,9 +18,11 @@ const sparklingSize = {
   h: 10
 }
 
+
+
 const characterMovingSpeed = 2
 
-const container = document.getElementById("office-container")
+const container = document.getElementById("container")
 const arrowLeft = document.getElementById("arrow-left")
 const arrowDown = document.getElementById("arrow-down")
 const arrowRight = document.getElementById("arrow-right")
@@ -45,7 +47,9 @@ const player = document.getElementById("player");
 const playerImg = document.getElementById("playerImg");
 const sparklingImages = document.getElementsByClassName("sparklingImage")
 const infoIcon = document.getElementById("infoIcon");
-const hoverState = document.getElementById("hoverState")
+const hoverState = document.getElementById("hoverState");
+const detailTutorial = document.getElementsByClassName("detail-tutorial")[0];
+const walkingDirection = document.getElementsByClassName("walking-direction")[0];
 
 arrowKeyHolder.appendChild(arrowKeys)
 
@@ -54,6 +58,11 @@ const character_face_down = "https://res.cloudinary.com/dfulxq7so/image/upload/v
 const character_face_left = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950538/Yang_RightSide_2x_i223zj.png"
 const character_face_right = "https://res.cloudinary.com/dfulxq7so/image/upload/v1611950517/Yang_LeftSide_2x_qc1sg5.png"
 
+let can_go_left = true
+let can_go_right = true
+let can_go_down = true
+let can_go_up = true
+let curWalkingDir 
 
 player.style.left = `${characterPos.x}%`
 player.style.top = `${characterPos.y}%`
@@ -132,34 +141,59 @@ function displaySparklingImg(){
 
 }
 
+function restrict(dir){
+  if (dir === "UP"){
+    can_go_up = can_go_left = can_go_right = false
+    detailTutorial.innerHTML = `You can only go DOWN`
+    walkingDirection.innerHTML = `You can only go DOWN`
+  } else if (dir === "DOWN"){
+    can_go_down = can_go_left = can_go_right = false
+    detailTutorial.innerHTML = `You can only go UP`
+    walkingDirection.innerHTML = `You can only go UP`
+  } else if (dir === "LEFT"){
+    can_go_up = can_go_down = can_go_left = false
+    detailTutorial.innerHTML = `You can only go RIGHT`
+    walkingDirection.innerHTML = `You can only go RIGHT`
+  } else if (dir === "RIGHT"){
+    can_go_up = can_go_down = can_go_right = false
+    detailTutorial.innerHTML = `You can only go LEFT`
+    walkingDirection.innerHTML = `You can only go LEFT`
+  }
+  detailTutorial.style.color = "red"
+}
+
 
 function handleKeyDown(e){
-    if (e.key === "ArrowRight"){
+    if (e.key === "ArrowRight" && can_go_right){
         arrowRight.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor = "#EFF5F5"
         characterPos.x = characterPos.x + characterMovingSpeed
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
-    } else if (e.key === "ArrowLeft"){
+        curWalkingDir = "RIGHT"
+    } else if (e.key === "ArrowLeft" && can_go_left){
         arrowLeft.style.backgroundColor = "#111F47"
         arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
         characterPos.x = characterPos.x - characterMovingSpeed
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
-    } else if (e.key === "ArrowDown"){
+        curWalkingDir = "LEFT"
+    } else if (e.key === "ArrowDown" && can_go_down){
         arrowDown.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
         characterPos.y = characterPos.y + characterMovingSpeed
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
-    } else if (e.key === "ArrowUp"){
+        curWalkingDir = "DOWN"
+    } else if (e.key === "ArrowUp" && can_go_up){
         arrowUp.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
         characterPos.y = characterPos.y - characterMovingSpeed
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
+        curWalkingDir = "UP"
     } else if (e.key === "Enter"){
         enterKey.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = arrowUp.style.backgroundColor  = "#EFF5F5"
@@ -175,9 +209,41 @@ function handleKeyDown(e){
     player.style.left = `${characterPos.x}%`
     player.style.top = `${characterPos.y}%`
 
-    if (isInsideRectangle([{ x: 43, y: 62 }, { x: 49, y: 67 }, { x: 54, y: 63 }, { x: 48, y: 57 }], { x: characterPos.x, y: characterPos.y })){
-      console.log('touch table')
+    //first table
+    if (isInsideRectangle([{ x: 47, y: 54.5 }, { x: 41.5, y: 59 }, { x: 48, y: 65 }, { x: 53.5, y: 60.5 }], { x: characterPos.x, y: characterPos.y })){
+      restrict(curWalkingDir)
     }
+    //edge 1
+    if (isInsideRectangle([{ x: 35, y: 59 }, { x: 67, y: 84.5 }, { x: 63, y: 90 }, { x: 31, y: 64.5 }], { x: characterPos.x, y: characterPos.y })){
+      restrict(curWalkingDir)
+    }
+    //edge 2
+    if (isInsideRectangle([{ x: 67, y: 84.5 }, { x: 100, y: 58 }, { x: 105, y: 62 }, { x: 72, y: 88.5 }], { x: characterPos.x, y: characterPos.y })){
+      restrict(curWalkingDir)
+    }
+    //array of tables
+    if (isInsideRectangle([{ x: 85, y: 50 }, { x: 93, y: 57 }, { x: 69, y: 77 }, { x: 61, y: 71 }], { x: characterPos.x, y: characterPos.y })){
+      restrict(curWalkingDir)
+    }
+    //wall 1
+    if (isInsideRectangle([{ x: 47, y: 37 }, { x: 58, y: 37 }, { x: 58, y: 57 }, { x: 47, y: 57 }], { x: characterPos.x, y: characterPos.y })){
+      restrict(curWalkingDir)
+    }
+    //cupboard 1
+    if (isInsideRectangle([{ x: 65, y: 57 }, { x: 82, y: 44 }, { x: 84, y: 45.5 }, { x: 67, y: 58.5 }], { x: characterPos.x, y: characterPos.y })){
+      console.log('touch cupboard')
+      restrict(curWalkingDir)
+    }
+    //wall 2
+    if (isInsideRectangle([{ x: 65, y: 57 }, { x: 70, y: 57 }, { x: 70, y: 45 }, { x: 65, y: 45 }], { x: characterPos.x , y: characterPos.y})){
+      console.log('touch wall 2')
+      restrict(curWalkingDir)
+    }
+
+    detailInstruction.innerHTML = `Hello!`
+    walkingDirection.innerHTML = `Hello!`
+
+
 }
 
 function removeTutorialShowInstruction(){
@@ -241,7 +307,8 @@ function enterOffice(){
     //show sparkling
     sparkling.style.display = 'block'
     showSparkling(0)
-    
+    //show walkingDirection
+    walkingDirection.style.display = 'block'
 }
 
 function showTutorial(){

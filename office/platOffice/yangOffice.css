@@ -9,6 +9,7 @@ body {
     flex-direction: column; 
     height: 100vh; 
     align-items: center; 
+    width: 100%;
     padding: 40px; 
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613785093/Group_160_uxai8d.png); 
     background-position: center; 
@@ -164,13 +165,16 @@ body {
     height: 100%; 
     display: flex; 
     align-items: flex-start; 
-    justify-content: center; 
+    justify-content: flex-start; 
+    position: absolute;
+    left: 0;
+    top: 20px;
 }
 
 #instruction {
     margin-left: 100px; 
     max-width: 250px; 
-    background-color: #A8D0CE; 
+    background-color: #A9D3D0; 
     border-radius: 10px; 
     padding: 30px; 
     display: flex; 
@@ -265,21 +269,24 @@ body {
 }
 
 #office {
-    width: 100%; 
-    min-height: 100vh; 
+    width: 65%; 
+    height: 100%;
     display: flex; 
+    position: absolute;
+    top: 20%;
+    left: 35%;
     flex-direction: column;
-    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613785732/Group_146_tdavel.svg); 
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614642396/Group_146_pkvvon.png); 
     background-position: center; 
     background-repeat: no-repeat; 
-    background-size: 100% 100% 
+    background-size: 100% 100%;
 }
 
 #player {
     position: absolute; 
     display: flex; 
     flex-direction: column; 
-    z-index: 2;
+    z-index: 3;
     align-items: center;
 }
 
@@ -318,6 +325,17 @@ body {
     flex-direction: column; 
     justify-content: center; 
     align-items: center;
+}
+
+.walking-direction {
+    position: absolute;
+    left: 10%;
+    top: 12%;
+    padding: 8px 20px; 
+    background-color: #A8D0CE; 
+    border-radius: 8px;
+    max-width: 100px;
+    display: none
 }
 
 #keys {

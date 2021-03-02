@@ -100,14 +100,14 @@ body {
 }
 
 .black-male {  
-    left: 16%; 
+    left: 14%; 
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685445/Group_56_mfmrwe.png); 
     background-size: 100% 100%; 
     background-repeat: no-repeat;
 }
 
 .women-in-tech {
-    left: 42%;
+    left: 40%;
     top: 40%;   
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685529/Group_79_k9x6xx.png); 
     background-size: 100% 100%; 
@@ -115,7 +115,7 @@ body {
 }
 
 .trans-gender {
-    left: 68%; 
+    left: 66%; 
     top: 40%; 
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613685450/Group_58_s9dmk9.png); 
     background-size: 100% 100%; 
@@ -176,7 +176,7 @@ body {
 
 .cover.blackMale {
     position: absolute; 
-    left: 16%; 
+    left: 14%; 
     top: 40.9%; 
     background-color: #E2E2E2;  
     opacity: 0.59;
@@ -184,7 +184,7 @@ body {
 
 .cover.transgender {
     position: absolute; 
-    left: 68%; 
+    left: 66%; 
     top: 40.9%;  
     background-color: #E2E2E2;  
     opacity: 0.59;
