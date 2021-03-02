@@ -50,6 +50,7 @@ const infoIcon = document.getElementById("infoIcon");
 const hoverState = document.getElementById("hoverState");
 const detailTutorial = document.getElementsByClassName("detail-tutorial")[0];
 const walkingDirection = document.getElementsByClassName("walking-direction")[0];
+const pointToCharacter =  document.getElementById("pointToCharacter");
 
 arrowKeyHolder.appendChild(arrowKeys)
 
@@ -64,6 +65,7 @@ let can_go_down = true
 let can_go_up = true
 let curWalkingDir 
 
+pointToCharacter.style.position = 'absolute'
 player.style.left = `${characterPos.x}%`
 player.style.top = `${characterPos.y}%`
 player.style.width = `${characterSize.w}%`
@@ -72,6 +74,8 @@ sparkling.style.left = `${sparklingPos.x}%`
 sparkling.style.top = `${sparklingPos.y}%`
 sparkling.style.width = `${sparklingPos.w}%`
 sparkling.style.height = `${sparklingPos.h}%`
+pointToCharacter.style.left = `${characterPos.x + 3.7}%`
+pointToCharacter.style.top = `${characterPos.y + 6}%`
 
 //Initiate character movement image variables
 let character_image = {
@@ -183,14 +187,14 @@ function handleKeyDown(e){
     } else if (e.key === "ArrowDown" && can_go_down){
         arrowDown.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
-        characterPos.y = characterPos.y + characterMovingSpeed
+        characterPos.y =  characterPos.y + characterMovingSpeed
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
         curWalkingDir = "DOWN"
     } else if (e.key === "ArrowUp" && can_go_up){
         arrowUp.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
-        characterPos.y = characterPos.y - characterMovingSpeed
+        characterPos.y =  characterPos.y - characterMovingSpeed
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
         curWalkingDir = "UP"
@@ -209,39 +213,29 @@ function handleKeyDown(e){
     player.style.left = `${characterPos.x}%`
     player.style.top = `${characterPos.y}%`
 
-    //first table
-    if (isInsideRectangle([{ x: 47, y: 54.5 }, { x: 41.5, y: 59 }, { x: 48, y: 65 }, { x: 53.5, y: 60.5 }], { x: characterPos.x, y: characterPos.y })){
-      restrict(curWalkingDir)
+    if (
+      //touch first table
+      isInsideRectangle([{ x: 47, y: 54.5 }, { x: 41.5, y: 59 }, { x: 48, y: 65 }, { x: 53.5, y: 60.5 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+      //touch edge 1
+      || isInsideRectangle([{ x: 35, y: 59 }, { x: 67, y: 84.5 }, { x: 63, y: 90 }, { x: 31, y: 64.5 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+      //touch array of tables
+      || isInsideRectangle([{ x: 85, y: 50 }, { x: 93, y: 57 }, { x: 69, y: 77 }, { x: 61, y: 71 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+      //touch wall 1
+      || isInsideRectangle([{ x: 47, y: 37 }, { x: 58, y: 37 }, { x: 58, y: 57 }, { x: 47, y: 57 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+      //touch cupboard 1
+      || isInsideRectangle([{ x: 65, y: 57 }, { x: 82, y: 44 }, { x: 84, y: 45.5 }, { x: 67, y: 58.5 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+      //touch wall 2
+      || isInsideRectangle([{ x: 65, y: 57 }, { x: 70, y: 57 }, { x: 70, y: 45 }, { x: 65, y: 45 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+      //touch table inside
+      || isInsideRectangle([{ x: 55, y: 44 }, { x: 60, y: 49 }, { x: 70, y: 40 }, { x: 65, y: 35 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+      ){
+        restrict(curWalkingDir)
+    } else {
+      can_go_up = can_go_down = can_go_right = can_go_left = true
+      detailTutorial.innerHTML = `Hello there!`
+      detailTutorial.style.color = 'black'
+      walkingDirection.innerHTML = `Hello there!`
     }
-    //edge 1
-    if (isInsideRectangle([{ x: 35, y: 59 }, { x: 67, y: 84.5 }, { x: 63, y: 90 }, { x: 31, y: 64.5 }], { x: characterPos.x, y: characterPos.y })){
-      restrict(curWalkingDir)
-    }
-    //edge 2
-    if (isInsideRectangle([{ x: 67, y: 84.5 }, { x: 100, y: 58 }, { x: 105, y: 62 }, { x: 72, y: 88.5 }], { x: characterPos.x, y: characterPos.y })){
-      restrict(curWalkingDir)
-    }
-    //array of tables
-    if (isInsideRectangle([{ x: 85, y: 50 }, { x: 93, y: 57 }, { x: 69, y: 77 }, { x: 61, y: 71 }], { x: characterPos.x, y: characterPos.y })){
-      restrict(curWalkingDir)
-    }
-    //wall 1
-    if (isInsideRectangle([{ x: 47, y: 37 }, { x: 58, y: 37 }, { x: 58, y: 57 }, { x: 47, y: 57 }], { x: characterPos.x, y: characterPos.y })){
-      restrict(curWalkingDir)
-    }
-    //cupboard 1
-    if (isInsideRectangle([{ x: 65, y: 57 }, { x: 82, y: 44 }, { x: 84, y: 45.5 }, { x: 67, y: 58.5 }], { x: characterPos.x, y: characterPos.y })){
-      console.log('touch cupboard')
-      restrict(curWalkingDir)
-    }
-    //wall 2
-    if (isInsideRectangle([{ x: 65, y: 57 }, { x: 70, y: 57 }, { x: 70, y: 45 }, { x: 65, y: 45 }], { x: characterPos.x , y: characterPos.y})){
-      console.log('touch wall 2')
-      restrict(curWalkingDir)
-    }
-
-    detailInstruction.innerHTML = `Hello!`
-    walkingDirection.innerHTML = `Hello!`
 
 
 }
