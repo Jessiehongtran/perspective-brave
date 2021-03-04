@@ -18,6 +18,12 @@ const sparklingSize = {
   h: 10
 }
 
+const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+
+console.log('vw', vw)
+console.log('vh', vh)
+
 
 
 const characterMovingSpeed = 2
@@ -50,7 +56,7 @@ const infoIcon = document.getElementById("infoIcon");
 const hoverState = document.getElementById("hoverState");
 const detailTutorial = document.getElementsByClassName("detail-tutorial")[0];
 const walkingDirection = document.getElementsByClassName("walking-direction")[0];
-const pointToCharacter =  document.getElementById("pointToCharacter");
+const speakerIcon = document.getElementsByClassName("speakerIcon")[0];
 
 arrowKeyHolder.appendChild(arrowKeys)
 
@@ -65,7 +71,7 @@ let can_go_down = true
 let can_go_up = true
 let curWalkingDir 
 
-pointToCharacter.style.position = 'absolute'
+
 player.style.left = `${characterPos.x}%`
 player.style.top = `${characterPos.y}%`
 player.style.width = `${characterSize.w}%`
@@ -74,8 +80,7 @@ sparkling.style.left = `${sparklingPos.x}%`
 sparkling.style.top = `${sparklingPos.y}%`
 sparkling.style.width = `${sparklingPos.w}%`
 sparkling.style.height = `${sparklingPos.h}%`
-pointToCharacter.style.left = `${characterPos.x + 3.7}%`
-pointToCharacter.style.top = `${characterPos.y + 6}%`
+
 
 //Initiate character movement image variables
 let character_image = {
@@ -150,20 +155,24 @@ function restrict(dir){
     can_go_up = can_go_left = can_go_right = false
     detailTutorial.innerHTML = `You can only go DOWN`
     walkingDirection.innerHTML = `You can only go DOWN`
+    arrowDown.style.backgroundColor = "#F64141"
   } else if (dir === "DOWN"){
     can_go_down = can_go_left = can_go_right = false
     detailTutorial.innerHTML = `You can only go UP`
     walkingDirection.innerHTML = `You can only go UP`
+    arrowUp.style.backgroundColor = "#F64141"
   } else if (dir === "LEFT"){
     can_go_up = can_go_down = can_go_left = false
     detailTutorial.innerHTML = `You can only go RIGHT`
     walkingDirection.innerHTML = `You can only go RIGHT`
+    arrowRight.style.backgroundColor = "#F64141"
   } else if (dir === "RIGHT"){
     can_go_up = can_go_down = can_go_right = false
     detailTutorial.innerHTML = `You can only go LEFT`
     walkingDirection.innerHTML = `You can only go LEFT`
+    arrowLeft.style.backgroundColor = "#F64141"
   }
-  detailTutorial.style.color = "red"
+  detailTutorial.style.color = "#F64141"
 }
 
 
@@ -232,7 +241,7 @@ function handleKeyDown(e){
         restrict(curWalkingDir)
     } else {
       can_go_up = can_go_down = can_go_right = can_go_left = true
-      detailTutorial.innerHTML = `Hello there!`
+      detailTutorial.innerHTML = `Use the arrow keys on your keyboard to move around in Yang’s Office.`
       detailTutorial.style.color = 'black'
       walkingDirection.innerHTML = `Hello there!`
     }
@@ -267,6 +276,9 @@ function removeTutorialShowInstruction(){
   detailInstruction.style.display = 'flex'
   detailInstruction.style.flexDirection = 'column'
   detailInstruction.style.alignItems = 'center'
+  //move the speaker icon
+  detailInstruction.appendChild(speakerIcon)
+  speakerIcon.style.width = '6%'
   //hide right slide 1 and show right slide 2
   rightSlide1.style.display = 'none'
   rightSlide2.style.display = 'block'
@@ -293,9 +305,13 @@ function enterOffice(){
     //hide left slide 2 and show left slide 3
     leftSlide2.style.display = 'none'
     leftSlide3.style.display = 'block'
-    //change office image, adjust bg position
-    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614115627/Mask_Group_2_xxpycu.svg)"
-    container.style.backgroundPosition = "90% 10%"
+    //change office image and bg image
+    container.style.backgroundImage = 'none'
+    container.style.backgroundColor = 'transparent' 
+    office.style.display = 'block'
+    office.style.width = '100%'
+    office.style.left = '0'
+    office.style.top = '5%'
     //show player
     player.style.display = 'block'
     //show sparkling
@@ -303,6 +319,8 @@ function enterOffice(){
     showSparkling(0)
     //show walkingDirection
     walkingDirection.style.display = 'block'
+    //hide speakerIcon
+    speakerIcon.style.display = 'none'
 }
 
 function showTutorial(){

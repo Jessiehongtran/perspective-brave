@@ -14,6 +14,8 @@ body {
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614273137/Mask_Group_5_uimgni.svg); 
     background-size: cover; 
     background-repeat: no-repeat; 
+    position: relative;
+    overflow: hidden
 }
 
 #leftSlide {
@@ -56,7 +58,7 @@ body {
     width: 100%; 
     display: flex; 
     justify-content: center; 
-    margin-top: 40px;
+    margin-top: 0px;
 }
 
 .logo {
@@ -81,7 +83,7 @@ body {
     font-size: 20px; 
     margin-bottom: 20px; 
     cursor: pointer; 
-    width: 4%; 
+    width: 10%; 
     margin-top: 0px;
 }
 

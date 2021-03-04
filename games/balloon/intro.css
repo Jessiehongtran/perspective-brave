@@ -34,7 +34,7 @@ body {
     /* align-items: center; */
     justify-content: space-between;
     width: 15%;
-    height: 5%;
+    height: 3%;
     /* border: 1px solid blue */
 }
 
@@ -54,9 +54,10 @@ body {
 
 .speakerIcon {
     cursor: pointer; 
-    width: 10%;
-    /* border: 1px solid brown; */
-    height: 15%;
+    width: 12%;
+    /* border: 1px solid brown;  */
+    height: 10%;
+    margin-bottom: 40px;
 }
 
 .each-dot.active {

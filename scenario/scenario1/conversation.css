@@ -74,6 +74,14 @@ body {
     font-size: 22px;
 }
 
+.speakerIcon {
+    font-size: 20px;  
+    cursor: pointer; 
+    width: 10%; 
+    margin-top: 20px; 
+    padding-bottom: 20px;
+}
+
 .tryButton {
     background-color: #DEECEC; 
     padding: 10px 30px; 
