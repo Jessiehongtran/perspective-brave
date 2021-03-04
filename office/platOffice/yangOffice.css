@@ -10,8 +10,7 @@ body {
     flex-direction: column; 
     height: 100vh; 
     align-items: center; 
-    width: 100%;
-    padding: 40px; 
+    width: 100vw;
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613785093/Group_160_uxai8d.png); 
     background-position: center; 
     background-size: 100% 100%; 
@@ -28,7 +27,7 @@ body {
 }
 
 #header {
-    margin-top: 0px; 
+    margin-top: 40px; 
     width: 60%; 
     display: flex; 
     justify-content: center;  
@@ -170,7 +169,7 @@ body {
     align-items: flex-start; 
     justify-content: flex-start; 
     position: absolute;
-    left: 15%;
+    left: 10%; 
     top: 20px;
 }
 
@@ -216,6 +215,22 @@ body {
     align-items: center; 
     background-color: #EFF5F5; 
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; 
+}
+
+#bigOffice {
+    display: none
+}
+
+#bigOfficeImg {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    margin-top: -10%
+}
+
+#bigTable, #smallTable, #arrayTable, #backDrawer, #frontDrawer {
+    position: absolute; 
+    z-index: 3;
 }
 
 #arrow-icon {
@@ -300,6 +315,7 @@ body {
 #sparkling {
     position: absolute; 
     display: none;
+    z-index: 4
 }
 
 .sparklingImage {

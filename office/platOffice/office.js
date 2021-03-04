@@ -1,14 +1,14 @@
-const characterPos = {
+let characterPos = {
   x: 60,
   y: 60
 }
 
 const characterSize = {
-  w: 8,
-  h: 9
+  w: 7,
+  h: 12
 }
 
-const sparklingPos = {
+let sparklingPos = {
   x: 32,
   y: 47
 }
@@ -20,11 +20,6 @@ const sparklingSize = {
 
 const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-
-console.log('vw', vw)
-console.log('vh', vh)
-
-
 
 const characterMovingSpeed = 2
 
@@ -57,6 +52,215 @@ const hoverState = document.getElementById("hoverState");
 const detailTutorial = document.getElementsByClassName("detail-tutorial")[0];
 const walkingDirection = document.getElementsByClassName("walking-direction")[0];
 const speakerIcon = document.getElementsByClassName("speakerIcon")[0];
+const bigOffice = document.getElementById("bigOffice");
+const bigTable = document.getElementById("bigTable")
+const smallTable = document.getElementById("smallTable")
+const arrayTable = document.getElementById("arrayTable")
+const frontDrawer = document.getElementById("frontDrawer")
+const backDrawer = document.getElementById("backDrawer")
+
+const x = document.getElementById("x")
+const y = document.getElementById("y")
+const z = document.getElementById("z")
+const k = document.getElementById("k")
+const x1 = document.getElementById("x1")
+const y1 = document.getElementById("y1")
+const z1 = document.getElementById("z1")
+const k1 = document.getElementById("k1")
+const x2 = document.getElementById("x2")
+const y2 = document.getElementById("y2")
+const z2 = document.getElementById("z2")
+const k2 = document.getElementById("k2")
+const x3 = document.getElementById("x3")
+const y3 = document.getElementById("y3")
+const z3 = document.getElementById("z3")
+const k3 = document.getElementById("k3")
+const x4 = document.getElementById("x4")
+const y4 = document.getElementById("y4")
+const z4 = document.getElementById("z4")
+const k4 = document.getElementById("k4")
+const x5 = document.getElementById("x5")
+const y5 = document.getElementById("y5")
+const z5 = document.getElementById("z5")
+const k5 = document.getElementById("k5")
+const x6 = document.getElementById("x6")
+const y6 = document.getElementById("y6")
+const z6 = document.getElementById("z6")
+const k6 = document.getElementById("k6")
+let inBigOffice = false
+
+const bigTablePos = {
+  x: 150,
+  y: 400
+}
+
+const smallTablePos = {
+  x: 570,
+  y: 50
+}
+
+const arrayTablePos = {
+  x: 750,
+  y: 500
+}
+
+const bigTableSize = {
+  w: 600,
+  h: 300
+}
+
+const smallTableSize = {
+  w: 500,
+  h: 250
+}
+
+const arrayTableSize = {
+  w: 1000,
+  h: 500
+}
+
+const bigTableStartingPoint = {
+  x: 250,
+  y: 520
+}
+
+const smallTableStartingPoint = {
+  x: 700,
+  y: 250
+}
+
+const arrayTableStartingPoint = {
+  x: 900,
+  y: 900
+}
+
+const wall1StartingPoint = {
+  x: 650,
+  y: 250
+}
+
+const wall2StartingPoint = {
+  x: 970,
+  y: 280
+}
+
+const frontDrawerPoint = {
+  x: 1430,
+  y: 340
+}
+
+const frontDrawerPos = {
+  x: 1100,
+  y: 290
+}
+
+const frontDrawerSize = {
+  w: 800,
+  h: 200
+}
+
+const backDrawerPos = {
+  x: 750,
+  y: 290
+}
+
+const backDrawerSize = {
+  w: 800,
+  h: 200
+}
+
+const backDrawerPoint = {
+  x: 1050,
+  y: 450
+}
+
+const baseScreenViewWidth = 1600
+const baseScreenViewHeight = 952
+
+bigTable.style.left = `${bigTablePos.x*vw/baseScreenViewWidth}px`
+bigTable.style.top = `${bigTablePos.y*vh/baseScreenViewHeight}px`
+bigTable.style.width = `${bigTableSize.w}px`
+bigTable.style.height = `${bigTableSize.h}px`
+x.style.left = `${bigTableStartingPoint.x}px`
+x.style.top = `${bigTableStartingPoint.y}px`
+y.style.left = `${bigTableStartingPoint.x + 220}px`
+y.style.top = `${bigTableStartingPoint.y - 140}px`
+z.style.left = `${bigTableStartingPoint.x + 220*2}px`
+z.style.top = `${bigTableStartingPoint.y}px`
+k.style.left = `${bigTableStartingPoint.x + 220}px`
+k.style.top = `${bigTableStartingPoint.y + 140}px`
+
+smallTable.style.left = `${smallTablePos.x*vw/baseScreenViewWidth}px`
+smallTable.style.top = `${smallTablePos.y*vh/baseScreenViewHeight}px`
+smallTable.style.width = `${smallTableSize.w}px`
+smallTable.style.height = `${smallTableSize.h}px`
+x1.style.left = `${smallTableStartingPoint.x}px`
+x1.style.top = `${smallTableStartingPoint.y}px`
+y1.style.left = `${smallTableStartingPoint.x + 220}px`
+y1.style.top = `${smallTableStartingPoint.y - 150}px`
+z1.style.left = `${smallTableStartingPoint.x + 220*1.32}px`
+z1.style.top = `${smallTableStartingPoint.y - 100}px`
+k1.style.left = `${smallTableStartingPoint.x + 220*0.35}px`
+k1.style.top = `${smallTableStartingPoint.y + 40}px`
+
+arrayTable.style.left = `${arrayTablePos.x*vw/baseScreenViewWidth}px`
+arrayTable.style.top = `${arrayTablePos.y*vh/baseScreenViewHeight}px`
+arrayTable.style.width = `${arrayTableSize.w}px`
+arrayTable.style.height = `${arrayTableSize.h}px`
+x2.style.left = `${arrayTableStartingPoint.x}px`
+x2.style.top = `${arrayTableStartingPoint.y}px`
+y2.style.left = `${arrayTableStartingPoint.x + 630}px`
+y2.style.top = `${arrayTableStartingPoint.y - 380}px`
+z2.style.left = `${arrayTableStartingPoint.x + 600 + 140}px`
+z2.style.top = `${arrayTableStartingPoint.y - 290}px`
+k2.style.left = `${arrayTableStartingPoint.x + 120}px`
+k2.style.top = `${arrayTableStartingPoint.y + 60}px`
+
+
+x3.style.left = `${wall1StartingPoint.x}px`
+x3.style.top = `${wall1StartingPoint.y}px`
+y3.style.left = `${wall1StartingPoint.x + 60}px`
+y3.style.top = `${wall1StartingPoint.y}px`
+z3.style.left = `${wall1StartingPoint.x + 60}px`
+z3.style.top = `${wall1StartingPoint.y + 220}px`
+k3.style.left = `${wall1StartingPoint.x}px`
+k3.style.top = `${wall1StartingPoint.y + 220}px`
+
+x4.style.left = `${wall2StartingPoint.x}px`
+x4.style.top = `${wall2StartingPoint.y}px`
+y4.style.left = `${wall2StartingPoint.x + 60}px`
+y4.style.top = `${wall2StartingPoint.y}px`
+z4.style.left = `${wall2StartingPoint.x + 60}px`
+z4.style.top = `${wall2StartingPoint.y + 200}px`
+k4.style.left = `${wall2StartingPoint.x}px`
+k4.style.top = `${wall2StartingPoint.y + 200}px`
+
+backDrawer.style.left = `${backDrawerPos.x*vw/baseScreenViewWidth}px`
+backDrawer.style.top = `${backDrawerPos.y*vh/baseScreenViewHeight}px`
+backDrawer.style.width = `${backDrawerSize.w}px`
+backDrawer.style.height = `${backDrawerSize.h}px`
+x5.style.left = `${backDrawerPoint.x}px`
+x5.style.top = `${backDrawerPoint.y}px`
+y5.style.left = `${backDrawerPoint.x + 240}px`
+y5.style.top = `${backDrawerPoint.y - 140}px`
+z5.style.left = `${backDrawerPoint.x + 240 + 20}px`
+z5.style.top = `${backDrawerPoint.y - 120}px`
+k5.style.left = `${backDrawerPoint.x + 20}px`
+k5.style.top = `${backDrawerPoint.y + 20}px`
+
+frontDrawer.style.left = `${frontDrawerPos.x*vw/baseScreenViewWidth}px`
+frontDrawer.style.top = `${frontDrawerPos.y*vh/baseScreenViewHeight}px`
+frontDrawer.style.width = `${frontDrawerSize.w}px`
+frontDrawer.style.height = `${frontDrawerSize.h}px`
+x6.style.left = `${frontDrawerPoint.x}px`
+x6.style.top = `${frontDrawerPoint.y}px`
+y6.style.left = `${frontDrawerPoint.x + 20}px`
+y6.style.top = `${frontDrawerPoint.y -20}px`
+z6.style.left = `${frontDrawerPoint.x + 230}px`
+z6.style.top = `${frontDrawerPoint.y + 100}px`
+k6.style.left = `${frontDrawerPoint.x + 230 -20}px`
+k6.style.top = `${frontDrawerPoint.y + 100 + 20}px`
+
 
 arrowKeyHolder.appendChild(arrowKeys)
 
@@ -71,11 +275,10 @@ let can_go_down = true
 let can_go_up = true
 let curWalkingDir 
 
-
 player.style.left = `${characterPos.x}%`
 player.style.top = `${characterPos.y}%`
 player.style.width = `${characterSize.w}%`
-player.style.height = `${characterPos.h}%`
+player.style.height = `${characterSize.h}%`
 sparkling.style.left = `${sparklingPos.x}%`
 sparkling.style.top = `${sparklingPos.y}%`
 sparkling.style.width = `${sparklingPos.w}%`
@@ -180,7 +383,11 @@ function handleKeyDown(e){
     if (e.key === "ArrowRight" && can_go_right){
         arrowRight.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor = "#EFF5F5"
-        characterPos.x = characterPos.x + characterMovingSpeed
+        if (inBigOffice){
+          characterPos.x = characterPos.x + 30
+        } else {
+          characterPos.x = characterPos.x + characterMovingSpeed
+        } 
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
@@ -188,7 +395,11 @@ function handleKeyDown(e){
     } else if (e.key === "ArrowLeft" && can_go_left){
         arrowLeft.style.backgroundColor = "#111F47"
         arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
-        characterPos.x = characterPos.x - characterMovingSpeed
+        if (inBigOffice){
+          characterPos.x = characterPos.x - 30
+        } else {
+          characterPos.x = characterPos.x - characterMovingSpeed
+        }
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
@@ -196,14 +407,22 @@ function handleKeyDown(e){
     } else if (e.key === "ArrowDown" && can_go_down){
         arrowDown.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
-        characterPos.y =  characterPos.y + characterMovingSpeed
+        if (inBigOffice){
+          characterPos.y = characterPos.y + 30
+        } else {
+          characterPos.y =  characterPos.y + characterMovingSpeed
+        }
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
         curWalkingDir = "DOWN"
     } else if (e.key === "ArrowUp" && can_go_up){
         arrowUp.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
-        characterPos.y =  characterPos.y - characterMovingSpeed
+        if (inBigOffice){
+          characterPos.y = characterPos.y - 30
+        } else {
+          characterPos.y =  characterPos.y - characterMovingSpeed
+        }
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
         curWalkingDir = "UP"
@@ -219,31 +438,44 @@ function handleKeyDown(e){
         window.location.href = '../../scenario/scenario1/yangConversation.html'
       }
 
-    player.style.left = `${characterPos.x}%`
-    player.style.top = `${characterPos.y}%`
-
-    if (
-      //touch first table
-      isInsideRectangle([{ x: 47, y: 54.5 }, { x: 41.5, y: 59 }, { x: 48, y: 65 }, { x: 53.5, y: 60.5 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
-      //touch edge 1
-      || isInsideRectangle([{ x: 35, y: 59 }, { x: 67, y: 84.5 }, { x: 63, y: 90 }, { x: 31, y: 64.5 }], { x: characterPos.x , y: characterPos.y + 6})
-      //touch array of tables
-      || isInsideRectangle([{ x: 85, y: 50 }, { x: 93, y: 57 }, { x: 69, y: 77 }, { x: 61, y: 71 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
-      //touch wall 1
-      || isInsideRectangle([{ x: 47, y: 37 }, { x: 58, y: 37 }, { x: 58, y: 57 }, { x: 47, y: 57 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
-      //touch cupboard 1
-      || isInsideRectangle([{ x: 65, y: 57 }, { x: 82, y: 44 }, { x: 84, y: 45.5 }, { x: 67, y: 58.5 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
-      //touch wall 2
-      || isInsideRectangle([{ x: 65, y: 57 }, { x: 70, y: 57 }, { x: 70, y: 45 }, { x: 65, y: 45 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
-      //touch table inside
-      || isInsideRectangle([{ x: 55, y: 44 }, { x: 60, y: 49 }, { x: 70, y: 40 }, { x: 65, y: 35 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
-      ){
-        restrict(curWalkingDir)
+    if (inBigOffice){
+      player.style.left = `${characterPos.x}px`
+      player.style.top = `${characterPos.y}px`
     } else {
-      can_go_up = can_go_down = can_go_right = can_go_left = true
-      detailTutorial.innerHTML = `Use the arrow keys on your keyboard to move around in Yang’s Office.`
-      detailTutorial.style.color = 'black'
-      walkingDirection.innerHTML = `Hello there!`
+      player.style.left = `${characterPos.x}%`
+      player.style.top = `${characterPos.y}%`
+    }
+
+    if (inBigOffice){
+      if (false){
+        restrict(curWalkingDir)
+      } else {
+        can_go_up = can_go_down = can_go_right = can_go_left = true
+        walkingDirection.innerHTML = `Hello there!`
+      }
+    } else {
+      if (
+        //touch first table
+        isInsideRectangle([{ x: 47, y: 54.5 }, { x: 41.5, y: 59 }, { x: 48, y: 65 }, { x: 53.5, y: 60.5 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+        //touch edge 1
+        || isInsideRectangle([{ x: 35, y: 59 }, { x: 67, y: 84.5 }, { x: 63, y: 90 }, { x: 31, y: 64.5 }], { x: characterPos.x , y: characterPos.y + 6})
+        //touch array of tables
+        || isInsideRectangle([{ x: 85, y: 50 }, { x: 93, y: 57 }, { x: 69, y: 77 }, { x: 61, y: 71 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+        //touch wall 1
+        || isInsideRectangle([{ x: 47, y: 37 }, { x: 58, y: 37 }, { x: 58, y: 57 }, { x: 47, y: 57 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+        //touch cupboard 1
+        || isInsideRectangle([{ x: 65, y: 57 }, { x: 82, y: 44 }, { x: 84, y: 45.5 }, { x: 67, y: 58.5 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+        //touch wall 2
+        || isInsideRectangle([{ x: 65, y: 57 }, { x: 70, y: 57 }, { x: 70, y: 45 }, { x: 65, y: 45 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+        //touch table inside
+        || isInsideRectangle([{ x: 55, y: 44 }, { x: 60, y: 49 }, { x: 70, y: 40 }, { x: 65, y: 35 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+        ){
+          restrict(curWalkingDir)
+      } else {
+        can_go_up = can_go_down = can_go_right = can_go_left = true
+        detailTutorial.innerHTML = `Use the arrow keys on your keyboard to move around in Yang’s Office.`
+        detailTutorial.style.color = 'black'
+      }
     }
 
 
@@ -310,10 +542,14 @@ function enterOffice(){
     container.style.backgroundColor = 'transparent' 
     office.style.display = 'block'
     office.style.width = '100%'
-    office.style.left = '0'
-    office.style.top = '5%'
-    //show player
+    office.style.left = '-5%'
+    office.style.top = '-10%'
+    office.style.backgroundImage = 'none'
+    bigOffice.style.display = 'block'
+    office.appendChild(bigOffice)
+    //show player & increase playerImg size
     player.style.display = 'block'
+    playerImg.style.width = '100%'
     //show sparkling
     sparkling.style.display = 'block'
     showSparkling(0)
@@ -321,6 +557,22 @@ function enterOffice(){
     walkingDirection.style.display = 'block'
     //hide speakerIcon
     speakerIcon.style.display = 'none'
+    //update inBigOffice
+    inBigOffice = true
+    //reset player and sparkling from percentage to px
+    characterPos = {
+      x: 600,
+      y: 600
+    }
+    sparklingPos = {
+      x: 500,
+      y: 500
+    }
+    player.style.left = `${characterPos.x}px`
+    player.style.top = `${characterPos.y}px`
+    sparkling.style.left = `${sparklingPos.x}px`
+    sparkling.style.top = `${sparklingPos.y}px`
+    
 }
 
 function showTutorial(){
