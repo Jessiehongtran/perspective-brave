@@ -226,7 +226,7 @@ function handleKeyDown(e){
       //touch first table
       isInsideRectangle([{ x: 47, y: 54.5 }, { x: 41.5, y: 59 }, { x: 48, y: 65 }, { x: 53.5, y: 60.5 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
       //touch edge 1
-      || isInsideRectangle([{ x: 35, y: 59 }, { x: 67, y: 84.5 }, { x: 63, y: 90 }, { x: 31, y: 64.5 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
+      || isInsideRectangle([{ x: 35, y: 59 }, { x: 67, y: 84.5 }, { x: 63, y: 90 }, { x: 31, y: 64.5 }], { x: characterPos.x , y: characterPos.y + 6})
       //touch array of tables
       || isInsideRectangle([{ x: 85, y: 50 }, { x: 93, y: 57 }, { x: 69, y: 77 }, { x: 61, y: 71 }], { x: characterPos.x + 3.5, y: characterPos.y + 6})
       //touch wall 1
