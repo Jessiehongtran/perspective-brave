@@ -3,7 +3,7 @@ let characterPos = {
   y: 60
 }
 
-const characterSize = {
+let characterSize = {
   w: 7,
   h: 12
 }
@@ -52,6 +52,7 @@ const hoverState = document.getElementById("hoverState");
 const detailTutorial = document.getElementsByClassName("detail-tutorial")[0];
 const walkingDirection = document.getElementsByClassName("walking-direction")[0];
 const speakerIcon = document.getElementsByClassName("speakerIcon")[0];
+const ma = document.getElementById("ma")
 const bigOffice = document.getElementById("bigOffice");
 const bigTable = document.getElementById("bigTable")
 const smallTable = document.getElementById("smallTable")
@@ -185,8 +186,8 @@ x.style.left = `${bigTableStartingPoint.x}px`
 x.style.top = `${bigTableStartingPoint.y}px`
 y.style.left = `${bigTableStartingPoint.x + 220}px`
 y.style.top = `${bigTableStartingPoint.y - 140}px`
-z.style.left = `${bigTableStartingPoint.x + 220*2}px`
-z.style.top = `${bigTableStartingPoint.y}px`
+z.style.left = `${bigTableStartingPoint.x + 220 + 220}px`
+z.style.top = `${bigTableStartingPoint.y + 0}px`
 k.style.left = `${bigTableStartingPoint.x + 220}px`
 k.style.top = `${bigTableStartingPoint.y + 140}px`
 
@@ -441,13 +442,31 @@ function handleKeyDown(e){
     if (inBigOffice){
       player.style.left = `${characterPos.x}px`
       player.style.top = `${characterPos.y}px`
+      ma.style.left = `${characterPos.x + 50}px`
+      ma.style.top = `${characterPos.y + 120}px`
     } else {
       player.style.left = `${characterPos.x}%`
       player.style.top = `${characterPos.y}%`
     }
 
     if (inBigOffice){
-      if (false){
+      if (
+        //touch big table
+        isInsideRectangle([{ x: bigTableStartingPoint.x, y: bigTableStartingPoint.y }, { x: bigTableStartingPoint.x + 220, y: bigTableStartingPoint.y - 140 }, { x: bigTableStartingPoint.x + 220*2, y: bigTableStartingPoint.y }, { x: bigTableStartingPoint.x + 220, y: bigTableStartingPoint.y + 140 }], { x: characterPos.x + 100, y: characterPos.y + 120})
+        //touch wall1
+        || isInsideRectangle([{ x: wall1StartingPoint.x, y: wall1StartingPoint.y }, { x: wall1StartingPoint.x + 60, y: wall1StartingPoint.y }, { x: wall1StartingPoint.x + 60, y: wall1StartingPoint.y + 220 }, { x: wall1StartingPoint.x, y: wall1StartingPoint.y + 220 }], { x: characterPos.x + 100, y: characterPos.y + 120 })
+        //touch wall2
+        || isInsideRectangle([{ x: wall2StartingPoint.x, y: wall2StartingPoint.y }, { x: wall2StartingPoint.x + 60, y: wall2StartingPoint.y }, { x: wall2StartingPoint.x + 60, y: wall2StartingPoint.y + 200 }, { x: wall2StartingPoint.x, y: wall2StartingPoint.y + 200 }], { x: characterPos.x + 100, y: characterPos.y + 120 })
+        //touch small table
+        || isInsideRectangle([{ x: smallTableStartingPoint.x, y: smallTableStartingPoint.y }, { x: smallTableStartingPoint.x + 220, y: smallTableStartingPoint.y - 150 }, { x: smallTableStartingPoint.x + 220*1.32, y: smallTableStartingPoint.y - 100 }, { x: smallTableStartingPoint.x + 220*0.35, y: smallTableStartingPoint.y + 40 }], { x: characterPos.x + 100, y: characterPos.y + 120 })
+        //touch array table
+        || isInsideRectangle([{ x: arrayTableStartingPoint.x, y: arrayTableStartingPoint.y }, { x: arrayTableStartingPoint.x + 630, y: arrayTableStartingPoint.y - 380 }, { x: arrayTableStartingPoint.x + 600 + 140, y: arrayTableStartingPoint.y - 290 }, { x: arrayTableStartingPoint.x + 120, y: arrayTableStartingPoint.y + 60 }], { x: characterPos.x + 100, y: characterPos.y + 120 })
+        //touch back drawer
+        || isInsideRectangle([{ x: backDrawerPoint.x, y: backDrawerPoint.y }, { x: backDrawerPoint.x + 240, y: backDrawerPoint.y - 140 }, { x: backDrawerPoint.x + 240 + 20, y: backDrawerPoint.y - 120 }, { x: backDrawerPoint.x + 20, y: backDrawerPoint.y + 20 }], { x: characterPos.x + 100, y: characterPos.y + 120 })
+        //touch front drawer
+        || isInsideRectangle([{ x: frontDrawerPoint.x, y: frontDrawerPoint.y }, { x: frontDrawerPoint.x + 20, y: frontDrawerPoint.y -20 }, { x: frontDrawerPoint.x + 230, y: frontDrawerPoint.y + 100 }, { x: frontDrawerPoint.x + 230 -20, y: frontDrawerPoint.y + 100 + 20 }], { x: characterPos.x + 100, y: characterPos.y + 120 })
+      ){
+        // console.log('touch first table in big office')
         restrict(curWalkingDir)
       } else {
         can_go_up = can_go_down = can_go_right = can_go_left = true
@@ -477,8 +496,71 @@ function handleKeyDown(e){
         detailTutorial.style.color = 'black'
       }
     }
+}
 
+function drawMap(){
+  const squareSize = 10
 
+  const cols = Math.floor(vw/squareSize)
+  const rows = Math.floor(vh/squareSize)
+
+  let eachSquare
+
+  for (let r = 0; r < rows; r++){
+      for (let c = 0; c < cols; c++){
+          eachSquare = document.createElement('div')
+          eachSquare.setAttribute('id', 'eachSquare')
+          eachSquare.style.width = `${squareSize}px`
+          eachSquare.style.height = `${squareSize}px`
+          eachSquare.style.position = 'absolute'
+          eachSquare.style.left = `${c*squareSize}px`
+          eachSquare.style.top = `${r*squareSize}px`
+          eachSquare.style.border = '1px solid grey'
+          eachSquare.style.zIndex = '5'
+
+          //first table paint
+          if (c >= 21 && c <= 25 && r >= 31 && r <= 50){
+            eachSquare.style.backgroundColor = "red"
+          }
+          if (c >= 26 && c <= 30 && r >= 33 && r <= 52){
+            eachSquare.style.backgroundColor = "red"
+          }
+          if (c >= 31 && c <= 35 && r >= 34 && r <= 53){
+            eachSquare.style.backgroundColor = "red"
+          }
+          if (c >= 36 && c <= 39 && r >= 34 && r <= 53){
+            eachSquare.style.backgroundColor = "red"
+          }
+          if (c >= 40 && c <= 44 && r >= 30 && r <= 59){
+            eachSquare.style.backgroundColor = "red"
+          }
+          if (c >= 45 && c <= 49 && r >= 32 && r <= 53){
+            eachSquare.style.backgroundColor = "red"
+          }
+          if (c >= 49 && c <= 54 && r >= 35 && r <= 53){
+            eachSquare.style.backgroundColor = "red"
+          }
+
+          //second table paint
+          if (c >= 66 && c <= 72 && r >= 3 && r <= 20){
+            eachSquare.style.backgroundColor = "yellow"
+          }
+          if (c >= 72 && c <= 76 && r >= 0 && r <= 14){
+            eachSquare.style.backgroundColor = "yellow"
+          }
+          if (c >= 76 && c <= 80 && r >= 0 && r <= 11){
+            eachSquare.style.backgroundColor = "yellow"
+          }
+          if (c >= 80 && c <= 84 && r >= 0 && r <= 9){
+            eachSquare.style.backgroundColor = "yellow"
+          }
+          if (c >= 85 && c <= 93 && r >= 0 && r <= 7){
+            eachSquare.style.backgroundColor = "yellow"
+          }
+
+          container.appendChild(eachSquare)
+      }
+  }
 }
 
 function removeTutorialShowInstruction(){
@@ -564,15 +646,22 @@ function enterOffice(){
       x: 600,
       y: 600
     }
+    characterSize = {
+      w: 100,
+      h: 120
+    }
     sparklingPos = {
       x: 500,
       y: 500
     }
     player.style.left = `${characterPos.x}px`
     player.style.top = `${characterPos.y}px`
+    player.style.width = `${characterSize.w}px`
+    player.style.height = `${characterSize.h}px`
     sparkling.style.left = `${sparklingPos.x}px`
     sparkling.style.top = `${sparklingPos.y}px`
-    
+    //draw the map
+    drawMap()
 }
 
 function showTutorial(){
@@ -634,6 +723,15 @@ function isInsideRectangle(rect, target){
     const topRight = rect[1]
     const bottomRight = rect[2]
     const bottomLeft = rect[3]
+
+    console.log('topLeft', topLeft, ' topRight',  topRight, 'bottomRight', bottomRight, 'bottomLeft', bottomLeft)
+    console.log('target', target)
+
+    console.log('triangle1', triangArea(topLeft.x, topLeft.y, target.x, target.y, bottomLeft.x, bottomLeft.y))
+    console.log('triangle2', triangArea(topLeft.x, topLeft.y, target.x, target.y, topRight.x, topRight.y))
+    console.log('triangle3', triangArea(topRight.x, topRight.y, target.x, target.y, bottomRight.x, bottomRight.y))
+    console.log('triangle4', triangArea(bottomRight.x, bottomRight.y, target.x, target.y, bottomLeft.x, bottomLeft.y) )
+    console.log('rect', rectArea(topLeft.x, topLeft.y, topRight.x, topRight.y, bottomRight.x, bottomRight.y, bottomLeft.x, bottomLeft.y))
 
     if (  triangArea(topLeft.x, topLeft.y, target.x, target.y, bottomLeft.x, bottomLeft.y) 
         + triangArea(topLeft.x, topLeft.y, target.x, target.y, topRight.x, topRight.y)
