@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    font-family: Montserrat; 
+}
+
+#player {
+    position: absolute; 
+    display: flex; 
+    flex-direction: column; 
+    z-index: 15;
+    align-items: center;
+}
+
+#playerImg {
+    width: 70%; 
+    height: 100%
+}
+
+.walking-direction {
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    padding: 8px 20px; 
+    background-color: #A8D0CE; 
+    border-radius: 8px;
+    max-width: 150px;
+    display: none
+}
