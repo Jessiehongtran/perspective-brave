@@ -31,6 +31,9 @@ const allowedWalkingDir = {
     
 }
 
+const characterHeight = 85
+const halfCharacterWidth = 55
+
 character.style.left = `${characterPos.x}px`
 character.style.top = `${characterPos.y}px`
 character.style.width = '120px'
@@ -158,9 +161,9 @@ function displaySparklingImg(){
     let fillInd = sparklingInd
     if (sparklingInd < 150){
         if (sparklingInd < 10){
-        fillInd = "00" + sparklingInd.toString()
+            fillInd = "00" + sparklingInd.toString()
         } else if (sparklingInd >= 10 && sparklingInd < 100){
-        fillInd = "0" + sparklingInd.toString()
+            fillInd = "0" + sparklingInd.toString()
         } 
         sparklingImage.src = `../../asset/Blue_Sparkles/Sparkles_00${fillInd}.png`
         sparklingInd += 1
@@ -174,9 +177,8 @@ function displaySparklingImg(){
   
 
 function isWalkable(){
-    console.log(characterPos.x, characterPos.y)
     for (let k = 0; k < paths.length ; k++){
-        if (characterPos.y + 85 >= paths[k].r1*10 && characterPos.y + 85 <= paths[k].r2*10 && characterPos.x + 55 >= paths[k].c1*10 && characterPos.x + 55 <= paths[k].c2*10){
+        if (characterPos.y + characterHeight >= paths[k].r1*10 && characterPos.y + characterHeight <= paths[k].r2*10 && characterPos.x + halfCharacterWidth >= paths[k].c1*10 && characterPos.x + halfCharacterWidth <= paths[k].c2*10){
             return true
         }
     }
@@ -204,7 +206,6 @@ function enableWalkingDir(){
 }
 
 function handleKeyDown(e){
-    console.log(isWalkable())
     if (!isWalkable()){
         disableCurWalkingDir()
     } else {
@@ -235,8 +236,16 @@ function handleKeyDown(e){
     }
     character.style.left = `${characterPos.x}px`
     character.style.top = `${characterPos.y}px`
-    x.style.left = `${characterPos.x + 55}px`
-    x.style.top = `${characterPos.y + 85}px`
+    // x.style.left = `${characterPos.x + 55}px`
+    // x.style.top = `${characterPos.y + 85}px`
+
+    if (characterPos.x + halfCharacterWidth >= sparklingPos.x  && characterPos.x + halfCharacterWidth <= sparklingPos.x + sparklingSize.w
+        && characterPos.y + characterHeight >= sparklingPos.y && characterPos.y + characterHeight <= sparklingPos.y + sparklingSize.h
+        && e.key === "Enter"
+        ){
+            console.log('inzone')
+          window.location.href = '../../scenario/scenario1/yangConversation.html'
+        }
     
 }
 
