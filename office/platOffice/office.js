@@ -5,7 +5,7 @@ let characterPos = {
 
 let characterSize = {
   w: 7,
-  h: 12
+  h: 14
 }
 
 let sparklingPos = {
@@ -211,6 +211,8 @@ function handleKeyDown(e){
 
     player.style.left = `${characterPos.x}%`
     player.style.top = `${characterPos.y}%`
+    player.style.width = `7%`
+    player.style.height = `8%`
   
     if (
       //touch first table

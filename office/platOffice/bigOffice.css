@@ -16,6 +16,16 @@ body {
     height: 100%
 }
 
+#sparkling {
+    position: absolute; 
+    z-index: 4
+}
+
+.sparklingImage {
+    width: 15%
+}
+
+
 .walking-direction {
     position: absolute;
     left: 5%;

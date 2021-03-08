@@ -5,10 +5,22 @@ const container = document.getElementById("container")
 const character = document.getElementById("player")
 const walkingDirection = document.getElementsByClassName("walking-direction")[0]
 const playerImg = document.getElementById("playerImg")
+const sparklingImage = document.getElementsByClassName("sparklingImage")[0]
+const sparkling = document.getElementById("sparkling")
 
 const characterPos = {
-    x: 600,
+    x: 800,
     y: 600
+}
+
+let sparklingPos = {
+    x: 600,
+    y: 570
+  }
+  
+const sparklingSize = {
+    w: 50,
+    h: 100
 }
 
 const allowedWalkingDir = {
@@ -23,6 +35,10 @@ character.style.left = `${characterPos.x}px`
 character.style.top = `${characterPos.y}px`
 character.style.width = '120px'
 character.style.height = '100px'
+sparkling.style.left = `${sparklingPos.x}px`
+sparkling.style.top = `${sparklingPos.y}px`
+sparkling.style.width = `${sparklingPos.w}px`
+sparkling.style.height = `${sparklingPos.h}px`
 // x.style.position = 'absolute'
 // x.style.zIndex = '16'
 // x.style.color = 'green'
@@ -135,6 +151,26 @@ let character_image = {
       moveInd[dir] = 0
     } 
   }
+
+let sparklingInd = 0
+
+function displaySparklingImg(){
+    let fillInd = sparklingInd
+    if (sparklingInd < 150){
+        if (sparklingInd < 10){
+        fillInd = "00" + sparklingInd.toString()
+        } else if (sparklingInd >= 10 && sparklingInd < 100){
+        fillInd = "0" + sparklingInd.toString()
+        } 
+        sparklingImage.src = `../../asset/Blue_Sparkles/Sparkles_00${fillInd}.png`
+        sparklingInd += 1
+    } else {
+        sparklingInd = 0
+    }
+
+    setTimeout(displaySparklingImg, 30)
+
+}
   
 
 function isWalkable(){
@@ -205,3 +241,4 @@ function handleKeyDown(e){
 }
 
 document.addEventListener("keydown", handleKeyDown)
+displaySparklingImg()
