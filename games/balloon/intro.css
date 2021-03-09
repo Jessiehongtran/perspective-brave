@@ -33,9 +33,8 @@ body {
     display: flex;
     /* align-items: center; */
     justify-content: space-between;
-    width: 15%;
+    width: 20%;
     height: 3%;
-    /* border: 1px solid blue */
 }
 
 .each-dot {
@@ -50,6 +49,9 @@ body {
     /* border: 1px solid pink; */
     height: 40%;
     transition:all 1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .speakerIcon {

@@ -41,16 +41,20 @@ body {
 
 #platform {
     /* width: 100%;  
-    min-height: 100vh; 
-    display: flex; 
-    flex-direction: column;
-    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614367680/Group_254_pqzszn.svg);
+    min-height: 100vh;  */
+    /* display: flex; 
+    flex-direction: column; */ 
+    /* background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614367680/Group_254_pqzszn.svg);
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat; */
 }
 
-
+#platformImg {
+    position: absolute; 
+    left: 500px; 
+    top: 100px;
+}
 
 .each-balloon {
     position: absolute;
@@ -58,19 +62,19 @@ body {
 }
 
 .each-balloon.red {
-    left: 59%;
-    top: 1%
+    left: 850px;
+    top: -8%
 
 }
 
 .each-balloon.yellow {
-    left: 77%;
-    top: 36%
+    left: 1180px;
+    top: 20%
 }
 
 .each-balloon.green {
-    left: 42%;
-    top: 36%
+    left: 550px;
+    top: 20%
 }
 
 #welcome {
