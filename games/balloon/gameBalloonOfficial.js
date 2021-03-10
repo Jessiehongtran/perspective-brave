@@ -17,6 +17,7 @@ const allowedWalkingDir = {
 }
 
 let opDir
+let adjustInd = 1
 
 const character = document.getElementById('player')
 const playerImg = document.getElementById('playerImg')
@@ -179,16 +180,14 @@ function handleKeyDown(e){
 const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
-// if (vw < 1792 && vw > 1400){
-//   adjustInd = 0.99
-// } else if (vw > 1000 && vw <= 1400){
-//   adjustInd = 0.97
-// }
+if (vw < 1792 && vw > 1400){
+  adjustInd = 0.9
+} else if (vw > 1000 && vw <= 1400){
+  adjustInd = 0.8
+}
 
 
-const squareSize = 10
-// const vw = 1792
-// const vh = 1000
+const squareSize = 10*adjustInd
 const cols = Math.floor(vw/squareSize)
 const rows = Math.floor(vh/squareSize)
 
@@ -204,7 +203,7 @@ for (let r = 0; r < rows; r++){
         eachSquare.style.position = 'absolute'
         eachSquare.style.left = `${c*squareSize}px`
         eachSquare.style.top = `${r*squareSize}px`
-        // eachSquare.style.border = '1px solid grey'
+        eachSquare.style.border = '1px solid grey'
         eachSquare.style.zIndex = '5'
 
         squareRows.push({
@@ -225,8 +224,8 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
     for (let i = topRow; i < midRow; i++ ){
         let j = midCol - increase
         while (j < midCol + increase + 1){
-            if (squares[i][j]){
-                // squares[i][j].element.style.backgroundColor = 'red'
+            if (i < rows && j < cols && squares[i][j]){
+                squares[i][j].element.style.backgroundColor = 'red'
                 squares[i][j].walkable = true
             }
             j += 1
@@ -238,8 +237,8 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
     for (let i = bottomRow - 4; i > midRow - 1; i-- ){
         let j = midCol - increase
         while (j < midCol + increase + 1){
-            if (squares[i][j]){
-                // squares[i][j].element.style.backgroundColor = 'red'
+            if (i < rows && j < cols && squares[i][j]){
+                squares[i][j].element.style.backgroundColor = 'red'
                 squares[i][j].walkable = true
             }
             j += 1
@@ -258,8 +257,8 @@ function drawBush(leftCol, rightCol, startRow){
     let count = 0
     for (c = leftCol; c < Math.floor((rightCol + leftCol)/2); c++){
         for (r = startRow - Math.floor(count*1.5); r <= startRow + count ; r++){
-            if (squares[r][c]){
-                // squares[r][c].element.style.backgroundColor = 'green'
+            if (r < rows && c < cols && squares[r][c]){
+                squares[r][c].element.style.backgroundColor = 'green'
                 squares[r][c].walkable = true
             }
         }
@@ -268,8 +267,8 @@ function drawBush(leftCol, rightCol, startRow){
     count = 0
     for (c = rightCol; c >= Math.floor((rightCol + leftCol)/2); c--){
         for (r = startRow - Math.floor(count*1.5); r <= startRow + count ; r++){
-            if (squares[r][c]){
-                // squares[r][c].element.style.backgroundColor = 'green'
+            if (r < rows && c < cols && squares[r][c]){
+                squares[r][c].element.style.backgroundColor = 'green'
                 squares[r][c].walkable = true
             }
         }
@@ -288,160 +287,236 @@ let r1 = 79
 let c1 = 110
 
 for (let i = r1; i < r1 + 4; i++){
-    // squares[i][c1].element.style.backgroundColor = 'green'
-    squares[i][c1].walkable = true
+    if (i < rows && c1 < cols){
+        squares[i][c1].element.style.backgroundColor = 'green'
+        squares[i][c1].walkable = true
+    }
 }
 for (let i = r1-1; i < r1 + 6; i++){
-    // squares[i][c1-1].element.style.backgroundColor = 'green'
-    squares[i][c1-1].walkable = true
+    if (i < rows && c1-1 < cols){
+        squares[i][c1-1].element.style.backgroundColor = 'green'
+        squares[i][c1-1].walkable = true
+    }
 }
 for (let i = r1-1; i < r1 + 3; i++){
-    // squares[i][c1-2].element.style.backgroundColor = 'green'
-    squares[i][c1-2].walkable = true
+    if (i < rows && c1 - 2 < cols){
+        squares[i][c1-2].element.style.backgroundColor = 'green'
+        squares[i][c1-2].walkable = true
+    }
 }
 for (let i = r1-2; i < r1 + 4; i++){
-    // squares[i][c1-3].element.style.backgroundColor = 'green'
-    squares[i][c1-3].walkable = true
+    if (i < rows && c1 - 3 < cols){
+        squares[i][c1-3].element.style.backgroundColor = 'green'
+        squares[i][c1-3].walkable = true
+    }
 }
 for (let i = r1; i < r1 + 4; i++){
-    // squares[i][c1+1].element.style.backgroundColor = 'green'
-    squares[i][c1+1].walkable = true
+    if (i < rows && c1+1 < cols){
+        squares[i][c1+1].element.style.backgroundColor = 'green'
+        squares[i][c1+1].walkable = true
+    }
 }
 for (let i = r1; i < r1 + 5; i++){
-    // squares[i][c1+2].element.style.backgroundColor = 'green'
-    squares[i][c1+2].walkable = true
+    if (i < rows && c1 + 2 < cols){
+        squares[i][c1+2].element.style.backgroundColor = 'green'
+        squares[i][c1+2].walkable = true
+    }
 }
 for (let i = r1; i < r1 + 5; i++){
-    // squares[i][c1+3].element.style.backgroundColor = 'green'
-    squares[i][c1+3].walkable = true
+    if (i < rows && c1 + 3 < cols){
+        squares[i][c1+3].element.style.backgroundColor = 'green'
+        squares[i][c1+3].walkable = true
+    }
 }
 for (let i = r1+1; i < r1 + 6; i++){
-    // squares[i][c1+4].element.style.backgroundColor = 'green'
-    squares[i][c1+4].walkable = true
+    if (i < rows && c1 + 4 < cols){
+        squares[i][c1+4].element.style.backgroundColor = 'green'
+        squares[i][c1+4].walkable = true
+    }
 }
 for (let i = r1+1; i < r1 + 6; i++){
-    // squares[i][c1+5].element.style.backgroundColor = 'green'
-    squares[i][c1+5].walkable = true
+    if (i < rows && c1 + 5 < cols){
+        squares[i][c1+5].element.style.backgroundColor = 'green'
+        squares[i][c1+5].walkable = true
+    }
 }
 for (let i = r1+2; i < r1 + 7; i++){
-    // squares[i][c1+6].element.style.backgroundColor = 'green'
-    squares[i][c1+6].walkable = true
+    if (i < rows && c1 + 6 < cols){
+        squares[i][c1+6].element.style.backgroundColor = 'green'
+        squares[i][c1+6].walkable = true
+    }
 }
 for (let i = r1+2; i < r1 + 7; i++){
-    // squares[i][c1+7].element.style.backgroundColor = 'green'
-    squares[i][c1+7].walkable = true
+    if (i < rows && c1 + 7 < cols){
+        squares[i][c1+7].element.style.backgroundColor = 'green'
+        squares[i][c1+7].walkable = true
+    }
 }
 for (let i = r1+3; i < r1 + 8; i++){
-    // squares[i][c1+8].element.style.backgroundColor = 'green'
-    squares[i][c1+8].walkable = true
+    if (i < rows && c1 + 8 < cols){
+        squares[i][c1+8].element.style.backgroundColor = 'green'
+        squares[i][c1+8].walkable = true
+    }
 }
 for (let i = r1+3; i < r1 + 8; i++){
-    // squares[i][c1+9].element.style.backgroundColor = 'green'
-    squares[i][c1+9].walkable = true
+    if (i < rows && c1 + 9 < cols){
+        squares[i][c1+9].element.style.backgroundColor = 'green'
+        squares[i][c1+9].walkable = true
+    }
 }
 for (let i = 89; i < 91; i++){
-    // squares[i][66].element.style.backgroundColor = 'pink'
-    squares[i][66].walkable = true
+    if (i < rows && 66 < cols){
+        squares[i][66].element.style.backgroundColor = 'pink'
+        squares[i][66].walkable = true
+    }
 }
 for (let i = 88; i < 92; i++){
-    // squares[i][67].element.style.backgroundColor = 'pink'
-    squares[i][67].walkable = true
+    if (i < rows && 67 < cols){
+        squares[i][67].element.style.backgroundColor = 'pink'
+        squares[i][67].walkable = true
+    }
 }
 for (let i = 87; i < 92; i++){
-    // squares[i][68].element.style.backgroundColor = 'pink'
-    squares[i][68].walkable = true
+    if (i < rows && 68 < cols){
+        squares[i][68].element.style.backgroundColor = 'pink'
+        squares[i][68].walkable = true
+    }
 }
 for (let i = 88; i < 92; i++){
-    // squares[i][69].element.style.backgroundColor = 'pink'
-    squares[i][69].walkable = true
+    if (i < rows && 69 < cols){
+        squares[i][69].element.style.backgroundColor = 'pink'
+        squares[i][69].walkable = true
+    }
 }
 for (let i = 88; i < 92; i++){
-    // squares[i][70].element.style.backgroundColor = 'pink'
-    squares[i][70].walkable = true
+    if (i < rows && 70 < cols){
+        squares[i][70].element.style.backgroundColor = 'pink'
+        squares[i][70].walkable = true
+    }
 }
 for (let i = 88; i < 93; i++){
-    // squares[i][71].element.style.backgroundColor = 'pink'
-    squares[i][71].walkable = true
+    if (i < rows && 71 < cols){
+        squares[i][71].element.style.backgroundColor = 'pink'
+        squares[i][71].walkable = true
+    }
 }
 for (let i = 89; i < 93; i++){
-    // squares[i][72].element.style.backgroundColor = 'pink'
-    squares[i][72].walkable = true
+    if (i < rows && 72 < cols){
+        squares[i][72].element.style.backgroundColor = 'pink'
+        squares[i][72].walkable = true
+    }
 }
 for (let i = 89; i < 93; i++){
-    // squares[i][73].element.style.backgroundColor = 'pink'
-    squares[i][73].walkable = true
+    if (i < rows && 73 < cols){
+        squares[i][73].element.style.backgroundColor = 'pink'
+        squares[i][73].walkable = true
+    }
 }
 for (let i = 89; i < 95; i++){
-    // squares[i][74].element.style.backgroundColor = 'pink'
-    squares[i][74].walkable = true
+    if (i < rows && 74 < cols){
+        squares[i][74].element.style.backgroundColor = 'pink'
+        squares[i][74].walkable = true
+    }
 }
 for (let i = 90; i < 95; i++){
-    // squares[i][75].element.style.backgroundColor = 'pink'
-    squares[i][75].walkable = true
+    if (i < rows && 75 < cols){
+        squares[i][75].element.style.backgroundColor = 'pink'
+        squares[i][75].walkable = true
+    }
 }
 for (let i = 90; i < 95; i++){
-    // squares[i][76].element.style.backgroundColor = 'pink'
-    squares[i][76].walkable = true
+    if (i < rows && 76 < cols){
+        squares[i][76].element.style.backgroundColor = 'pink'
+        squares[i][76].walkable = true
+    }
 }
 for (let i = 90; i < 95; i++){
-    // squares[i][77].element.style.backgroundColor = 'pink'
-    squares[i][77].walkable = true
+    if (i < rows && 77 < cols){
+        squares[i][77].element.style.backgroundColor = 'pink'
+        squares[i][77].walkable = true
+    }
 }
 for (let i = 91; i < 95; i++){
-    // squares[i][78].element.style.backgroundColor = 'pink'
-    squares[i][78].walkable = true
+    if (i < rows && 78 < cols){
+        squares[i][78].element.style.backgroundColor = 'pink'
+        squares[i][78].walkable = true
+    }
 }
 for (let i = 91; i < 95; i++){
-    // squares[i][79].element.style.backgroundColor = 'pink'
-    squares[i][79].walkable = true
+    if (i < rows && 79 < cols){
+        squares[i][79].element.style.backgroundColor = 'pink'
+        squares[i][79].walkable = true
+    }
 }
 for (let i = 91; i < 95; i++){
-    // squares[i][80].element.style.backgroundColor = 'pink'
-    squares[i][80].walkable = true
+    if (i < rows && 80 < cols){
+        squares[i][80].element.style.backgroundColor = 'pink'
+        squares[i][80].walkable = true
+    }
 }
 for (let i = 92; i < 95; i++){
-    // squares[i][81].element.style.backgroundColor = 'pink'
-    squares[i][81].walkable = true
+    if (i < rows && 81 < cols){
+        squares[i][81].element.style.backgroundColor = 'pink'
+        squares[i][81].walkable = true
+    }
 }
 for (let i = 92; i < 95; i++){
-    // squares[i][82].element.style.backgroundColor = 'pink'
-    squares[i][82].walkable = true
+    if (i < rows && 82 < cols){
+        squares[i][82].element.style.backgroundColor = 'pink'
+        squares[i][82].walkable = true
+    }
 }
 for (let i = 92; i < 95; i++){
-    // squares[i][83].element.style.backgroundColor = 'pink'
-    squares[i][83].walkable = true
+    if (i < rows && 83 < cols){
+        squares[i][83].element.style.backgroundColor = 'pink'
+        squares[i][83].walkable = true
+    }
 }
 for (let i = 93; i < 95; i++){
-    // squares[i][84].element.style.backgroundColor = 'pink'
-    squares[i][84].walkable = true
+    if (i < rows && 84 < cols){
+        squares[i][84].element.style.backgroundColor = 'pink'
+        squares[i][84].walkable = true
+    }
 }
 for (let i = 93; i < 95; i++){
-    // squares[i][85].element.style.backgroundColor = 'pink'
-    squares[i][85].walkable = true
+    if (i < rows && 85 < cols){
+        squares[i][85].element.style.backgroundColor = 'pink'
+        squares[i][85].walkable = true
+    }
 }
 for (let i = 93; i < 95; i++){
-    // squares[i][86].element.style.backgroundColor = 'pink'
-    squares[i][86].walkable = true
+    if (i < rows && 86 < cols){
+        squares[i][86].element.style.backgroundColor = 'pink'
+        squares[i][86].walkable = true
+    }
 }
 for (let i = 94; i < 95; i++){
-    // squares[i][87].element.style.backgroundColor = 'pink'
-    squares[i][87].walkable = true
+    if (i < rows && 87 < cols){
+        squares[i][87].element.style.backgroundColor = 'pink'
+        squares[i][87].walkable = true
+    }
 }
 for (let i = 94; i < 95; i++){
-    // squares[i][88].element.style.backgroundColor = 'pink'
-    squares[i][88].walkable = true
+    if (i < rows && 88 < cols){
+        squares[i][88].element.style.backgroundColor = 'pink'
+        squares[i][88].walkable = true
+    }
 }
 for (let i = 94; i < 95; i++){
-    // squares[i][89].element.style.backgroundColor = 'pink'
-    squares[i][89].walkable = true
+    if (i < rows && 89 < cols){
+        squares[i][89].element.style.backgroundColor = 'pink'
+        squares[i][89].walkable = true
+    }
 }
 
 let n = 0
 let breakpoint = 0
 for (let c = 91; c < 120; c++){
     for (let r = 94 - n ; r > 94 - n - 5; r--){
-        // squares[r][c].element.style.backgroundColor = 'pink'
-        squares[r][c].walkable = true
+        if (r < rows && c < cols && squares[r][c]){
+            squares[r][c].element.style.backgroundColor = 'pink'
+            squares[r][c].walkable = true
+        }
     }
     breakpoint += 1
     if (breakpoint === 8){
@@ -451,9 +526,8 @@ for (let c = 91; c < 120; c++){
 }
 
 function isWalkable(){
-    let curCol = (characterPos.x + characterSize.w/2)/10
-    let curRow = (characterPos.y + characterSize.h -10)/10
-    console.log('c', curCol, 'r', curRow, squares[curRow][curCol].walkable)
+    let curCol = Math.floor((characterPos.x + characterSize.w/2)/squareSize)
+    let curRow = Math.floor((characterPos.y + characterSize.h -10)/squareSize)
 
     if (squares[curRow][curCol].walkable){
         return true
