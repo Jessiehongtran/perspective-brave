@@ -17,7 +17,8 @@ const allowedWalkingDir = {
 }
 
 let opDir
-let adjustInd = 1
+let adjustIndForWidth = 1
+let adjustIndForHeight = 1
 
 const character = document.getElementById('player')
 const playerImg = document.getElementById('playerImg')
@@ -180,16 +181,34 @@ function handleKeyDown(e){
 const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
-if (vw < 1792 && vw > 1400){
-  adjustInd = 0.9
-} else if (vw > 1000 && vw <= 1400){
-  adjustInd = 0.8
+if (vw < 1792 && vw >= 1500){
+    adjustIndForWidth = 0.85
+    adjustIndForHeight = 0.97
+} else if (vw >= 1400 && vw < 1500){
+    adjustIndForWidth = 0.8
+    adjustIndForHeight = 0.95
+} else if (vw >= 1300 && vw < 1400){
+    adjustIndForWidth = 0.77
+    adjustIndForHeight = 0.94
+} else if (vw >= 1200 && vw < 1300){
+    adjustIndForWidth = 0.7
+    adjustIndForHeight = 0.93
+} else if (vw >= 1100 && vw < 1200){
+    adjustIndForWidth = 0.65
+    adjustIndForHeight = 0.91
+} else if (vw >= 900 && vw < 1100 ){
+    adjustIndForWidth = 0.53
+    adjustIndForHeight = 0.83
+} else if (vw < 900 ){
+    adjustIndForWidth = 0.40
+    adjustIndForHeight = 0.74
 }
 
 
-const squareSize = 10*adjustInd
-const cols = Math.floor(vw/squareSize)
-const rows = Math.floor(vh/squareSize)
+const squareWidth = 10*adjustIndForWidth
+const squareHeight = 10*adjustIndForHeight
+const cols = Math.floor(vw/squareWidth)
+const rows = Math.floor(vh/squareHeight)
 
 
 const squares = []
@@ -198,11 +217,11 @@ for (let r = 0; r < rows; r++){
     for (let c = 0; c < cols; c++){
         eachSquare = document.createElement('div')
         eachSquare.setAttribute('id', 'eachSquare')
-        eachSquare.style.width = `${squareSize}px`
-        eachSquare.style.height = `${squareSize}px`
+        eachSquare.style.width = `${squareWidth}px`
+        eachSquare.style.height = `${squareHeight}px`
         eachSquare.style.position = 'absolute'
-        eachSquare.style.left = `${c*squareSize}px`
-        eachSquare.style.top = `${r*squareSize}px`
+        eachSquare.style.left = `${c*squareWidth}px`
+        eachSquare.style.top = `${r*squareHeight}px`
         eachSquare.style.border = '1px solid grey'
         eachSquare.style.zIndex = '5'
 
@@ -526,8 +545,8 @@ for (let c = 91; c < 120; c++){
 }
 
 function isWalkable(){
-    let curCol = Math.floor((characterPos.x + characterSize.w/2)/squareSize)
-    let curRow = Math.floor((characterPos.y + characterSize.h -10)/squareSize)
+    let curCol = Math.floor((characterPos.x + characterSize.w/2)/squareWidth)
+    let curRow = Math.floor((characterPos.y + characterSize.h -10)/squareHeight)
 
     if (squares[curRow][curCol].walkable){
         return true
