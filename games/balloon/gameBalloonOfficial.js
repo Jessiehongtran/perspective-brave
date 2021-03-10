@@ -24,7 +24,10 @@ const character = document.getElementById('player')
 const playerImg = document.getElementById('playerImg')
 const container = document.getElementById('container')
 const walkingDirection = document.getElementsByClassName("walking-direction")[0]
-const x = document.getElementById('x')
+const gameInstruction = document.getElementsByClassName("game-instruction")[0]
+const infoIcon = document.getElementsByClassName("info-icon")[0]
+const question = document.getElementsByClassName("question")[0]
+// const x = document.getElementById('x')
 
 character.style.left = `${characterPos.x}px`
 character.style.top = `${characterPos.y}px`
@@ -56,6 +59,34 @@ function jump(){
     }  
 }
 
+function enterOrLeavePlatform(){
+    if ( gameInstruction.style.display !== 'none'){
+        gameInstruction.style.display = 'none'
+    } else {
+        gameInstruction.style.display = 'flex'
+    }
+    
+    if (infoIcon.style.display === 'none'){
+        infoIcon.style.display = 'block'
+    } else {
+        infoIcon.style.display = 'none'
+    }
+    
+    if (question.style.display === 'none'){
+        question.style.display = 'block'
+    } else {
+        question.style.display = 'none'
+    }
+    
+    if (character.style.display === 'none'){
+        character.style.display = 'block'
+    } else {
+        character.style.display = 'none' 
+    }
+
+}
+
+
 //Initiate character movement image variables
 let character_image = {
     "UP": "",
@@ -66,10 +97,10 @@ let character_image = {
   
 //Initiate variables to keep track image index
 let moveInd = {
-"UP": 0,
-"DOWN": 0,
-"LEFT": 0,
-"RIGHT": 0
+    "UP": 0,
+    "DOWN": 0,
+    "LEFT": 0,
+    "RIGHT": 0
 }
 
 //Function to get character image file (that is stored locally)
@@ -222,7 +253,7 @@ for (let r = 0; r < rows; r++){
         eachSquare.style.position = 'absolute'
         eachSquare.style.left = `${c*squareWidth}px`
         eachSquare.style.top = `${r*squareHeight}px`
-        eachSquare.style.border = '1px solid grey'
+        // eachSquare.style.border = '1px solid grey'
         eachSquare.style.zIndex = '5'
 
         squareRows.push({
@@ -230,7 +261,7 @@ for (let r = 0; r < rows; r++){
             walkable: false
         })
 
-        container.appendChild(eachSquare)
+        // container.appendChild(eachSquare)
     }
     squares.push(squareRows)
 }

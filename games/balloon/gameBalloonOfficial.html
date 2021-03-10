@@ -8,10 +8,14 @@
     </head>
     <body>
         <div id="container" style="width: 100%; height: 100vh; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615252554/Mask_Group_7_u4iwqc.svg); background-repeat: no-repeat; background-position: center; background-size: cover; position: relative; overflow: hidden">
-            <div class="question" style="position: absolute; left: 5%; top: 5%; width: 30%; z-index: 2;">
-                How many employees do you think leave their job when they do perceive bias in the workplace?
+            <div class="info-icon" onclick="enterOrLeavePlatform()" style="display: none; z-index: 1; position: absolute; left: 2%; top: 2%; width: 120px; height: 70px">
+                <img style="width: 100%" style="cursor: pointer;" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615403814/info_icon_kffauc.svg"/>
             </div>
-            <div class="main-game" style="width: 100%; height: 100%; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615252334/gameplatform_z0aowi.svg); background-size: 100% 100%;">
+            <div class="question" style="display: none; position: absolute; left: 5%; top: 10%; width: 30%; z-index: 2; font-size: 22px;">
+                <p>How many employees do you think leave their job when they do perceive bias in the workplace?</p>
+                <img style="width: 50px; height: 50px" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
+            </div>
+            <div class="main-game" style="z-index: 1; width: 100%; height: 100%; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615252334/gameplatform_z0aowi.svg); background-size: 100% 100%;">
                 <div class="balloons" style=" z-index: 4; ">
                     <div style="position: absolute;left: 13%; top: 40%; width: 20%; height: 30%; display: flex; justify-content: center; align-items: center; background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615253383/greenBalloon_qcw6vp.svg); background-position: center; background-size: 100% 100%; background-repeat: no-repeat;">
                         <p style="z-index: 4; margin-top: -70px; color: white; font-size: 20px; max-width: 120px; text-align: center; font-weight: bold;">1 out of 10</p>
@@ -23,13 +27,53 @@
                         <p style="z-index: 4; margin-top: -70px; color: white; font-size: 20px; max-width: 120px; text-align: center; font-weight: bold">5 out of 10</p>
                     </div>
                 </div>
-            </div>
-            <div id="player" style="position: absolute; left: 40%; top: 50%; z-index: 10; ">
+            </div> 
+            <div id="player" style="display: none; position: absolute; left: 40%; top: 50%; z-index: 9; ">
                 <img id="playerImg" style="width: 100%; height: 100%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
             </div>
-            <div id="x">x</div>
-            <div class="walking-direction">
+            <!-- <div id="x">x</div>  -->
+            <div class="walking-direction" style="z-index: 1">
                 
+            </div> 
+            <div class="game-instruction" style=" display: flex; flex-direction: column; background-color: rgba(220, 235, 235, 0.95); z-index: 10; justify-content: center; align-items: center; width: 100%; height: 100vh; position: absolute; left: 0; top: 0">
+                <div class="header" role="header" >
+                    <img  style="" class="logo" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614191904/Group_45_oh8syt.svg" />
+                </div>
+                <a href="./intro.html" role="backButton">
+                    <img id="leftSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+                </a>
+                <img id="rightSlide" onclick="enterOrLeavePlatform()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+                <div class="game-instruction" style="background-color: #A9D3D0; width: 70%; height: 70%; display: flex; justify-content: center; align-items: center;">
+                    <div class="wrapper" style="width: 60%">
+                        <div class="keyboard">
+                            <div class="arrow-keys">
+                                <div class="row-top" >
+                                    <div id="arrow-up" role="upArrow" >
+                                        <img id="arrow-icon" alt="up arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_136_zkhhuy.svg" />
+                                    </div>
+                                </div>
+                                <div class="row-bottom" >
+                                    <div id="arrow-left" role="leftArrow" >
+                                        <img id="arrow-icon leftRight" alt="left arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_139_w5fhcu.svg" style=""/>
+                                    </div>
+                                    <div id="arrow-down"  role="downArrow" >
+                                        <img id="arrow-icon" alt="down arrow icon"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_137_tizmtr.svg" style=""/>
+                                    </div>
+                                    <div id="arrow-right" role="rightArrow" > 
+                                        <img id="arrow-icon leftRight" alt="right arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_138_gmdsg1.svg" style=""/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="enter" role="enter" >
+                                Enter
+                            </div>
+                        </div>
+                        <div class="text">
+                            Read or listen to the question. Use the arrow keys to choose the balloon with the correct answer. Press “Enter” to submit.
+                        </div>
+                        <img class="speaker-icon" style="width: 50px; height: 50px" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="./gameBalloonOfficial.js"></script>
