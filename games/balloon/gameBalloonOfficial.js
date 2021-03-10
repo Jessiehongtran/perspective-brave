@@ -451,20 +451,6 @@ for (let c = 91; c < 120; c++){
 }
 
 function isWalkable(){
-    // for (let i = 0; i < walkablePath.length; i++){
-    //     console.log('characterPos.x + characterSize.w/2 -5', characterPos.x + characterSize.w/2 -5)
-    //     console.log('walkablePath[i].style.left', walkablePath[i].style.left )
-    //     console.log('characterPos.y + characterSize.h -10', characterPos.y + characterSize.h -10)
-    //     console.log('walkablePath[i].style.top ', walkablePath[i].style.top )
-    //     if (characterPos.x + characterSize.w/2  >=  walkablePath[i].style.left 
-    //         && characterPos.x + characterSize.w/2  <=  walkablePath[i].style.left + squareSize
-    //         && characterPos.y + characterSize.h  >=  walkablePath[i].style.top 
-    //         && characterPos.y + characterSize.h  <=  walkablePath[i].style.top + squareSize){
-    //             return true
-    //     }
-    // }
-    // return false
-
     let curCol = (characterPos.x + characterSize.w/2)/10
     let curRow = (characterPos.y + characterSize.h -10)/10
     console.log('c', curCol, 'r', curRow, squares[curRow][curCol].walkable)
