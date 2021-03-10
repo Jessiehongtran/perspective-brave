@@ -1,6 +1,26 @@
+const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+
 const characterPos = {
     x: 600,
     y: 700
+}
+
+const balloonSize = 200
+
+const greenBalloonPos = {
+    x: Math.floor(18*vw/100),
+    y: Math.floor(40*vh/100)
+}
+
+const redBalloonPos = {
+    x: Math.floor(45*vw/100),
+    y: Math.floor(10*vh/100)
+}
+
+const yellowBalloonPos = {
+    x: Math.floor(73*vw/100),
+    y: Math.floor(40*vh/100)
 }
 
 let characterSize = {
@@ -19,6 +39,7 @@ const allowedWalkingDir = {
 let opDir
 let adjustIndForWidth = 1
 let adjustIndForHeight = 1
+let letSoundPlay
 
 const character = document.getElementById('player')
 const playerImg = document.getElementById('playerImg')
@@ -27,12 +48,23 @@ const walkingDirection = document.getElementsByClassName("walking-direction")[0]
 const gameInstruction = document.getElementsByClassName("game-instruction")[0]
 const infoIcon = document.getElementsByClassName("info-icon")[0]
 const question = document.getElementsByClassName("question")[0]
+const redBalloon = document.getElementById('redBalloon')
+const greenBalloon = document.getElementById('greenBalloon')
+const yellowBalloon = document.getElementById('yellowBalloon')
 // const x = document.getElementById('x')
 
 character.style.left = `${characterPos.x}px`
 character.style.top = `${characterPos.y}px`
 character.style.width = `${characterSize.w}px`
 character.style.height = `${characterSize.h}px`
+redBalloon.style.left = `${redBalloonPos.x}px`
+redBalloon.style.top = `${redBalloonPos.y}px`
+greenBalloon.style.left = `${greenBalloonPos.x}px`
+greenBalloon.style.top = `${greenBalloonPos.y}px`
+yellowBalloon.style.left = `${yellowBalloonPos.x}px`
+yellowBalloon.style.top = `${yellowBalloonPos.y}px`
+
+redBalloon.style.width = greenBalloon.style.width = yellowBalloon.style.width = `${balloonSize}px`
 // x.style.left = `${characterPos.x + characterSize.w/2 }px`
 // x.style.top = `${characterPos.y + characterSize.h }px`
 
@@ -51,6 +83,8 @@ function jump(){
 
     character.style.left = `${characterPos.x}px`
     character.style.top = `${characterPos.y}px`
+
+    isTouchingBalloon()
 
     // checkTouchBalloon()
 
@@ -148,6 +182,74 @@ function enableWalkingDir(){
     walkingDirection.style.display = 'none'
 }
 
+function flyRed(){
+    redBalloonPos.y -= 10
+    redBalloon.style.top = `${redBalloonPos.y}px`
+
+    if (letSoundPlay){
+        playSound('../../asset/sounds/Cheer.mp3')
+    }
+
+    if (redBalloonPos.y >  - 200){
+        setTimeout(flyRed, 100)
+    }
+}
+
+function flyGreen(){
+    greenBalloonPos.y -= 10
+    greenBalloon.style.top = `${greenBalloonPos.y}px`
+
+    if (letSoundPlay){
+        playSound('../../asset/sounds/Explode.mp3')
+    }
+
+    if (greenBalloonPos.y >  - 200){
+        setTimeout(flyGreen, 100)
+    }
+}
+
+function flyYellow(){
+    yellowBalloonPos.y -= 10
+    yellowBalloon.style.top = `${yellowBalloonPos.y}px`
+
+    if (letSoundPlay){
+        playSound('../../asset/sounds/Explode.mp3')
+    }
+
+    if (yellowBalloonPos.y > - 200){
+        setTimeout(flyYellow, 100)
+    }
+}
+
+//function to play sound
+function playSound(file){
+    var audio = new Audio(file);
+    audio.play()
+    letSoundPlay = false
+}
+
+function isTouchingBalloon(){
+    if (characterPos.x + characterSize.w/2 >= redBalloonPos.x
+        && characterPos.x + characterSize.w/2 <= redBalloonPos.x + balloonSize
+        && characterPos.y >= redBalloonPos.y - balloonSize){
+            console.log('touch red')
+            flyRed()
+        }
+    if (characterPos.x + characterSize.w/2 >= greenBalloonPos.x
+        && characterPos.x + characterSize.w/2 <= greenBalloonPos.x + balloonSize
+        && characterPos.y >= greenBalloonPos.y - balloonSize){
+            console.log('touch green')
+            flyGreen()
+        }
+    if (characterPos.x + characterSize.w/2 >= yellowBalloonPos.x
+        && characterPos.x + characterSize.w/2 <= yellowBalloonPos.x + balloonSize
+        && characterPos.y >= yellowBalloonPos.y - balloonSize){
+            console.log('touch yellow')
+            flyYellow()
+        }
+    
+}
+
 const walkingSpeed = 20
 
 function handleKeyDown(e){
@@ -188,7 +290,8 @@ function handleKeyDown(e){
         playerImg.src = character_image["DOWN"]
     } 
     //jump
-    if (e.keyCode === 32){
+    if (e.key === "Enter"){
+        letSoundPlay = true 
         countStep = 0
         jump()
     }
@@ -209,8 +312,6 @@ function handleKeyDown(e){
     // x.style.top = `${characterPos.y + characterSize.h -10}px`
 }
 
-const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
 if (vw < 1792 && vw >= 1500){
     adjustIndForWidth = 0.85
