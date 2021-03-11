@@ -35,6 +35,9 @@
             <div class="walking-direction" style="z-index: 1">
                 
             </div> 
+            <div class="hello" style="position: absolute; left: 5%; top: 20%; display: none">
+                Hello
+            </div>
             <div class="game-instruction" style=" display: flex; flex-direction: column; background-color: rgba(220, 235, 235, 0.95); z-index: 10; justify-content: center; align-items: center; width: 100%; height: 100vh; position: absolute; left: 0; top: 0">
                 <div class="header" role="header" >
                     <img  style="" class="logo" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614191904/Group_45_oh8syt.svg" />
@@ -73,18 +76,18 @@
                         </div>
                         <img class="speaker-icon" style="width: 50px; height: 50px" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
                     </div>
-                </div>
-                <div class="wrong-indicate" style="display: none; justify-content: center; align-items: center; background-color: rgba(12, 25, 59, 0.95); position: absolute; width: 100%; height: 100vh; z-index: 12; left: 0; top: 0">
-                    <div class="message" style="display: flex; flex-direction: column; justify-content: center; background-color: white; width: 50%; height: 50%;">
-                        <div class="close-icon" onclick="removeError()" style="display: flex; justify-content: flex-end; width: 100%;  ">
-                            <img style="padding: 10px 20px" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615419806/closeIcon_qxfmm0.svg"/>
-                        </div>
-                        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 80%">
-                            <img style="margin-bottom: 40px; width: 7%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615422025/Group_275_vngtwc.svg" />
-                            <div class="message-tag" style="margin-bottom: 40px; font-size: 26px;">
-                                Wrong answer! Please try again!
+                    <div class="wrong-indicate" style="display: none; justify-content: center; align-items: center; background-color: rgba(12, 25, 59, 0.95); position: absolute; z-index: 20; width: 100%; height: 100%;left: 0; top: 0">
+                        <div class="message" style="display: flex; flex-direction: column; justify-content: center; background-color: white; width: 50%; height: 50%;">
+                            <div class="close-icon" onclick="removeError()" style="display: flex; justify-content: flex-end; width: 100%;  ">
+                                <img style="padding: 10px 20px" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615419806/closeIcon_qxfmm0.svg"/>
                             </div>
-                            <img style="width: 50px; height: 50px" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
+                            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 80%">
+                                <img style="margin-bottom: 40px; width: 7%" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615422025/Group_275_vngtwc.svg" />
+                                <div class="message-tag" style="margin-bottom: 40px; font-size: 26px;">
+                                    Wrong answer! Please try again!
+                                </div>
+                                <img style="width: 50px; height: 50px" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
+                            </div>
                         </div>
                     </div>
                 </div>

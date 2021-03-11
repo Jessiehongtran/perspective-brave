@@ -52,6 +52,7 @@ const redBalloon = document.getElementById('redBalloon')
 const greenBalloon = document.getElementById('greenBalloon')
 const yellowBalloon = document.getElementById('yellowBalloon')
 const wrongIndicate = document.getElementsByClassName('wrong-indicate')[0]
+const hello = document.getElementsByClassName('hello')[0]
 // const x = document.getElementById('x')
 
 character.style.left = `${characterPos.x}px`
@@ -203,14 +204,19 @@ function flyGreen(){
     if (letSoundPlay){
         playSound('../../asset/sounds/Explode.mp3')
         greenBalloon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615418936/green_pop_vwveha.svg)'
+        console.log(greenBalloon.childNodes)
+        greenBalloon.childNodes[1].innerHTML = "Wrong, try again"
+        greenBalloon.childNodes[1].style.color = "black"
+
     } else {
         greenBalloon.style.backgroundImage = 'none'
     }
 
     if (greenBalloonPos.y >  - 200){
-        setTimeout(flyGreen, 50)
+        setTimeout(flyGreen, 100)
     } else {
         wrongIndicate.style.display = 'flex'
+        // hello.style.display = 'block'
     }
 }
 
@@ -221,15 +227,18 @@ function flyYellow(){
     if (letSoundPlay){
         playSound('../../asset/sounds/Explode.mp3')
         yellowBalloon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615418947/yellow_pop_q9yror.svg)'
+        yellowBalloon.childNodes[1].innerHTML = "Wrong, try again"
+        yellowBalloon.childNodes[1].style.color = "black"
     } else {
         yellowBalloon.style.backgroundImage = 'none'
+
     }
 
     if (yellowBalloonPos.y > - 200){
-        setTimeout(flyYellow, 50)
+        setTimeout(flyYellow, 100)
     } else {
         wrongIndicate.style.display = 'flex'
-        
+        // hello.style.display = 'block'
     }
 }
 
