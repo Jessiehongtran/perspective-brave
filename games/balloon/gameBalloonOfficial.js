@@ -51,6 +51,7 @@ const question = document.getElementsByClassName("question")[0]
 const redBalloon = document.getElementById('redBalloon')
 const greenBalloon = document.getElementById('greenBalloon')
 const yellowBalloon = document.getElementById('yellowBalloon')
+const wrongIndicate = document.getElementsByClassName('wrong-indicate')[0]
 // const x = document.getElementById('x')
 
 character.style.left = `${characterPos.x}px`
@@ -155,11 +156,11 @@ const maxImageInd = 15
 
 //Function to get a movement
 function getCharacterMove(dir){
-character_image[dir] = getCharacterImg(dir, moveInd[dir])
-moveInd[dir] += 1
-if (moveInd[dir] >= maxImageInd){
-    moveInd[dir] = 0
-} 
+    character_image[dir] = getCharacterImg(dir, moveInd[dir])
+    moveInd[dir] += 1
+    if (moveInd[dir] >= maxImageInd){
+        moveInd[dir] = 0
+    } 
 }
 
 function disableCurWalkingDir(){
@@ -191,7 +192,7 @@ function flyRed(){
     }
 
     if (redBalloonPos.y >  - 200){
-        setTimeout(flyRed, 100)
+        setTimeout(flyRed, 50)
     }
 }
 
@@ -201,10 +202,15 @@ function flyGreen(){
 
     if (letSoundPlay){
         playSound('../../asset/sounds/Explode.mp3')
+        greenBalloon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615418936/green_pop_vwveha.svg)'
+    } else {
+        greenBalloon.style.backgroundImage = 'none'
     }
 
     if (greenBalloonPos.y >  - 200){
-        setTimeout(flyGreen, 100)
+        setTimeout(flyGreen, 50)
+    } else {
+        wrongIndicate.style.display = 'flex'
     }
 }
 
@@ -214,10 +220,16 @@ function flyYellow(){
 
     if (letSoundPlay){
         playSound('../../asset/sounds/Explode.mp3')
+        yellowBalloon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615418947/yellow_pop_q9yror.svg)'
+    } else {
+        yellowBalloon.style.backgroundImage = 'none'
     }
 
     if (yellowBalloonPos.y > - 200){
-        setTimeout(flyYellow, 100)
+        setTimeout(flyYellow, 50)
+    } else {
+        wrongIndicate.style.display = 'flex'
+        
     }
 }
 
@@ -226,6 +238,10 @@ function playSound(file){
     var audio = new Audio(file);
     audio.play()
     letSoundPlay = false
+}
+
+function removeError(){
+    wrongIndicate.style.display = 'none'
 }
 
 function isTouchingBalloon(){
