@@ -361,6 +361,10 @@ if (vw < 1792 && vw >= 1500){
     adjustIndForHeight = 0.74
 }
 
+// if (vh < 952){
+//     adjustIndForHeight = 0.9
+// }
+
 
 const squareWidth = 10*adjustIndForWidth
 const squareHeight = 10*adjustIndForHeight
@@ -379,7 +383,7 @@ for (let r = 0; r < rows; r++){
         eachSquare.style.position = 'absolute'
         eachSquare.style.left = `${c*squareWidth}px`
         eachSquare.style.top = `${r*squareHeight}px`
-        // eachSquare.style.border = '1px solid grey'
+        eachSquare.style.border = '1px solid grey'
         eachSquare.style.zIndex = '5'
 
         squareRows.push({
