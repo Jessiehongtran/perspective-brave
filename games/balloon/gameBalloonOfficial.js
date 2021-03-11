@@ -196,6 +196,8 @@ function enableWalkingDir(){
 function flyRed(){
     redBalloonPos.y -= 10
     redBalloon.style.top = `${redBalloonPos.y}px`
+    characterPos.y -= 10
+    character.style.top = `${characterPos.y}px`
 
     if (letSoundPlay){
         playSound('../../asset/sounds/Cheer.mp3')
