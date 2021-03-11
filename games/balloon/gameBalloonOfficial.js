@@ -19,17 +19,17 @@ const balloonSize = 200
 
 const greenBalloonPos = {
     x: Math.floor(18*vw/100),
-    y: Math.floor(40*vh/100)
+    y: Math.floor(30*vh/100)
 }
 
 const redBalloonPos = {
     x: Math.floor(45*vw/100),
-    y: Math.floor(10*vh/100)
+    y: Math.floor(2*vh/100)
 }
 
 const yellowBalloonPos = {
     x: Math.floor(73*vw/100),
-    y: Math.floor(40*vh/100)
+    y: Math.floor(30*vh/100)
 }
 
 let characterSize = {
@@ -227,7 +227,6 @@ function flyGreen(){
         setTimeout(flyGreen, 100)
     } else {
         wrongIndicate.style.display = 'flex'
-        // hello.style.display = 'block'
     }
 }
 
@@ -249,7 +248,6 @@ function flyYellow(){
         setTimeout(flyYellow, 100)
     } else {
         wrongIndicate.style.display = 'flex'
-        // hello.style.display = 'block'
     }
 }
 
