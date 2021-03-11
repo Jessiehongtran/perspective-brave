@@ -1,9 +1,18 @@
 const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+const squareSize = 10
+
+const standardVW = 1792
+const standardVH = 952
+
+const vwRange = Math.floor(((vw - standardVW)/squareSize)/4)
+const vhRange = Math.floor(((vh - standardVH)/squareSize)/2)
+
+console.log(vwRange, vhRange)
 
 const characterPos = {
-    x: 600,
-    y: 700
+    x: 800,
+    y: 600
 }
 
 const balloonSize = 200
@@ -338,38 +347,11 @@ function handleKeyDown(e){
 }
 
 
-if (vw < 1792 && vw >= 1500){
-    adjustIndForWidth = 0.85
-    adjustIndForHeight = 0.97
-} else if (vw >= 1400 && vw < 1500){
-    adjustIndForWidth = 0.8
-    adjustIndForHeight = 0.95
-} else if (vw >= 1300 && vw < 1400){
-    adjustIndForWidth = 0.77
-    adjustIndForHeight = 0.94
-} else if (vw >= 1200 && vw < 1300){
-    adjustIndForWidth = 0.7
-    adjustIndForHeight = 0.93
-} else if (vw >= 1100 && vw < 1200){
-    adjustIndForWidth = 0.65
-    adjustIndForHeight = 0.91
-} else if (vw >= 900 && vw < 1100 ){
-    adjustIndForWidth = 0.53
-    adjustIndForHeight = 0.83
-} else if (vw < 900 ){
-    adjustIndForWidth = 0.40
-    adjustIndForHeight = 0.74
-}
-
-// if (vh < 952){
-//     adjustIndForHeight = 0.9
-// }
-
 
 const squareWidth = 10*adjustIndForWidth
 const squareHeight = 10*adjustIndForHeight
-const cols = Math.floor(vw/squareWidth)
-const rows = Math.floor(vh/squareHeight)
+const cols = Math.floor(vw/squareSize)
+const rows = Math.floor(vh/squareSize)
 
 
 const squares = []
@@ -378,11 +360,11 @@ for (let r = 0; r < rows; r++){
     for (let c = 0; c < cols; c++){
         eachSquare = document.createElement('div')
         eachSquare.setAttribute('id', 'eachSquare')
-        eachSquare.style.width = `${squareWidth}px`
-        eachSquare.style.height = `${squareHeight}px`
+        eachSquare.style.width = `${squareSize}px`
+        eachSquare.style.height = `${squareSize}px`
         eachSquare.style.position = 'absolute'
-        eachSquare.style.left = `${c*squareWidth}px`
-        eachSquare.style.top = `${r*squareHeight}px`
+        eachSquare.style.left = `${c*squareSize}px`
+        eachSquare.style.top = `${r*squareSize}px`
         eachSquare.style.border = '1px solid grey'
         eachSquare.style.zIndex = '5'
 
@@ -414,7 +396,7 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
     }
 
     increase = 0
-    for (let i = bottomRow - 4; i > midRow - 1; i-- ){
+    for (let i = bottomRow ; i > midRow - 1; i-- ){
         let j = midCol - increase
         while (j < midCol + increase + 1){
             if (i < rows && j < cols && squares[i][j]){
@@ -428,286 +410,51 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
 }
 
 
-drawParallelogram(34, 66, 58, 122)
-drawParallelogram(57, 87, 20, 90)
-drawParallelogram(57, 87, 90, 150)
-drawParallelogram(76, 98, 55, 125)
+drawParallelogram(24 + vhRange, 54 + vhRange, 58 + vwRange, 122 + vwRange)
+drawParallelogram(47 + vhRange, 77 + vhRange, 22 + vwRange, 92 + vwRange)
+drawParallelogram(47 + vhRange, 77 + vhRange, 90 + vwRange, 150 + vwRange)
+drawParallelogram(66 + vhRange, 92 + vhRange, 52 + vwRange, 124 + vwRange)
 
-function drawBush(leftCol, rightCol, startRow){
+function drawACol(col, startRow, endRow){
+    for (let i = startRow; i < endRow + 1; i++){
+        if (i < rows && col < cols){
+            squares[i][col].element.style.backgroundColor = 'orange'
+            squares[i][col].walkable = true
+        }
+    }
+}
+
+function drawStair(leftRow, leftCol, rightCol, stepLength, stepWidth, dimension){
+    let dimenInd = 1
+    if (dimension === "UP"){
+        dimenInd  = -1
+    } 
+    let i = leftCol
+    let j = leftRow
     let count = 0
-    for (c = leftCol; c < Math.floor((rightCol + leftCol)/2); c++){
-        for (r = startRow - Math.floor(count*1.5); r <= startRow + count ; r++){
-            if (r < rows && c < cols && squares[r][c]){
-                squares[r][c].element.style.backgroundColor = 'green'
-                squares[r][c].walkable = true
-            }
-        }
+    while (i < rightCol){
+        //draw that column
+        drawACol(i, j, j + stepLength)
+        i += 1
         count += 1
-    }
-    count = 0
-    for (c = rightCol; c >= Math.floor((rightCol + leftCol)/2); c--){
-        for (r = startRow - Math.floor(count*1.5); r <= startRow + count ; r++){
-            if (r < rows && c < cols && squares[r][c]){
-                squares[r][c].element.style.backgroundColor = 'green'
-                squares[r][c].walkable = true
-            }
-        }
-        count += 1
-    }
-}
-
-drawBush(70, 89, 63)
-
-drawBush(58, 72, 82)
-
-drawBush(109, 132, 55)
-
-
-let r1 = 79
-let c1 = 110
-
-for (let i = r1; i < r1 + 4; i++){
-    if (i < rows && c1 < cols){
-        squares[i][c1].element.style.backgroundColor = 'green'
-        squares[i][c1].walkable = true
-    }
-}
-for (let i = r1-1; i < r1 + 6; i++){
-    if (i < rows && c1-1 < cols){
-        squares[i][c1-1].element.style.backgroundColor = 'green'
-        squares[i][c1-1].walkable = true
-    }
-}
-for (let i = r1-1; i < r1 + 3; i++){
-    if (i < rows && c1 - 2 < cols){
-        squares[i][c1-2].element.style.backgroundColor = 'green'
-        squares[i][c1-2].walkable = true
-    }
-}
-for (let i = r1-2; i < r1 + 4; i++){
-    if (i < rows && c1 - 3 < cols){
-        squares[i][c1-3].element.style.backgroundColor = 'green'
-        squares[i][c1-3].walkable = true
-    }
-}
-for (let i = r1; i < r1 + 4; i++){
-    if (i < rows && c1+1 < cols){
-        squares[i][c1+1].element.style.backgroundColor = 'green'
-        squares[i][c1+1].walkable = true
-    }
-}
-for (let i = r1; i < r1 + 5; i++){
-    if (i < rows && c1 + 2 < cols){
-        squares[i][c1+2].element.style.backgroundColor = 'green'
-        squares[i][c1+2].walkable = true
-    }
-}
-for (let i = r1; i < r1 + 5; i++){
-    if (i < rows && c1 + 3 < cols){
-        squares[i][c1+3].element.style.backgroundColor = 'green'
-        squares[i][c1+3].walkable = true
-    }
-}
-for (let i = r1+1; i < r1 + 6; i++){
-    if (i < rows && c1 + 4 < cols){
-        squares[i][c1+4].element.style.backgroundColor = 'green'
-        squares[i][c1+4].walkable = true
-    }
-}
-for (let i = r1+1; i < r1 + 6; i++){
-    if (i < rows && c1 + 5 < cols){
-        squares[i][c1+5].element.style.backgroundColor = 'green'
-        squares[i][c1+5].walkable = true
-    }
-}
-for (let i = r1+2; i < r1 + 7; i++){
-    if (i < rows && c1 + 6 < cols){
-        squares[i][c1+6].element.style.backgroundColor = 'green'
-        squares[i][c1+6].walkable = true
-    }
-}
-for (let i = r1+2; i < r1 + 7; i++){
-    if (i < rows && c1 + 7 < cols){
-        squares[i][c1+7].element.style.backgroundColor = 'green'
-        squares[i][c1+7].walkable = true
-    }
-}
-for (let i = r1+3; i < r1 + 8; i++){
-    if (i < rows && c1 + 8 < cols){
-        squares[i][c1+8].element.style.backgroundColor = 'green'
-        squares[i][c1+8].walkable = true
-    }
-}
-for (let i = r1+3; i < r1 + 8; i++){
-    if (i < rows && c1 + 9 < cols){
-        squares[i][c1+9].element.style.backgroundColor = 'green'
-        squares[i][c1+9].walkable = true
-    }
-}
-for (let i = 89; i < 91; i++){
-    if (i < rows && 66 < cols){
-        squares[i][66].element.style.backgroundColor = 'pink'
-        squares[i][66].walkable = true
-    }
-}
-for (let i = 88; i < 92; i++){
-    if (i < rows && 67 < cols){
-        squares[i][67].element.style.backgroundColor = 'pink'
-        squares[i][67].walkable = true
-    }
-}
-for (let i = 87; i < 92; i++){
-    if (i < rows && 68 < cols){
-        squares[i][68].element.style.backgroundColor = 'pink'
-        squares[i][68].walkable = true
-    }
-}
-for (let i = 88; i < 92; i++){
-    if (i < rows && 69 < cols){
-        squares[i][69].element.style.backgroundColor = 'pink'
-        squares[i][69].walkable = true
-    }
-}
-for (let i = 88; i < 92; i++){
-    if (i < rows && 70 < cols){
-        squares[i][70].element.style.backgroundColor = 'pink'
-        squares[i][70].walkable = true
-    }
-}
-for (let i = 88; i < 93; i++){
-    if (i < rows && 71 < cols){
-        squares[i][71].element.style.backgroundColor = 'pink'
-        squares[i][71].walkable = true
-    }
-}
-for (let i = 89; i < 93; i++){
-    if (i < rows && 72 < cols){
-        squares[i][72].element.style.backgroundColor = 'pink'
-        squares[i][72].walkable = true
-    }
-}
-for (let i = 89; i < 93; i++){
-    if (i < rows && 73 < cols){
-        squares[i][73].element.style.backgroundColor = 'pink'
-        squares[i][73].walkable = true
-    }
-}
-for (let i = 89; i < 95; i++){
-    if (i < rows && 74 < cols){
-        squares[i][74].element.style.backgroundColor = 'pink'
-        squares[i][74].walkable = true
-    }
-}
-for (let i = 90; i < 95; i++){
-    if (i < rows && 75 < cols){
-        squares[i][75].element.style.backgroundColor = 'pink'
-        squares[i][75].walkable = true
-    }
-}
-for (let i = 90; i < 95; i++){
-    if (i < rows && 76 < cols){
-        squares[i][76].element.style.backgroundColor = 'pink'
-        squares[i][76].walkable = true
-    }
-}
-for (let i = 90; i < 95; i++){
-    if (i < rows && 77 < cols){
-        squares[i][77].element.style.backgroundColor = 'pink'
-        squares[i][77].walkable = true
-    }
-}
-for (let i = 91; i < 95; i++){
-    if (i < rows && 78 < cols){
-        squares[i][78].element.style.backgroundColor = 'pink'
-        squares[i][78].walkable = true
-    }
-}
-for (let i = 91; i < 95; i++){
-    if (i < rows && 79 < cols){
-        squares[i][79].element.style.backgroundColor = 'pink'
-        squares[i][79].walkable = true
-    }
-}
-for (let i = 91; i < 95; i++){
-    if (i < rows && 80 < cols){
-        squares[i][80].element.style.backgroundColor = 'pink'
-        squares[i][80].walkable = true
-    }
-}
-for (let i = 92; i < 95; i++){
-    if (i < rows && 81 < cols){
-        squares[i][81].element.style.backgroundColor = 'pink'
-        squares[i][81].walkable = true
-    }
-}
-for (let i = 92; i < 95; i++){
-    if (i < rows && 82 < cols){
-        squares[i][82].element.style.backgroundColor = 'pink'
-        squares[i][82].walkable = true
-    }
-}
-for (let i = 92; i < 95; i++){
-    if (i < rows && 83 < cols){
-        squares[i][83].element.style.backgroundColor = 'pink'
-        squares[i][83].walkable = true
-    }
-}
-for (let i = 93; i < 95; i++){
-    if (i < rows && 84 < cols){
-        squares[i][84].element.style.backgroundColor = 'pink'
-        squares[i][84].walkable = true
-    }
-}
-for (let i = 93; i < 95; i++){
-    if (i < rows && 85 < cols){
-        squares[i][85].element.style.backgroundColor = 'pink'
-        squares[i][85].walkable = true
-    }
-}
-for (let i = 93; i < 95; i++){
-    if (i < rows && 86 < cols){
-        squares[i][86].element.style.backgroundColor = 'pink'
-        squares[i][86].walkable = true
-    }
-}
-for (let i = 94; i < 95; i++){
-    if (i < rows && 87 < cols){
-        squares[i][87].element.style.backgroundColor = 'pink'
-        squares[i][87].walkable = true
-    }
-}
-for (let i = 94; i < 95; i++){
-    if (i < rows && 88 < cols){
-        squares[i][88].element.style.backgroundColor = 'pink'
-        squares[i][88].walkable = true
-    }
-}
-for (let i = 94; i < 95; i++){
-    if (i < rows && 89 < cols){
-        squares[i][89].element.style.backgroundColor = 'pink'
-        squares[i][89].walkable = true
-    }
-}
-
-let n = 0
-let breakpoint = 0
-for (let c = 91; c < 120; c++){
-    for (let r = 94 - n ; r > 94 - n - 5; r--){
-        if (r < rows && c < cols && squares[r][c]){
-            squares[r][c].element.style.backgroundColor = 'pink'
-            squares[r][c].walkable = true
+        if (count === stepWidth){
+            count = 0
+            j = j + dimenInd
         }
     }
-    breakpoint += 1
-    if (breakpoint === 8){
-        n += 1
-        breakpoint = 0
-    }
 }
+
+drawStair(47 + vhRange, 74 + vwRange, 84 +vwRange, 8, 2, "DOWN")
+drawStair(52 + vhRange, 72 + vwRange, 74 + vwRange, 2, 2, "DOWN")
+drawStair(51 + vhRange, 84 + vwRange, 86 + vwRange, 3, 2, "DOWN")
+drawStair(74 + vhRange, 62 + vwRange, 74 + vwRange, 4, 2, "UP")
+drawStair(70 + vhRange, 105 + vwRange, 116 + vwRange, 4, 2, "DOWN")
+drawStair(42 + vhRange, 112 + vwRange, 121 + vwRange, 8, 2, "UP")
+drawStair(40 + vhRange, 121 + vwRange, 133 + vwRange, 7, 1, "DOWN")
 
 function isWalkable(){
-    let curCol = Math.floor((characterPos.x + characterSize.w/2)/squareWidth)
-    let curRow = Math.floor((characterPos.y + characterSize.h -10)/squareHeight)
+    let curCol = Math.floor((characterPos.x + characterSize.w/2)/squareSize)
+    let curRow = Math.floor((characterPos.y + characterSize.h -10)/squareSize)
 
     if (squares[curRow][curCol].walkable){
         return true
