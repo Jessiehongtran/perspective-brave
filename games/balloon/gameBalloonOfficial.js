@@ -49,6 +49,7 @@ let opDir
 let adjustIndForWidth = 1
 let adjustIndForHeight = 1
 let letSoundPlay
+let cheerImageInd = 1
 
 const character = document.getElementById('player')
 const playerImg = document.getElementById('playerImg')
@@ -62,6 +63,9 @@ const greenBalloon = document.getElementById('greenBalloon')
 const yellowBalloon = document.getElementById('yellowBalloon')
 const wrongIndicate = document.getElementsByClassName('wrong-indicate')[0]
 const hello = document.getElementsByClassName('hello')[0]
+const winning = document.getElementsByClassName('winning')[0]
+const mainGame = document.getElementsByClassName('main-game')[0]
+const board = document.getElementsByClassName('landing')[0]
 // const x = document.getElementById('x')
 
 character.style.left = `${characterPos.x}px`
@@ -82,6 +86,8 @@ redBalloon.style.width = greenBalloon.style.width = yellowBalloon.style.width = 
 //function for character to jump
 let countStep = 0
 let totalStep = 10
+let countChaRedFly = 0
+let jumping = true
 let change
 function jump(){
     if (countStep < totalStep) {
@@ -95,13 +101,15 @@ function jump(){
     character.style.left = `${characterPos.x}px`
     character.style.top = `${characterPos.y}px`
 
-    isTouchingBalloon()
+    if (jumping){
+        isTouchingBalloon()
+    }
 
     // checkTouchBalloon()
 
     if (countStep <= totalStep*2) {
         setTimeout(jump, 50)
-    }  
+    } 
 }
 
 function enterOrLeavePlatform(){
@@ -193,18 +201,109 @@ function enableWalkingDir(){
     walkingDirection.style.display = 'none'
 }
 
-function flyRed(){
-    redBalloonPos.y -= 10
-    redBalloon.style.top = `${redBalloonPos.y}px`
-    characterPos.y -= 10
-    character.style.top = `${characterPos.y}px`
-
+let cheerInd
+function cheeringCharacter(){
+    //hide character
+    character.style.display = 'none'
+    //sound
     if (letSoundPlay){
-        playSound('../../asset/sounds/Cheer.mp3')
+        playSound('../../asset/sounds/Tada.mp3')
+    }
+    //change board
+    if (cheerImageInd < 10){
+        cheerInd = '0' + cheerImageInd.toString()
+    } else {
+        cheerInd = cheerImageInd
     }
 
-    if (redBalloonPos.y >  - 200){
+    if (cheerImageInd < 11){
+        board.src = `../../asset/winning/winning_${cheerInd}.svg`
+        cheerImageInd += 1
+        setTimeout(cheeringCharacter, 70)
+    }
+    
+}
+
+function popRedBalloon(){
+    //change costume
+    redBalloon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615502165/Group_218_v7xguc.svg)'
+    redBalloon.style.width = `${balloonSize*3}px`
+    redBalloonPos.x = Math.floor(vw/2) - balloonSize*3/2
+    redBalloon.style.left = `${redBalloonPos.x}px`
+    //hide text in ballon
+    redBalloon.childNodes[1].style.innerHTML = ""
+    //sound
+    if (letSoundPlay){
+        playSound('../../asset/sounds/Opera.mp3')
+        playSound('../../asset/sounds/Gong.mp3')
+    }
+    //let it fall down
+    if (redBalloonPos.y < 2*vh/3 - 100){
+        redBalloonPos.y += 10 
+        redBalloon.style.top = `${redBalloonPos.y}px`
+        letSoundPlay = true
+        setTimeout(popRedBalloon, 100)
+    }
+
+}
+
+function flyCharacterAndRedBalloon(){
+    console.log('h', redBalloonPos.y)
+    characterPos.y -= 10
+    character.style.top = `${characterPos.y}px`
+    redBalloonPos.y -= 10
+    redBalloon.style.top = `${redBalloonPos.y}px`
+
+    if (characterPos.y > 2/3*vh + 60){
+        setTimeout(flyCharacterAndRedBalloon, 20)
+    } else {
+        playerImg.src= "../../asset/Yang_Walk_DN/Yang_Walk_DN_00001.png"
+        //reset character pos
+        character.style.left = `calc(50% - ${characterSize.w/2}px)`
+        character.style.top = `calc(50% + ${characterSize.h/2}px)`
+        //reset red balloon pos
+        redBalloon.style.left = `calc(50% - ${characterSize.w/2}px)`
+        redBalloon.style.top = `calc(50% + ${characterSize.h/2 - 300}px)`
+        //pop red balloon
+        setTimeout(popRedBalloon, 1000)
+        letSoundPlay = true
+        setTimeout(cheeringCharacter, 1000)
+    }
+}
+
+function flyRed(){
+    console.log('redBalloonPos.y', redBalloonPos.y)
+    if (redBalloonPos.y >  - 100){
+        redBalloonPos.y -= 10
+        redBalloon.style.top = `${redBalloonPos.y}px`
+        characterPos.y -= 10
+        character.style.top = `${characterPos.y}px`
+        if (letSoundPlay){
+            playSound('../../asset/sounds/Cheer.mp3')
+        }
         setTimeout(flyRed, 50)
+    } else {
+        console.log('top flying red')
+        //hide main game and empty container
+        container.style.backgroundImage = 'none'
+        walkingDirection.style.display = question.style.display = infoIcon.style.display = mainGame.style.display = 'none'
+        //show winning scene
+        winning.style.display = 'flex'
+        //reset character and red balloon position
+        characterPos.y = vh 
+        redBalloonPos.y = vh - 100
+        characterPos.x = Math.floor(vw/2) - characterSize.w/2
+        redBalloonPos.x = Math.floor(vw/2) - characterSize.w/2
+        character.style.left = `${characterPos.x}px`
+        character.style.top = `${characterPos.y}px`
+        redBalloon.style.left = `${redBalloonPos.x}px`
+        redBalloon.style.top = `${redBalloonPos.y}px`
+        //hide green and yellow balloons
+        greenBalloon.style.display = 'none'
+        yellowBalloon.style.display = 'none'
+        //push character from bottom to top
+        setTimeout(flyCharacterAndRedBalloon, 0)
+        console.log(redBalloonPos.y)
     }
 }
 
@@ -216,8 +315,6 @@ function flyGreen(){
         playSound('../../asset/sounds/Explode.mp3')
         greenBalloon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615418936/green_pop_vwveha.svg)'
         console.log(greenBalloon.childNodes)
-        greenBalloon.childNodes[1].innerHTML = "Wrong, try again"
-        greenBalloon.childNodes[1].style.color = "black"
 
     } else {
         greenBalloon.style.backgroundImage = 'none'
@@ -237,8 +334,6 @@ function flyYellow(){
     if (letSoundPlay){
         playSound('../../asset/sounds/Explode.mp3')
         yellowBalloon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615418947/yellow_pop_q9yror.svg)'
-        yellowBalloon.childNodes[1].innerHTML = "Wrong, try again"
-        yellowBalloon.childNodes[1].style.color = "black"
     } else {
         yellowBalloon.style.backgroundImage = 'none'
 
@@ -267,6 +362,7 @@ function isTouchingBalloon(){
         && characterPos.x + characterSize.w/2 <= redBalloonPos.x + balloonSize
         && characterPos.y >= redBalloonPos.y - balloonSize){
             console.log('touch red')
+            jumping = false
             flyRed()
         }
     if (characterPos.x + characterSize.w/2 >= greenBalloonPos.x
@@ -327,6 +423,7 @@ function handleKeyDown(e){
     if (e.key === "Enter"){
         letSoundPlay = true 
         countStep = 0
+        jumping = true
         jump()
     }
 
