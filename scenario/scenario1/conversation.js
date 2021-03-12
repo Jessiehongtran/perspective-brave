@@ -7,7 +7,7 @@ const messageData= {
                 speedInd: 40
             },
             {
-                name: "SASHA",
+                name: "DEVON",
                 text: "Bob, what do you think?",
                 speedInd: 120
             },
@@ -80,7 +80,7 @@ const messageData= {
                 speedInd: 50
             },
             {
-                name: "SASHA",
+                name: "DEVON",
                 text: "Let see how we can make this work with the timeline.",
                 speedInd: 50
             },
@@ -105,7 +105,7 @@ const messageData= {
                 speedInd: 70
             },
             {
-                name: "SASHA",
+                name: "DEVON",
                 text: "Yang, why do not you stay after the meeting so we can talk.",
                 speedInd: 100
             }
@@ -130,7 +130,7 @@ const messageData= {
                 speedInd: 60
             },
             {
-                name: "SASHA",
+                name: "DEVON",
                 text: "Yang, why do not you stay after the meeting so we can talk.",
                 speedInd: 100
             }
@@ -152,7 +152,7 @@ const rightSlideWrapper = document.getElementById("rightSlideWrapper")
 
 const characterFace = {
     JERRY: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860312/JerryFace_unk49c.svg",
-    SASHA: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860312/Sasha_qk8xra.svg",
+    DEVON: "https://res.cloudinary.com/dfulxq7so/image/upload/v1615583273/Devon2_bfidhs.svg",
     BOB: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860311/Bob_hvqnq7.svg",
     YANG: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860311/YangFace_evfdgk.svg"
 
@@ -309,8 +309,8 @@ function getMessageElement(name, messageText, side, speedInd){
             playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
         } else if (name === "YANG"){
             playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
-        } else if (name === "SASHA"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_sasha${audioInd}.mp3`)
+        } else if (name === "DEVON"){
+            playAudio(`../../asset/VOfiles/PerspectivesVO_devon${audioInd}.mp3`)
         } else if (name === "BOB"){
             playAudio(`../../asset/VOfiles/PerspectivesVO_bob${audioInd}.mp3`)
         } 
