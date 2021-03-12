@@ -1,5 +1,5 @@
-const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 const squareSize = 10
 
 const standardVW = 1792
@@ -17,17 +17,18 @@ const characterPos = {
 
 const balloonSize = 200
 
-const greenBalloonPos = {
+let greenBalloonPos = {
     x: Math.floor(18*vw/100),
     y: Math.floor(30*vh/100)
 }
 
-const redBalloonPos = {
+
+let redBalloonPos = {
     x: Math.floor(45*vw/100),
     y: Math.floor(2*vh/100)
 }
 
-const yellowBalloonPos = {
+let yellowBalloonPos = {
     x: Math.floor(73*vw/100),
     y: Math.floor(30*vh/100)
 }
@@ -69,18 +70,20 @@ const board = document.getElementsByClassName('landing')[0]
 const slideButtons = document.getElementsByClassName('slide-buttons')[0]
 // const x = document.getElementById('x')
 
-character.style.left = `${characterPos.x}px`
-character.style.top = `${characterPos.y}px`
-character.style.width = `${characterSize.w}px`
-character.style.height = `${characterSize.h}px`
-redBalloon.style.left = `${redBalloonPos.x}px`
-redBalloon.style.top = `${redBalloonPos.y}px`
-greenBalloon.style.left = `${greenBalloonPos.x}px`
-greenBalloon.style.top = `${greenBalloonPos.y}px`
-yellowBalloon.style.left = `${yellowBalloonPos.x}px`
-yellowBalloon.style.top = `${yellowBalloonPos.y}px`
 
-redBalloon.style.width = greenBalloon.style.width = yellowBalloon.style.width = `${balloonSize}px`
+function setupPosition(){
+    character.style.left = `${characterPos.x}px`
+    character.style.top = `${characterPos.y}px`
+    character.style.width = `${characterSize.w}px`
+    character.style.height = `${characterSize.h}px`
+    redBalloon.style.left = `${redBalloonPos.x}px`
+    redBalloon.style.top = `${redBalloonPos.y}px`
+    greenBalloon.style.left = `${greenBalloonPos.x}px`
+    greenBalloon.style.top = `${greenBalloonPos.y}px`
+    yellowBalloon.style.left = `${yellowBalloonPos.x}px`
+    yellowBalloon.style.top = `${yellowBalloonPos.y}px`
+    redBalloon.style.width = greenBalloon.style.width = yellowBalloon.style.width = `${balloonSize}px`
+}
 // x.style.left = `${characterPos.x + characterSize.w/2 }px`
 // x.style.top = `${characterPos.y + characterSize.h }px`
 
@@ -562,5 +565,26 @@ function isWalkable(){
     return false
 }
 
-document.addEventListener('keydown', handleKeyDown)
+function handleResize(){
+    vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    greenBalloonPos = {
+        x: Math.floor(18*vw/100),
+        y: Math.floor(30*vh/100)
+    }
+    
+    redBalloonPos = {
+        x: Math.floor(45*vw/100),
+        y: Math.floor(2*vh/100)
+    }
+    
+    yellowBalloonPos = {
+        x: Math.floor(73*vw/100),
+        y: Math.floor(30*vh/100)
+    }
+    setupPosition()
+}
 
+document.addEventListener('keydown', handleKeyDown)
+window.addEventListener('resize', handleResize)
+setupPosition()
