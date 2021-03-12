@@ -66,6 +66,7 @@ const hello = document.getElementsByClassName('hello')[0]
 const winning = document.getElementsByClassName('winning')[0]
 const mainGame = document.getElementsByClassName('main-game')[0]
 const board = document.getElementsByClassName('landing')[0]
+const slideButtons = document.getElementsByClassName('slide-buttons')[0]
 // const x = document.getElementById('x')
 
 character.style.left = `${characterPos.x}px`
@@ -220,6 +221,8 @@ function cheeringCharacter(){
         board.src = `../../asset/winning/winning_${cheerInd}.svg`
         cheerImageInd += 1
         setTimeout(cheeringCharacter, 70)
+    } else {
+        slideButtons.style.display = 'block'
     }
     
 }
