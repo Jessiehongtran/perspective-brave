@@ -1,5 +1,5 @@
 function speak(){
-    var audio = new Audio('../../asset/VOfiles/PerspectivesVO_biasoverview.wav');
+    var audio = new Audio('../../asset/VOfiles/PerspectivesVO_bias_summary.wav');
     audio.volume = 1;
     audio.play()
 }
@@ -12,7 +12,7 @@ let i = 0
 const info = document.getElementById("info")
 const dots = document.getElementsByClassName("each-dot")
 const rightSlide = document.getElementById("rightSlide")
-const speed = 3000
+const speed = 6100
 
 document.getElementsByClassName('dots')[0].style.width = '10%'
 

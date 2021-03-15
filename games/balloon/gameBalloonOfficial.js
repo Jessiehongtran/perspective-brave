@@ -68,6 +68,12 @@ const mainGame = document.getElementsByClassName('main-game')[0]
 const board = document.getElementsByClassName('landing')[0]
 const slideButtons = document.getElementsByClassName('slide-buttons')[0]
 
+function speak(file){
+    var audio = new Audio(file);
+    audio.volume = 1;
+    audio.play()
+}
+
 
 function setupPosition(){
     character.style.left = `${characterPos.x}px`
@@ -462,7 +468,7 @@ function setupGrid(){
             eachSquare.style.position = 'absolute'
             eachSquare.style.left = `${c*squareSize}px`
             eachSquare.style.top = `${r*squareSize}px`
-            eachSquare.style.border = '1px solid grey'
+            // eachSquare.style.border = '1px solid grey'
             eachSquare.style.zIndex = '5'
 
             squareRows.push({
@@ -470,7 +476,7 @@ function setupGrid(){
                 walkable: false
             })
 
-            container.appendChild(eachSquare)
+            // container.appendChild(eachSquare)
         }
         squares.push(squareRows)
     }
@@ -485,7 +491,7 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
         let j = midCol - increase
         while (j < midCol + increase + 1){
             if (i < rows && j < cols && squares[i][j]){
-                squares[i][j].element.style.backgroundColor = 'red'
+                // squares[i][j].element.style.backgroundColor = 'red'
                 squares[i][j].walkable = true
             }
             j += 1
@@ -498,7 +504,7 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
         let j = midCol - increase
         while (j < midCol + increase + 1){
             if (i < rows && j < cols && squares[i][j]){
-                squares[i][j].element.style.backgroundColor = 'red'
+                // squares[i][j].element.style.backgroundColor = 'red'
                 squares[i][j].walkable = true
             }
             j += 1
@@ -511,7 +517,7 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
 function drawACol(col, startRow, endRow){
     for (let i = startRow; i < endRow + 1; i++){
         if (i < rows && col < cols){
-            squares[i][col].element.style.backgroundColor = 'orange'
+            // squares[i][col].element.style.backgroundColor = 'orange'
             squares[i][col].walkable = true
         }
     }
