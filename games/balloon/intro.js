@@ -28,6 +28,7 @@ function showNextText(){
         speed = 4000
         if (i < 1){
             speakerIcon.onclick = speak("../../asset/VOfiles/PerspectivesVO_balloonIntro_2.wav")
+            speakerIcon.style.visibility = 'hidden'
         }
         i += 1
         setTimeout(showNextText, speed)

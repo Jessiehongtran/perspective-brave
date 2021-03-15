@@ -67,11 +67,22 @@ const winning = document.getElementsByClassName('winning')[0]
 const mainGame = document.getElementsByClassName('main-game')[0]
 const board = document.getElementsByClassName('landing')[0]
 const slideButtons = document.getElementsByClassName('slide-buttons')[0]
+const speakerIconInWrong = document.getElementsByClassName('speakerIconInWrong')[0]
 
+let audioIsBeingPlayed = false
 function speak(file){
-    var audio = new Audio(file);
-    audio.volume = 1;
-    audio.play()
+    if (!audioIsBeingPlayed){
+        let duration
+        audio = new Audio(file);
+        audio.volume = 1;
+        audio.play()
+        audio.onloadedmetadata = function() {
+            duration = audio.duration*1000
+        };
+        setTimeout(function(){
+            audioIsBeingPlayed = true
+        }, duration)
+    }
 }
 
 
@@ -331,7 +342,10 @@ function flyGreen(){
     if (greenBalloonPos.y >  - 200){
         setTimeout(flyGreen, 100)
     } else {
-        wrongIndicate.style.display = 'flex'
+        setTimeout(function(){
+            wrongIndicate.style.display = 'flex'
+            speakerIconInWrong.onclick = speak('../../asset/VOfiles/PerspectivesVO_wrong_answer.wav')
+        }, 2000)
     }
 }
 
@@ -350,7 +364,10 @@ function flyYellow(){
     if (yellowBalloonPos.y > - 200){
         setTimeout(flyYellow, 100)
     } else {
-        wrongIndicate.style.display = 'flex'
+        setTimeout(function(){
+            wrongIndicate.style.display = 'flex'
+            speakerIconInWrong.onclick = speak('../../asset/VOfiles/PerspectivesVO_wrong_answer.wav')
+        }, 2000)
     }
 }
 
