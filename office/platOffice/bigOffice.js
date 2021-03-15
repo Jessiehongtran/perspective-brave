@@ -205,7 +205,23 @@ function enableWalkingDir(){
     walkingDirection.style.display = 'none'
 }
 
-function handleKeyDown(e){
+let gapToNextStep = 0
+let videoPlaying = false
+
+function speak(file){
+    var audio = new Audio(file);
+    audio.volume = 1;
+    audio.play()
+    audio.onloadedmetadata = function() {
+        gapToNextStep = audio.duration*1000
+    };
+    setTimeout(function(){
+        videoPlaying = false
+    }, gapToNextStep)
+}
+
+function walk(e){
+    videoPlaying = true
     if (!isWalkable()){
         disableCurWalkingDir()
     } else {
@@ -217,27 +233,29 @@ function handleKeyDown(e){
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
+        speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
     } else if (e.key === "ArrowLeft" && allowedWalkingDir["LEFT"]){
         characterPos.x = characterPos.x - 20
         opDir = "RIGHT"
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
+        speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
     } else if (e.key === "ArrowUp" && allowedWalkingDir["UP"]){
         characterPos.y = characterPos.y - 20
         opDir = "DOWN"
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
+        speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
     } else if (e.key === "ArrowDown" && allowedWalkingDir["DOWN"]){
         characterPos.y = characterPos.y + 20
         opDir = "UP"
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
+        speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')
     }
     character.style.left = `${characterPos.x}px`
     character.style.top = `${characterPos.y}px`
-    // x.style.left = `${characterPos.x + 55}px`
-    // x.style.top = `${characterPos.y + 85}px`
 
     if (characterPos.x + halfCharacterWidth >= sparklingPos.x  && characterPos.x + halfCharacterWidth <= sparklingPos.x + sparklingSize.w
         && characterPos.y + characterHeight >= sparklingPos.y && characterPos.y + characterHeight <= sparklingPos.y + sparklingSize.h
@@ -246,7 +264,12 @@ function handleKeyDown(e){
             console.log('inzone')
           window.location.href = '../../scenario/scenario1/yangConversation.html'
         }
-    
+}
+
+function handleKeyDown(e){
+    if (!videoPlaying){
+        walk(e)
+    }
 }
 
 document.addEventListener("keydown", handleKeyDown)
