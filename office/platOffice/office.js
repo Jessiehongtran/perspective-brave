@@ -88,6 +88,12 @@ let moveInd = {
   "RIGHT": 0
 }
 
+function speak(file){
+  var audio = new Audio(file);
+  audio.volume = 1;
+  audio.play()
+}
+
 //Function to get character image file (that is stored locally)
 function getCharacterImg(dir, id){
   if (id < 10){
@@ -268,6 +274,7 @@ function removeTutorialShowInstruction(){
   detailInstruction.style.alignItems = 'center'
   //move the speaker icon
   detailInstruction.appendChild(speakerIcon)
+  speakerIcon.onclick = speak('../../asset/VOfiles/PerspectivesVO_sparklingIntro.wav')
   speakerIcon.style.width = '6%'
   //hide right slide 1 and show right slide 2
   rightSlide1.style.display = 'none'

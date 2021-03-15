@@ -149,6 +149,13 @@ const rightSlide2 = document.getElementById("rightSlide2")
 const chooseDifferentResponse = document.getElementById("choose-different-response")
 const textWrapper = document.getElementById("text-wrapper")
 const rightSlideWrapper = document.getElementById("rightSlideWrapper")
+const speakerIcon = document.getElementsByClassName('speakerIcon')[0]
+
+function speak(file){
+    var audio = new Audio(file);
+    audio.volume = 1;
+    audio.play()
+}
 
 const characterFace = {
     JERRY: "https://res.cloudinary.com/dfulxq7so/image/upload/v1613860312/JerryFace_unk49c.svg",
@@ -183,6 +190,21 @@ function getMessagesForEachPart(){
        showEachMessage()
        next = null
     }
+    
+}
+
+function speakDouble(file1, file2){
+    var audio1 = new Audio(file1);
+    audio1.volume = 1;
+    audio1.play()
+
+    console.log(audio1.duration)
+
+    setTimeout(function(){
+        var audio2 = new Audio(file2);
+        audio2.volume = 1;
+        audio2.play()
+    }, 6000)
     
 }
 

@@ -5,10 +5,9 @@ const squareSize = 10
 const standardVW = 1792
 const standardVH = 952
 
-const vwRange = Math.floor(((vw - standardVW)/squareSize)/4)
-const vhRange = Math.floor(((vh - standardVH)/squareSize)/2)
+let vwRange = Math.floor(((vw - standardVW)/squareSize)/4)
+let vhRange = Math.floor(((vh - standardVH)/squareSize)/2)
 
-console.log(vwRange, vhRange)
 
 const characterPos = {
     x: 800,
@@ -68,7 +67,6 @@ const winning = document.getElementsByClassName('winning')[0]
 const mainGame = document.getElementsByClassName('main-game')[0]
 const board = document.getElementsByClassName('landing')[0]
 const slideButtons = document.getElementsByClassName('slide-buttons')[0]
-// const x = document.getElementById('x')
 
 
 function setupPosition(){
@@ -84,8 +82,6 @@ function setupPosition(){
     yellowBalloon.style.top = `${yellowBalloonPos.y}px`
     redBalloon.style.width = greenBalloon.style.width = yellowBalloon.style.width = `${balloonSize}px`
 }
-// x.style.left = `${characterPos.x + characterSize.w/2 }px`
-// x.style.top = `${characterPos.y + characterSize.h }px`
 
 //function for character to jump
 let countStep = 0
@@ -442,43 +438,42 @@ function handleKeyDown(e){
     }
     character.style.width = `${characterSize.w}px`
     character.style.height = `${characterSize.h}px`
-    // x.style.position = 'absolute'
-    // x.style.zIndex = '15'
-    // x.style.color = 'white'
-    // x.style.left = `${characterPos.x + characterSize.w/2 }px`
-    // x.style.top = `${characterPos.y + characterSize.h -10}px`
 }
 
 
 
 const squareWidth = 10*adjustIndForWidth
 const squareHeight = 10*adjustIndForHeight
-const cols = Math.floor(vw/squareSize)
-const rows = Math.floor(vh/squareSize)
+let cols = Math.floor(vw/squareSize)
+let rows = Math.floor(vh/squareSize)
 
 
-const squares = []
-for (let r = 0; r < rows; r++){
-  let squareRows = []
-    for (let c = 0; c < cols; c++){
-        eachSquare = document.createElement('div')
-        eachSquare.setAttribute('id', 'eachSquare')
-        eachSquare.style.width = `${squareSize}px`
-        eachSquare.style.height = `${squareSize}px`
-        eachSquare.style.position = 'absolute'
-        eachSquare.style.left = `${c*squareSize}px`
-        eachSquare.style.top = `${r*squareSize}px`
-        eachSquare.style.border = '1px solid grey'
-        eachSquare.style.zIndex = '5'
+let squares = []
 
-        squareRows.push({
-            element: eachSquare,
-            walkable: false
-        })
+function setupGrid(){
+    squares = []
+    for (let r = 0; r < rows; r++){
+    let squareRows = []
+        for (let c = 0; c < cols; c++){
+            eachSquare = document.createElement('div')
+            eachSquare.setAttribute('id', 'eachSquare')
+            eachSquare.style.width = `${squareSize}px`
+            eachSquare.style.height = `${squareSize}px`
+            eachSquare.style.position = 'absolute'
+            eachSquare.style.left = `${c*squareSize}px`
+            eachSquare.style.top = `${r*squareSize}px`
+            eachSquare.style.border = '1px solid grey'
+            eachSquare.style.zIndex = '5'
 
-        // container.appendChild(eachSquare)
+            squareRows.push({
+                element: eachSquare,
+                walkable: false
+            })
+
+            container.appendChild(eachSquare)
+        }
+        squares.push(squareRows)
     }
-    squares.push(squareRows)
 }
 
 function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
@@ -513,11 +508,6 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
 }
 
 
-drawParallelogram(24 + vhRange, 54 + vhRange, 58 + vwRange, 122 + vwRange)
-drawParallelogram(47 + vhRange, 77 + vhRange, 22 + vwRange, 92 + vwRange)
-drawParallelogram(47 + vhRange, 77 + vhRange, 90 + vwRange, 150 + vwRange)
-drawParallelogram(66 + vhRange, 92 + vhRange, 52 + vwRange, 124 + vwRange)
-
 function drawACol(col, startRow, endRow){
     for (let i = startRow; i < endRow + 1; i++){
         if (i < rows && col < cols){
@@ -547,13 +537,19 @@ function drawStair(leftRow, leftCol, rightCol, stepLength, stepWidth, dimension)
     }
 }
 
-drawStair(47 + vhRange, 74 + vwRange, 84 +vwRange, 8, 2, "DOWN")
-drawStair(52 + vhRange, 72 + vwRange, 74 + vwRange, 2, 2, "DOWN")
-drawStair(51 + vhRange, 84 + vwRange, 86 + vwRange, 3, 2, "DOWN")
-drawStair(74 + vhRange, 62 + vwRange, 74 + vwRange, 4, 2, "UP")
-drawStair(70 + vhRange, 105 + vwRange, 116 + vwRange, 4, 2, "DOWN")
-drawStair(42 + vhRange, 112 + vwRange, 121 + vwRange, 8, 2, "UP")
-drawStair(40 + vhRange, 121 + vwRange, 133 + vwRange, 7, 1, "DOWN")
+function mapoutGamePlatform(){
+    drawParallelogram(24 + vhRange, 54 + vhRange, 58 + vwRange, 122 + vwRange)
+    drawParallelogram(47 + vhRange, 77 + vhRange, 22 + vwRange, 92 + vwRange)
+    drawParallelogram(47 + vhRange, 77 + vhRange, 90 + vwRange, 150 + vwRange)
+    drawParallelogram(66 + vhRange, 92 + vhRange, 52 + vwRange, 124 + vwRange)
+    drawStair(47 + vhRange, 74 + vwRange, 84 +vwRange, 8, 2, "DOWN")
+    drawStair(52 + vhRange, 72 + vwRange, 74 + vwRange, 2, 2, "DOWN")
+    drawStair(51 + vhRange, 84 + vwRange, 86 + vwRange, 3, 2, "DOWN")
+    drawStair(74 + vhRange, 62 + vwRange, 74 + vwRange, 4, 2, "UP")
+    drawStair(70 + vhRange, 105 + vwRange, 116 + vwRange, 4, 2, "DOWN")
+    drawStair(42 + vhRange, 112 + vwRange, 121 + vwRange, 8, 2, "UP")
+    drawStair(40 + vhRange, 121 + vwRange, 133 + vwRange, 7, 1, "DOWN")
+}
 
 function isWalkable(){
     let curCol = Math.floor((characterPos.x + characterSize.w/2)/squareSize)
@@ -582,9 +578,15 @@ function handleResize(){
         x: Math.floor(73*vw/100),
         y: Math.floor(30*vh/100)
     }
+    cols = Math.floor(vw/squareSize)
+    rows = Math.floor(vh/squareSize)
     setupPosition()
+    setupGrid()
+    mapoutGamePlatform()
 }
 
 document.addEventListener('keydown', handleKeyDown)
 window.addEventListener('resize', handleResize)
 setupPosition()
+setupGrid()
+mapoutGamePlatform()

@@ -24,7 +24,7 @@
             <div class="direction" role="direction" >
                 You will be playing the role of Yang. Welcome to a day in her life.
             </div>
-            <img class="speakerIcon" role="speakerIcon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
+            <img class="speakerIcon" role="speakerIcon" onclick="speak()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
             <div class="intro-wrapper" >
                 <img id="yangImage"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg"/>
                 <div class="intro" >
@@ -45,8 +45,7 @@
         </div>
         <script>
             function speak(){
-                console.log('speak function is invoked')
-                var audio = new Audio('../asset/VOfiles/PerspectivesVO_yangoverview.wav');
+                var audio = new Audio('../../asset/VOfiles/PerspectivesVO_yangbio.wav');
                 audio.volume = 1;
                 audio.play()
             }
