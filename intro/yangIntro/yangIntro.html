@@ -12,7 +12,7 @@
                 <img id="leftSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
             </a>
             <a href="../../office/platOffice/yangOffice.html" role="nextButton">
-                <img id="rightSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+                <img id="rightSlide" onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
             </a>
             <img id="group2" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613501181/Group_67_qba47t.svg" />
             <img id="ellipse" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613501226/Ellipse_25_npqhh5.svg" />
@@ -24,7 +24,7 @@
             <div class="direction" role="direction" >
                 You will be playing the role of Yang. Welcome to a day in her life.
             </div>
-            <img class="speakerIcon" role="speakerIcon" onclick="speak()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
+            <img class="speakerIcon" role="speakerIcon" onclick="speak('../../asset/VOfiles/PerspectivesVO_yangbio.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
             <div class="intro-wrapper" >
                 <img id="yangImage"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg"/>
                 <div class="intro" >
@@ -43,12 +43,7 @@
                 </div>
             </div>
         </div>
-        <script>
-            function speak(){
-                var audio = new Audio('../../asset/VOfiles/PerspectivesVO_yangbio.wav');
-                audio.volume = 1;
-                audio.play()
-            }
+        <script src="../../speak.js">
         </script>
     </body>
 </html>

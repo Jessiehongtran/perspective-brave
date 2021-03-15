@@ -12,7 +12,7 @@
                 <img id="leftSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
             </a>
             <a href="../characterSelection/characterSelection.html" role="nextButton">
-                <img id="rightSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+                <img id="rightSlide" onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
             </a>
             <img id="polygon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213862/Polygon_8.2_ccmr9s.svg" /> 
             <img id="rect" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213857/Rectangle_137.1_ckfftx.svg" />
@@ -25,14 +25,9 @@
             <div class="subtitle" role="text" >
                 Welcome to Perspectives, an interactive learning game that goes over a variety of bias in the workplace.
             </div>
-            <img role="speakerIcon"  class="speakerIcon" onclick="speak()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614874535/Perspective_newAudio_bxqvuy.svg" />
+            <img role="speakerIcon"  class="speakerIcon" onclick="speak('../../asset/VOfiles/PerspectivesVO_appoverview.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614874535/Perspective_newAudio_bxqvuy.svg" />
         </div>
-        <script>
-            function speak(){
-                var audio = new Audio('../../asset/VOfiles/PerspectivesVO_appoverview.wav');
-                audio.volume = 1;
-                audio.play()
-            }
+        <script src="../../speak.js">
         </script>
     </body>
 </html>

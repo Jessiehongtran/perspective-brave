@@ -42,11 +42,7 @@ sparkling.style.left = `${sparklingPos.x}px`
 sparkling.style.top = `${sparklingPos.y}px`
 sparkling.style.width = `${sparklingPos.w}px`
 sparkling.style.height = `${sparklingPos.h}px`
-// x.style.position = 'absolute'
-// x.style.zIndex = '16'
-// x.style.color = 'green'
-// x.style.left = `${characterPos.x + 55}px`
-// x.style.top = `${characterPos.y + 85}px`
+
 
 container.style.backgroundSize = `${vw} ${vh}`
 
@@ -56,6 +52,7 @@ const cols = Math.floor(vw/squareSize)
 const rows = Math.floor(vh/squareSize)
  
 let opDir
+let audio
 
 const paths = [
     {r1: 48, r2: 72, c1: 63, c2: 112},
@@ -206,22 +203,25 @@ function enableWalkingDir(){
 }
 
 let gapToNextStep = 0
-let videoPlaying = false
-
+let audioIsBeingPlayed = false
 function speak(file){
-    var audio = new Audio(file);
+    audio = new Audio(file);
     audio.volume = 1;
     audio.play()
     audio.onloadedmetadata = function() {
         gapToNextStep = audio.duration*1000
     };
     setTimeout(function(){
-        videoPlaying = false
+        audioIsBeingPlayed = false
     }, gapToNextStep)
 }
 
+function stopVO(){
+    audio.pause()
+}
+
 function walk(e){
-    videoPlaying = true
+    audioIsBeingPlayed = true
     if (!isWalkable()){
         disableCurWalkingDir()
     } else {
@@ -261,13 +261,13 @@ function walk(e){
         && characterPos.y + characterHeight >= sparklingPos.y && characterPos.y + characterHeight <= sparklingPos.y + sparklingSize.h
         && e.key === "Enter"
         ){
-            console.log('inzone')
+          stopVO()
           window.location.href = '../../scenario/scenario1/yangConversation.html'
         }
 }
 
 function handleKeyDown(e){
-    if (!videoPlaying){
+    if (!audioIsBeingPlayed){
         walk(e)
     }
 }

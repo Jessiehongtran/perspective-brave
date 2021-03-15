@@ -150,11 +150,52 @@ const chooseDifferentResponse = document.getElementById("choose-different-respon
 const textWrapper = document.getElementById("text-wrapper")
 const rightSlideWrapper = document.getElementById("rightSlideWrapper")
 const speakerIcon = document.getElementsByClassName('speakerIcon')[0]
-
+let audio
+let audio1
+let audio2
+let audioIsBeingPlayed = false
 function speak(file){
-    var audio = new Audio(file);
-    audio.volume = 1;
-    audio.play()
+    if (!audioIsBeingPlayed){
+        let duration
+        audio = new Audio(file);
+        audio.volume = 1;
+        audio.play()
+        audio.onloadedmetadata = function() {
+            duration = audio.duration*1000
+        };
+        setTimeout(function(){
+            audioIsBeingPlayed = true
+        }, duration)
+    }
+}
+
+function speakDouble(file1, file2){
+    if (!audioIsBeingPlayed){
+        let duration 
+        audio1 = new Audio(file1);
+        audio1.volume = 1;
+        audio1.play()
+
+        setTimeout(function(){
+            audio2 = new Audio(file2);
+            audio2.volume = 1;
+            audio2.play()
+            audio2.onloadedmetadata = function() {
+                duration = audio2.duration*1000
+            };
+        }, 6000)
+
+        setTimeout(function(){
+            audioIsBeingPlayed = true
+        }, duration)
+    }
+    
+}
+
+function stopVO(){
+    audio.pause()
+    audio1.pause()
+    audio2.pause()
 }
 
 const characterFace = {
@@ -176,6 +217,7 @@ function showConversation(){
     getMessagesForEachPart()
     //hide rightSlide1
     rightSlide1.style.display = 'none'
+    stopVO()
 }
 
 function getMessagesForEachPart(){
@@ -193,20 +235,7 @@ function getMessagesForEachPart(){
     
 }
 
-function speakDouble(file1, file2){
-    var audio1 = new Audio(file1);
-    audio1.volume = 1;
-    audio1.play()
 
-    console.log(audio1.duration)
-
-    setTimeout(function(){
-        var audio2 = new Audio(file2);
-        audio2.volume = 1;
-        audio2.play()
-    }, 6000)
-    
-}
 
 let j = 0
 let durationToNextMessage = 0

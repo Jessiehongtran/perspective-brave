@@ -71,6 +71,26 @@ sparkling.style.top = `${sparklingPos.y}%`
 sparkling.style.width = `${sparklingPos.w}%`
 sparkling.style.height = `${sparklingPos.h}%`
 
+let audio = new Audio()
+let audioIsBeingPlayed = false
+function speak(file){
+    if (!audioIsBeingPlayed){
+        let duration
+        audio = new Audio(file);
+        audio.volume = 1;
+        audio.play()
+        audio.onloadedmetadata = function() {
+            duration = audio.duration*1000
+        };
+        setTimeout(function(){
+            audioIsBeingPlayed = true
+        }, duration)
+    }
+}
+
+function stopVO(){
+    audio.pause()
+}
 
 //Initiate character movement image variables
 let character_image = {
@@ -86,12 +106,6 @@ let moveInd = {
   "DOWN": 0,
   "LEFT": 0,
   "RIGHT": 0
-}
-
-function speak(file){
-  var audio = new Audio(file);
-  audio.volume = 1;
-  audio.play()
 }
 
 //Function to get character image file (that is stored locally)
@@ -246,6 +260,8 @@ function handleKeyDown(e){
 }
 
 function removeTutorialShowInstruction(){
+  //stopVO
+  stopVO()
   //change background
   container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613955122/Group_201_rfbx6m.png)"
   //make sure header is there

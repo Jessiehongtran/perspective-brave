@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Perspective 2.0</title>
-        <link rel="stylesheet" href="../index.css">
+        <link rel="stylesheet" href="../../index.css">
         <link rel="stylesheet" href="./characterSelection.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
@@ -31,10 +31,10 @@
                             Black man
                         </div>
                         <a href="" class="characterImage-link" >
-                            <img alt="black male image" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
+                            <img alt="black male image" onclick="stopVO()" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
                         </a>
                         <a href="" class="characterButton-link" >
-                            <button disabled class="characterButton">
+                            <button disabled class="characterButton" onclick="stopVO()">
                                 Jevon
                             </button>
                         </a>
@@ -47,11 +47,11 @@
                         <div class="title" role="title" >
                             Woman in tech
                         </div>
-                        <a href="../yangIntro/yangIntro.html" class="characterImage-link"  >
-                            <img alt="women in tech image" id="characterImage"  alt="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
+                        <a href="../yangIntro/yangIntro.html" class="characterImage-link">
+                            <img alt="women in tech image" id="characterImage" onclick="stopVO()" alt="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
                         </a>
-                        <a href="../yangIntro/yangIntro.html" class="characterButton-link"  >
-                            <button class="characterButton" >
+                        <a href="../yangIntro/yangIntro.html" class="characterButton-link">
+                            <button class="characterButton" onclick="stopVO()">
                                 Yang
                             </button>
                         </a>
@@ -64,10 +64,10 @@
                             Transgender
                         </div>
                         <a href="" class="characterImage-link"  >
-                            <img alt="transgender image" id="characterImage"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
+                            <img alt="transgender image" id="characterImage"  onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
                         </a>
                         <a href="" class="characterButton-link"  >
-                            <button class="characterButton" disabled >
+                            <button class="characterButton" disabled onclick="stopVO()">
                                 Elijah
                             </button>
                         </a>
@@ -77,10 +77,14 @@
             </div>
         </div>
         <script>
+            let audio 
             function speak(){
-                var audio = new Audio('../../asset/VOfiles/PerspectivesVO_characterSelect.wav');
+                audio = new Audio('../../asset/VOfiles/PerspectivesVO_characterSelect.wav');
                 audio.volume = 1;
                 audio.play()
+            }
+            function stopVO(){
+                audio.pause()
             }
         </script>
     </body>
