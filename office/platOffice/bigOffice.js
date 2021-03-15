@@ -31,6 +31,9 @@ const allowedWalkingDir = {
     
 }
 
+let preDir = null
+let curDir
+
 const characterHeight = 85
 const halfCharacterWidth = 55
 
@@ -221,38 +224,53 @@ function stopVO(){
 }
 
 function walk(e){
-    audioIsBeingPlayed = true
     if (!isWalkable()){
         disableCurWalkingDir()
     } else {
         enableWalkingDir()
     }
     if (e.key === "ArrowRight" && allowedWalkingDir["RIGHT"]){
+        curDir = "RIGHT"
         characterPos.x = characterPos.x + 20
         opDir = "LEFT"
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
-        speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
+        if (curDir !== preDir || preDir === null){
+            audioIsBeingPlayed = true
+            speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
+        }
     } else if (e.key === "ArrowLeft" && allowedWalkingDir["LEFT"]){
+        curDir = "LEFT"
         characterPos.x = characterPos.x - 20
         opDir = "RIGHT"
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
-        speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
+        if (curDir !== preDir || preDir === null){
+            audioIsBeingPlayed = true
+            speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
+        }
     } else if (e.key === "ArrowUp" && allowedWalkingDir["UP"]){
+        curDir = "UP"
         characterPos.y = characterPos.y - 20
         opDir = "DOWN"
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
-        speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
+        if (curDir !== preDir || preDir === null){
+            audioIsBeingPlayed = true
+            speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
+        }
     } else if (e.key === "ArrowDown" && allowedWalkingDir["DOWN"]){
+        curDir = "DOWN"
         characterPos.y = characterPos.y + 20
         opDir = "UP"
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
-        speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')
+        if (curDir !== preDir || preDir === null){
+            audioIsBeingPlayed = true
+            speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')
+        }
     }
     character.style.left = `${characterPos.x}px`
     character.style.top = `${characterPos.y}px`
@@ -264,6 +282,8 @@ function walk(e){
           stopVO()
           window.location.href = '../../scenario/scenario1/yangConversation.html'
         }
+
+    preDir = curDir
 }
 
 function handleKeyDown(e){
