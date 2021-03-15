@@ -67,7 +67,7 @@ const winning = document.getElementsByClassName('winning')[0]
 const mainGame = document.getElementsByClassName('main-game')[0]
 const board = document.getElementsByClassName('landing')[0]
 const slideButtons = document.getElementsByClassName('slide-buttons')[0]
-const speakerIconInWrong = document.getElementsByClassName('speakerIconInWrong')[0]
+const speakerIconInWrong = document.getElementsByClassName('speakerIcon wrong')[0]
 
 let audioIsBeingPlayed = false
 function speak(file){
