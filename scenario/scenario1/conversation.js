@@ -374,6 +374,9 @@ function getMessageElement(name, messageText, side, speedInd){
 function addButtons(){
     buttonsContainer = document.createElement('div')
     buttonsContainer.style.display = 'flex'
+    buttonsContainer.style.justifyContent = 'center'
+    buttonsContainer.style.alignItems = 'center'
+    buttonsContainer.style.flexWrap = 'wrap'
     buttonsContainer.style.marginTop = '20px'
     buttonsContainer.style.width = '100%'
     buttonsContainer.style.justifyContent = 'space-evenly'
@@ -388,11 +391,12 @@ function addButtons(){
             setTimeout(function(){
                 button.style.animation = 'pulse 2s infinite'
             }, 3000)
-            button.style.borderRadius = '26px'
+            button.style.borderRadius = '30px'
             button.style.boxShadow = 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px'
             button.appendChild(document.createTextNode(buttons[i].text))
             button.style.cursor = 'pointer'
             button.style.marginRight = '20px'
+            button.style.marginBottom = '20px'
             button.addEventListener('click', () => {
                 next = buttons[i].next
                 if (next){
@@ -406,6 +410,7 @@ function addButtons(){
         }
     }
     chat.appendChild(buttonsContainer)
+    chat.scrollTop = chat.scrollHeight
 }
 
 

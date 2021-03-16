@@ -142,18 +142,27 @@ body {
     width: 5%
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1400px) and (min-width: 1000px) {
     .introToBias {
         font-size: 20px;
+    }
+    .each-dot {
+        width: 12px;
+        height: 12px
     }
   }
 
 @media only screen and (max-width: 1000px) {
     .introToBias {
-        width: 40%
+        width: 40%;
+        font-size: 18px;
        
     }
-  }
+    .each-dot {
+        width: 10px;
+        height: 10px
+    }
+}
 
   
 @media only screen and (max-width: 700px) {

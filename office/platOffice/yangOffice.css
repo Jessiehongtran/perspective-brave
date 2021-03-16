@@ -339,6 +339,7 @@ body {
     height: 60vh; 
     padding: 60px;
     margin-top: 4%;
+    overflow-y:auto
 }
 
 .text-wrapper {
@@ -390,9 +391,27 @@ body {
 }
 
 @media only screen and (max-width: 1000px) {
-    .wrapper {
-      left: 0
+    #welcome {
+        margin-top: 0px;
+        font-size: 22px;
     }
+
+    .wrapper {
+      left: 0;
+      top: 30%
+      
+    }
+
+    #instruction {
+        max-width: 200px; 
+        font-size: 20px;
+        margin-left: 20px;
+    }
+
+    #detail-instruction {
+        font-size: 20px;
+    }
+
 }
   
 @media only screen and (max-width: 700px) {

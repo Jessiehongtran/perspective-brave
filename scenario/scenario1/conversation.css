@@ -24,6 +24,10 @@ body {
     z-index: 1
 }
 
+.speakerIcon.tryAgain {
+    width: 5%
+}
+
 .header {
     margin-top: 40px; 
     width: 100%; 
@@ -46,7 +50,8 @@ body {
     width: 60%; 
     height: 60vh; 
     margin-top: 40px; 
-    padding: 60px
+    padding: 60px;
+    overflow-y:auto
 }
 
 #text-wrapper {
@@ -73,14 +78,16 @@ body {
 
 #choose-different-response {
     display: none; 
-    width: 70%; 
+    width: 90%; 
     text-align: center; 
-    height: 100%
+    height: 100%;
+    overflow-y:auto
 }
 
 .choose-text {
     color: white; 
-    font-size: 22px;
+    font-size: 20px;
+    line-height: 1.8;
 }
 
 .speakerIcon {
@@ -104,8 +111,9 @@ body {
 
 .next-text {
     color: white; 
-    font-size: 22px; 
+    font-size: 20px; 
     margin-top: 60px;
+    line-height: 1.8;
 }
 
 #conversation {
@@ -126,7 +134,10 @@ body {
 #chat {
     padding-left: 15%; 
     padding-right: 15%; 
-    padding-top: 20px
+    margin-top: 40px;
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 #leftSlide {
@@ -191,6 +202,18 @@ body {
     border-color:   #A8D0CE transparent  transparent   transparent ;
 }
 
+@media only screen and (max-width: 800px) {
+    .choose-text, .next-text {
+        font-size: 18px;
+    }
+    .tryButton {
+        font-size: 16px;
+        padding: 8px 20px; 
+    }
+    .speakerIcon.tryAgain {
+        width: 10%
+    }
+}
 
 @keyframes pulse {
     0%, 100%{

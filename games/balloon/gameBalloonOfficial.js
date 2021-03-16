@@ -130,6 +130,8 @@ function jump(){
 }
 
 function enterOrLeavePlatform(){
+
+    console.log(question, infoIcon, character)
     if ( gameInstruction.style.display !== 'none'){
         gameInstruction.style.display = 'none'
     } else {
@@ -143,7 +145,9 @@ function enterOrLeavePlatform(){
     }
     
     if (question.style.display === 'none'){
-        question.style.display = 'block'
+        question.style.display = 'flex'
+        question.style.flexDirection = 'column'
+        question.style.alignItems = 'flex-start'
     } else {
         question.style.display = 'none'
     }
