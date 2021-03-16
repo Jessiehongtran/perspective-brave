@@ -71,7 +71,8 @@ body {
     margin: 40px 40px 20px 40px; 
     text-align: center; 
     font-size: 26px; 
-    color: #1E2228
+    color: #1E2228;
+    line-height: 38px;
 }
 
 .fake-container {

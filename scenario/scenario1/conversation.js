@@ -82,7 +82,7 @@ const messageData= {
             {
                 name: "DEVON",
                 text: "Let see how we can make this work with the timeline.",
-                speedInd: 50
+                speedInd: 100
             },
         ],
         buttons: []
