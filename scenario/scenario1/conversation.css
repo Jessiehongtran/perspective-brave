@@ -78,10 +78,14 @@ body {
 
 #choose-different-response {
     display: none; 
-    width: 90%; 
+    width: 70%; 
     text-align: center; 
     height: 100%;
     overflow-y:auto
+}
+
+.different-response-wrapper {
+    width: 70%
 }
 
 .choose-text {

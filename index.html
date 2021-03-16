@@ -26,6 +26,16 @@
             </div>
         </div>
         <script>
+            const startButton = document.getElementsByClassName("start-button")[0]
+            const startButtonImg = document.getElementsByClassName("startButton-img")[0]
+            function handleMouseOver(){
+                startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615932581/startButton-hovered_djktcj.svg"
+            }
+            function handleMouseOut(){
+                startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615932589/startButton-default_aiknwm.svg"
+            }
+            startButton.addEventListener('mouseover', handleMouseOver)
+            startButton.addEventListener('mouseout', handleMouseOut)
         </script>
     </body>
 </html>
