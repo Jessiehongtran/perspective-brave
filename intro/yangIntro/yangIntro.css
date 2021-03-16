@@ -116,6 +116,7 @@ body {
     flex-direction: column; 
     justify-content: center; 
     margin-top: -5%;
+    padding: 20px 0
 }
 
 .name {
@@ -134,6 +135,7 @@ body {
     display: flex; 
     align-items: center;
     font-weight: bolder;
+
 }
 
 .bio-wrapper {
