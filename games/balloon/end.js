@@ -49,7 +49,7 @@ function nextSlide(){
         const nextId = curId + 1
         showText(nextId)
     } else {
-        window.location.href= "./gameBalloonOfficial.html"
+        window.location.href= "../../index.html"
     }
 }
 
@@ -61,7 +61,7 @@ function preSlide(){
         const nextId = curId - 1
         showText(nextId)
     } else {
-        window.location.href= "../../scenario/scenario1/yangConversation.html"
+        window.location.href= "./gameBalloonOfficial.html"
     }
 }
 
