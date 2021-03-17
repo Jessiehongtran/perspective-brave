@@ -6,7 +6,7 @@ body {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    height: 100vh; 
+    min-height: 100vh; 
     width: 100%; 
     font-family: Montserrat; 
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png) ; 
@@ -14,6 +14,14 @@ body {
     background-position: center; 
     background-repeat: no-repeat;
 }
+
+#hamburger-menu {
+    position: absolute;
+    left: 95%;
+    top: 3%;
+    width: 3%;
+    z-index: 20
+  }
 
 
 .speakerIcon.tryAgain {
@@ -72,7 +80,7 @@ body {
     display: none; 
     width: 100%; 
     text-align: center; 
-    height: 100%;
+    height: 100%; 
     overflow-y:auto
 }
 

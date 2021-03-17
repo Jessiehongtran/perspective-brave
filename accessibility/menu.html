@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Perspective 2.0</title>
+        <link rel="stylesheet" href="./menu.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" >
+    </head>
+    <body>
+        <div role="container" class="container" >
+            <button class="back-button" onclick="goBack()">Back</button>
+            <div class="header">ACCESSIBILITY OPTIONS</div>
+            <div class="row">
+                <div class="each-mode">
+                    <div class="title">Colorblind mode</div>
+                    <div class="options">
+                        <div class="each-option">
+                            <input type="checkbox"/>
+                            <div class="text">Protanopia</div>
+                        </div>
+                        <div class="each-option">
+                            <input type="checkbox"/>
+                            <div class="text">Deuteranopia</div>
+                        </div>
+                        <div class="each-option">
+                            <input type="checkbox"/>
+                            <div class="text">Tritanopia</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="each-mode">
+                    <div class="title">Zoom box</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="each-mode">
+                    <div class="title">High contrast mode</div>
+                    <div class="options">
+                        <div class="each-option">
+                            <input type="checkbox"/>
+                            <div class="text">Setting 1</div>
+                        </div>
+                        <div class="each-option">
+                            <input type="checkbox"/>
+                            <div class="text">Setting 2</div>
+                        </div>
+                        <div class="each-option">
+                            <input type="checkbox"/>
+                            <div class="text">Setting 3</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="each-mode">
+                    <div class="title">Size of Text</div>
+                    <div class="options">
+                        <div class="each-option">
+                            <input type="checkbox"/>
+                            <div class="text">Small</div>
+                        </div>
+                        <div class="each-option">
+                            <input type="checkbox"/>
+                            <div class="text">Medium</div>
+                        </div>
+                        <div class="each-option">
+                            <input type="checkbox"/>
+                            <div class="text">Large</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+    </body>
+</html>

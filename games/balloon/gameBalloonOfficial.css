@@ -14,6 +14,14 @@ body {
     overflow: hidden
 }
 
+#hamburger-menu {
+    position: absolute;
+    left: 95%;
+    top: 3%;
+    width: 3%;
+    z-index: 20
+  }
+
 .slide-buttons {
     display: none
 }

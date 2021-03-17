@@ -17,6 +17,14 @@ body {
     background-repeat: no-repeat;
 }
 
+#hamburger-menu {
+    position: absolute;
+    left: 95%;
+    top: 3%;
+    width: 3%;
+    z-index: 20
+  }
+
 .speakerIcon {
     font-size: 20px;  
     cursor: pointer; 

@@ -18,6 +18,14 @@ body {
     background-repeat: no-repeat; 
 }
 
+#hamburger-menu {
+    position: absolute;
+    left: 95%;
+    top: 3%;
+    width: 3%;
+    z-index: 20
+  }
+
 #leftSlide {
     z-index: 1; 
     position: absolute; 

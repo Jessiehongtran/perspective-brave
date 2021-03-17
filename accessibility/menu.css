@@ -1,0 +1,72 @@
+body {
+    margin: 0 !important
+  }
+
+.container {
+    background-color: #0C193B;
+    width: 100%;
+    min-height: 100vh;
+    padding: 5% 20%;
+    color: white;
+    font-family: Montserrat; 
+}
+
+.back-button {
+    position: absolute;
+    left: 5%;
+    top: 8%;
+    border: 1px solid white;
+    padding: 8px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+.header {
+    margin-bottom: 40px;
+    font-size: 36px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+}
+
+.each-mode {
+    margin-right: 60px;
+    min-width: 700px;
+    margin-bottom: 40px;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.options {
+    margin-left: 10px;
+    font-size: 26px;
+}
+
+.each-option {
+    display: flex; 
+    align-items: center;
+    margin: 10px 0
+}
+
+input {
+    margin-right: 10px;
+}
+
+
+
+@media only screen and (max-width: 1300px) {
+    .each-mode {
+        max-width: 500px;
+    }
+  }

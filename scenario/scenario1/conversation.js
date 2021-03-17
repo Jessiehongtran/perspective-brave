@@ -117,7 +117,7 @@ const messageData= {
             {
                 name: "YANG",
                 text: "What am I here for?.." , 
-                speedInd: 40
+                speedInd: 60
             },
             {
                 name: "JERRY",
@@ -150,6 +150,8 @@ const chooseDifferentResponse = document.getElementById("choose-different-respon
 const textWrapper = document.getElementById("text-wrapper")
 const rightSlideWrapper = document.getElementById("rightSlideWrapper")
 const speakerIcon = document.getElementsByClassName('speakerIcon')[0]
+
+
 let audio
 let audio1
 let audio2

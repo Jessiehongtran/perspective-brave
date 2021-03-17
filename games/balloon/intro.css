@@ -16,6 +16,14 @@ body {
     background-repeat: no-repeat;
 }
 
+#hamburger-menu {
+    position: absolute;
+    left: 95%;
+    top: 3%;
+    width: 3%;
+    z-index: 20
+  }
+
 .introToBias {
     width: 25%; 
     min-height: 90vh;
