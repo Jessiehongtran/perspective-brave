@@ -497,7 +497,7 @@ function setupGrid(){
                 walkable: false
             })
 
-            container.appendChild(eachSquare)
+            // container.appendChild(eachSquare)
         }
         squares.push(squareRows)
     }
@@ -572,17 +572,31 @@ function mapoutGamePlatform(){
     //board contains yellow balloon
     drawParallelogram(49, 81, 90, 178)
     //board that is empty
-    drawParallelogram(70, 100, 62, 130)
+    if (vh > 930){
+        console.log('heyyo')
+        drawParallelogram(73, 103, 62, 130)
+    } else {
+        drawParallelogram(70, 100, 62, 130)
+    }
     //stair connects red and green
     drawStair(47, 80, 92, 12, 2, "DOWN")
     drawStair(55, 78, 80, 4, 2, "DOWN")
     drawStair(53, 92, 94, 6, 2, "DOWN")
     drawStair(54, 94, 96, 4, 2, "DOWN")
     //stair connects green and empty
-    drawStair(78, 66, 78, 6, 2, "UP")
+    if (vh > 930){
+        drawStair(78, 66, 78, 9, 2, "UP")
+    } else {
+        drawStair(78, 66, 78, 6, 2, "UP")
+    }
     //stair connects empty and yellow
-    drawStair(73, 117, 129, 7, 2, "DOWN")
-    drawStair(79, 129, 131, 4, 2, "DOWN")
+    if (vh > 930){
+        drawStair(73, 117, 129, 10, 2, "DOWN")
+        drawStair(79, 129, 131, 6, 2, "DOWN")
+    } else {
+        drawStair(73, 117, 129, 7, 2, "DOWN")
+        drawStair(79, 129, 131, 4, 2, "DOWN")
+    }
     //stair connects red and yellow
     drawStair(46, 126, 137, 8, 2, "UP")
     drawStair(44, 137, 149, 7, 1, "DOWN")
