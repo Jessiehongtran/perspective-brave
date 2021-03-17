@@ -40,6 +40,7 @@ body {
 .each-dot {
     border-radius: 50%;
     background-color: #0C193B;
+    cursor: pointer;
     width: 15px;
     height: 15px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -72,16 +73,18 @@ body {
     position: absolute; 
     left: 2%; 
     top: 45%; 
-    width: 5%
+    width: 5%;
+    cursor: pointer;
 }
 
 #rightSlide {
-    display: none;
+    /* display: none; */
     z-index: 1; 
     position: absolute; 
     left: 93.5%; 
     top: 45%; 
-    width: 5%
+    width: 5%;
+    cursor: pointer;
 }
 
 .header {

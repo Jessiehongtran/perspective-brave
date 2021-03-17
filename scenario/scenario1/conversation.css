@@ -15,22 +15,14 @@ body {
     background-repeat: no-repeat;
 }
 
-.speakerIcon {
-    font-size: 20px;  
-    cursor: pointer; 
-    width: 4%; 
-    margin-top: 20px; 
-    padding-bottom: 20px;
-    z-index: 1
-}
 
 .speakerIcon.tryAgain {
-    width: 5%
+    width: 10%
 }
 
 .header {
     margin-top: 40px; 
-    width: 100%; 
+    width: 90%; 
     display: flex; 
     justify-content: center;  
     margin-bottom: 40px
@@ -78,14 +70,14 @@ body {
 
 #choose-different-response {
     display: none; 
-    width: 70%; 
+    width: 100%; 
     text-align: center; 
     height: 100%;
     overflow-y:auto
 }
 
 .different-response-wrapper {
-    width: 70%
+    width: 60%
 }
 
 .choose-text {

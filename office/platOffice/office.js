@@ -290,8 +290,8 @@ function removeTutorialShowInstruction(){
   detailInstruction.style.alignItems = 'center'
   //move the speaker icon
   detailInstruction.appendChild(speakerIcon)
-  speakerIcon.onclick = speak('../../asset/VOfiles/PerspectivesVO_sparklingIntro.wav')
-  speakerIcon.style.width = '6%'
+  speakerIcon.onclick = function(){ speak('../../asset/VOfiles/PerspectivesVO_sparklingIntro.wav')};
+  speakerIcon.style.width = '7%'
   //hide right slide 1 and show right slide 2
   rightSlide1.style.display = 'none'
   rightSlide2.style.display = 'block'
