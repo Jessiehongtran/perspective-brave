@@ -10,25 +10,25 @@ let vhRange = Math.floor(((vh - standardVH)/squareSize)/2)
 
 
 const characterPos = {
-    x: 800,
-    y: 600
+    x: 850,
+    y: 650
 }
 
 const balloonSize = 200
 
 let greenBalloonPos = {
-    x: Math.floor(18*vw/100),
+    x: Math.floor(19*vw/100),
     y: Math.floor(30*vh/100)
 }
 
 
 let redBalloonPos = {
-    x: Math.floor(45*vw/100),
+    x: Math.floor(49*vw/100),
     y: Math.floor(2*vh/100)
 }
 
 let yellowBalloonPos = {
-    x: Math.floor(73*vw/100),
+    x: Math.floor(82*vw/100),
     y: Math.floor(30*vh/100)
 }
 
@@ -489,7 +489,7 @@ function setupGrid(){
             eachSquare.style.position = 'absolute'
             eachSquare.style.left = `${c*squareSize}px`
             eachSquare.style.top = `${r*squareSize}px`
-            // eachSquare.style.border = '1px solid grey'
+            eachSquare.style.border = '1px solid grey'
             eachSquare.style.zIndex = '5'
 
             squareRows.push({
@@ -497,7 +497,7 @@ function setupGrid(){
                 walkable: false
             })
 
-            // container.appendChild(eachSquare)
+            container.appendChild(eachSquare)
         }
         squares.push(squareRows)
     }
@@ -512,7 +512,7 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
         let j = midCol - increase
         while (j < midCol + increase + 1){
             if (i < rows && j < cols && squares[i][j]){
-                // squares[i][j].element.style.backgroundColor = 'red'
+                squares[i][j].element.style.backgroundColor = 'red'
                 squares[i][j].walkable = true
             }
             j += 1
@@ -525,7 +525,7 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
         let j = midCol - increase
         while (j < midCol + increase + 1){
             if (i < rows && j < cols && squares[i][j]){
-                // squares[i][j].element.style.backgroundColor = 'red'
+                squares[i][j].element.style.backgroundColor = 'red'
                 squares[i][j].walkable = true
             }
             j += 1
@@ -538,7 +538,7 @@ function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
 function drawACol(col, startRow, endRow){
     for (let i = startRow; i < endRow + 1; i++){
         if (i < rows && col < cols){
-            // squares[i][col].element.style.backgroundColor = 'orange'
+            squares[i][col].element.style.backgroundColor = 'orange'
             squares[i][col].walkable = true
         }
     }
@@ -565,17 +565,27 @@ function drawStair(leftRow, leftCol, rightCol, stepLength, stepWidth, dimension)
 }
 
 function mapoutGamePlatform(){
-    drawParallelogram(24 + vhRange, 54 + vhRange, 58 + vwRange, 122 + vwRange)
-    drawParallelogram(47 + vhRange, 77 + vhRange, 22 + vwRange, 92 + vwRange)
-    drawParallelogram(47 + vhRange, 77 + vhRange, 90 + vwRange, 150 + vwRange)
-    drawParallelogram(66 + vhRange, 92 + vhRange, 52 + vwRange, 124 + vwRange)
-    drawStair(47 + vhRange, 74 + vwRange, 84 +vwRange, 8, 2, "DOWN")
-    drawStair(52 + vhRange, 72 + vwRange, 74 + vwRange, 2, 2, "DOWN")
-    drawStair(51 + vhRange, 84 + vwRange, 86 + vwRange, 3, 2, "DOWN")
-    drawStair(74 + vhRange, 62 + vwRange, 74 + vwRange, 4, 2, "UP")
-    drawStair(70 + vhRange, 105 + vwRange, 116 + vwRange, 4, 2, "DOWN")
-    drawStair(42 + vhRange, 112 + vwRange, 121 + vwRange, 8, 2, "UP")
-    drawStair(40 + vhRange, 121 + vwRange, 133 + vwRange, 7, 1, "DOWN")
+    //board contains red balloon
+    drawParallelogram(29, 55, 59, 140)
+    //board contains green balloon
+    drawParallelogram(50, 80, 22, 100)
+    //board contains yellow balloon
+    drawParallelogram(49, 81, 90, 178)
+    //board that is empty
+    drawParallelogram(70, 100, 62, 130)
+    //stair connects red and green
+    drawStair(47, 80, 92, 12, 2, "DOWN")
+    drawStair(55, 78, 80, 4, 2, "DOWN")
+    drawStair(53, 92, 94, 6, 2, "DOWN")
+    drawStair(54, 94, 96, 4, 2, "DOWN")
+    //stair connects green and empty
+    drawStair(78, 66, 78, 6, 2, "UP")
+    //stair connects empty and yellow
+    drawStair(73, 117, 129, 7, 2, "DOWN")
+    drawStair(79, 129, 131, 4, 2, "DOWN")
+    //stair connects red and yellow
+    drawStair(46, 126, 137, 8, 2, "UP")
+    drawStair(44, 137, 149, 7, 1, "DOWN")
 }
 
 function isWalkable(){
