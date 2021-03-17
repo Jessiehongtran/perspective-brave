@@ -207,8 +207,11 @@ function disableCurWalkingDir(){
         if (dirs[i] !== opDir){
             allowedWalkingDir[dirs[i]] = false
         } else {
-            walkingDirection.innerHTML = `You can only go ${opDir}`
+            walkingDirection.innerHTML = `Do not go there. You can only go ${opDir}`
             walkingDirection.style.display = 'block'
+            if (letSoundPlay){
+                playSound(`../../asset/VOfiles/PerspectivesVO_limit_${opDir}.wav`)
+            }
         }
     } 
 }
@@ -219,6 +222,7 @@ function enableWalkingDir(){
         allowedWalkingDir[dirs[i]] = true
     } 
     walkingDirection.style.display = 'none'
+    letSoundPlay = true
 }
 
 let cheerInd
@@ -389,20 +393,17 @@ function isTouchingBalloon(){
     if (characterPos.x + characterSize.w/2 >= redBalloonPos.x
         && characterPos.x + characterSize.w/2 <= redBalloonPos.x + balloonSize
         && characterPos.y >= redBalloonPos.y - balloonSize){
-            console.log('touch red')
             jumping = false
             flyRed()
         }
     if (characterPos.x + characterSize.w/2 >= greenBalloonPos.x
         && characterPos.x + characterSize.w/2 <= greenBalloonPos.x + balloonSize
         && characterPos.y >= greenBalloonPos.y - balloonSize){
-            console.log('touch green')
             flyGreen()
         }
     if (characterPos.x + characterSize.w/2 >= yellowBalloonPos.x
         && characterPos.x + characterSize.w/2 <= yellowBalloonPos.x + balloonSize
         && characterPos.y >= yellowBalloonPos.y - balloonSize){
-            console.log('touch yellow')
             flyYellow()
         }
     
@@ -609,7 +610,6 @@ function mapoutGamePlatform(){
     drawParallelogram(49, 81, 90, 178)
     //board that is empty
     if (vh > 930){
-        console.log('heyyo')
         drawParallelogram(73, 103, 62, 130)
     } else {
         drawParallelogram(70, 100, 62, 130)
@@ -642,7 +642,7 @@ function isWalkable(){
     let curCol = Math.floor((characterPos.x + characterSize.w/2)/squareSize)
     let curRow = Math.floor((characterPos.y + characterSize.h -10)/squareSize)
 
-    if (squares[curRow][curCol].walkable){
+    if (curRow < rows && curCol < cols && squares[curRow][curCol].walkable){
         return true
     }
     return false

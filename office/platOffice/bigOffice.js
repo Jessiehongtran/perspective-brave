@@ -193,6 +193,7 @@ function disableCurWalkingDir(){
         } else {
             walkingDirection.innerHTML = `You can only go ${opDir}`
             walkingDirection.style.display = 'block'
+            speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
         }
     } 
 }
