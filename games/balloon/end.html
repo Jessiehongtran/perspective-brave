@@ -8,12 +8,8 @@
     </head>
     <body>
         <div id="container" role="container" >
-            <a href="./gameBalloonOfficial.html" role="backButton">
-                <img id="leftSlide" style="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
-            </a>
-            <a href="../../index.html" role="nextButton">
-                <img id="rightSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
-            </a>
+            <img id="leftSlide" onclick="preSlide()" role="backButton" style="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            <img id="rightSlide" onclick="nextSlide()" role="nextButton" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
             <div class="header" role="header" >
                 <img  class="logo" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
             </div>
@@ -24,13 +20,13 @@
             <img id="group2" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210192/Group_105_aulqkx.svg" />
             <div role="introductionToBias" class="introToBias" style="">
                 <div class="dots">
-                    <div class="each-dot active"></div>
-                    <div class="each-dot"></div>
+                    <div class="each-dot active" onclick="showText(0)"></div>
+                    <div class="each-dot" onclick="showText(1)"></div>
                 </div>
                 <p role="text" id="info">
                     When bias is perceived in the workplace, 3 in ten people say they plan to leave their current job.
                 </p>
-                <img role="speakerIcon" class="speakerIcon" style="" onclick="speak()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
+                <img role="speakerIcon" class="speakerIcon" style="" onclick="speak('../../asset/VOfiles/PerspectivesVO_bias_summary1.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
             </div>
         </div>
         <script src="end.js">

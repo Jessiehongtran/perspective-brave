@@ -1,10 +1,16 @@
+let audio 
+
 function speak(file){
-    var audio = new Audio(file);
+    audio = new Audio(file);
     audio.volume = 1;
     audio.play()
     audio.onloadedmetadata = function() {
         return  audio.duration
     };
+}
+
+function stopVO(){
+    audio.pause()
 }
 
 const texts = [
@@ -15,7 +21,8 @@ const texts = [
 
 const VOs = [
     "../../asset/VOfiles/PerspectivesVO_balloonIntro_1.wav",
-    "../../asset/VOfiles/PerspectivesVO_balloonIntro_2.wav"
+    "../../asset/VOfiles/PerspectivesVO_balloonIntro_2.wav",
+    "../../asset/VOfiles/PerspectivesVO_balloonIntro_3.wav"
 ]
 
 
@@ -24,31 +31,13 @@ const info = document.getElementById("info")
 const dots = document.getElementsByClassName("each-dot")
 const rightSlide = document.getElementById("rightSlide")
 const speakerIcon = document.getElementsByClassName("speakerIcon")[0]
-let speed = 13*1000
-
-// function showNextText(){
-//     if (i < texts.length){
-//         info.innerHTML = texts[i]
-//         dots[i].setAttribute('class', "each-dot")
-//         dots[i+1].setAttribute('class', "each-dot active")
-//         speed = 4000
-//         if (i < 1){
-//             speakerIcon.onclick = function (){speak("../../asset/VOfiles/PerspectivesVO_balloonIntro_2.wav")}
-//             // speakerIcon.style.visibility = 'hidden'
-//         }
-//         i += 1
-//         setTimeout(showNextText, speed)
-//     } else {
-//         rightSlide.style.display = 'block'
-//     }
-    
-// }
-
-// setTimeout(showNextText, speed)
 
 let curId = 0
 
 function showText(id){
+    if (audio){
+        stopVO()
+    }
     info.innerHTML = texts[id]
     dots[id].setAttribute('class', "each-dot active")
     dots[curId].setAttribute('class', "each-dot")
@@ -57,6 +46,9 @@ function showText(id){
 }
 
 function nextSlide(){
+    if (audio){
+        stopVO()
+    }
     if (curId + 1 < 3){
         const nextId = curId + 1
         showText(nextId)
@@ -66,6 +58,9 @@ function nextSlide(){
 }
 
 function preSlide(){
+    if (audio){
+        stopVO()
+    }
     if (curId - 1 >= 0){
         const nextId = curId - 1
         showText(nextId)

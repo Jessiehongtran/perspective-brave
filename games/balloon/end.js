@@ -1,32 +1,67 @@
-function speak(){
-    var audio = new Audio('../../asset/VOfiles/PerspectivesVO_bias_summary.wav');
+let audio 
+
+function speak(file){
+    audio = new Audio(file);
     audio.volume = 1;
     audio.play()
 }
 
+function stopVO(){
+    audio.pause()
+}
+
 const texts = [
+    "When bias is perceived in the workplace, 3 in ten people say they plan to leave their current job.",
     "And the same number -roughly 3 in 10- report withholding ideas and market solutions."
+]
+
+const VOs = [
+    "../../asset/VOfiles/PerspectivesVO_bias_summary1.wav",
+    "../../asset/VOfiles/PerspectivesVO_bias_summary2.wav"
 ]
 
 let i = 0
 const info = document.getElementById("info")
 const dots = document.getElementsByClassName("each-dot")
 const rightSlide = document.getElementById("rightSlide")
-const speed = 6100
+const speakerIcon = document.getElementsByClassName("speakerIcon")[0]
 
 document.getElementsByClassName('dots')[0].style.width = '10%'
 
-function showNextText(){
+let curId = 0
 
-    if (i < texts.length){
-        info.innerHTML = texts[i]
-        dots[i].setAttribute('class', "each-dot")
-        dots[i+1].setAttribute('class', "each-dot active")
-        i += 1
-        setTimeout(showNextText, speed)
+function showText(id){
+    if (audio){
+        stopVO()
+    }
+    info.innerHTML = texts[id]
+    dots[id].setAttribute('class', "each-dot active")
+    dots[curId].setAttribute('class', "each-dot")
+    speakerIcon.onclick = function (){speak(VOs[id])}
+    curId = id
+}
+
+function nextSlide(){
+    if (audio){
+        stopVO()
+    }
+    if (curId + 1 < texts.length){
+        const nextId = curId + 1
+        showText(nextId)
     } else {
-        rightSlide.style.display = 'block'
+        window.location.href= "./gameBalloonOfficial.html"
     }
 }
 
-setTimeout(showNextText, speed)
+function preSlide(){
+    if (audio){
+        stopVO()
+    }
+    if (curId - 1 >= 0){
+        const nextId = curId - 1
+        showText(nextId)
+    } else {
+        window.location.href= "../../scenario/scenario1/yangConversation.html"
+    }
+}
+
