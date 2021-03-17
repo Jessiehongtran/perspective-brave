@@ -70,19 +70,18 @@ const slideButtons = document.getElementsByClassName('slide-buttons')[0]
 const speakerIconInWrong = document.getElementsByClassName('speakerIcon wrong')[0]
 
 let audioIsBeingPlayed = false
+let duration
 function speak(file){
-    if (!audioIsBeingPlayed){
-        let duration
-        audio = new Audio(file);
-        audio.volume = 1;
-        audio.play()
-        audio.onloadedmetadata = function() {
-            duration = audio.duration*1000
-        };
-        setTimeout(function(){
-            audioIsBeingPlayed = true
-        }, duration)
-    }
+    audio = new Audio(file);
+    audio.volume = 1;
+    audio.play()
+    audio.onloadedmetadata = function() {
+        duration = audio.duration*1000
+    };
+    setTimeout(function(){
+        audioIsBeingPlayed = false
+    }, duration)
+   
 }
 
 
@@ -410,8 +409,16 @@ function isTouchingBalloon(){
 }
 
 const walkingSpeed = 20
+let curDir 
+let preDir = null
+let audio
 
-function handleKeyDown(e){
+function stopVO(){
+    audio.pause()
+}
+
+
+function walk(e){
     if (!isWalkable()){
         disableCurWalkingDir()
     } else {
@@ -422,31 +429,51 @@ function handleKeyDown(e){
     if (e.key === "ArrowRight" && allowedWalkingDir["RIGHT"]){
         characterPos.x += walkingSpeed
         opDir = "LEFT"
+        curDir = "RIGHT"
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
+        if (curDir !== preDir || preDir === null){
+            audioIsBeingPlayed = true
+            speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
+        }
     } 
     //move left
     if (e.key === "ArrowLeft" && allowedWalkingDir["LEFT"]){
         characterPos.x -= walkingSpeed
         opDir = "RIGHT"
+        curDir = "LEFT"
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
+        if (curDir !== preDir || preDir === null){
+            audioIsBeingPlayed = true
+            speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
+        }
     } 
     //move up
     if (e.key === "ArrowUp" && allowedWalkingDir["UP"]){
         characterPos.y -= walkingSpeed
         opDir = "DOWN"
+        curDir = "UP"
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
+        if (curDir !== preDir || preDir === null){
+            audioIsBeingPlayed = true
+            speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
+        }
     } 
     //move down
     if (e.key === "ArrowDown" && allowedWalkingDir["DOWN"]){
         characterPos.y += walkingSpeed
         opDir = "UP"
+        curDir = "DOWN"
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
+        if (curDir !== preDir || preDir === null){
+            audioIsBeingPlayed = true
+            speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')
+        }
     } 
     //jump
     if (e.key === "Enter"){
@@ -455,6 +482,7 @@ function handleKeyDown(e){
         jumping = true
         jump()
     }
+
 
     character.style.left = `${characterPos.x}px`
     character.style.top = `${characterPos.y}px`
@@ -465,6 +493,14 @@ function handleKeyDown(e){
     }
     character.style.width = `${characterSize.w}px`
     character.style.height = `${characterSize.h}px`
+
+    preDir = curDir
+}
+
+function handleKeyDown(e){
+    if (!audioIsBeingPlayed){
+        walk(e)
+    }
 }
 
 

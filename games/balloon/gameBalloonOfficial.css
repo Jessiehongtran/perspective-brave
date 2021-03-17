@@ -210,8 +210,7 @@ body {
 
 .instruction {
     background-color: #A9D3D0; 
-    width: 60%; 
-    max-height: 700px;
+    width: 60%;
     overflow-y:auto; 
     display: flex; 
     justify-content: center; 
