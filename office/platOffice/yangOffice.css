@@ -58,6 +58,20 @@ body {
     background-repeat: no-repeat; */
 }
 
+#platform-mini {
+    width: 65%; 
+    height: 100%;
+    display: flex; 
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    flex-direction: column;
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615483006/platformOfficial_p2y7ho.svg); 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: 100% 100%;
+}
+
 #platformImg {
     position: absolute; 
     left: 500px; 
