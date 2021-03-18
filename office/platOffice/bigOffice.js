@@ -235,8 +235,16 @@ function stopVO(){
     audio.pause()
 }
 
+let firstWalk = true
+
 function walk(e){
     let playAudioOnWalking = localStorage.getItem('playAudioOnWalking')
+
+    //describe the environment
+    if (firstWalk && playAudioOnWalking === "true"){
+        speak('../../asset/VOfiles/PerspectivesVO_officeDescribe.wav')
+        firstWalk = false
+    }
 
     if (!isWalkable()){
         disableCurWalkingDir()
@@ -250,7 +258,7 @@ function walk(e){
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
-        if (playAudioOnWalking === "true"){
+        if (playAudioOnWalking === "true" && !firstWalk){
             if (curDir !== preDir || preDir === null){
                 audioIsBeingPlayed = true
                 speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
@@ -263,7 +271,7 @@ function walk(e){
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
-        if (playAudioOnWalking === "true"){
+        if (playAudioOnWalking === "true" && !firstWalk){
             if (curDir !== preDir || preDir === null){
                 audioIsBeingPlayed = true
                 speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
@@ -275,7 +283,7 @@ function walk(e){
         opDir = "DOWN"
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
-        if (playAudioOnWalking === "true"){
+        if (playAudioOnWalking === "true" && !firstWalk){
             if (curDir !== preDir || preDir === null){
                 audioIsBeingPlayed = true
                 speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
@@ -287,7 +295,7 @@ function walk(e){
         opDir = "UP"
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
-        if (playAudioOnWalking === "true"){
+        if (playAudioOnWalking === "true" && !firstWalk){
             if (curDir !== preDir || preDir === null){
                 audioIsBeingPlayed = true
                 speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')

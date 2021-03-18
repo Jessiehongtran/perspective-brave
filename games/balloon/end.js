@@ -50,6 +50,7 @@ function nextSlide(){
         showText(nextId)
     } else {
         window.location.href= "../../index.html"
+        onclick="speak('../../asset/VOfiles/PerspectivesVO_theEnd.wav')"
     }
 }
 
