@@ -86,7 +86,6 @@ body {
 }
 
 #rightSlide {
-    /* display: none; */
     z-index: 1; 
     position: absolute; 
     left: 93.5%; 

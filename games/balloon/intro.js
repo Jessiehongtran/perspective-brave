@@ -53,7 +53,7 @@ function nextSlide(){
         const nextId = curId + 1
         showText(nextId)
     } else {
-        window.location.href= "./gameBalloonOfficial.html"
+        window.location.href= "./gameTutorial.html"
     }
 }
 

@@ -12,18 +12,30 @@
             <div class="header">ACCESSIBILITY OPTIONS</div>
             <div class="row">
                 <div class="each-mode">
+                    <div class="title">Voice Over</div>
+                    <div class="options">
+                        <div class="each-option">
+                            <input type="checkbox" id="audio-support unchecked" style="display: none" onChange="updateAudioSupportToBeChecked()"/>
+                            <input type="checkbox" id="audio-support checked" style="display: none" checked  onChange="updateAudioSupportToBeUnchecked()"/>
+                            <div class="text">Audio Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="each-mode">
                     <div class="title">Colorblind mode</div>
                     <div class="options">
                         <div class="each-option">
-                            <input type="checkbox"/>
+                            <input type="checkbox" disable/>
                             <div class="text">Protanopia</div>
                         </div>
                         <div class="each-option">
-                            <input type="checkbox"/>
+                            <input type="checkbox" disable/>
                             <div class="text">Deuteranopia</div>
                         </div>
                         <div class="each-option">
-                            <input type="checkbox"/>
+                            <input type="checkbox" disable/>
                             <div class="text">Tritanopia</div>
                         </div>
                     </div>
@@ -37,15 +49,15 @@
                     <div class="title">High contrast mode</div>
                     <div class="options">
                         <div class="each-option">
-                            <input type="checkbox"/>
+                            <input type="checkbox" disable/>
                             <div class="text">Setting 1</div>
                         </div>
                         <div class="each-option">
-                            <input type="checkbox"/>
+                            <input type="checkbox" disable/>
                             <div class="text">Setting 2</div>
                         </div>
                         <div class="each-option">
-                            <input type="checkbox"/>
+                            <input type="checkbox" disable/>
                             <div class="text">Setting 3</div>
                         </div>
                     </div>
@@ -54,21 +66,43 @@
                     <div class="title">Size of Text</div>
                     <div class="options">
                         <div class="each-option">
-                            <input type="checkbox"/>
+                            <input type="checkbox" disable/>
                             <div class="text">Small</div>
                         </div>
                         <div class="each-option">
-                            <input type="checkbox"/>
+                            <input type="checkbox" disable/>
                             <div class="text">Medium</div>
                         </div>
                         <div class="each-option">
-                            <input type="checkbox"/>
+                            <input type="checkbox" disable/>
                             <div class="text">Large</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script type='text/javascript' > 
+            const audioSupportUnchecked = document.getElementById("audio-support unchecked")
+            const audioSupportChecked = document.getElementById("audio-support checked")
+            const curCheckState = localStorage.getItem('playAudioOnWalking')
+
+            if (curCheckState === "true"){
+                document.getElementById("audio-support unchecked").style.display = 'none'
+                document.getElementById("audio-support checked").style.display = 'block'
+            } else {
+                document.getElementById("audio-support unchecked").style.display = 'block'
+                document.getElementById("audio-support checked").style.display = 'none'
+            }
+
+            function updateAudioSupportToBeChecked(){
+                localStorage.setItem('playAudioOnWalking', true)  
+            }
+
+            function updateAudioSupportToBeUnchecked(){
+                localStorage.setItem('playAudioOnWalking', false)  
+            }
+            
+        </script>
         <script>
             function goBack() {
                 window.history.back();
