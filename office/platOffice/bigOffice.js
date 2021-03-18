@@ -33,6 +33,7 @@ const allowedWalkingDir = {
 
 let preDir = null
 let curDir
+let letSoundPlay = true
 
 const characterHeight = 85
 const halfCharacterWidth = 55
@@ -185,15 +186,24 @@ function isWalkable(){
     return false
 }
 
+//function to play sound
+function playSound(file){
+    var audio = new Audio(file);
+    audio.play()
+    letSoundPlay = false
+}
+
 function disableCurWalkingDir(){
     const dirs = Object.keys(allowedWalkingDir)
     for (let i = 0; i < dirs.length; i++){
         if (dirs[i] !== opDir){
             allowedWalkingDir[dirs[i]] = false
         } else {
-            walkingDirection.innerHTML = `You can only go ${opDir}`
+            walkingDirection.innerHTML = `Do not go there. You can only go ${opDir}`
             walkingDirection.style.display = 'block'
-            speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
+            if (letSoundPlay){
+                playSound(`../../asset/VOfiles/PerspectivesVO_limit_${opDir}.wav`)
+            }
         }
     } 
 }
@@ -204,6 +214,7 @@ function enableWalkingDir(){
         allowedWalkingDir[dirs[i]] = true
     } 
     walkingDirection.style.display = 'none'
+    letSoundPlay = true
 }
 
 let gapToNextStep = 0

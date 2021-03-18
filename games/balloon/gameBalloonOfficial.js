@@ -136,6 +136,7 @@ function enterOrLeavePlatform(){
         gameInstruction.style.display = 'none'
     } else {
         gameInstruction.style.display = 'flex'
+        walkingDirection.style.display = 'none'
     }
     
     if (infoIcon.style.display === 'none'){
