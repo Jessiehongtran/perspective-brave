@@ -9,30 +9,15 @@
     </head>
     <body>
         <div id="container" role="container">
-            <a href="../../accessibility/menu.html" role="link">
-                <img id="hamburger-menu" role="hamburger menu icon" alt="Accessibility setting" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616016776/hamburger_menu_yv6l9a.svg"/>
-            </a>
             <div id="header" role="header" >
-                <img  class="logo" alt="Perspectives logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
+                <img  class="logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
             </div>
             <div id="welcome" role="text">
                 Welcome to Yang's office!
             </div>
-            <img role="button" aria-label="Click to listen to audio" class="speakerIcon" onclick="speak('../../asset/VOfiles/PerspectivesVO_yangOffice.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" /> 
-            <a href="../../intro/yangIntro/yangIntro.html" role="button">
-                <img id="leftSlide1"  alt="Click to go back" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
-            </a>
+            <img role="button" aria-label="Click to listen to audio" class="speakerIcon" onclick="speak('../../asset/VOfiles/PerspectivesVO_officeDescribe.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
             <img id="infoIcon" role="button" alt="Click to see instruction" onclick="removeTutorialShowInstruction()" onmouseover="toggleExplain()" onmouseout="toggleExplain()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614195294/infoIcon_ovcbko.svg" />
             <p id="hoverState" role="text" >Click here for instructions</p>
-            <img role="button" alt="Click to go back" id="leftSlide2" onclick="showTutorial()"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
-            <img role="button" alt="Click to go back" id="leftSlide3" onclick="removeTutorialShowInstruction()"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
-            <img role="button" alt="Click to go back" id="rightSlide1"  onclick="removeTutorialShowInstruction()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
-            <a href="./bigOffice.html" role="button">
-                <img id="rightSlide2"  alt="Click to go next" onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
-            </a>
-            <div id="enter" role="icon" aria-label="Enter key" >
-                Enter
-            </div>
             <div class="wrapper" >
                 <div id="instruction" aria-label="Instruction">
                     <div class="tutorial" >
@@ -86,6 +71,15 @@
                     </div>
                 </div>
             </div>
+            <a href="../../intro/yangIntro/yangIntro.html" role="button">
+                <img id="leftSlide1"  alt="Click to go back" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            </a>
+            <img role="button" alt="Click to go back" id="leftSlide2" onclick="showTutorial()"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            <img role="button" alt="Click to go back" id="leftSlide3" onclick="removeTutorialShowInstruction()"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            <img role="button" alt="Click to go back" id="rightSlide1"  onclick="removeTutorialShowInstruction()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            <a href="./bigOffice.html" role="button">
+                <img id="rightSlide2"  alt="Click to go next" onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            </a>
         </div>
         <script src="./office.js"></script>
     </body>
