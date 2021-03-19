@@ -7,6 +7,7 @@ const walkingDirection = document.getElementsByClassName("walking-direction")[0]
 const playerImg = document.getElementById("playerImg")
 const sparklingImage = document.getElementsByClassName("sparklingImage")[0]
 const sparkling = document.getElementById("sparkling")
+let audio = '../../asset/VOfiles/PerspectivesVO_officeDescribe.wav'
 
 const characterPos = {
     x: 800,
