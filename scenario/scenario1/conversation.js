@@ -400,7 +400,7 @@ function addButtons(){
     buttonsContainer.style.marginBottom= '30px'
     for (let i = 0; i < buttons.length; i++){
         if (buttons[i].text){
-            let button = document.createElement('div')
+            let button = document.createElement('button')
             button.setAttribute('aria-labels', buttons[i].text)
             button.style.padding = '12px 30px'
             button.style.backgroundColor = '#111F47'
@@ -415,6 +415,8 @@ function addButtons(){
             button.style.cursor = 'pointer'
             button.style.marginRight = '20px'
             button.style.marginBottom = '20px'
+            button.style.fontSize = '16px'
+            button.style.fontFamily = 'Montserrat'
             button.addEventListener('click', () => {
                 next = buttons[i].next
                 if (next){
