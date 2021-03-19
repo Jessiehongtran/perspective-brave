@@ -303,10 +303,15 @@ function walk(e){
 
     if (characterPos.x + halfCharacterWidth >= sparklingPos.x  && characterPos.x + halfCharacterWidth <= sparklingPos.x + sparklingSize.w
         && characterPos.y + characterHeight >= sparklingPos.y && characterPos.y + characterHeight <= sparklingPos.y + sparklingSize.h
-        && e.key === "Enter"
         ){
-          stopVO()
-          window.location.href = '../../scenario/scenario1/yangConversation.html'
+          if (playAudioOnWalking === "true"){
+            stopVO()
+            speak('../../asset/VOfiles/PerspectivesVO_inTheSpark.mp3')
+          }
+          if (e.key === "Enter"){
+            stopVO()
+            window.location.href = '../../scenario/scenario1/yangConversation.html'
+          }
         }
 
     preDir = curDir
