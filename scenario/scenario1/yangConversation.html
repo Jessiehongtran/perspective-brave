@@ -8,48 +8,48 @@
     </head>
     <body>
         <div id="conversation-container" role="container" >
-            <a href="../../accessibility/menu.html" role="accessibility-menu">
-                <img id="hamburger-menu" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616016776/hamburger_menu_yv6l9a.svg"/>
+            <a href="../../accessibility/menu.html" role="link">
+                <img id="hamburger-menu" role="hamburger menu icon" alt="Accessibility setting" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616016776/hamburger_menu_yv6l9a.svg"/>
             </a>
             <div class="header" role="header" >
-                <img  class="logo" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
+                <img  class="logo" alt="Perspectives logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
             </div>
-            <div id="intro" >
-                <div id="text-wrapper" >    
+            <div id="intro" aria-label="Introduction to conversation">
+                <div id="text-wrapper" role="text" >    
                     <div class="title" >Scenario One</div>
                     <p  class="scenario-text">
                         Yang joins a team meeting. The agenda at this meeting is to discuss launching a new product. Jerry, Yang’s coworker advocates to move forward. Yang is hesitant as she has gathered some data that goes against this decision. She wants to voice her opinion to her team. 
                         Listen in on how that goes…
                     </p>
-                    <img role="speakerIcon" class="speakerIcon" onclick="speak('../../asset/VOfiles/PerspectivesVO_conversationIntro.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
+                    <img role="button" aria-label="Click to listen to audio" class="speakerIcon" onclick="speak('../../asset/VOfiles/PerspectivesVO_conversationIntro.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
                 </div>
             </div>
-            <div id="choose-different-response" >
+            <div id="choose-different-response" aria-label="Choose a different response container">
                 <div class="different-response-wrapper">
-                    <p  class="choose-text" >
+                    <p  class="choose-text" role="text">
                         If you'd like to experience the conversation again by choosing different responses, click the button below.
                     </p>
-                    <button class="tryButton" onclick="showPart2Again()">Try again</button>
-                    <p class="next-text">
+                    <button class="tryButton" aria-label="Click to try again" onclick="showPart2Again()">Try again</button>
+                    <p class="next-text" role="text">
                         If you'd like to continue, click the button on the right to proceed to the next page
                     </p>
-                    <img style="" role="speakerIcon" class="speakerIcon tryAgain" onclick="speakDouble('../../asset/VOfiles/PerspectivesVO_conversation_tryagain.wav', '../../asset/VOfiles/PerspectivesVO_conversation_continue.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
+                    <img role="button" alt="Click to listen to audio" class="speakerIcon tryAgain" onclick="speakDouble('../../asset/VOfiles/PerspectivesVO_conversation_tryagain.wav', '../../asset/VOfiles/PerspectivesVO_conversation_continue.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" />
                 </div>
             </div>
-            <div id="conversation" >
+            <div id="conversation" aria-label="Conversation container" >
                 <div id="characters" >
-                    <img id="character-table" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615582975/round_table_unxgcj.svg" />
+                    <img id="character-table" alt="A group of people sit on a table" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615582975/round_table_unxgcj.svg" />
                 </div>
-                <div id="chat" >
+                <div id="chat" aria-label="People talk to each other">
                     
                 </div>
             </div>
-            <a href="../../office/platOffice/yangOffice.html" role="backButton">
-                <img id="leftSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            <a href="../../office/platOffice/yangOffice.html" role="button">
+                <img id="leftSlide" alt="Click to go back" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
             </a>
-            <img role="nextButton" id="rightSlide1"  onclick="showConversation()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
-            <a href="../../games/balloon/intro.html" role="nextButton" id="rightSlide2" >
-                <img role="nextButton" class="rightSlide2-icon" onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            <img role="button" id="rightSlide1" alt="Click to go next"  onclick="showConversation()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            <a href="../../games/balloon/intro.html" role="button" id="rightSlide2" >
+                <img role="nextButton" alt="Click to go next" class="rightSlide2-icon" onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
             </a>
         </div>
         <script src="./conversation.js"></script>

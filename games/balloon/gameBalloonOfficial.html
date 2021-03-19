@@ -7,111 +7,108 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="container">
-            <a href="../../accessibility/menu.html" role="accessibility-menu">
-                <img id="hamburger-menu" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616016776/hamburger_menu_yv6l9a.svg"/>
+        <div id="container" role="container" >
+            <a href="../../accessibility/menu.html" role="link">
+                <img id="hamburger-menu" role="hamburger menu icon" alt="Accessibility setting" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616016776/hamburger_menu_yv6l9a.svg"/>
             </a>
-            <div class="slide-buttons">
-                <a href="./gameBalloonOfficial.html" role="backButton">
-                    <img id="leftSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            <div class="slide-buttons" role="button container" >
+                <a href="./gameBalloonOfficial.html" role="button">
+                    <img id="leftSlide" alt="Click to go back" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
                 </a>
-                <a href="./end.html" role="nextButton">
-                    <img id="rightSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+                <a href="./end.html" role="button">
+                    <img id="rightSlide" alt="Click to go next" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
                 </a>
             </div>
-            <div class="info-icon" style="display: none" onclick="enterOrLeavePlatform()" >
-                <img class="infoIconImg" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615403814/info_icon_kffauc.svg"/>
+            <div class="info-icon" style="display: none" role="button" onclick="enterOrLeavePlatform()" >
+                <img class="infoIconImg" alt="Click to see instruction" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615403814/info_icon_kffauc.svg"/>
             </div>
             <div class="question" style="display: none">
-                <p>How many employees do you think leave their job when they do perceive bias in the workplace?</p>
-                <img class="speakerIcon question" onclick="speak('../../asset/VOfiles/PerspectivesVO_gameQuestion.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
+                <p role="text">How many employees do you think leave their job when they do perceive bias in the workplace?</p>
+                <img class="speakerIcon question" role="button" alt="Click to listen to audio" onclick="speak('../../asset/VOfiles/PerspectivesVO_gameQuestion.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
             </div>
-            <div class="main-game" >
-                <img class="platform" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615483006/platformOfficial_p2y7ho.svg"/>
+            <div class="main-game" aria-label="Main game container" >
+                <img class="platform" alt="Game platform" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615483006/platformOfficial_p2y7ho.svg"/>
             </div> 
-            <div class="balloons" >
-                <div id="greenBalloon">
-                    <p class="answer-text" >1 out of 10</p>
+            <div class="balloons" aria-label="Balloons container">
+                <div id="greenBalloon" role="image" aria-label="Green balloon">
+                    <p class="answer-text" aria-label="Answer" >1 out of 10</p>
                 </div>
-                <div id="redBalloon">
-                    <p class="answer-text">3 out of 10</p>
+                <div id="redBalloon" role="image" aria-label="Red balloon">
+                    <p class="answer-text" aria-label="Answer">3 out of 10</p>
                 </div>
-                <div id="yellowBalloon">
-                    <p class="answer-text">5 out of 10</p>
+                <div id="yellowBalloon" role="image" aria-label="Yellow balloon">
+                    <p class="answer-text" aria-label="Answer">5 out of 10</p>
                 </div>
             </div>
-            <div id="player" style="display: none">
-                <img id="playerImg" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
+            <div id="player" style="display: none" aria-label="character" role="container">
+                <img id="playerImg" alt="Yang character" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
             </div>
             <!-- <div id="x">x</div>  -->
-            <div class="walking-direction" >
+            <div class="walking-direction" aria-label="Instruction to walk">
                 
             </div> 
-            <div class="hello">
-                Hello
-            </div>
-            <div class="game-instruction" >
+            <div class="game-instruction" aria-label="Game instruction">
                 <div class="header" role="header" >
-                    <img class="logo" alt="Perspective logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
+                    <img class="logo" alt="Perspectives logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
                 </div>
-                <a href="./intro.html" role="backButton">
-                    <img id="leftSlide" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+                <a href="./intro.html" role="button">
+                    <img id="leftSlide" alt="Click to go back" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
                 </a>
-                <img id="rightSlide" onclick="enterOrLeavePlatform()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+                <img id="rightSlide" role="button" alt="Click to go next" onclick="enterOrLeavePlatform()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
                 <div class="instruction" >
                     <div class="wrapper">
                         <div class="keyboard">
-                            <div class="arrow-keys">
+                            <div class="arrow-keys" role="keys" aria-label="Arrow keys">
                                 <div class="row-top" >
-                                    <div id="arrow-up" role="upArrow" >
-                                        <img id="arrow-icon" alt="up arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_136_zkhhuy.svg" />
+                                    <div id="arrow-up" role="icon" >
+                                        <img id="arrow-icon" alt="Up arrow key" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_136_zkhhuy.svg" />
                                     </div>
                                 </div>
                                 <div class="row-bottom" >
-                                    <div id="arrow-left" role="leftArrow" >
-                                        <img id="arrow-icon leftRight" alt="left arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_139_w5fhcu.svg" style=""/>
+                                    <div id="arrow-left" role="icon" >
+                                        <img id="arrow-icon leftRight" alt="Left arrow key" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_139_w5fhcu.svg" style=""/>
                                     </div>
-                                    <div id="arrow-down"  role="downArrow" >
-                                        <img id="arrow-icon" alt="down arrow icon"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_137_tizmtr.svg" style=""/>
+                                    <div id="arrow-down"  role="icon" >
+                                        <img id="arrow-icon" alt="Down arrow key"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_137_tizmtr.svg" style=""/>
                                     </div>
-                                    <div id="arrow-right" role="rightArrow" > 
-                                        <img id="arrow-icon leftRight" alt="right arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_138_gmdsg1.svg" style=""/>
+                                    <div id="arrow-right" role="icon" > 
+                                        <img id="arrow-icon leftRight" alt="Right arrow key" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_138_gmdsg1.svg" style=""/>
                                     </div>
                                 </div>
                             </div>
-                            <div id="enter" role="enter" >
+                            <div id="enter" role="key" aria-label="Enter key" >
                                 Enter
                             </div>
                         </div>
-                        <div class="text">
+                        <div class="text" role="text">
                             Read or listen to the question. Use the arrow keys to choose the balloon with the correct answer. Press “Enter” to submit.
                         </div>
-                        <img class="speakerIcon instruction"  onclick="speak('../../asset/VOfiles/PerspectivesVO_timeForMiniGame.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
+                        <img class="speakerIcon instruction" role="button" alt="Click to listen to audio" onclick="speak('../../asset/VOfiles/PerspectivesVO_timeForMiniGame.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
                     </div>
                 </div>
             </div>
-            <div class="wrong-indicate" >
-                <div class="message" >
-                    <div class="close-icon" onclick="removeError()" >
-                        <img class="closeIconImg" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615419806/closeIcon_qxfmm0.svg"/>
+            <div class="wrong-indicate" aria-label="Error container">
+                <div class="message" aria-label="Error message">
+                    <div class="close-icon" role="button" aria-label="Click to close" onclick="removeError()" >
+                        <img class="closeIconImg" alt="Close button" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615419806/closeIcon_qxfmm0.svg"/>
                     </div>
                     <div class="wrong-text">
-                        <img class="wrong-icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615422025/Group_275_vngtwc.svg" />
-                        <div class="message-tag" >
+                        <img class="wrong-icon" aria-label="Error icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615422025/Group_275_vngtwc.svg" />
+                        <div class="message-tag" role="text" >
                             Wrong answer! Please try again!
                         </div>
-                        <img  class="speakerIcon wrong" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
+                        <img  class="speakerIcon wrong" role="button" aria-label="Click to listen to audio" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
                     </div>
                 </div>
             </div>
-            <div class="winning" >
-                <img id="roundie" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500396/Group_219_abwqg3.svg"/>
-                <img id="ellipse-big-dark"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500527/Ellipse_27_ziv5qs.svg"/>
-                <img id="ellipse-big-light"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500443/Ellipse_26_oz69uu.svg"/>
-                <img id="ellipse-small"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500417/Ellipse_25_mtasw2.svg" />
-                <img id="ellipse-small-empty"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500573/Ellipse_28_cpsbdw.svg" />
-                <img id="pollygon"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500969/Polygon_8_eyeakp.svg" />
-                <img id="rectie" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500588/Group_53_bajwhb.svg"/>
+            <div class="winning" aria-label="Winning container">
+                <img id="roundie" role="decoration" aria-label="Round shape" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500396/Group_219_abwqg3.svg"/>
+                <img id="ellipse-big-dark" role="decoration" aria-label="Ellipse shape" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500527/Ellipse_27_ziv5qs.svg"/>
+                <img id="ellipse-big-light"  role="decoration" aria-label="Ellipse shape" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500443/Ellipse_26_oz69uu.svg"/>
+                <img id="ellipse-small"  role="decoration" aria-label="Ellipse shape" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500417/Ellipse_25_mtasw2.svg" />
+                <img id="ellipse-small-empty"  role="decoration" aria-label="Ellipse shape" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500573/Ellipse_28_cpsbdw.svg" />
+                <img id="pollygon"  role="decoration" aria-label="Polygon shape" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500969/Polygon_8_eyeakp.svg" />
+                <img id="rectie" role="decoration" aria-label="Rectangle shape" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500588/Group_53_bajwhb.svg"/>
                 <img class="landing"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615502210/Group_277_a5vwuo.svg"/>
             </div>
         </div>

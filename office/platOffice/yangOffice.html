@@ -8,81 +8,81 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="container" >
-            <a href="../../accessibility/menu.html" role="accessibility-menu">
-                <img id="hamburger-menu" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616016776/hamburger_menu_yv6l9a.svg"/>
+        <div id="container" role="container">
+            <a href="../../accessibility/menu.html" role="link">
+                <img id="hamburger-menu" role="hamburger menu icon" alt="Accessibility setting" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616016776/hamburger_menu_yv6l9a.svg"/>
             </a>
             <div id="header" role="header" >
-                <img  class="logo" alt="Perspective-logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
+                <img  class="logo" alt="Perspectives logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
             </div>
-            <div id="welcome" >
+            <div id="welcome" role="text">
                 Welcome to Yang's office!
             </div>
-            <img role="speakerIcon" class="speakerIcon" onclick="speak('../../asset/VOfiles/PerspectivesVO_yangOffice.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" /> 
-            <a href="../../intro/yangIntro/yangIntro.html" role="backButton">
-                <img id="leftSlide1"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            <img role="button" aria-label="Click to listen to audio" class="speakerIcon" onclick="speak('../../asset/VOfiles/PerspectivesVO_yangOffice.wav')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg" /> 
+            <a href="../../intro/yangIntro/yangIntro.html" role="button">
+                <img id="leftSlide1"  alt="Click to go back" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
             </a>
-            <img id="infoIcon" onclick="removeTutorialShowInstruction()" onmouseover="toggleExplain()" onmouseout="toggleExplain()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614195294/infoIcon_ovcbko.svg" />
-            <p id="hoverState">Click here for instructions</p>
-            <img role="backButton" id="leftSlide2" onclick="showTutorial()"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
-            <img role="backButton" id="leftSlide3" onclick="removeTutorialShowInstruction()"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
-            <img role="nextButton" id="rightSlide1"  onclick="removeTutorialShowInstruction()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
-            <a href="./bigOffice.html">
-                <img role="nextButton" id="rightSlide2"  onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            <img id="infoIcon" role="button" alt="Click to see instruction" onclick="removeTutorialShowInstruction()" onmouseover="toggleExplain()" onmouseout="toggleExplain()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614195294/infoIcon_ovcbko.svg" />
+            <p id="hoverState" role="text" >Click here for instructions</p>
+            <img role="button" alt="Click to go back" id="leftSlide2" onclick="showTutorial()"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            <img role="button" alt="Click to go back" id="leftSlide3" onclick="removeTutorialShowInstruction()"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            <img role="button" alt="Click to go back" id="rightSlide1"  onclick="removeTutorialShowInstruction()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            <a href="./bigOffice.html" role="button">
+                <img id="rightSlide2"  alt="Click to go next" onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
             </a>
-            <div id="enter" role="enter" >
+            <div id="enter" role="icon" aria-label="Enter key" >
                 Enter
             </div>
             <div class="wrapper" >
-                <div id="instruction" >
+                <div id="instruction" aria-label="Instruction">
                     <div class="tutorial" >
                         <p class="detail-tutorial">Use the arrow keys on your keyboard to move around in Yang’s Office.</p>
                         <p >Once you feel comfortable moving around the office, please proceed to the next page.</p>
                     </div>
-                    <div id="arrowKeyHolder" >
+                    <div id="arrowKeyHolder" aria-label="Arrow keys container">
 
                     </div>
                 </div>
-                <div id="arrow-keys" role="arrowKeys" >
+                <div id="arrow-keys" role="keys" aria-label="Arrow keys" >
                     <div class="row-top" >
-                        <div id="arrow-up" role="upArrow" >
-                            <img id="arrow-icon" alt="up arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_136_zkhhuy.svg" />
+                        <div id="arrow-up" role="icon" >
+                            <img id="arrow-icon" alt="Up arrow key" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_136_zkhhuy.svg" />
                         </div>
                     </div>
                     <div class="row-bottom" >
-                        <div id="arrow-left" role="leftArrow" >
-                            <img id="arrow-icon leftRight" alt="left arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_139_w5fhcu.svg" style=""/>
+                        <div id="arrow-left" role="icon" >
+                            <img id="arrow-icon leftRight" alt="Left arrow key" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_139_w5fhcu.svg" style=""/>
                         </div>
-                        <div id="arrow-down"  role="downArrow" >
-                            <img id="arrow-icon" alt="down arrow icon"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_137_tizmtr.svg" style=""/>
+                        <div id="arrow-down"  role="icon" >
+                            <img id="arrow-icon" alt="Down arrow key"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_137_tizmtr.svg" style=""/>
                         </div>
-                        <div id="arrow-right" role="rightArrow" > 
-                            <img id="arrow-icon leftRight" alt="right arrow icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_138_gmdsg1.svg" style=""/>
+                        <div id="arrow-right" role="icon" > 
+                            <img id="arrow-icon leftRight" alt="Right arrow key" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613788277/Group_138_gmdsg1.svg" style=""/>
                         </div>
                     </div>
                 </div>
-                <div id="enter" role="enter" >
+                <div id="enter" role="icon" aria-label="Enter key" >
                     Enter
                 </div>
             </div>
-            <div id="office" >
+            <div id="office" role="image" aria-label="Office image">
                 
             </div>
-            <div class="walking-direction">
+            <div class="walking-direction" role="text" aria-label="Direction to walk">
                 
             </div>
-            <div id="player" >
-                <img id="playerImg" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
+            <div id="player" aria-label="Character">
+                <img id="playerImg" alt="Character image" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
             </div>
-            <div id="sparkling" role="sparklingArea" >
-                <img  class="sparklingImage" alt="sparklingImage" src="../../asset/Blue_Sparkles/Sparkles_00000.png"/>
+            <div id="sparkling" aria-label="Sparkling area" >
+                <img  class="sparklingImage" alt="Sparkling image" src="../../asset/Blue_Sparkles/Sparkles_00000.png"/>
             </div>
-            <div id="detail-instruction" >
+            <div id="detail-instruction" aria-label="Detail instruction" >
                 <div class="text-wrapper" >  
-                    <div id="keys" >
+                    <div id="keys" role="keys">
                     </div> 
-                    <div class="inner-text">
-                        Please go to the sparkling spot in Yang’s office <img class="sparklingImage inText" alt="sparklingImage" src="../../asset/Blue_Sparkles/Sparkles_00000.png"/>. Once you are there, press “Enter” to start the first scenario.
+                    <div class="inner-text" role="text">
+                        Please go to the sparkling spot in Yang’s office <img class="sparklingImage inText" alt="Sparkling image" src="../../asset/Blue_Sparkles/Sparkles_00000.png"/>. Once you are there, press “Enter” to start the first scenario.
                     </div>
                 </div>
             </div>

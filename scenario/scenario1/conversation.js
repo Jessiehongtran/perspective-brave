@@ -301,14 +301,19 @@ function getMessageElement(name, messageText, side, speedInd){
     //message div
     const messageContainer = document.createElement("div")
     messageContainer.style.marginTop = '10px'
+    messageContainer.setAttribute('role', 'text')
+    messageContainer.setAttribute('aria-label', 'Message container')
     //name div
     const nameContainer = document.createElement("div")
     nameContainer.setAttribute('class', 'name')
+    nameContainer.setAttribute('role', 'text')
+    nameContainer.setAttribute('aria-label', 'Name of whom is talking')
     nameContainer.innerHTML = name
     nameContainer.style.fontWeight = 'bold'
     //face-text div
     const faceTextContainer = document.createElement("div")
     faceTextContainer.setAttribute('class', 'face-text')
+    faceTextContainer.setAttribute('aria-label', 'Face and text message')
     faceTextContainer.style.display = 'flex'
     faceTextContainer.style.alignItems = 'center'
     faceTextContainer.style.width = '100%'
@@ -316,14 +321,17 @@ function getMessageElement(name, messageText, side, speedInd){
     //face div
     const faceContainer = document.createElement("div")
     faceContainer.setAttribute('class', 'face')
+    faceContainer.setAttribute('aria-label', 'Face of whom is talking')
     faceContainer.style.width = '60px'
     faceContainer.style.height = '60px'
     //face img
     const faceImg = document.createElement("img")
+    faceImg.setAttribute('alt', 'Face image')
     faceImg.style.width = '100%'
     faceImg.src = `${characterFace[name]}`
     //text message div
     const textMessageContainer = document.createElement("div")
+    textMessageContainer.setAttribute('aria-label', 'Text message')
     textMessageContainer.innerHTML = messageText
     textMessageContainer.style.display = 'flex'
     textMessageContainer.style.alignItems = 'center'
@@ -375,6 +383,7 @@ function getMessageElement(name, messageText, side, speedInd){
 
 function addButtons(){
     buttonsContainer = document.createElement('div')
+    buttonsContainer.setAttribute('aria-labels', "Yang's reactions")
     buttonsContainer.style.display = 'flex'
     buttonsContainer.style.justifyContent = 'center'
     buttonsContainer.style.alignItems = 'center'
@@ -386,6 +395,7 @@ function addButtons(){
     for (let i = 0; i < buttons.length; i++){
         if (buttons[i].text){
             let button = document.createElement('div')
+            button.setAttribute('aria-labels', buttons[i].text)
             button.style.padding = '12px 30px'
             button.style.backgroundColor = '#111F47'
             button.style.color = 'white'

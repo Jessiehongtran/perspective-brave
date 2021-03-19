@@ -40,7 +40,9 @@ function showText(id){
     }
     info.innerHTML = texts[id]
     dots[id].setAttribute('class', "each-dot active")
+    dots[id].setAttribute('aria-label', "Active")
     dots[curId].setAttribute('class', "each-dot")
+    dots[curId].setAttribute('aria-label', "Inactive")
     speakerIcon.onclick = function (){speak(VOs[id])}
     curId = id
 }
