@@ -9,17 +9,14 @@
     </head>
     <body>
         <div class="container" role="container" >
-            <a href="../../accessibility/menu.html" role="menu button">
-                <img id="hamburger-menu" role="hamburger menu icon" aria-label="Click to explore accessibility options" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616016776/hamburger_menu_yv6l9a.svg"/>
-            </a>
             <div class="header" role="header" >
-                <img class="logo" alt="Perspectives logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
+                <img class="logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
             </div>
             <div class="direction" role="text" aria-label="Instruction" >
                 Please select the character you would like to start with.
             </div>
             <div class="fake-container" role="wrapper"></div>
-            <div class="characters" aria-label="List of characters" >
+            <div class="characters" aria-label="Belows are 3 characters to select: a black man, a woman in tech and a transgender person" >
                 <div class="character black-male" aria-label="Black male" >
                     <div class="content" role="content" >
                         <div class="title" role="title" >
@@ -29,7 +26,7 @@
                             <img alt="black male image" onclick="stopVO()" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
                         </a>
                         <a href="" class="characterButton-link" role="link">
-                            <button disabled class="characterButton" aria-label="Click to select this character" onclick="stopVO()">
+                            <button disabled class="characterButton" aria-label="Jevon, not available to select" onclick="stopVO()">
                                 Jevon
                             </button>
                         </a>
@@ -46,13 +43,12 @@
                             <img alt="women in tech image" id="characterImage" onclick="stopVO()" alt="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
                         </a>
                         <a href="../yangIntro/yangIntro.html" class="characterButton-link" role="link">
-                            <button class="characterButton" onclick="stopVO()" aria-label="Click to select this character">
+                            <button class="characterButton" onclick="stopVO()" aria-label="Yang, click to select">
                                 Yang
                             </button>
                         </a>
                     </div>
                 </div>
-
                 <div class="character trans-gender" aria-label="Transgender person" >
                     <div class="content" role="content" >
                         <div class="title" role="title" >
@@ -62,7 +58,7 @@
                             <img alt="transgender person image" id="characterImage"  onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
                         </a>
                         <a href="" class="characterButton-link" role="link">
-                            <button class="characterButton" aria-label="Click to select this character" disabled onclick="stopVO()">
+                            <button class="characterButton" aria-label="Elijah, not available to select" disabled onclick="stopVO()">
                                 Elijah
                             </button>
                         </a>

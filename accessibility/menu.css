@@ -53,6 +53,22 @@ body {
     font-size: 26px;
 }
 
+#leftSlide {
+    z-index: 1; 
+    position: absolute; 
+    left: 2%; 
+    top: 45%; 
+    width: 5%
+}
+
+#rightSlide {
+    z-index: 1; 
+    position: absolute; 
+    left: 93.5%; 
+    top: 45%; 
+    width: 5%
+}
+
 .each-option {
     display: flex; 
     align-items: center;
