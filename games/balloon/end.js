@@ -1,15 +1,3 @@
-let audio 
-
-function speak(file){
-    audio = new Audio(file);
-    audio.volume = 1;
-    audio.play()
-}
-
-function stopVO(){
-    audio.pause()
-}
-
 const texts = [
     "When bias is perceived in the workplace, 3 in ten people say they plan to leave their current job.",
     "And the same number -roughly 3 in 10- report withholding ideas and market solutions."
