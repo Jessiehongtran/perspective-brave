@@ -354,7 +354,7 @@ function flyGreen(){
         setTimeout(function(){
             wrongIndicate.style.display = 'flex'
             speakerIconInWrong.onclick = speak('../../asset/VOfiles/PerspectivesVO_wrong_answer.wav')
-        }, 2000)
+        }, 1000)
     }
 }
 
@@ -376,7 +376,7 @@ function flyYellow(){
         setTimeout(function(){
             wrongIndicate.style.display = 'flex'
             speakerIconInWrong.onclick = speak('../../asset/VOfiles/PerspectivesVO_wrong_answer.wav')
-        }, 2000)
+        }, 1000)
     }
 }
 
@@ -417,7 +417,9 @@ let preDir = null
 let audio
 
 function stopVO(){
-    audio.pause()
+    if (audio){
+        audio.pause()
+    }
 }
 
 let firstWalk = true

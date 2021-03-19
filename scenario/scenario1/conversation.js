@@ -195,9 +195,15 @@ function speakDouble(file1, file2){
 }
 
 function stopVO(){
-    audio.pause()
-    audio1.pause()
-    audio2.pause()
+    if (audio){
+        audio.pause()
+    }
+    if (audio){
+        audio1.pause()
+    }
+    if (audio){
+        audio2.pause()
+    }
 }
 
 const characterFace = {

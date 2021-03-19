@@ -16,5 +16,7 @@ function speak(file){
 }
 
 function stopVO(){
-    audio.pause()
+    if (audio){
+        audio.pause()
+    }
 }

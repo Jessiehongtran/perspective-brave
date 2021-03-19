@@ -89,7 +89,9 @@ function speak(file){
 }
 
 function stopVO(){
+  if (audio){
     audio.pause()
+  }
 }
 
 //Initiate character movement image variables
