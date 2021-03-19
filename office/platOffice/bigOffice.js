@@ -57,7 +57,7 @@ const cols = Math.floor(vw/squareSize)
 const rows = Math.floor(vh/squareSize)
  
 let opDir
-let audio = '../../asset/VOfiles/PerspectivesVO_officeDescribe.wav'
+let audio
 
 const paths = [
     {r1: 48, r2: 72, c1: 63, c2: 112},
@@ -233,7 +233,9 @@ function speak(file){
 }
 
 function stopVO(){
-    audio.pause()
+    if (audio){
+        audio.pause()
+    }
 }
 
 let firstWalk = true
