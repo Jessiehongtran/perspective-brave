@@ -7,7 +7,7 @@ const walkingDirection = document.getElementsByClassName("walking-direction")[0]
 const playerImg = document.getElementById("playerImg")
 const sparklingImage = document.getElementsByClassName("sparklingImage")[0]
 const sparkling = document.getElementById("sparkling")
-let audio = '../../asset/VOfiles/PerspectivesVO_officeDescribe.wav'
+
 
 const characterPos = {
     x: 800,
@@ -57,7 +57,7 @@ const cols = Math.floor(vw/squareSize)
 const rows = Math.floor(vh/squareSize)
  
 let opDir
-let audio
+let audio = '../../asset/VOfiles/PerspectivesVO_officeDescribe.wav'
 
 const paths = [
     {r1: 48, r2: 72, c1: 63, c2: 112},
