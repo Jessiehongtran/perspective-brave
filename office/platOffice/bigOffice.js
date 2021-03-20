@@ -241,7 +241,7 @@ function stopVO(){
 
 
 function walk(e){
-    let playAudioOnWalking = localStorage.getItem('playAudioOnWalking')
+    let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
     if (!isWalkable()){
         disableCurWalkingDir()
     } else {
@@ -254,7 +254,7 @@ function walk(e){
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
-        if (playAudioOnWalking === "true" && !firstWalk ){
+        if (playAudioForAccessibility === "true" && !firstWalk ){
             if (curDir !== preDir || preDir === null){
                 audioIsBeingPlayed = true
                 speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
@@ -267,7 +267,7 @@ function walk(e){
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
-        if (playAudioOnWalking === "true" && !firstWalk ){
+        if (playAudioForAccessibility === "true" && !firstWalk ){
             if (curDir !== preDir || preDir === null){
                 audioIsBeingPlayed = true
                 speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
@@ -279,7 +279,7 @@ function walk(e){
         opDir = "DOWN"
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
-        if (playAudioOnWalking === "true" && !firstWalk ){
+        if (playAudioForAccessibility === "true" && !firstWalk ){
             if (curDir !== preDir || preDir === null){
                 audioIsBeingPlayed = true
                 speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
@@ -291,7 +291,7 @@ function walk(e){
         opDir = "UP"
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
-        if (playAudioOnWalking === "true" && !firstWalk ){
+        if (playAudioForAccessibility === "true" && !firstWalk ){
             if (curDir !== preDir || preDir === null){
                 audioIsBeingPlayed = true
                 speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')
@@ -304,7 +304,7 @@ function walk(e){
     if (characterPos.x + halfCharacterWidth >= sparklingPos.x  && characterPos.x + halfCharacterWidth <= sparklingPos.x + sparklingSize.w
         && characterPos.y + characterHeight >= sparklingPos.y && characterPos.y + characterHeight <= sparklingPos.y + sparklingSize.h
         ){
-          if (playAudioOnWalking === "true"){
+          if (playAudioForAccessibility === "true"){
             stopVO()
             speak('../../asset/VOfiles/PerspectivesVO_inTheSpark.mp3')
           }
@@ -320,8 +320,8 @@ function walk(e){
 function handleKeyDown(e){
     if (!audioIsBeingPlayed){
         //describe the environment
-        let playAudioOnWalking = localStorage.getItem('playAudioOnWalking')
-        if (firstWalk && playAudioOnWalking === "true"){
+        let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
+        if (firstWalk && playAudioForAccessibility === "true"){
             speak('../../asset/VOfiles/PerspectivesVO_officeDescribe.wav')
         } else {
             walk(e)

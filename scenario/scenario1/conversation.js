@@ -198,10 +198,10 @@ function stopVO(){
     if (audio){
         audio.pause()
     }
-    if (audio){
+    if (audio1){
         audio1.pause()
     }
-    if (audio){
+    if (audio1){
         audio2.pause()
     }
 }
@@ -261,6 +261,10 @@ function showEachMessage(){
         setTimeout(showEachMessage, durationToNextMessage) //apply recursion
     } else {
         if (buttons.length >0){
+            let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
+            if (playAudioForAccessibility === "true"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.mp3`)
+            }
             addButtons()
         } else {
             //show try a different respond or next
@@ -418,6 +422,7 @@ function addButtons(){
             button.style.fontSize = '16px'
             button.style.fontFamily = 'Montserrat'
             button.addEventListener('click', () => {
+                stopVO()
                 next = buttons[i].next
                 if (next){
                     j = 0

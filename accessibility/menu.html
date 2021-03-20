@@ -89,7 +89,7 @@
         <script type='text/javascript' > 
             const audioSupportUnchecked = document.getElementById("audio-support unchecked")
             const audioSupportChecked = document.getElementById("audio-support checked")
-            const curCheckState = localStorage.getItem('playAudioOnWalking')
+            const curCheckState = localStorage.getItem('playAudioForAccessibility')
 
             if (curCheckState === "true"){
                 document.getElementById("audio-support unchecked").style.display = 'none'
@@ -100,11 +100,11 @@
             }
 
             function updateAudioSupportToBeChecked(){
-                localStorage.setItem('playAudioOnWalking', true)  
+                localStorage.setItem('playAudioForAccessibility', true)  
             }
 
             function updateAudioSupportToBeUnchecked(){
-                localStorage.setItem('playAudioOnWalking', false)  
+                localStorage.setItem('playAudioForAccessibility', false)  
             }
             
         </script>

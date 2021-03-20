@@ -19,7 +19,6 @@ const sparklingSize = {
 }
 
 const characterMovingSpeed = 2
-
 const container = document.getElementById("container")
 const arrowLeft = document.getElementById("arrow-left")
 const arrowDown = document.getElementById("arrow-down")
@@ -74,18 +73,16 @@ sparkling.style.height = `${sparklingPos.h}%`
 let audio = new Audio()
 let audioIsBeingPlayed = false
 function speak(file){
-    if (!audioIsBeingPlayed){
-        let duration
-        audio = new Audio(file);
-        audio.volume = 1;
-        audio.play()
-        audio.onloadedmetadata = function() {
-            duration = audio.duration*1000
-        };
+    let duration
+    audio = new Audio(file);
+    audio.volume = 1;
+    audio.play()
+    audio.onloadedmetadata = function() {
+        duration = audio.duration*1000
         setTimeout(function(){
-            audioIsBeingPlayed = true
-        }, duration)
-    }
+          audioIsBeingPlayed = false
+      }, duration)
+    };
 }
 
 function stopVO(){
@@ -187,8 +184,10 @@ function restrict(dir){
   detailTutorial.style.color = "#F64141"
 }
 
+let preDir = null
 
 function handleKeyDown(e){
+  let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
     if (e.key === "ArrowRight" && can_go_right){
         arrowRight.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor = "#EFF5F5"
@@ -197,6 +196,14 @@ function handleKeyDown(e){
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
         curWalkingDir = "RIGHT"
+        if (playAudioForAccessibility === "true" ){
+          console.log('should be playing 1')
+          if (curWalkingDir !== preDir || preDir === null){
+              console.log('should be playing 2')
+              audioIsBeingPlayed = true
+              speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
+          }
+      }
     } else if (e.key === "ArrowLeft" && can_go_left){
         arrowLeft.style.backgroundColor = "#111F47"
         arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
@@ -205,6 +212,12 @@ function handleKeyDown(e){
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
         curWalkingDir = "LEFT"
+        if (playAudioForAccessibility === "true" ){
+          if (curWalkingDir !== preDir || preDir === null){
+              audioIsBeingPlayed = true
+              speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
+          }
+      }
     } else if (e.key === "ArrowDown" && can_go_down){
         arrowDown.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
@@ -212,6 +225,12 @@ function handleKeyDown(e){
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
         curWalkingDir = "DOWN"
+        if (playAudioForAccessibility === "true" ){
+          if (curWalkingDir !== preDir || preDir === null){
+              audioIsBeingPlayed = true
+              speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')
+          }
+      }
     } else if (e.key === "ArrowUp" && can_go_up){
         arrowUp.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
@@ -219,6 +238,12 @@ function handleKeyDown(e){
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
         curWalkingDir = "UP"
+        if (playAudioForAccessibility === "true" ){
+          if (curWalkingDir !== preDir || preDir === null){
+              audioIsBeingPlayed = true
+              speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
+          }
+      }
     } else if (e.key === "Enter"){
         enterKey.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = arrowUp.style.backgroundColor  = "#EFF5F5"
@@ -235,6 +260,8 @@ function handleKeyDown(e){
     player.style.top = `${characterPos.y}%`
     player.style.width = `7%`
     player.style.height = `8%`
+
+    preDir = curWalkingDir
   
     if (
       //touch first table
@@ -432,5 +459,6 @@ function isInsideRectangle(rect, target){
         }
     return true
   }
+
 
 document.addEventListener("keydown", handleKeyDown)
