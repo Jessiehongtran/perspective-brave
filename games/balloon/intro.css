@@ -42,7 +42,7 @@ body {
     /* align-items: center; */
     justify-content: space-between;
     width: 20%;
-    height: 3%;
+    height: 8%;
 }
 
 .each-dot {
@@ -56,11 +56,11 @@ body {
 
 #info {
     /* border: 1px solid pink; */
-    height: 40%;
+    height: 50%;
     transition:all 1s ease;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     line-height: 1.8;
 }
 
