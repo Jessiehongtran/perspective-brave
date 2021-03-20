@@ -12,7 +12,7 @@ let i = 0
 const info = document.getElementById("info")
 const dots = document.getElementsByClassName("each-dot")
 const rightSlide = document.getElementById("rightSlide")
-const speakerIcon = document.getElementsByClassName("speakerIcon")[0]
+
 
 document.getElementsByClassName('dots')[0].style.width = '10%'
 
@@ -27,7 +27,6 @@ function showText(id){
     dots[id].setAttribute('aria-label', "Active")
     dots[curId].setAttribute('class', "each-dot")
     dots[curId].setAttribute('aria-label', "Inactive")
-    speakerIcon.onclick = function (){speak(VOs[id])}
     curId = id
 }
 
