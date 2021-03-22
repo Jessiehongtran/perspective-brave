@@ -1,21 +1,25 @@
 
 let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+
+console.log('vw', vw, 'vh', vh)
+
 const squareSize = 10
 
 const standardVW = 1792
 const standardVH = 952
 
-let vwRange = Math.floor(((vw - standardVW)/squareSize)/4)
-let vhRange = Math.floor(((vh - standardVH)/squareSize)/2)
+let vwRange = 0
+let vhRange = 0
 
+const platform = document.getElementsByClassName('platform')[0]
 
-const characterPos = {
+let characterPos = {
     x: 850,
     y: 650
 }
 
-const balloonSize = 200
+let balloonSize = 200
 
 let greenBalloonPos = {
     x: Math.floor(19*vw/100),
@@ -31,6 +35,259 @@ let redBalloonPos = {
 let yellowBalloonPos = {
     x: Math.floor(82*vw/100),
     y: Math.floor(30*vh/100)
+}
+
+//screen size 1366x768
+if (vw > 1360 && vw < 1370 && vh > 765 && vh < 775){
+    vwRange = -26
+    vhRange = -14
+    characterPos = {
+        x: 600,
+        y: 500
+    }
+    platform.style.top = '20%'
+    platform.style.left = '0%'
+    balloonSize = 170
+
+    greenBalloonPos = {
+        x: Math.floor(5*vw/100),
+        y: Math.floor(30*vh/100)
+    }
+
+    redBalloonPos = {
+        x: Math.floor(45*vw/100),
+        y: 0
+    }
+
+    yellowBalloonPos = {
+        x: Math.floor(88*vw/100),
+        y: Math.floor(30*vh/100)
+    }
+}
+
+//screen size 1440x900
+if (vw > 1439 && vw < 1450 && vh > 899 && vh < 910){
+    vwRange = -26
+    vhRange = -3
+    characterPos = {
+        x: 600,
+        y: 600
+    }
+    platform.style.top = '30%'
+    platform.style.left = '0%'
+    balloonSize = 170
+
+    greenBalloonPos = {
+        x: Math.floor(5*vw/100),
+        y: Math.floor(30*vh/100)
+    }
+
+    redBalloonPos = {
+        x: Math.floor(43*vw/100),
+        y: 0
+    }
+
+    yellowBalloonPos = {
+        x: Math.floor(83*vw/100),
+        y: Math.floor(30*vh/100)
+    }
+}
+
+//screen size 1536x864
+if (vw > 1530 && vw < 1540 && vh > 860 && vh < 870){
+    vwRange = -26
+    vhRange = -3
+    characterPos = {
+        x: 600,
+        y: 600
+    }
+    platform.style.top = '30%'
+    platform.style.left = '0%'
+    balloonSize = 170
+
+    greenBalloonPos = {
+        x: Math.floor(5*vw/100),
+        y: Math.floor(30*vh/100)
+    }
+
+    redBalloonPos = {
+        x: Math.floor(40*vw/100),
+        y: 0
+    }
+
+    yellowBalloonPos = {
+        x: Math.floor(78*vw/100),
+        y: Math.floor(30*vh/100)
+    }
+}
+
+//screen size 1680x1050
+if (vw > 1675 && vw < 1685 ){
+    vwRange = -8
+    vhRange = 0
+    characterPos = {
+        x: 800,
+        y: 700
+    }
+    platform.style.top = '30%'
+    platform.style.left = '8%'
+    balloonSize = 170
+
+    greenBalloonPos = {
+        x: Math.floor(12*vw/100),
+        y: Math.floor(30*vh/100)
+    }
+
+    redBalloonPos = {
+        x: Math.floor(45*vw/100),
+        y: 0
+    }
+
+    yellowBalloonPos = {
+        x: Math.floor(79*vw/100),
+        y: Math.floor(30*vh/100)
+    }
+}
+
+
+//screen size 1280x720
+if (vw > 1275 && vw < 1285 && vh > 715 && vh < 725){
+    vwRange = -34
+    vhRange = -14
+    characterPos = {
+        x: 800,
+        y: 400
+    }
+    platform.style.top = '23%'
+    platform.style.left = '-6%'
+    balloonSize = 170
+
+    greenBalloonPos = {
+        x: Math.floor(0*vw/100),
+        y: Math.floor(38*vh/100)
+    }
+
+    redBalloonPos = {
+        x: Math.floor(43*vw/100),
+        y: 0
+    }
+
+    yellowBalloonPos = {
+        x: Math.floor(88*vw/100),
+        y: Math.floor(38*vh/100)
+    }
+}
+
+//screen size 1280x800
+if (vw > 1275 && vw < 1285 && vh > 795 && vh < 805){
+    vwRange = -34
+    vhRange = -11
+    characterPos = {
+        x: 800,
+        y: 400
+    }
+    platform.style.top = '23%'
+    platform.style.left = '-6%'
+    balloonSize = 170
+
+    greenBalloonPos = {
+        x: Math.floor(0*vw/100),
+        y: Math.floor(38*vh/100)
+    }
+
+    redBalloonPos = {
+        x: Math.floor(43*vw/100),
+        y: 0
+    }
+
+    yellowBalloonPos = {
+        x: Math.floor(88*vw/100),
+        y: Math.floor(38*vh/100)
+    }
+}
+
+//screen size 1600x900
+if (vw > 1595 && vw < 1605 && vh > 895 && vh < 905){
+    vwRange = -18
+    vhRange = -4
+    characterPos = {
+        x: 800,
+        y: 700
+    }
+    platform.style.top = '30%'
+    platform.style.left = '5%'
+    balloonSize = 170
+
+    greenBalloonPos = {
+        x: Math.floor(10*vw/100),
+        y: Math.floor(38*vh/100)
+    }
+
+    redBalloonPos = {
+        x: Math.floor(44*vw/100),
+        y: Math.floor(3*vh/100)
+    }
+
+    yellowBalloonPos = {
+        x: Math.floor(80*vw/100),
+        y: Math.floor(38*vh/100)
+    }
+}
+
+//screen size 1920x1080
+if (vw > 1915 && vw < 1925){
+    vwRange = 0
+    vhRange = 0
+    characterPos = {
+        x: 800,
+        y: 700
+    }
+    platform.style.top = '30%'
+    platform.style.left = '13%'
+    balloonSize = 170
+
+    greenBalloonPos = {
+        x: Math.floor(17*vw/100),
+        y: Math.floor(35*vh/100)
+    }
+
+    redBalloonPos = {
+        x: Math.floor(46*vw/100),
+        y: Math.floor(3*vh/100)
+    }
+
+    yellowBalloonPos = {
+        x: Math.floor(76*vw/100),
+        y: Math.floor(35*vh/100)
+    }
+}
+
+//screen size 2560x1440
+if (vw > 2500 && vw < 2600){
+    vwRange = 18
+    vhRange = 8
+    characterPos = {
+        x: 800,
+        y: 700
+    }
+    platform.style.top = '40%'
+    platform.style.left = '30%'
+    balloonSize = 170
+
+    greenBalloonPos = {
+        x: Math.floor(18*vw/100),
+        y: Math.floor(35*vh/100)
+    }
+
+    redBalloonPos = {
+        x: Math.floor(50*vw/100),
+        y: Math.floor(3*vh/100)
+    }
+
+    yellowBalloonPos = {
+        x: Math.floor(85*vw/100),
+        y: Math.floor(35*vh/100)
+    }
 }
 
 let characterSize = {
@@ -353,7 +610,7 @@ function flyGreen(){
     } else {
         setTimeout(function(){
             wrongIndicate.style.display = 'flex'
-            speakerIconInWrong.onclick = speak('../../asset/VOfiles/PerspectivesVO_wrong_answer.wav')
+            speak('../../asset/VOfiles/PerspectivesVO_wrong_answer.wav')
         }, 1000)
     }
 }
@@ -624,39 +881,43 @@ function drawStair(leftRow, leftCol, rightCol, stepLength, stepWidth, dimension)
 
 function mapoutGamePlatform(){
     //board contains red balloon
-    drawParallelogram(29, 55, 59, 140)
+    drawParallelogram(29 + vhRange, 55 + vhRange, 59 + vwRange, 140 + vwRange)
     //board contains green balloon
-    drawParallelogram(50, 80, 22, 100)
+    drawParallelogram(50 + vhRange, 80 + vhRange, 22 + vwRange, 100 + vwRange)
     //board contains yellow balloon
-    drawParallelogram(49, 81, 90, 178)
+    drawParallelogram(49 + vhRange, 81 + vhRange, 90 + vwRange, 178 + vwRange)
     //board that is empty
-    if (vh > 930){
-        drawParallelogram(73, 103, 62, 130)
-    } else {
-        drawParallelogram(70, 100, 62, 130)
-    }
+    drawParallelogram(73 + vhRange, 103 + vhRange, 62 + vwRange, 130 + vwRange)
+    // if (vh > 930){
+    //     drawParallelogram(73, 103, 62, 130)
+    // } else {
+    //     drawParallelogram(70, 100, 62, 130)
+    // }
     //stair connects red and green
-    drawStair(47, 80, 92, 12, 2, "DOWN")
-    drawStair(55, 78, 80, 4, 2, "DOWN")
-    drawStair(53, 92, 94, 6, 2, "DOWN")
-    drawStair(54, 94, 96, 4, 2, "DOWN")
+    drawStair(47 + vhRange, 80 + vwRange, 92 + vwRange, 12, 2, "DOWN")
+    drawStair(55 + vhRange, 78 + vwRange, 80 + vwRange, 4, 2, "DOWN")
+    drawStair(53 + vhRange, 92 + vwRange, 94 + vwRange, 6, 2, "DOWN")
+    drawStair(54 + vhRange, 94 + vwRange, 96 + vwRange, 4, 2, "DOWN")
     //stair connects green and empty
-    if (vh > 930){
-        drawStair(78, 66, 78, 9, 2, "UP")
-    } else {
-        drawStair(78, 66, 78, 6, 2, "UP")
-    }
+    drawStair(78 + vhRange, 66 + vwRange, 78 + vwRange, 9, 2, "UP")
+    // if (vh > 930){
+    //     drawStair(78, 66, 78, 9, 2, "UP")
+    // } else {
+    //     drawStair(78, 66, 78, 6, 2, "UP")
+    // }
     //stair connects empty and yellow
-    if (vh > 930){
-        drawStair(73, 117, 129, 10, 2, "DOWN")
-        drawStair(79, 129, 131, 6, 2, "DOWN")
-    } else {
-        drawStair(73, 117, 129, 7, 2, "DOWN")
-        drawStair(79, 129, 131, 4, 2, "DOWN")
-    }
+    drawStair(73 + vhRange, 117 + vwRange, 129 + vwRange, 10, 2, "DOWN")
+    drawStair(79 + vhRange, 129 + vwRange, 131 + vwRange, 6, 2, "DOWN")
+    // if (vh > 930){
+    //     drawStair(73, 117, 129, 10, 2, "DOWN")
+    //     drawStair(79, 129, 131, 6, 2, "DOWN")
+    // } else {
+    //     drawStair(73, 117, 129, 7, 2, "DOWN")
+    //     drawStair(79, 129, 131, 4, 2, "DOWN")
+    // }
     //stair connects red and yellow
-    drawStair(46, 126, 137, 8, 2, "UP")
-    drawStair(44, 137, 149, 7, 1, "DOWN")
+    drawStair(46 + vhRange, 126 + vwRange, 137 + vwRange, 8, 2, "UP")
+    drawStair(44 + vhRange, 137 + vwRange, 149 + vwRange, 7, 1, "DOWN")
 }
 
 function isWalkable(){
