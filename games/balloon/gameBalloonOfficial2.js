@@ -81,7 +81,6 @@ function setupPosition(){
     character.style.left = `${characterPos.x}%`
     character.style.top = `${characterPos.y}%`
     character.style.width = `${characterSize.w}%`
-    character.style.height = `${characterSize.h}%`
     redBalloon.style.position = greenBalloon.style.position = yellowBalloon.style.position = 'absolute'
     redBalloon.style.left = `${redBalloonPos.x}%`
     redBalloon.style.top = `${redBalloonPos.y}%`
@@ -281,7 +280,6 @@ function flyCharacterAndRedBalloon(){
         playerImg.src= "../../asset/Yang_Walk_DN/Yang_Walk_DN_00001.png"
         //reset character pos
         character.style.left = `calc(50% - ${characterSize.w/2}%)`
-        character.style.top = `calc(50% + ${characterSize.h/2}%)`
         //reset red balloon pos
         redBalloon.style.left = `calc(50% - ${characterSize.w/2}%)`
         redBalloon.style.top = `calc(50% + ${characterSize.h/2 - 300}px)`
@@ -504,7 +502,6 @@ function walk(e){
         h: 12
     }
     character.style.width = `${characterSize.w}%`
-    character.style.height = `${characterSize.h}%`
 
     preDir = curDir
 }

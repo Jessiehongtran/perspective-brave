@@ -19,9 +19,6 @@ document.getElementsByClassName('dots')[0].style.width = '10%'
 let curId = 0
 
 function showText(id){
-    if (audio){
-        stopVO()
-    }
     info.innerHTML = texts[id]
     dots[id].setAttribute('class', "each-dot active")
     dots[id].setAttribute('aria-label', "Active")
@@ -31,9 +28,6 @@ function showText(id){
 }
 
 function nextSlide(){
-    if (audio){
-        stopVO()
-    }
     if (curId + 1 < texts.length){
         const nextId = curId + 1
         showText(nextId)
@@ -44,9 +38,6 @@ function nextSlide(){
 }
 
 function preSlide(){
-    if (audio){
-        stopVO()
-    }
     if (curId - 1 >= 0){
         const nextId = curId - 1
         showText(nextId)
