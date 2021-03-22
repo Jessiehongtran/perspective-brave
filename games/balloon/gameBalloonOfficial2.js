@@ -6,7 +6,7 @@ const characterPos = {
     y: 60
 }
 
-const balloonSize = 200
+const balloonSize = 20
 
 let greenBalloonPos = {
     x: 19,
@@ -82,6 +82,7 @@ function setupPosition(){
     character.style.top = `${characterPos.y}%`
     character.style.width = `${characterSize.w}%`
     character.style.height = `${characterSize.h}%`
+    redBalloon.style.position = greenBalloon.style.position = yellowBalloon.style.position = 'absolute'
     redBalloon.style.left = `${redBalloonPos.x}%`
     redBalloon.style.top = `${redBalloonPos.y}%`
     greenBalloon.style.left = `${greenBalloonPos.x}%`
@@ -89,6 +90,8 @@ function setupPosition(){
     yellowBalloon.style.left = `${yellowBalloonPos.x}%`
     yellowBalloon.style.top = `${yellowBalloonPos.y}%`
     redBalloon.style.width = greenBalloon.style.width = yellowBalloon.style.width = `${balloonSize}%`
+
+    console.log(redBalloon)
 }
 
 //function for character to jump
@@ -398,7 +401,7 @@ function isTouchingBalloon(){
     
 }
 
-const walkingSpeed = 20
+const walkingSpeed = 2
 let curDir 
 let preDir = null
 let audio
@@ -420,11 +423,11 @@ function walk(e){
         firstWalk = false
     }
 
-    if (!isWalkable()){
-        disableCurWalkingDir()
-    } else {
-        enableWalkingDir()
-    }
+    // if (!isWalkable()){
+    //     disableCurWalkingDir()
+    // } else {
+    //     enableWalkingDir()
+    // }
 
     //move right
     if (e.key === "ArrowRight" && allowedWalkingDir["RIGHT"]){
@@ -493,15 +496,15 @@ function walk(e){
     }
 
 
-    character.style.left = `${characterPos.x}px`
-    character.style.top = `${characterPos.y}px`
+    character.style.left = `${characterPos.x}%`
+    character.style.top = `${characterPos.y}%`
 
     characterSize = {
-        w: 100,
-        h: 120
+        w: 10,
+        h: 12
     }
-    character.style.width = `${characterSize.w}px`
-    character.style.height = `${characterSize.h}px`
+    character.style.width = `${characterSize.w}%`
+    character.style.height = `${characterSize.h}%`
 
     preDir = curDir
 }
@@ -516,8 +519,8 @@ function handleKeyDown(e){
 
 const squareWidth = 10*adjustIndForWidth
 const squareHeight = 10*adjustIndForHeight
-let cols = Math.floor(vw/squareSize)
-let rows = Math.floor(vh/squareSize)
+let cols = Math.floor(100/squareSize)
+let rows = Math.floor(100/squareSize)
 
 
 let squares = []
@@ -617,33 +620,6 @@ function mapoutGamePlatform(){
     //board contains yellow balloon
     drawParallelogram(49, 81, 90, 178)
     //board that is empty
-    if (vh > 930){
-        drawParallelogram(73, 103, 62, 130)
-    } else {
-        drawParallelogram(70, 100, 62, 130)
-    }
-    //stair connects red and green
-    drawStair(47, 80, 92, 12, 2, "DOWN")
-    drawStair(55, 78, 80, 4, 2, "DOWN")
-    drawStair(53, 92, 94, 6, 2, "DOWN")
-    drawStair(54, 94, 96, 4, 2, "DOWN")
-    //stair connects green and empty
-    if (vh > 930){
-        drawStair(78, 66, 78, 9, 2, "UP")
-    } else {
-        drawStair(78, 66, 78, 6, 2, "UP")
-    }
-    //stair connects empty and yellow
-    if (vh > 930){
-        drawStair(73, 117, 129, 10, 2, "DOWN")
-        drawStair(79, 129, 131, 6, 2, "DOWN")
-    } else {
-        drawStair(73, 117, 129, 7, 2, "DOWN")
-        drawStair(79, 129, 131, 4, 2, "DOWN")
-    }
-    //stair connects red and yellow
-    drawStair(46, 126, 137, 8, 2, "UP")
-    drawStair(44, 137, 149, 7, 1, "DOWN")
 }
 
 function isWalkable(){
@@ -681,7 +657,7 @@ function handleResize(){
 }
 
 document.addEventListener('keydown', handleKeyDown)
-window.addEventListener('resize', handleResize)
+// window.addEventListener('resize', handleResize)
 setupPosition()
 setupGrid()
 mapoutGamePlatform()
