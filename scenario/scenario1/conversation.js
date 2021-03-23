@@ -247,6 +247,7 @@ function getMessagesForEachPart(){
 
 let j = 0
 let durationToNextMessage = 0
+
 function showEachMessage(){
     if (j < messages.length){
         let newMessage
@@ -307,6 +308,25 @@ function showPart2Again(){
     showConversation() 
 }
 
+let dotInd = 0
+const dotImage = document.createElement('img')
+dotImage.style.width = '100%'
+function getDotAnimation(){
+    if (dotInd < 17){
+        let ind
+        if (dotInd < 10){
+            ind = "0" + dotInd.toString()
+        } else {
+            ind = dotInd
+        }
+        dotImage.src = `../../asset/Speech_dots/Speech_dots_000${ind}.png`
+        dotInd += 1
+    } else {
+        dotInd = 0
+    }
+    setTimeout(getDotAnimation, 60)
+}
+
 function getMessageElement(name, messageText, side, speedInd){
     //message div
     const messageContainer = document.createElement("div")
@@ -342,11 +362,17 @@ function getMessageElement(name, messageText, side, speedInd){
     //text message div
     const textMessageContainer = document.createElement("div")
     textMessageContainer.setAttribute('aria-label', 'Text message')
-    textMessageContainer.innerHTML = messageText
+    if (name === "YANG"){
+        textMessageContainer.appendChild(dotImage)
+        getDotAnimation()
+        textMessageContainer.style.height = '60px'
+    } else {
+        textMessageContainer.innerHTML = messageText
+        textMessageContainer.style.padding = '15px 30px'
+    }
     textMessageContainer.style.display = 'flex'
     textMessageContainer.style.alignItems = 'center'
     textMessageContainer.style.borderRadius = '12px'
-    textMessageContainer.style.padding = '15px 30px'
     textMessageContainer.style.maxWidth = '60%'
     //append
     faceContainer.appendChild(faceImg)
