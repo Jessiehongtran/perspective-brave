@@ -264,7 +264,7 @@ function showEachMessage(){
         if (buttons.length >0){
             let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
             if (playAudioForAccessibility === "true"){
-                playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.mp3`)
+                playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.wav`)
             }
             addButtons()
         } else {

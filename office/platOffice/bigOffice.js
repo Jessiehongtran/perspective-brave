@@ -306,7 +306,7 @@ function walk(e){
         ){
           if (playAudioForAccessibility === "true"){
             stopVO()
-            speak('../../asset/VOfiles/PerspectivesVO_inTheSpark.mp3')
+            speak('../../asset/VOfiles/PerspectivesVO_inTheSpark.wav')
           }
           if (e.key === "Enter"){
             stopVO()
