@@ -317,8 +317,6 @@ function removeTutorialShowInstruction(){
   detailInstruction.style.display = 'flex'
   detailInstruction.style.flexDirection = 'column'
   detailInstruction.style.alignItems = 'center'
-  //hide the speaker icon
-  speakerIcon.style.display = 'none'
   //hide right slide 1 and show right slide 2
   rightSlide1.style.display = 'none'
   rightSlide2.style.display = 'block'
