@@ -533,7 +533,6 @@ function popRedBalloon(){
 }
 
 function flyCharacterAndRedBalloon(){
-    console.log('h', redBalloonPos.y)
     characterPos.y -= 10
     character.style.top = `${characterPos.y}px`
     redBalloonPos.y -= 10
@@ -588,7 +587,7 @@ function flyRed(){
         yellowBalloon.style.display = 'none'
         //push character from bottom to top
         setTimeout(flyCharacterAndRedBalloon, 0)
-        console.log(redBalloonPos.y)
+        
     }
 }
 
