@@ -222,7 +222,7 @@ function showConversation(){
     intro.style.display = 'none'
     container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613859076/Group_181_tuayld.png)'
     conversation.style.display = 'block'
-    getMessagesForEachPart()
+    setTimeout(getMessagesForEachPart, 1000)
     //hide rightSlide1
     rightSlide1.style.display = 'none'
     stopVO()
@@ -362,7 +362,7 @@ function getMessageElement(name, messageText, side, speedInd){
     //text message div
     const textMessageContainer = document.createElement("div")
     textMessageContainer.setAttribute('aria-label', 'Text message')
-    if (name === "YANG"){
+    if (name === "YANG" && messageText[0] === "."){
         textMessageContainer.appendChild(dotImage)
         getDotAnimation()
         textMessageContainer.style.height = '60px'
@@ -467,7 +467,7 @@ function addButtons(){
 
 //Function to play audio
 function playAudio(file){
-    var audio = new Audio(file);
+    audio = new Audio(file);
     audio.play()
     audio.volume = 1;
 }
