@@ -10,6 +10,15 @@ body {
     position: relative
 }
 
+#hamburger-menu {
+    position: absolute;
+    left: 95%;
+    top: 3%;
+    width: 3%;
+    z-index: 20
+  }
+
+
 .bigOffice {
     position: absolute; 
     top: 0; 
@@ -47,7 +56,7 @@ body {
 }
 
 .sparklingImage {
-    width: 20%
+    width: 100%
 }
 
 
