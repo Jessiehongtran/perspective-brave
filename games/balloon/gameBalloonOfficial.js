@@ -386,6 +386,8 @@ function jump(){
     } 
 }
 
+
+
 function enterOrLeavePlatform(){
 
     console.log(question, infoIcon, character)
