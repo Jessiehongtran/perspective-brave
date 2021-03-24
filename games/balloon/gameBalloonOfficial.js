@@ -264,29 +264,29 @@ if (vw > 1915 && vw < 1925){
 
 //screen size 2560x1440
 if (vw > 2500 && vw < 2600){
-    vwRange = 18
-    vhRange = 8
+    vwRange = 50
+    vhRange = 23
     characterPos = {
-        x: 800,
-        y: 700
+        x: 1500,
+        y: 1000
     }
     platform.style.top = '40%'
     platform.style.left = '30%'
     balloonSize = 170
 
     greenBalloonPos = {
-        x: Math.floor(18*vw/100),
-        y: Math.floor(35*vh/100)
+        x: Math.floor(33*vw/100),
+        y: Math.floor(40*vh/100)
     }
 
     redBalloonPos = {
-        x: Math.floor(50*vw/100),
-        y: Math.floor(3*vh/100)
+        x: Math.floor(55*vw/100),
+        y: Math.floor(16*vh/100)
     }
 
     yellowBalloonPos = {
-        x: Math.floor(85*vw/100),
-        y: Math.floor(35*vh/100)
+        x: Math.floor(77*vw/100),
+        y: Math.floor(40*vh/100)
     }
 }
 
