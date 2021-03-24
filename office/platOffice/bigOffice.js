@@ -20,8 +20,8 @@ let sparklingPos = {
   }
   
 const sparklingSize = {
-    w: 50,
-    h: 100
+    w: 100,
+    h: 200
 }
 
 const allowedWalkingDir = {
@@ -45,8 +45,8 @@ character.style.width = '120px'
 character.style.height = '100px'
 sparkling.style.left = `${sparklingPos.x}px`
 sparkling.style.top = `${sparklingPos.y}px`
-sparkling.style.width = `${sparklingPos.w}px`
-sparkling.style.height = `${sparklingPos.h}px`
+sparkling.style.width = `${sparklingSize.w}px`
+sparkling.style.height = `${sparklingSize.h}px`
 
 
 container.style.backgroundSize = `${vw} ${vh}`

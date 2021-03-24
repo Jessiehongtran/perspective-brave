@@ -58,7 +58,8 @@ body {
     position: absolute; 
     left: 2%; 
     top: 45%; 
-    width: 5%
+    width: 5%;
+    cursor: pointer;
 }
 
 #rightSlide {
@@ -66,7 +67,8 @@ body {
     position: absolute; 
     left: 93.5%; 
     top: 45%; 
-    width: 5%
+    width: 5%;
+    cursor: pointer;
 }
 
 .each-option {
@@ -86,3 +88,5 @@ input {
         max-width: 500px;
     }
   }
+
+  
