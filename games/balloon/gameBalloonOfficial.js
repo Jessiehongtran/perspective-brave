@@ -330,8 +330,9 @@ const speakerIconInWrong = document.getElementsByClassName('speakerIcon wrong')[
 let audioIsBeingPlayed = false
 let duration
 function speak(file){
+    audioIsBeingPlayed = true
     audio = new Audio(file);
-    audio.volume = 0.5;
+    audio.volume = 0.8;
     audio.play()
     audio.onloadedmetadata = function() {
         duration = audio.duration*1000
@@ -394,6 +395,12 @@ function enterOrLeavePlatform(){
     if ( gameInstruction.style.display !== 'none'){
         gameInstruction.style.display = 'none'
         speak('../../asset/VOfiles/PerspectivesVO_gamePlatformDescribe.wav')
+        setTimeout(function(){
+            speak('../../asset/VOfiles/PerspectivesVO_gameQuestion.wav')
+        }, 21000)
+        setTimeout(function(){
+            speak('../../asset/VOfiles/PerspectivesVO_balloonDescribe.mp3')
+        }, 26000)
     } else {
         gameInstruction.style.display = 'flex'
         walkingDirection.style.display = 'none'
@@ -686,6 +693,9 @@ let firstWalk = true
 
 function walk(e){
     let playAudioOnWalking = localStorage.getItem('playAudioOnWalking')
+    let nextCharacterPos = {
+
+    }
 
     if (!audioIsBeingPlayed && (playAudioOnWalking && !firstWalk || !playAudioOnWalking)){
         speak(`../../asset/VOfiles/PerspectivesVO_softWalking_official.mp3`)
@@ -711,6 +721,10 @@ function walk(e){
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
+        nextCharacterPos = {
+            x: characterPos.x + walkingSpeed,
+            y: characterPos.y
+        }
     } 
     //move left
     if (e.key === "ArrowLeft" && allowedWalkingDir["LEFT"]){
@@ -720,6 +734,10 @@ function walk(e){
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
+        nextCharacterPos = {
+            x: characterPos.x - walkingSpeed,
+            y: characterPos.y
+        }
     } 
     //move up
     if (e.key === "ArrowUp" && allowedWalkingDir["UP"]){
@@ -728,6 +746,10 @@ function walk(e){
         curDir = "UP"
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
+        nextCharacterPos = {
+            x: characterPos.x,
+            y: characterPos.y - walkingSpeed
+        }
     } 
     //move down
     if (e.key === "ArrowDown" && allowedWalkingDir["DOWN"]){
@@ -736,6 +758,10 @@ function walk(e){
         curDir = "DOWN"
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
+        nextCharacterPos = {
+            x: characterPos.x,
+            y: characterPos.y + walkingSpeed
+        }
     } 
     //jump
     if (e.key === "Enter"){
@@ -745,6 +771,44 @@ function walk(e){
         jump()
     }
 
+    if (curDir !== preDir){
+        if (dist(characterPos.x + characterSize.w/2, characterPos.y + characterSize.h, greenBalloonPos.x + Math.floor(6*vw/100), greenBalloonPos.y + Math.floor(20*vh/100))
+                > dist(nextCharacterPos.x + characterSize.w/2, nextCharacterPos.y + characterSize.h,greenBalloonPos.x + Math.floor(6*vw/100), greenBalloonPos.y + Math.floor(20*vh/100))
+            ){
+                speak('../../asset/VOfiles/PerspectivesVO_closeToGreenBalloon.mp3')
+                console.log('close to green')
+            } 
+
+        if (dist(characterPos.x + characterSize.w/2, characterPos.y + characterSize.h, redBalloonPos.x + Math.floor(6*vw/100), redBalloonPos.y + Math.floor(20*vh/100))
+            > dist(nextCharacterPos.x + characterSize.w/2, nextCharacterPos.y + characterSize.h, redBalloonPos.x + Math.floor(6*vw/100), redBalloonPos.y + Math.floor(20*vh/100))
+        ){
+                speak('../../asset/VOfiles/PerspectivesVO_closeToRedBalloon.mp3')
+                console.log('close to red')
+        } 
+
+        if (dist(characterPos.x + characterSize.w/2, characterPos.y + characterSize.h, yellowBalloonPos.x + Math.floor(6*vw/100), yellowBalloonPos.y + Math.floor(20*vh/100))
+            > dist(nextCharacterPos.x + characterSize.w/2, nextCharacterPos.y + characterSize.h, yellowBalloonPos.x + Math.floor(6*vw/100), yellowBalloonPos.y + Math.floor(20*vh/100))
+        ){
+                speak('../../asset/VOfiles/PerspectivesVO_closeToYellowBalloon.mp3')
+                console.log('close to yellow')
+        } 
+    }
+
+    if (
+        (
+            characterPos.x + characterSize.w/2 >= greenBalloonPos.x && characterPos.x + characterSize.w/2 <= greenBalloonPos.x + balloonSize
+            && characterPos.y + characterSize.h >=  greenBalloonPos.y  && characterPos.y + characterSize.h <=  greenBalloonPos.y + Math.floor(40*vh/100)
+        ) || (
+            characterPos.x + characterSize.w/2 >= redBalloonPos.x && characterPos.x + characterSize.w/2 <= redBalloonPos.x + balloonSize
+            && characterPos.y + characterSize.h >=  redBalloonPos.y  && characterPos.y + characterSize.h <=  redBalloonPos.y + Math.floor(40*vh/100)
+        ) || (
+            characterPos.x + characterSize.w/2 >= yellowBalloonPos.x && characterPos.x + characterSize.w/2 <= yellowBalloonPos.x + balloonSize
+            && characterPos.y + characterSize.h >=  yellowBalloonPos.y  && characterPos.y + characterSize.h <=  yellowBalloonPos.y + Math.floor(40*vh/100)
+        )
+            
+    ){
+            speak('../../asset/VOfiles/PerspectivesVO_tada.mp3')
+    }
 
     character.style.left = `${characterPos.x}px`
     character.style.top = `${characterPos.y}px`
@@ -760,9 +824,9 @@ function walk(e){
 }
 
 function handleKeyDown(e){
-    if (!audioIsBeingPlayed){
+    // if (!audioIsBeingPlayed){
         walk(e)
-    }
+    // }
 }
 
 
@@ -871,11 +935,6 @@ function mapoutGamePlatform(){
     drawParallelogram(49 + vhRange, 81 + vhRange, 90 + vwRange, 178 + vwRange)
     //board that is empty
     drawParallelogram(73 + vhRange, 103 + vhRange, 62 + vwRange, 130 + vwRange)
-    // if (vh > 930){
-    //     drawParallelogram(73, 103, 62, 130)
-    // } else {
-    //     drawParallelogram(70, 100, 62, 130)
-    // }
     //stair connects red and green
     drawStair(47 + vhRange, 80 + vwRange, 92 + vwRange, 12, 2, "DOWN")
     drawStair(55 + vhRange, 78 + vwRange, 80 + vwRange, 4, 2, "DOWN")
@@ -883,21 +942,9 @@ function mapoutGamePlatform(){
     drawStair(54 + vhRange, 94 + vwRange, 96 + vwRange, 4, 2, "DOWN")
     //stair connects green and empty
     drawStair(78 + vhRange, 66 + vwRange, 78 + vwRange, 9, 2, "UP")
-    // if (vh > 930){
-    //     drawStair(78, 66, 78, 9, 2, "UP")
-    // } else {
-    //     drawStair(78, 66, 78, 6, 2, "UP")
-    // }
     //stair connects empty and yellow
     drawStair(73 + vhRange, 117 + vwRange, 129 + vwRange, 10, 2, "DOWN")
     drawStair(79 + vhRange, 129 + vwRange, 131 + vwRange, 6, 2, "DOWN")
-    // if (vh > 930){
-    //     drawStair(73, 117, 129, 10, 2, "DOWN")
-    //     drawStair(79, 129, 131, 6, 2, "DOWN")
-    // } else {
-    //     drawStair(73, 117, 129, 7, 2, "DOWN")
-    //     drawStair(79, 129, 131, 4, 2, "DOWN")
-    // }
     //stair connects red and yellow
     drawStair(46 + vhRange, 126 + vwRange, 137 + vwRange, 8, 2, "UP")
     drawStair(44 + vhRange, 137 + vwRange, 149 + vwRange, 7, 1, "DOWN")
@@ -912,6 +959,11 @@ function isWalkable(){
     }
     return false
 }
+
+//Function to find distance between 2 points
+function dist(x1, y1, x2, y2){
+    return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2))
+  }
 
 function handleResize(){
     vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
