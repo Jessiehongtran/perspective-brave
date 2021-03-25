@@ -393,9 +393,11 @@ function enterOrLeavePlatform(){
     console.log(question, infoIcon, character)
     if ( gameInstruction.style.display !== 'none'){
         gameInstruction.style.display = 'none'
+        speak('../../asset/VOfiles/PerspectivesVO_gamePlatformDescribe.wav')
     } else {
         gameInstruction.style.display = 'flex'
         walkingDirection.style.display = 'none'
+
     }
     
     if (infoIcon.style.display === 'none'){
