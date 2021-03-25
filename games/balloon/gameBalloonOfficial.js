@@ -331,7 +331,7 @@ let audioIsBeingPlayed = false
 let duration
 function speak(file){
     audio = new Audio(file);
-    audio.volume = 1;
+    audio.volume = 0.5;
     audio.play()
     audio.onloadedmetadata = function() {
         duration = audio.duration*1000
@@ -471,7 +471,7 @@ function disableCurWalkingDir(){
             walkingDirection.innerHTML = `Do not go there. You can only go ${opDir}`
             walkingDirection.style.display = 'block'
             if (letSoundPlay){
-                playSound(`../../asset/VOfiles/PerspectivesVO_limit_${opDir}.wav`)
+                playSound(`../../asset/VOfiles/PerspectivesVO_hit.mp3`)
             }
         }
     } 
@@ -685,6 +685,10 @@ let firstWalk = true
 function walk(e){
     let playAudioOnWalking = localStorage.getItem('playAudioOnWalking')
 
+    if (!audioIsBeingPlayed && (playAudioOnWalking && !firstWalk || !playAudioOnWalking)){
+        speak(`../../asset/VOfiles/PerspectivesVO_softWalking_official.mp3`)
+    }
+
     //describe the environment
     if (firstWalk && playAudioOnWalking === "true"){
         speak('../../asset/VOfiles/PerspectivesVO_gamePlatformDescribe.wav')
@@ -705,12 +709,6 @@ function walk(e){
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
-        if (playAudioOnWalking === "true" && !firstWalk){
-            if (curDir !== preDir || preDir === null){
-                audioIsBeingPlayed = true
-                speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
-            }
-        }
     } 
     //move left
     if (e.key === "ArrowLeft" && allowedWalkingDir["LEFT"]){
@@ -720,12 +718,6 @@ function walk(e){
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
-        if (playAudioOnWalking === "true" && !firstWalk){
-            if (curDir !== preDir || preDir === null){
-                audioIsBeingPlayed = true
-                speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
-            }
-        }
     } 
     //move up
     if (e.key === "ArrowUp" && allowedWalkingDir["UP"]){
@@ -734,12 +726,6 @@ function walk(e){
         curDir = "UP"
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
-        if (playAudioOnWalking === "true" && !firstWalk){
-            if (curDir !== preDir || preDir === null){
-                audioIsBeingPlayed = true
-                speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
-            }
-        }
     } 
     //move down
     if (e.key === "ArrowDown" && allowedWalkingDir["DOWN"]){
@@ -748,12 +734,6 @@ function walk(e){
         curDir = "DOWN"
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
-        if (playAudioOnWalking === "true" && !firstWalk){
-            if (curDir !== preDir || preDir === null){
-                audioIsBeingPlayed = true
-                speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')
-            }
-        }
     } 
     //jump
     if (e.key === "Enter"){

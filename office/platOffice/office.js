@@ -76,7 +76,7 @@ function speak(file){
     letRestrictSoundPlay = false
     let duration
     audio = new Audio(file);
-    audio.volume = 1;
+    audio.volume = 0.5;
     audio.play()
     audio.onloadedmetadata = function() {
         duration = audio.duration*1000
@@ -162,37 +162,38 @@ function displaySparklingImg(){
 }
 
 function restrict(dir){
+  playSound(`../../asset/VOfiles/PerspectivesVO_hit.mp3`)
   if (dir === "UP"){
     can_go_up = can_go_left = can_go_right = false
     detailTutorial.innerHTML = `You can only go DOWN`
     walkingDirection.innerHTML = `You can only go DOWN`
-    if (letRestrictSoundPlay){
-      speak(`../../asset/VOfiles/PerspectivesVO_limit_DOWN.wav`)
-    }
+    // if (letRestrictSoundPlay){
+    //   speak(`../../asset/VOfiles/PerspectivesVO_limit_DOWN.wav`)
+    // }
     arrowDown.style.backgroundColor = "#F64141"
   } else if (dir === "DOWN"){
     can_go_down = can_go_left = can_go_right = false
     detailTutorial.innerHTML = `You can only go UP`
     walkingDirection.innerHTML = `You can only go UP`
-    if (letRestrictSoundPlay){
-      speak(`../../asset/VOfiles/PerspectivesVO_limit_UP.wav`)
-    }
+    // if (letRestrictSoundPlay){
+    //   speak(`../../asset/VOfiles/PerspectivesVO_limit_UP.wav`)
+    // }
     arrowUp.style.backgroundColor = "#F64141"
   } else if (dir === "LEFT"){
     can_go_up = can_go_down = can_go_left = false
     detailTutorial.innerHTML = `You can only go RIGHT`
     walkingDirection.innerHTML = `You can only go RIGHT`
-    if (letRestrictSoundPlay){
-      speak(`../../asset/VOfiles/PerspectivesVO_limit_RIGHT.wav`)
-    }
+    // if (letRestrictSoundPlay){
+    //   speak(`../../asset/VOfiles/PerspectivesVO_limit_RIGHT.wav`)
+    // }
     arrowRight.style.backgroundColor = "#F64141"
   } else if (dir === "RIGHT"){
     can_go_up = can_go_down = can_go_right = false
     detailTutorial.innerHTML = `You can only go LEFT`
     walkingDirection.innerHTML = `You can only go LEFT`
-    if (letRestrictSoundPlay){
-      speak(`../../asset/VOfiles/PerspectivesVO_limit_LEFT.wav`)
-    }
+    // if (letRestrictSoundPlay){
+    //   speak(`../../asset/VOfiles/PerspectivesVO_limit_LEFT.wav`)
+    // }
     arrowLeft.style.backgroundColor = "#F64141"
   }
   detailTutorial.style.color = "#F64141"
@@ -201,6 +202,9 @@ function restrict(dir){
 let preDir = null
 
 function handleKeyDown(e){
+  if (!audioIsBeingPlayed){
+    speak(`../../asset/VOfiles/PerspectivesVO_softWalking_official.mp3`)
+  }
   let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
     if (e.key === "ArrowRight" && can_go_right){
         arrowRight.style.backgroundColor = "#111F47"
@@ -210,14 +214,6 @@ function handleKeyDown(e){
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
         curWalkingDir = "RIGHT"
-        if (playAudioForAccessibility === "true" ){
-          console.log('should be playing 1')
-          if (curWalkingDir !== preDir || preDir === null){
-              console.log('should be playing 2')
-              audioIsBeingPlayed = true
-              speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
-          }
-      }
     } else if (e.key === "ArrowLeft" && can_go_left){
         arrowLeft.style.backgroundColor = "#111F47"
         arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
@@ -226,12 +222,6 @@ function handleKeyDown(e){
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
         curWalkingDir = "LEFT"
-        if (playAudioForAccessibility === "true" ){
-          if (curWalkingDir !== preDir || preDir === null){
-              audioIsBeingPlayed = true
-              speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
-          }
-      }
     } else if (e.key === "ArrowDown" && can_go_down){
         arrowDown.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowUp.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
@@ -239,12 +229,6 @@ function handleKeyDown(e){
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
         curWalkingDir = "DOWN"
-        if (playAudioForAccessibility === "true" ){
-          if (curWalkingDir !== preDir || preDir === null){
-              audioIsBeingPlayed = true
-              speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')
-          }
-      }
     } else if (e.key === "ArrowUp" && can_go_up){
         arrowUp.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = enterKey.style.backgroundColor  = "#EFF5F5"
@@ -252,12 +236,6 @@ function handleKeyDown(e){
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
         curWalkingDir = "UP"
-        if (playAudioForAccessibility === "true" ){
-          if (curWalkingDir !== preDir || preDir === null){
-              audioIsBeingPlayed = true
-              speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
-          }
-      }
     } else if (e.key === "Enter"){
         enterKey.style.backgroundColor = "#111F47"
         arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = arrowDown.style.backgroundColor = arrowUp.style.backgroundColor  = "#EFF5F5"

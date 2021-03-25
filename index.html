@@ -7,8 +7,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" >
     </head>
     <body>
-        <div role="container" class="container" >
-            <div class="header" role="header" >
+        <div role="container" class="container">
+            <div class="header" role="header">
                 <img  class="logo" alt="Perspectives logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
             </div>
             <div class="subtitle" role="text" >
@@ -24,6 +24,7 @@
             <img id="group3" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg" />
         </div>
         <script>
+            
             const startButton = document.getElementsByClassName("start-button")[0]
             const startButtonImg = document.getElementsByClassName("startButton-img")[0]
             function handleMouseOver(){
@@ -34,6 +35,11 @@
             }
             startButton.addEventListener('mouseover', handleMouseOver)
             startButton.addEventListener('mouseout', handleMouseOut)
+
+            function playRandom(){
+                let audio = new Audio('./asset/VOfiles/Pluckandplay - Kwon.mp3');
+                audio.autoplay = true
+            }
         </script>
     </body>
 </html>
