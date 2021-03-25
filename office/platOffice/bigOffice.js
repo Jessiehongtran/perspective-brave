@@ -309,10 +309,14 @@ function walk(e){
             > dist(nextCharacterPos.x + halfCharacterWidth, nextCharacterPos.y + characterHeight, centerOfSparkling.x, centerOfSparkling.y)
         ){
             // speak('../../asset/VOfiles/PerspectivesVO_closeToSpot2.mp3')
+            if (audio){
             audio.volume = 1
+            }
         } else {
             // speak('../../asset/VOfiles/PerspectivesVO_farFromSpot2.mp3')
-            audio.volume = 0.5
+            if (audio){
+                audio.volume = 0.5
+            }
         }
     // }
 
