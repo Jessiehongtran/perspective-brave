@@ -42,9 +42,12 @@ function showText(id){
     info.innerHTML = texts[id]
     dots[id].setAttribute('class', "each-dot active")
     dots[id].setAttribute('aria-label', "Active")
-    dots[curId].setAttribute('class', "each-dot")
-    dots[curId].setAttribute('aria-label', "Inactive")
+    if (id !== curId){
+        dots[curId].setAttribute('class', "each-dot")
+        dots[curId].setAttribute('aria-label', "Inactive")
+    }
     curId = id
+    speak(`../../asset/VOfiles/PerspectivesVO_balloonIntro_${id + 1}.wav`)
 }
 
 function nextSlide(){
