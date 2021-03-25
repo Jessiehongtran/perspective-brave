@@ -47,7 +47,6 @@ sparkling.style.left = `${sparklingPos.x}px`
 sparkling.style.top = `${sparklingPos.y}px`
 sparkling.style.width = `${sparklingSize.w}px`
 sparkling.style.height = `${sparklingSize.h}px`
-sparkling.style.border = '1px solid grey'
 
 
 container.style.backgroundSize = `${vw} ${vh}`
@@ -204,7 +203,8 @@ function disableCurWalkingDir(){
             walkingDirection.innerHTML = `Do not go there. You can only go ${opDir}`
             walkingDirection.style.display = 'block'
             if (letSoundPlay){
-                playSound(`../../asset/VOfiles/PerspectivesVO_limit_${opDir}.wav`)
+                // playSound(`../../asset/VOfiles/PerspectivesVO_limit_${opDir}.wav`)
+                playSound(`../../asset/VOfiles/PerspectivesVO_hit.mp3`)
             }
         }
     } 
@@ -223,7 +223,7 @@ let audioIsBeingPlayed = false
 function speak(file){
     audioIsBeingPlayed = true
     audio = new Audio(file);
-    audio.volume = 1;
+    audio.volume = 0.5;
     audio.play()
     audio.onloadedmetadata = function() {
         let gapToNextStep = audio.duration*1000
@@ -243,9 +243,12 @@ function stopVO(){
 
 function walk(e){
     let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
+    if (!audioIsBeingPlayed && (playAudioForAccessibility && !firstWalk || !playAudioForAccessibility)){
+        speak(`../../asset/VOfiles/PerspectivesVO_softWalking_official.mp3`)
+      }
     let centerOfSparkling = {
         x: sparklingPos.x + sparklingSize.w/2,
-        y: sparklingPos.y + sparklingSize.h/2
+        y: sparklingPos.y + 4*sparklingSize.h/5
     }
     let nextCharacterPos = {}
 
@@ -261,12 +264,6 @@ function walk(e){
         getCharacterMove("RIGHT")
         playerImg.src = character_image["RIGHT"]
         playerImg.style.transform = 'rotateY(360deg)'
-        if (playAudioForAccessibility === "true" && !firstWalk ){
-            if (curDir !== preDir || preDir === null){
-                audioIsBeingPlayed = true
-                speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
-            }
-        }
         nextCharacterPos = {
             x: characterPos.x  + 20,
             y: characterPos.y
@@ -278,12 +275,6 @@ function walk(e){
         getCharacterMove("LEFT")
         playerImg.src = character_image["LEFT"]
         playerImg.style.transform = 'rotateY(180deg)'
-        if (playAudioForAccessibility === "true" && !firstWalk ){
-            if (curDir !== preDir || preDir === null){
-                audioIsBeingPlayed = true
-                speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
-            }
-        }
         nextCharacterPos = {
             x: characterPos.x  - 20,
             y: characterPos.y
@@ -294,12 +285,6 @@ function walk(e){
         opDir = "DOWN"
         getCharacterMove("UP")
         playerImg.src = character_image["UP"]
-        if (playAudioForAccessibility === "true" && !firstWalk ){
-            if (curDir !== preDir || preDir === null){
-                audioIsBeingPlayed = true
-                speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
-            }
-        }
         nextCharacterPos = {
             x: characterPos.x,
             y: characterPos.y - 20
@@ -310,12 +295,6 @@ function walk(e){
         opDir = "UP"
         getCharacterMove("DOWN")
         playerImg.src = character_image["DOWN"]
-        if (playAudioForAccessibility === "true" && !firstWalk ){
-            if (curDir !== preDir || preDir === null){
-                audioIsBeingPlayed = true
-                speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')
-            }
-        }
         nextCharacterPos = {
             x: characterPos.x,
             y: characterPos.y + 20
@@ -325,15 +304,17 @@ function walk(e){
     character.style.top = `${characterPos.y}px`
 
     //Check close to the sparkling spot in every turn
-    if (curDir !== preDir){
+    // if (curDir !== preDir){
         if (dist(characterPos.x + halfCharacterWidth, characterPos.y + characterHeight, centerOfSparkling.x, centerOfSparkling.y)
             > dist(nextCharacterPos.x + halfCharacterWidth, nextCharacterPos.y + characterHeight, centerOfSparkling.x, centerOfSparkling.y)
         ){
-            speak('../../asset/VOfiles/PerspectivesVO_closeToSpot2.mp3')
+            // speak('../../asset/VOfiles/PerspectivesVO_closeToSpot2.mp3')
+            audio.volume = 1
         } else {
-            speak('../../asset/VOfiles/PerspectivesVO_farFromSpot2.mp3')
+            // speak('../../asset/VOfiles/PerspectivesVO_farFromSpot2.mp3')
+            audio.volume = 0.5
         }
-    }
+    // }
 
     if (characterPos.x + halfCharacterWidth >= sparklingPos.x + sparklingSize.w/2 && characterPos.x + halfCharacterWidth <= sparklingPos.x + sparklingSize.w
         && characterPos.y + characterHeight >= sparklingPos.y + sparklingSize.h/2 && characterPos.y + characterHeight <= sparklingPos.y + sparklingSize.h
