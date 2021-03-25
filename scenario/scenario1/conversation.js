@@ -332,18 +332,18 @@ function getMessageElement(name, messageText, side, speedInd){
     const messageContainer = document.createElement("div")
     messageContainer.style.marginTop = '10px'
     messageContainer.setAttribute('role', 'text')
-    messageContainer.setAttribute('aria-label', 'Message container')
+    messageContainer.setAttribute('aria-hidden', 'true')
     //name div
     const nameContainer = document.createElement("div")
     nameContainer.setAttribute('class', 'name')
     nameContainer.setAttribute('role', 'text')
-    nameContainer.setAttribute('aria-label', 'Name of whom is talking')
+    nameContainer.setAttribute('aria-hidden', 'true')
     nameContainer.innerHTML = name
     nameContainer.style.fontWeight = 'bold'
     //face-text div
     const faceTextContainer = document.createElement("div")
     faceTextContainer.setAttribute('class', 'face-text')
-    faceTextContainer.setAttribute('aria-label', 'Face and text message')
+    faceTextContainer.setAttribute('aria-hidden', 'true')
     faceTextContainer.style.display = 'flex'
     faceTextContainer.style.alignItems = 'center'
     faceTextContainer.style.width = '100%'
@@ -351,7 +351,7 @@ function getMessageElement(name, messageText, side, speedInd){
     //face div
     const faceContainer = document.createElement("div")
     faceContainer.setAttribute('class', 'face')
-    faceContainer.setAttribute('aria-label', 'Face of whom is talking')
+    faceContainer.setAttribute('aria-hidden', 'true')
     faceContainer.style.width = '60px'
     faceContainer.style.height = '60px'
     //face img
@@ -361,7 +361,7 @@ function getMessageElement(name, messageText, side, speedInd){
     faceImg.src = `${characterFace[name]}`
     //text message div
     const textMessageContainer = document.createElement("div")
-    textMessageContainer.setAttribute('aria-label', 'Text message')
+    textMessageContainer.setAttribute('aria-hidden', 'true')
     if (name === "YANG" && messageText[0] === "."){
         textMessageContainer.appendChild(dotImage)
         getDotAnimation()
@@ -419,7 +419,7 @@ function getMessageElement(name, messageText, side, speedInd){
 
 function addButtons(){
     buttonsContainer = document.createElement('div')
-    buttonsContainer.setAttribute('aria-labels', "Yang's reactions")
+    buttonsContainer.setAttribute('aria-label', "Yang's reactions")
     buttonsContainer.style.display = 'flex'
     buttonsContainer.style.justifyContent = 'center'
     buttonsContainer.style.alignItems = 'center'
@@ -431,7 +431,7 @@ function addButtons(){
     for (let i = 0; i < buttons.length; i++){
         if (buttons[i].text){
             let button = document.createElement('button')
-            button.setAttribute('aria-labels', buttons[i].text)
+            button.setAttribute('aria-label', buttons[i].text)
             button.style.padding = '12px 30px'
             button.style.backgroundColor = '#111F47'
             button.style.color = 'white'

@@ -22,7 +22,7 @@ body {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    margin-bottom: 5%
+    margin-bottom: 10%
 }
 
 #hamburger-menu {
@@ -83,7 +83,7 @@ body {
 
 .direction {
     width: 40%; 
-    margin: 40px; 
+    margin: 40px 40px 20px 40px; 
     text-align: center; 
     font-size: 26px; 
     color: #1E2228;

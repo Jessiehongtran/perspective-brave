@@ -42,12 +42,11 @@ body {
 .start-button {
   z-index: 1; 
   width: 100%;
-}
-
-.startButton-link {
   display: flex; 
   justify-content: center;
+
 }
+
 
 .startButton-img {
   width: 12%

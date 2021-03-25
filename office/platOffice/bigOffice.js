@@ -21,7 +21,7 @@ let sparklingPos = {
   
 const sparklingSize = {
     w: 100,
-    h: 200
+    h: 100
 }
 
 const allowedWalkingDir = {
@@ -47,6 +47,7 @@ sparkling.style.left = `${sparklingPos.x}px`
 sparkling.style.top = `${sparklingPos.y}px`
 sparkling.style.width = `${sparklingSize.w}px`
 sparkling.style.height = `${sparklingSize.h}px`
+sparkling.style.border = '1px solid grey'
 
 
 container.style.backgroundSize = `${vw} ${vh}`
@@ -242,6 +243,12 @@ function stopVO(){
 
 function walk(e){
     let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
+    let centerOfSparkling = {
+        x: sparklingPos.x + sparklingSize.w/2,
+        y: sparklingPos.y + sparklingSize.h/2
+    }
+    let nextCharacterPos = {}
+
     if (!isWalkable()){
         disableCurWalkingDir()
     } else {
@@ -260,6 +267,10 @@ function walk(e){
                 speak('../../asset/VOfiles/PerspectivesVO_moveRight.wav')
             }
         }
+        nextCharacterPos = {
+            x: characterPos.x  + 20,
+            y: characterPos.y
+        }
     } else if (e.key === "ArrowLeft" && allowedWalkingDir["LEFT"]){
         curDir = "LEFT"
         characterPos.x = characterPos.x - 20
@@ -273,6 +284,10 @@ function walk(e){
                 speak('../../asset/VOfiles/PerspectivesVO_moveLeft.wav')
             }
         }
+        nextCharacterPos = {
+            x: characterPos.x  - 20,
+            y: characterPos.y
+        }
     } else if (e.key === "ArrowUp" && allowedWalkingDir["UP"]){
         curDir = "UP"
         characterPos.y = characterPos.y - 20
@@ -284,6 +299,10 @@ function walk(e){
                 audioIsBeingPlayed = true
                 speak('../../asset/VOfiles/PerspectivesVO_moveUp.wav')
             }
+        }
+        nextCharacterPos = {
+            x: characterPos.x,
+            y: characterPos.y - 20
         }
     } else if (e.key === "ArrowDown" && allowedWalkingDir["DOWN"]){
         curDir = "DOWN"
@@ -297,12 +316,27 @@ function walk(e){
                 speak('../../asset/VOfiles/PerspectivesVO_moveDown.wav')
             }
         }
+        nextCharacterPos = {
+            x: characterPos.x,
+            y: characterPos.y + 20
+        }
     }
     character.style.left = `${characterPos.x}px`
     character.style.top = `${characterPos.y}px`
 
-    if (characterPos.x + halfCharacterWidth >= sparklingPos.x  && characterPos.x + halfCharacterWidth <= sparklingPos.x + sparklingSize.w
-        && characterPos.y + characterHeight >= sparklingPos.y && characterPos.y + characterHeight <= sparklingPos.y + sparklingSize.h
+    //Check close to the sparkling spot in every turn
+    if (curDir !== preDir){
+        if (dist(characterPos.x + halfCharacterWidth, characterPos.y + characterHeight, centerOfSparkling.x, centerOfSparkling.y)
+            > dist(nextCharacterPos.x + halfCharacterWidth, nextCharacterPos.y + characterHeight, centerOfSparkling.x, centerOfSparkling.y)
+        ){
+            speak('../../asset/VOfiles/PerspectivesVO_closeToSpot2.mp3')
+        } else {
+            speak('../../asset/VOfiles/PerspectivesVO_farFromSpot2.mp3')
+        }
+    }
+
+    if (characterPos.x + halfCharacterWidth >= sparklingPos.x + sparklingSize.w/2 && characterPos.x + halfCharacterWidth <= sparklingPos.x + sparklingSize.w
+        && characterPos.y + characterHeight >= sparklingPos.y + sparklingSize.h/2 && characterPos.y + characterHeight <= sparklingPos.y + sparklingSize.h
         ){
           if (playAudioForAccessibility === "true"){
             stopVO()
@@ -316,6 +350,11 @@ function walk(e){
 
     preDir = curDir
 }
+
+//Function to find distance between 2 points
+function dist(x1, y1, x2, y2){
+    return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2))
+  }
 
 function handleKeyDown(e){
     if (!audioIsBeingPlayed){
