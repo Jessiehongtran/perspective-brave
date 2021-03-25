@@ -73,6 +73,7 @@ sparkling.style.height = `${sparklingPos.h}%`
 let audio = new Audio()
 let audioIsBeingPlayed = false
 function speak(file){
+    letRestrictSoundPlay = false
     let duration
     audio = new Audio(file);
     audio.volume = 1;
@@ -121,6 +122,7 @@ function getCharacterImg(dir, id){
   } 
 }
 
+let letRestrictSoundPlay = true
 const maxImageInd = 15
 
 //Function to get a movement
@@ -164,21 +166,33 @@ function restrict(dir){
     can_go_up = can_go_left = can_go_right = false
     detailTutorial.innerHTML = `You can only go DOWN`
     walkingDirection.innerHTML = `You can only go DOWN`
+    if (letRestrictSoundPlay){
+      speak(`../../asset/VOfiles/PerspectivesVO_limit_DOWN.wav`)
+    }
     arrowDown.style.backgroundColor = "#F64141"
   } else if (dir === "DOWN"){
     can_go_down = can_go_left = can_go_right = false
     detailTutorial.innerHTML = `You can only go UP`
     walkingDirection.innerHTML = `You can only go UP`
+    if (letRestrictSoundPlay){
+      speak(`../../asset/VOfiles/PerspectivesVO_limit_UP.wav`)
+    }
     arrowUp.style.backgroundColor = "#F64141"
   } else if (dir === "LEFT"){
     can_go_up = can_go_down = can_go_left = false
     detailTutorial.innerHTML = `You can only go RIGHT`
     walkingDirection.innerHTML = `You can only go RIGHT`
+    if (letRestrictSoundPlay){
+      speak(`../../asset/VOfiles/PerspectivesVO_limit_RIGHT.wav`)
+    }
     arrowRight.style.backgroundColor = "#F64141"
   } else if (dir === "RIGHT"){
     can_go_up = can_go_down = can_go_right = false
     detailTutorial.innerHTML = `You can only go LEFT`
     walkingDirection.innerHTML = `You can only go LEFT`
+    if (letRestrictSoundPlay){
+      speak(`../../asset/VOfiles/PerspectivesVO_limit_LEFT.wav`)
+    }
     arrowLeft.style.backgroundColor = "#F64141"
   }
   detailTutorial.style.color = "#F64141"
@@ -284,6 +298,7 @@ function handleKeyDown(e){
       can_go_up = can_go_down = can_go_right = can_go_left = true
       detailTutorial.innerHTML = `Use the arrow keys on your keyboard to move around in Yang’s Office.`
       detailTutorial.style.color = 'black'
+      letRestrictSoundPlay = true
     }
     
 }

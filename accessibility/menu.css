@@ -26,7 +26,7 @@ body {
 }
 
 .header {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     font-size: 36px;
 }
 
@@ -41,6 +41,15 @@ body {
     margin-right: 60px;
     min-width: 700px;
     margin-bottom: 40px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input[type="checkbox"]{
+    width: 17px;
+    height: 17px
 }
 
 .title {

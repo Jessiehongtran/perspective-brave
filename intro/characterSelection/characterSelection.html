@@ -11,14 +11,15 @@
         <div class="container" role="container" >
             <div class="top" >
                 <div class="header" role="header" >
-                    <img class="logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
+                    <img class="logo" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
                 </div>
                 <div class="direction" role="text" aria-label="Instruction" >
                     Please select the character you would like to start with.
                 </div>
+                <img class="speaker-icon" alt="Click to listen to audio" style="display: none; width: 5%; cursor: pointer" onclick="speak('../../asset/VOfiles/PerspectivesVO_introCharacters.mp3')" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613685755/speaker_jqfvak.svg"/>
             </div>
-            <div class="fake-container" role="wrapper"></div>
-            <div class="characters"  aria-label="Belows are 3 characters to select: a black man, a woman in tech and a transgender person" >
+            <div class="fake-container" aria-hidden="true"  role="wrapper"></div>
+            <div class="characters">
                 <div class="character black-male" aria-label="Black male" >
                     <div class="content" role="content" >
                         <div class="title" role="title" >
@@ -68,18 +69,23 @@
                 </div>
                 <div class="cover transgender" aria-label="This character is not available" ></div>
             </div>
-            <img id="group4" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg" />
-            <img id="rect" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213857/Rectangle_137.1_ckfftx.svg" />
-            <img id="polygon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614273033/Polygon_8.1_gse2nw.svg" />
-            <img id="ellipse" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213869/Ellipse_25.1_c18oph.svg"/>
+            <img id="group4" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg" />
+            <img id="rect" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213857/Rectangle_137.1_ckfftx.svg" />
+            <img id="polygon" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614273033/Polygon_8.1_gse2nw.svg" />
+            <img id="ellipse" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213869/Ellipse_25.1_c18oph.svg"/>
             <a href="../welcome/welcome.html" role="button">
                 <img id="leftSlide" alt="Click to go back" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
             </a>
         </div>
         <script>
+            let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
+            const speakerIcon = document.getElementsByClassName("speaker-icon")[0]
+            if (playAudioForAccessibility){
+               speakerIcon.style.display = 'block'
+            }
             let audio 
-            function speak(){
-                audio = new Audio('../../asset/VOfiles/PerspectivesVO_characterSelect.wav');
+            function speak(file){
+                audio = new Audio(file);
                 audio.volume = 1;
                 audio.play()
             }
