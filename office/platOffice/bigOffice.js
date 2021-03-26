@@ -202,10 +202,10 @@ function disableCurWalkingDir(){
         } else {
             walkingDirection.innerHTML = `Do not go there. You can only go ${opDir}`
             walkingDirection.style.display = 'block'
-            if (letSoundPlay){
+            // if (letSoundPlay){
                 // playSound(`../../asset/VOfiles/PerspectivesVO_limit_${opDir}.wav`)
                 playSound(`../../asset/VOfiles/PerspectivesVO_hit.mp3`)
-            }
+            // }
         }
     } 
 }
@@ -239,6 +239,7 @@ function stopVO(){
         audio.pause()
     }
 }
+
 
 
 function walk(e){
@@ -341,7 +342,27 @@ function dist(x1, y1, x2, y2){
     return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2))
   }
 
+
+let playBackground = true
+
+function playBackgroundAudio(){
+    playBackground = false
+    audio = new Audio('../../asset/VOfiles/PerspectivesVO_officeBackground.mp3')
+    audio.play()
+    audio.volume = 0.3
+    audio.onloadedmetadata = function() {
+        let bgDuration = audio.duration*1000
+        setTimeout(function(){
+            playBackground = true
+        }, bgDuration)
+    };
+    
+}
+
 function handleKeyDown(e){
+    if (playBackground){
+        playBackgroundAudio()
+    }
     if (!audioIsBeingPlayed){
         //describe the environment
         let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
