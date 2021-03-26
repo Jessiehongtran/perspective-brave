@@ -829,7 +829,28 @@ function walk(e){
     preDir = curDir
 }
 
+let playBackground = true
+
+function playBackgroundAudio(){
+    playBackground = false
+    audio = new Audio('../../asset/VOfiles/jolly.wav')
+    audio.play()
+    audio.volume = 0.1
+    audio.onloadedmetadata = function() {
+        let bgDuration = audio.duration*1000
+        setTimeout(function(){
+            playBackground = true
+        }, bgDuration)
+    };
+    
+}
+
 function handleKeyDown(e){
+
+    if (playBackground){
+        playBackgroundAudio()
+    }
+    
     // if (!audioIsBeingPlayed){
         walk(e)
     // }
