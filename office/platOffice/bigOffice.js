@@ -202,10 +202,10 @@ function disableCurWalkingDir(){
         } else {
             walkingDirection.innerHTML = `Do not go there. You can only go ${opDir}`
             walkingDirection.style.display = 'block'
-            if (letSoundPlay){
+            // if (letSoundPlay){
                 // playSound(`../../asset/VOfiles/PerspectivesVO_limit_${opDir}.wav`)
                 playSound(`../../asset/VOfiles/PerspectivesVO_hit.mp3`)
-            }
+            // }
         }
     } 
 }
@@ -241,10 +241,11 @@ function stopVO(){
 }
 
 
+
 function walk(e){
     let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
     if (!audioIsBeingPlayed && (playAudioForAccessibility && !firstWalk || !playAudioForAccessibility)){
-        speak(`../../asset/VOfiles/PerspectivesVO_softWalking_official.mp3`)
+        playSound(`../../asset/VOfiles/PerspectivesVO_softWalking_official.mp3`)
       }
     let centerOfSparkling = {
         x: sparklingPos.x + sparklingSize.w/2,
@@ -310,7 +311,7 @@ function walk(e){
         ){
             // speak('../../asset/VOfiles/PerspectivesVO_closeToSpot2.mp3')
             if (audio){
-            audio.volume = 1
+                audio.volume = 1
             }
         } else {
             // speak('../../asset/VOfiles/PerspectivesVO_farFromSpot2.mp3')
@@ -323,7 +324,7 @@ function walk(e){
     if (characterPos.x + halfCharacterWidth >= sparklingPos.x + sparklingSize.w/2 && characterPos.x + halfCharacterWidth <= sparklingPos.x + sparklingSize.w
         && characterPos.y + characterHeight >= sparklingPos.y + sparklingSize.h/2 && characterPos.y + characterHeight <= sparklingPos.y + sparklingSize.h
         ){
-          if (playAudioForAccessibility === "true"){
+          if (playAudioForAccessibility === "true" && !audioIsBeingPlayed){
             stopVO()
             speak('../../asset/VOfiles/PerspectivesVO_inTheSpark.wav')
           }
@@ -341,7 +342,27 @@ function dist(x1, y1, x2, y2){
     return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2))
   }
 
+
+let playBackground = true
+
+function playBackgroundAudio(){
+    playBackground = false
+    audio = new Audio('../../asset/VOfiles/PerspectivesVO_officeBackground.mp3')
+    audio.play()
+    audio.volume = 0.3
+    audio.onloadedmetadata = function() {
+        let bgDuration = audio.duration*1000
+        setTimeout(function(){
+            playBackground = true
+        }, bgDuration)
+    };
+    
+}
+
 function handleKeyDown(e){
+    if (playBackground){
+        playBackgroundAudio()
+    }
     if (!audioIsBeingPlayed){
         //describe the environment
         let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')

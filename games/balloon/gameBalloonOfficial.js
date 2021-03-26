@@ -399,7 +399,7 @@ function enterOrLeavePlatform(){
             speak('../../asset/VOfiles/PerspectivesVO_gameQuestion.wav')
         }, 21000)
         setTimeout(function(){
-            speak('../../asset/VOfiles/PerspectivesVO_balloonDescribe.mp3')
+            speak('../../asset/VOfiles/PerspectivesVO_gameAnswer.wav')
         }, 26000)
     } else {
         gameInstruction.style.display = 'flex'
@@ -698,7 +698,7 @@ function walk(e){
     }
 
     if (!audioIsBeingPlayed && (playAudioOnWalking && !firstWalk || !playAudioOnWalking)){
-        speak(`../../asset/VOfiles/PerspectivesVO_softWalking_official.mp3`)
+        playSound(`../../asset/VOfiles/PerspectivesVO_softWalking_official.mp3`)
     }
 
     //describe the environment
@@ -771,28 +771,34 @@ function walk(e){
         jump()
     }
 
-    if (curDir !== preDir){
+
         if (dist(characterPos.x + characterSize.w/2, characterPos.y + characterSize.h, greenBalloonPos.x + Math.floor(6*vw/100), greenBalloonPos.y + Math.floor(20*vh/100))
                 > dist(nextCharacterPos.x + characterSize.w/2, nextCharacterPos.y + characterSize.h,greenBalloonPos.x + Math.floor(6*vw/100), greenBalloonPos.y + Math.floor(20*vh/100))
             ){
-                speak('../../asset/VOfiles/PerspectivesVO_closeToGreenBalloon.mp3')
-                console.log('close to green')
+                if (!audioIsBeingPlayed){
+                    speak('../../asset/VOfiles/PerspectivesVO_closeToGreenBalloon.wav')
+                    console.log('close to green')
+                }
             } 
 
         if (dist(characterPos.x + characterSize.w/2, characterPos.y + characterSize.h, redBalloonPos.x + Math.floor(6*vw/100), redBalloonPos.y + Math.floor(20*vh/100))
             > dist(nextCharacterPos.x + characterSize.w/2, nextCharacterPos.y + characterSize.h, redBalloonPos.x + Math.floor(6*vw/100), redBalloonPos.y + Math.floor(20*vh/100))
         ){
-                speak('../../asset/VOfiles/PerspectivesVO_closeToRedBalloon.mp3')
-                console.log('close to red')
+                if (!audioIsBeingPlayed){
+                    speak('../../asset/VOfiles/PerspectivesVO_closeToRedBalloon.wav')
+                    console.log('close to red')
+                }
         } 
 
         if (dist(characterPos.x + characterSize.w/2, characterPos.y + characterSize.h, yellowBalloonPos.x + Math.floor(6*vw/100), yellowBalloonPos.y + Math.floor(20*vh/100))
             > dist(nextCharacterPos.x + characterSize.w/2, nextCharacterPos.y + characterSize.h, yellowBalloonPos.x + Math.floor(6*vw/100), yellowBalloonPos.y + Math.floor(20*vh/100))
         ){
-                speak('../../asset/VOfiles/PerspectivesVO_closeToYellowBalloon.mp3')
-                console.log('close to yellow')
+                if (!audioIsBeingPlayed){
+                    speak('../../asset/VOfiles/PerspectivesVO_closeToYellowBalloon.wav')
+                    console.log('close to yellow')
+                }
         } 
-    }
+    
 
     if (
         (
