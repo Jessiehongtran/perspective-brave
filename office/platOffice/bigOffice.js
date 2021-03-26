@@ -244,7 +244,7 @@ function stopVO(){
 function walk(e){
     let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
     if (!audioIsBeingPlayed && (playAudioForAccessibility && !firstWalk || !playAudioForAccessibility)){
-        speak(`../../asset/VOfiles/PerspectivesVO_softWalking_official.mp3`)
+        playSound(`../../asset/VOfiles/PerspectivesVO_softWalking_official.mp3`)
       }
     let centerOfSparkling = {
         x: sparklingPos.x + sparklingSize.w/2,
@@ -310,7 +310,7 @@ function walk(e){
         ){
             // speak('../../asset/VOfiles/PerspectivesVO_closeToSpot2.mp3')
             if (audio){
-            audio.volume = 1
+                audio.volume = 1
             }
         } else {
             // speak('../../asset/VOfiles/PerspectivesVO_farFromSpot2.mp3')
@@ -323,7 +323,7 @@ function walk(e){
     if (characterPos.x + halfCharacterWidth >= sparklingPos.x + sparklingSize.w/2 && characterPos.x + halfCharacterWidth <= sparklingPos.x + sparklingSize.w
         && characterPos.y + characterHeight >= sparklingPos.y + sparklingSize.h/2 && characterPos.y + characterHeight <= sparklingPos.y + sparklingSize.h
         ){
-          if (playAudioForAccessibility === "true"){
+          if (playAudioForAccessibility === "true" && !audioIsBeingPlayed){
             stopVO()
             speak('../../asset/VOfiles/PerspectivesVO_inTheSpark.wav')
           }
