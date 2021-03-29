@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Perspective 2.0</title>
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="./office.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container" role="container">
+            <img class="bigOffice" alt="zoomed in office environment" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615935271/bigOfficeMap_rfbakj.svg"/>
+            <div aria-label="Instruction: Use A to move left, D to move right, W to move up, S to move down" style="z-index: 10; left: 3%; top: 2%; position: absolute; max-width: 200px; line-height: 26px; background-color:#DCEBEB; padding: 10px 20px; border-radius: 8px;">
+                <p>Use <button>A</button> to move left</p>
+                <p>Use <button>D</button> to move right</p>
+                <p>Use <button>W</button> to move up</p>
+                <p>Use <button>S</button> to move down</p>
+            </div>
+            <div id="player" aria-label="Character" style="position: absolute; left: 500px; top: 400px; width: 100px; height: 120px" >
+                <img id="playerImg" alt="Character image" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
+            </div>
+            <div class="walking-direction" aria-label="Direction to walk">
+                
+            </div>
+            <div id="sparkling" aria-label="Sparkling area" style="position: absolute; left: 600px; top: 600px; width: 100px">
+                <img  class="sparklingImage" alt="Sparkling image" src="../asset/Blue_Sparkles/Sparkles_00000.png"/>
+            </div>
+        </div>
+        <script src="./office.js"></script>
+    </body>
+</html>
