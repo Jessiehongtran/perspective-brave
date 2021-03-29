@@ -18,12 +18,6 @@ body {
     overflow: hidden
 }
 
-.top {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    margin-bottom: 10%
-}
 
 #hamburger-menu {
     position: absolute;
@@ -77,13 +71,13 @@ body {
 }
 
 .logo {
-    width: 30%; 
+    width: 20%; 
     z-index: 1;
 }
 
 .direction {
-    width: 40%; 
-    margin: 40px 40px 20px 40px; 
+    width: 60%; 
+    margin: 20px 0; 
     text-align: center; 
     font-size: 26px; 
     color: #1E2228;
@@ -92,7 +86,7 @@ body {
 
 .fake-container {
     width: 75%; 
-    height: 450px
+    height: 600px
 }
 
 .speakerIcon {
