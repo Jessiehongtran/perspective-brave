@@ -78,11 +78,11 @@
                         </div>
                     </div>
                 </div>
-                <a role="button">
-                    <img id="leftSlide" alt="Click to go back" onClick="goBack()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+                <a href="../index.html" role="link">
+                    <img id="leftSlide" alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
                 </a>
-                <a href="../intro/welcome/welcome.html" role="button">
-                    <img id="rightSlide"  alt="Click to go next" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616191237/rightSlide2_oogagn.svg"/>
+                <a href="../intro/welcome/welcome.html" role="link">
+                    <img id="rightSlide"  alt="Press to go next page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616191237/rightSlide2_oogagn.svg"/>
                 </a>
             </div>
         </div>
@@ -109,14 +109,15 @@
             
         </script>
         <script>
-            document.addEventListener("keydown", activateGoBack)
+            const leftSlide = document.getElementById("leftSlide")
+            leftSlide.addEventListener("keydown", activateGoBack)
 
             function goBack() {
                 window.history.back();
             }
 
             function activateGoBack(e){
-                if (e.keyCode === 13 || e.keyCode === 32){
+                if (e.key === "Enter"){
                     goBack()
                 } 
             }
