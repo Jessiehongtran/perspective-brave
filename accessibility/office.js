@@ -1,5 +1,5 @@
 document.addEventListener('keydown', handleKeyDown)
-setTimeout(showExit, 30000)
+setTimeout(showExit, 60000)
 
 //DOM elements
 const container = document.getElementById("container")
