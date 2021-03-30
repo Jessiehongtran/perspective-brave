@@ -73,7 +73,7 @@ function handleKeyDown(e){
         window.location.href = "../scenario/scenario1/yangConversation.html"
     }
 
-    if (firstWalk){
+    if (firstWalk && e.key !== "Tab"){
         //describe environment
         audio = new Audio('../asset/VOfiles/PerspectivesVO_officeDescribe.wav')
         audio.play()

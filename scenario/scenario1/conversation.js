@@ -344,19 +344,17 @@ function getMessageElement(name, messageText, side, speedInd){
     const messageContainer = document.createElement("div")
     messageContainer.style.marginTop = '10px'
     messageContainer.setAttribute('role', 'text')
-    // messageContainer.setAttribute('aria-hidden', 'true')
+    messageContainer.setAttribute('tabindex', '0')
     //name div
     const nameContainer = document.createElement("div")
     nameContainer.setAttribute('class', 'name')
     nameContainer.setAttribute('role', 'text')
-    // nameContainer.setAttribute('aria-hidden', 'true')
     nameContainer.setAttribute('aria-label', name)
     nameContainer.innerHTML = name
     nameContainer.style.fontWeight = 'bold'
     //face-text div
     const faceTextContainer = document.createElement("div")
     faceTextContainer.setAttribute('class', 'face-text')
-    // faceTextContainer.setAttribute('aria-hidden', 'true')
     faceTextContainer.setAttribute('aria-label', messageText)
     faceTextContainer.style.display = 'flex'
     faceTextContainer.style.alignItems = 'center'
