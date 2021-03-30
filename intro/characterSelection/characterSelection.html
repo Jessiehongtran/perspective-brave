@@ -12,13 +12,13 @@
             <div class="header" role="header" >
                 <img class="logo" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
             </div>
-            <div class="direction" role="text" aria-label="Below are 3 characters for you to select and play a role of. Please select the character you would like to start with." style="display: block">
+            <div class="direction" role="text" tabindex="2" aria-label="Below are 3 characters for you to select and play a role of. Please select the character you would like to start with." style="display: block">
                 <p>Below are 3 characters for you to select and play a role of. 
                 <br/>Please select the character you would like to start with.</p>
             </div>
             <div class="fake-container" aria-hidden="true"  role="wrapper"></div>
-            <div class="characters" aria-label="Here are 3 characters for you to select and play a role of">
-                <div class="character black-male"  tabindex="4" aria-label="Black male" >
+            <div class="characters"  aria-label="Here are 3 characters for you to select and play a role of">
+                <div class="character black-male"  tabindex="3" aria-label="Black male, not available to select" >
                     <div class="content" role="content" >
                         <div class="title" role="title" >
                             Black man
@@ -35,22 +35,22 @@
                 </div>
                 <div class="cover blackMale" aria-label="This character is not available to select yet"></div>
 
-                <div class="character women-in-tech" aria-label="Woman in tech">
+                <div class="character women-in-tech"  tabindex="5" aria-label="Woman in tech, available to select">
                     <div class="content" role="content" >
-                        <div class="title" role="title" >
+                        <div class="title" role="title" tabindex="6" >
                             Woman in tech
                         </div>
-                        <a href="../yangIntro/yangIntro.html" class="characterImage-link" role="link">
+                        <a href="../yangIntro/yangIntro.html" tabindex="7" class="characterImage-link" role="link">
                             <img alt="women in tech image" id="characterImage" onclick="stopVO()" alt="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
                         </a>
-                        <a href="../yangIntro/yangIntro.html" class="characterButton-link" role="link">
-                            <button class="characterButton" onclick="stopVO()" aria-label="Yang, click to select">
+                        <a href="../yangIntro/yangIntro.html" class="characterButton-link" role="link" tabindex="8">
+                            <button class="characterButton" onclick="stopVO()" aria-label="Yang, press to select">
                                 Yang
                             </button>
                         </a>
                     </div>
                 </div>
-                <div class="character trans-gender" aria-label="Transgender person" >
+                <div class="character trans-gender" tabindex="4" aria-label="Transgender person, not available to select" >
                     <div class="content" role="content" >
                         <div class="title" role="title" >
                             Transgender person
@@ -71,7 +71,7 @@
             <img id="rect" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213857/Rectangle_137.1_ckfftx.svg" />
             <img id="polygon" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614273033/Polygon_8.1_gse2nw.svg" />
             <img id="ellipse" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213869/Ellipse_25.1_c18oph.svg"/>
-            <a href="../welcome/welcome.html" role="link">
+            <a href="../welcome/welcome.html" role="link" tabindex="1" >
                 <img id="leftSlide" alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
             </a>
         </div>

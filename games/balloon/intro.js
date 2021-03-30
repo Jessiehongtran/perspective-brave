@@ -40,6 +40,7 @@ function showText(id){
         stopVO()
     }
     info.innerHTML = texts[id]
+    info.setAttribute('tabindex', 2*(id+1))
     dots[id].setAttribute('class', "each-dot active")
     dots[id].setAttribute('aria-label', "Active")
     if (id !== curId){

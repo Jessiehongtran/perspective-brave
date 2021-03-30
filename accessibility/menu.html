@@ -8,13 +8,13 @@
     </head>
     <body>
         <div role="container" class="container" >
-            <div class="header" role="header" >ACCESSIBILITY OPTIONS</div>
+            <div class="header" tabindex="0" role="header" aria-label="accessibility options" >ACCESSIBILITY OPTIONS</div>
             <div class="row">
                 <div class="each-mode">
-                    <div class="title" role="title">Voice Over</div>
+                    <div class="title" tabindex="0" role="title" aria-label="voice over" >Voice Over</div>
                     <div class="options">
                         <div class="each-option">
-                            <label class="text" for="audio" >Audio Support</label>
+                            <label class="text" tabindex="0" aria-label="audio support" for="audio" >Audio Support</label>
                             <input type="checkbox" value="audio" role="check box" aria-label="Click to select" id="audio-support unchecked" style="display: none" onChange="updateAudioSupportToBeChecked()"/>
                             <input type="checkbox" value="audio" role="check box" aria-label="Click to unselect" id="audio-support checked" style="display: none" checked  onChange="updateAudioSupportToBeUnchecked()"/>
                         </div>
@@ -23,66 +23,66 @@
             </div>
             <div class="row">
                 <div class="each-mode">
-                    <div class="title">Colorblind mode</div>
+                    <div class="title" tabindex="0" role="title" aria-label="colorblind mode" >Colorblind mode</div>
                     <div class="options">
                         <div class="each-option">
-                            <label class="text" for="protanopia" >Protanopia</label>
+                            <label class="text" tabindex="0" aria-label="Protanopia"  for="protanopia" >Protanopia</label>
                             <input type="checkbox" value="protanopia" role="check box" aria-label="Checkbox is disabled" disable/>
                         </div>
                         <div class="each-option">
-                            <label class="text" for="deuteranopia">Deuteranopia</label>
+                            <label class="text" tabindex="0" aria-label="Deuteranopia" for="deuteranopia">Deuteranopia</label>
                             <input type="checkbox" value="deuteranopia" role="check box" aria-label="Checkbox is disabled" disable/>
                         </div>
                         <div class="each-option">
-                            <label class="text" for="tritanopia" >Tritanopia</label>
+                            <label class="text" tabindex="0" aria-label="Tritanopia" for="tritanopia" >Tritanopia</label>
                             <input type="checkbox" value="tritanopia" role="check box" aria-label="Checkbox is disabled" disable/>
                         </div>
                     </div>
                 </div>
                 <div class="each-mode">
-                    <div class="title" role="title">Zoom box</div>
+                    <div class="title" tabindex="0" aria-label="zoom box"  role="title">Zoom box</div>
                 </div>
             </div>
             <div class="row">
                 <div class="each-mode">
-                    <div class="title" role="title">High contrast mode</div>
+                    <div class="title" tabindex="0" aria-label="High contrast mode"  role="title">High contrast mode</div>
                     <div class="options">
                         <div class="each-option">
-                            <label class="text" for="setting1" >Setting 1</label>
+                            <label class="text" tabindex="0" aria-label="Setting 1" for="setting1" >Setting 1</label>
                             <input type="checkbox" value="setting1" role="check box" aria-label="Checkbox is disabled" disable/>
                         </div>
                         <div class="each-option">
-                            <label class="text" for="setting2" >Setting 2</label>
+                            <label class="text" tabindex="0" aria-label="Setting 2" for="setting2" >Setting 2</label>
                             <input type="checkbox" value="setting2" role="check box" aria-label="Checkbox is disabled" disable/>
                         </div>
                         <div class="each-option">
-                            <label class="text" for="setting3" >Setting 3</label>
+                            <label class="text" tabindex="0" aria-label="Setting 3" for="setting3" >Setting 3</label>
                             <input type="checkbox" value="setting3" role="check box" aria-label="Checkbox is disabled" disable/>
                         </div>
                     </div>
                 </div>
                 <div class="each-mode">
-                    <div class="title" role="title" >Size of Text</div>
+                    <div class="title" tabindex="0" aria-label="Size of text" role="title" >Size of Text</div>
                     <div class="options">
                         <div class="each-option">
-                            <label class="text" for="small" >Small</label>
+                            <label class="text" tabindex="0" aria-label="small" for="small" >Small</label>
                             <input type="checkbox" value="small" role="check box" aria-label="Checkbox is disabled"  disable/>
                         </div>
                         <div class="each-option">
-                            <label class="text" for="medium" >Medium</label>
+                            <label class="text" tabindex="0" aria-label="medium" for="medium" >Medium</label>
                             <input type="checkbox" value="medium" role="check box" aria-label="Checkbox is disabled"  disable/>
                         </div>
                         <div class="each-option">
-                            <label class="text" for="large" >Large</label>
+                            <label class="text" tabindex="0" aria-label="large" for="large" >Large</label>
                             <input type="checkbox" value="large" role="check box" aria-label="Checkbox is disabled" disable/>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="../index.html" role="link">
+            <a href="../index.html" tabindex="0" role="link">
                 <img id="leftSlide" alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
             </a>
-            <a href="../intro/welcome/welcome.html" role="link">
+            <a href="../intro/welcome/welcome.html" tabindex="0" role="link">
                 <img id="rightSlide"  alt="Press to go next page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1616191237/rightSlide2_oogagn.svg"/>
             </a>
         </div>
