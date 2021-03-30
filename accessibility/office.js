@@ -1,10 +1,12 @@
 document.addEventListener('keydown', handleKeyDown)
+setTimeout(showExit, 30000)
 
 //DOM elements
 const container = document.getElementById("container")
 const char = document.getElementById("player")
 const charImg = document.getElementById("playerImg")
 const sparkling = document.getElementById("sparkling")
+const instruction = document.getElementsByClassName("instruction")[0]
 
 //variables
 const charPos = {
@@ -67,6 +69,10 @@ sparkling.style.height = `${sparkSize.h}px`
 
 
 function handleKeyDown(e){
+    if (e.key === "e"){
+        window.location.href = "../scenario/scenario1/yangConversation.html"
+    }
+
     if (firstWalk){
         //describe environment
         audio = new Audio('../asset/VOfiles/PerspectivesVO_officeDescribe.wav')
@@ -230,4 +236,13 @@ function isWalkable(r,c){
         return true
     }
     return false
+}
+
+function showExit(){
+    while (instruction.firstChild) {
+        instruction.removeChild(instruction.firstChild);
+      }
+    instruction.innerHTML = `Press <span class="key-btn">E</span> to exit`
+    audio = new Audio('../asset/VOfiles/PerspectivesVO_officeExit.mp3')
+    audio.play()
 }
