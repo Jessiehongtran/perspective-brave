@@ -1,4 +1,5 @@
 let audio 
+const withScreenreader = sessionStorage.getItem("screen-reader")
 
 function speak(file){
     audio = new Audio(file);
@@ -47,7 +48,9 @@ function showText(id){
         dots[curId].setAttribute('aria-label', "Inactive")
     }
     curId = id
-    speak(`../../asset/VOfiles/PerspectivesVO_bias_summary${id + 1}.wav`)
+    if (withScreenreader === "false"){
+        speak(`../../asset/VOfiles/PerspectivesVO_bias_summary${id + 1}.wav`)
+    }
 }
 
 function nextSlide(){
@@ -75,3 +78,4 @@ function preSlide(){
     }
 }
 
+sessionStorag.clear()
