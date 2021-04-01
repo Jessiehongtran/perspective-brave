@@ -41,7 +41,8 @@ body {
 }
 
 .each-line {
-    margin: 20px
+    margin: 20px;
+    line-height: 28px;
 }
 
 .question {

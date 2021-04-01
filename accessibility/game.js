@@ -15,6 +15,7 @@ const char = document.getElementsByClassName("character")[0]
 const greenBalloon = document.getElementsByClassName("balloon green")[0]
 const redBalloon = document.getElementsByClassName("balloon red")[0]
 const yellowBalloon = document.getElementsByClassName("balloon yellow")[0]
+const instruction = document.getElementsByClassName("instruction")[0]
 
 let charPos = {
     x: 55,
@@ -65,6 +66,16 @@ greenBalloon.style.height = redBalloon.style.height = yellowBalloon.style.height
 let countStep = 0
 const totalStep = 10
 const flyingSpeed = 2
+
+const widthScreenReader = sessionStorage.getItem('screen-reader')
+if (widthScreenReader === "true"){
+    instruction.innerHTML = `
+    <p class="each-line">Press <span class="key-btn">G</span> to select green balloon</p>
+    <p class="each-line">Press <span class="key-btn">R</span> to select red balloon</p>
+    <p class="each-line">Press <span class="key-btn">Y</span> to select yellow balloon</p>
+    `
+    instruction.setAttribute('aria-label', 'Press G to select green balloon, press R to select red balloon, press Y to select yellow balloon')
+}
 
 function handleKeyDown(e){
     if (e.key === "a" && canWalk["LEFT"]){
