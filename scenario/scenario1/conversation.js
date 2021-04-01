@@ -413,7 +413,8 @@ function getMessageElement(name, messageText, side, speedInd){
     }
 
     //initiate VO
-    if (messageText[0] != "." && speedInd !== 0){
+    const withScreenReader = sessionStorage.getItem('screen-reader')
+    if (!withScreenReader && messageText[0] != "." && speedInd !== 0){
         if (name === "JERRY"){
             playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
         } else if (name === "YANG"){

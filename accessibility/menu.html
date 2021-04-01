@@ -18,7 +18,7 @@
                     <div class="options">
                         <div class="each-option">
                             <label class="text" tabindex="0" aria-label="yes" for="screen-reader" >Yes</label>
-                            <input type="checkbox" value="yes" role="check box" />
+                            <input type="checkbox" value="screen-reader" role="check box" id="screen-reader" onChange="updateAccessibility('screen-reader')"/>
                         </div>
                     </div>
                 </div>
@@ -26,10 +26,8 @@
                     <div class="title" tabindex="0" role="title" aria-label="do you need voice recognition support?" >Do you need voice recognition support?</div>
                     <div class="options">
                         <div class="each-option">
-                            <label class="text" tabindex="0" aria-label="yes" for="voice" >Yes</label>
-                            <input type="checkbox" value="yes" role="check box" />
-                            <!-- <input type="checkbox" value="audio" role="check box" aria-label="Click to select" id="audio-support unchecked" style="display: none" onChange="updateAudioSupportToBeChecked()"/>
-                            <input type="checkbox" value="audio" role="check box" aria-label="Click to unselect" id="audio-support checked" style="display: none" checked  onChange="updateAudioSupportToBeUnchecked()"/> -->
+                            <label class="text" tabindex="0" aria-label="yes" for="voice-recognition" >Yes</label>
+                            <input type="checkbox" value="voice-recognition" id="voice-recognition" onChange="updateAccessibility('voice-recognition')" role="check box" />
                         </div>
                     </div>
                 </div>
@@ -39,16 +37,16 @@
                     <div class="title" tabindex="0" aria-label="Size of text" role="title" >Size of Text</div>
                     <div class="options">
                         <div class="each-option">
-                            <label class="text" tabindex="0" aria-label="small" for="small" >Small</label>
-                            <input type="checkbox" value="small" role="check box" aria-label="Checkbox is disabled"  disable/>
+                            <label class="text" tabindex="0" aria-label="small" for="text-size" >Small</label>
+                            <input type="checkbox" value="text-size" role="check box" id="text-small" onChange="updateAccessibility('text-small')"/>
                         </div>
                         <div class="each-option">
-                            <label class="text" tabindex="0" aria-label="medium" for="medium" >Medium</label>
-                            <input type="checkbox" value="medium" role="check box" aria-label="Checkbox is disabled"  disable/>
+                            <label class="text" tabindex="0" aria-label="medium" for="text-size" >Regular</label>
+                            <input type="checkbox" value="text-size" role="check box" id="text-regular" checked onChange="updateAccessibility('text-regular')"/>
                         </div>
                         <div class="each-option">
-                            <label class="text" tabindex="0" aria-label="large" for="large" >Large</label>
-                            <input type="checkbox" value="large" role="check box" aria-label="Checkbox is disabled" disable/>
+                            <label class="text" tabindex="0" aria-label="large" for="text-size" >Large</label>
+                            <input type="checkbox" value="text-size" role="check box" id="text-large"  onChange="updateAccessibility('text-large')"/>
                         </div>
                     </div>
                 </div>
@@ -56,12 +54,16 @@
                     <div class="title" tabindex="0" aria-label="High contrast mode"  role="title">High contrast mode</div>
                     <div class="options">
                         <div class="each-option">
-                            <label class="text" tabindex="0" aria-label="Setting 1" for="setting1" >Setting 1</label>
-                            <input type="checkbox" value="setting1" role="check box" aria-label="Checkbox is disabled" disable/>
+                            <label class="text" tabindex="0" aria-label="Setting 1" for="high-contrast" >Regular</label>
+                            <input type="checkbox" value="high-contrast" role="check box" checked id="contrast-regular" onChange="updateAccessibility('contrast-regular')"/>
                         </div>
                         <div class="each-option">
-                            <label class="text" tabindex="0" aria-label="Setting 2" for="setting2" >Setting 2</label>
-                            <input type="checkbox" value="setting2" role="check box" aria-label="Checkbox is disabled" disable/>
+                            <label class="text" tabindex="0" aria-label="Setting 2" for="high-contrast" >Medium</label>
+                            <input type="checkbox" value="high-contrast" role="check box" id="contrast-medium" onChange="updateAccessibility('contrast-medium')"/>
+                        </div>
+                        <div class="each-option">
+                            <label class="text" tabindex="0" aria-label="Setting 2" for="high-contrast" >Dark</label>
+                            <input type="checkbox" value="high-contrast" role="check box" id="contrast-dark" onChange="updateAccessibility('contrast-dark')"/>
                         </div>
                     </div>
                 </div>
@@ -74,40 +76,21 @@
             </a>
         </div>
         <script type='text/javascript' > 
-            const audioSupportUnchecked = document.getElementById("audio-support unchecked")
-            const audioSupportChecked = document.getElementById("audio-support checked")
-            const curCheckState = localStorage.getItem('playAudioForAccessibility')
+            sessionStorage.setItem('screen-reader', false)
+            sessionStorage.setItem('voice-recognition', false)
+            sessionStorage.setItem('text-small', false)
+            sessionStorage.setItem('text-regular', true)
+            sessionStorage.setItem('text-large', false)
+            sessionStorage.setItem('contrast-regular', true)
+            sessionStorage.setItem('contrast-medium', false)
+            sessionStorage.setItem('contrast-dark', false)
 
-            if (curCheckState === "true"){
-                document.getElementById("audio-support unchecked").style.display = 'none'
-                document.getElementById("audio-support checked").style.display = 'block'
-            } else {
-                document.getElementById("audio-support unchecked").style.display = 'block'
-                document.getElementById("audio-support checked").style.display = 'none'
-            }
-
-            function updateAudioSupportToBeChecked(){
-                localStorage.setItem('playAudioForAccessibility', true)  
-            }
-
-            function updateAudioSupportToBeUnchecked(){
-                localStorage.setItem('playAudioForAccessibility', false)  
+            function updateAccessibility(feature){
+                const activeFeature = document.getElementById(feature)
+                console.log(feature, activeFeature.checked)
+                sessionStorage.setItem(feature, activeFeature.checked)
             }
             
-        </script>
-        <script>
-            const leftSlide = document.getElementById("leftSlide")
-            leftSlide.addEventListener("keydown", activateGoBack)
-
-            function goBack() {
-                window.history.back();
-            }
-
-            function activateGoBack(e){
-                if (e.key === "Enter"){
-                    goBack()
-                } 
-            }
         </script>
     </body>
 </html>

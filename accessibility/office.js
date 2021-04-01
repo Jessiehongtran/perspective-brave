@@ -54,6 +54,9 @@ const rows = Math.floor(vh/squareSize)
 const squares = []
 let eachSquare
 let firstWalk = true
+let intheSpark = false
+let inSparkReminder = true
+const withScreenReader = sessionStorage.getItem('screen-reader')
 
 //setup
 char.style.left = `${charPos.x}px`
@@ -73,83 +76,96 @@ function handleKeyDown(e){
         window.location.href = "../scenario/scenario1/yangConversation.html"
     }
 
-    if (firstWalk && e.key !== "Tab"){
+    if (firstWalk && e.key !== "Tab" && !withScreenReader){
         //describe environment
         audio = new Audio('../asset/VOfiles/PerspectivesVO_officeDescribe.wav')
         audio.play()
         firstWalk = false
     } else {
-        if (e.key === "a" && canWalk["LEFT"]){
-            //move left
-            curDir = "LEFT"
-            charPos.x -= changeX
-            charPos.y -= changeY
-            charImg.src = charFace["LEFT"]
-            charImg.style.transform = 'rotateY(180deg)'
-        }
-        if (e.key === "d" && canWalk["RIGHT"]){
-            //move right
-            curDir = "RIGHT"
-            charPos.x += changeX
-            charPos.y += changeY
-            charImg.src = charFace["RIGHT"]
-            charImg.style.transform = 'rotateY(360deg)'
-        }
-        if (e.key === "w" && canWalk["UP"]){
-            curDir = "UP"
-            //move up
-            charPos.x += changeX
-            charPos.y -= changeY
-            charImg.src = charFace["UP"]
-        }
-        if (e.key === "s" && canWalk["DOWN"]){
-            curDir = "DOWN"
-            //move down
-            charPos.x -= changeX
-            charPos.y += changeY
-            charImg.src = charFace["DOWN"]
-        }
-
-        const curRow = Math.floor((charPos.y + charSize.h)/squareSize)
-        const curCol = Math.floor((charPos.x + charSize.w/2)/squareSize)
-
-        if (isWalkable(curRow, curCol)){
-            canWalk = {
-                "UP": true,
-                "DOWN": true,
-                "LEFT": true,
-                "RIGHT": true
+        if (!intheSpark){
+            if (e.key === "a" && canWalk["LEFT"]){
+                //move left
+                curDir = "LEFT"
+                charPos.x -= changeX
+                charPos.y -= changeY
+                charImg.src = charFace["LEFT"]
+                charImg.style.transform = 'rotateY(180deg)'
             }
-            char.style.left = `${charPos.x}px`
-            char.style.top = `${charPos.y}px`
-
-            charSize = {
-                w: 65,
-                h: 80
+            if (e.key === "d" && canWalk["RIGHT"]){
+                //move right
+                curDir = "RIGHT"
+                charPos.x += changeX
+                charPos.y += changeY
+                charImg.src = charFace["RIGHT"]
+                charImg.style.transform = 'rotateY(360deg)'
             }
-            charImg.style.width = `${charSize.w}px`
-            charImg.style.height = `${charSize.h}px`
-        } else {
-            canWalk[curDir] = false
-            //hit sound
-            audio = new Audio('../asset/VOfiles/PerspectivesVO_hit.mp3');
-            audio.play()
+            if (e.key === "w" && canWalk["UP"]){
+                curDir = "UP"
+                //move up
+                charPos.x += changeX
+                charPos.y -= changeY
+                charImg.src = charFace["UP"]
+            }
+            if (e.key === "s" && canWalk["DOWN"]){
+                curDir = "DOWN"
+                //move down
+                charPos.x -= changeX
+                charPos.y += changeY
+                charImg.src = charFace["DOWN"]
+            }
+
+            const curRow = Math.floor((charPos.y + charSize.h)/squareSize)
+            const curCol = Math.floor((charPos.x + charSize.w/2)/squareSize)
+
+            if (isWalkable(curRow, curCol)){
+                canWalk = {
+                    "UP": true,
+                    "DOWN": true,
+                    "LEFT": true,
+                    "RIGHT": true
+                }
+                char.style.left = `${charPos.x}px`
+                char.style.top = `${charPos.y}px`
+
+                charSize = {
+                    w: 65,
+                    h: 80
+                }
+                charImg.style.width = `${charSize.w}px`
+                charImg.style.height = `${charSize.h}px`
+            } else {
+                canWalk[curDir] = false
+                //hit sound
+                audio = new Audio('../asset/VOfiles/PerspectivesVO_hit.mp3');
+                audio.play()
+            }
         }
+        console.log(e.key)
 
         //check enter sparkling
         if (charPos.x + charSize.w/2 >= sparkPos.x 
-            && charPos.x + charSize.w/2 <= sparkPos.x + sparkSize.w
-            && charPos.y + charSize.h >= sparkPos.y + sparkSize.h*0.75 
-            && charPos.y + charSize.h <= sparkPos.y + sparkSize.h*0.9){
-                audio = new Audio('../asset/VOfiles/PerspectivesVO_inTheSpark.wav');
-                audio.play()
-                console.log(e.key)
-                if (e.key === "Enter"){
-                    //move to next page
-                    window.location.href = "../scenario/scenario1/yangConversation.html"
+                && charPos.x + charSize.w/2 <= sparkPos.x + sparkSize.w
+                && charPos.y + charSize.h >= sparkPos.y + sparkSize.h*0.75 
+                && charPos.y + charSize.h <= sparkPos.y + sparkSize.h*0.9){
+                    console.log('inSparkReminder', inSparkReminder)
+                    if (inSparkReminder){
+                        intheSpark = true
+                        inSparkReminder = false
+                        audio = new Audio('../asset/VOfiles/PerspectivesVO_inTheSpark.wav');
+                        audio.onloadedmetadata = function() {
+                            setTimeout(function(){
+                                inSparkReminder = true
+                            }, audio.duration*1000)
+                        };
+                        audio.play()
+                    }
+                    if (e.key === "Enter"){
+                        //move to next page
+                        window.location.href = "../scenario/scenario1/yangConversation.html"
+                    }
                 }
-            }
-    }
+        }
+    
 
 }
 
