@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Perspective 2.0</title>
+        <link rel="stylesheet" href="./game.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container" role="container" >
+            <div class="main-game" tabindex="0" aria-label="You are standing on a game platform which has 2 floors connected by staircases. There are 3 balloons containing answers of a question you are going to know. You should follow the instruction to go to and select the balloon containing the answer you think is correct" >
+                <img class="platform" tabindex="0" alt="Game platform" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615483006/platformOfficial_p2y7ho.svg"/>
+                <p role="text" tabindex="0" aria-label="question: How many employees do you think leave their job when they do perceive bias in the workplace?" class="question">How many employees do you think leave their job when they do perceive bias in the workplace?</p>
+                <img class="balloon green" tabindex="0" alt="green balloon - answer: 1 out of 10" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617204429/greenBalloonWithText_dkgqpy.svg"/>
+                <img class="balloon red" tabindex="0" alt="red balloon - answer: 3 out of 10" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617204429/redBalloonWithText_ukbdib.svg"/>
+                <img class="balloon yellow" tabindex="0" alt="yellow balloon - answer: 5 out of 10" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617204429/yellowBalloonWithText_vk25jb.svg"/>
+                <img class="character" tabindex="0" alt="you" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg"/>
+                <div class="instruction" tabindex="0" role="instruction" aria-label="Press W to go up, press S to go down, press A to go left, press D to go right, press J to select a balloon">
+                    <p class="each-line">Press <span class="key-btn">W</span> to go up</p>
+                    <p class="each-line">Press <span class="key-btn">S</span> to go down</p>
+                    <p class="each-line">Press <span class="key-btn">A</span> to go left</p>
+                    <p class="each-line">Press <span class="key-btn">D</span> to go right</p>
+                    <p class="each-line">Press <span class="key-btn">J</span> to select a balloon</p>
+                </div>
+            </div>
+        </div>
+        <script src="./game.js"></script>
+    </body>
+</html>

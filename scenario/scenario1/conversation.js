@@ -225,6 +225,7 @@ function showConversation(){
     setTimeout(getMessagesForEachPart, 1000)
     //hide rightSlide1
     rightSlide1.style.display = 'none'
+    rightSlide1.setAttribute('aria-hidden', 'true')
     stopVO()
 }
 
@@ -268,8 +269,12 @@ function showEachMessage(){
             }
             addButtons()
         } else {
+            //update choose a different response to be aria-hidden
+            chooseDifferentResponse.setAttribute('aria-hidden', 'false')
             //show try a different respond or next
             tryDifferentResponseOrNext()
+            //update conversation to be aria-hidden
+            conversation.setAttribute('aria-hidden', 'true')
         }
     }
 }
@@ -285,9 +290,10 @@ function tryDifferentResponseOrNext(){
     rightSlide1.style.display = 'none'
     rightSlide2.style.display = 'block'
     //append choose-different-response to intro
-    intro.style.display = 'flex'
-    intro.removeChild(textWrapper)
-    intro.appendChild(chooseDifferentResponse)
+    // intro.style.display = 'flex'
+    // intro.removeChild(textWrapper)
+    // intro.appendChild(chooseDifferentResponse)
+    intro.style.display = 'none'
     chooseDifferentResponse.style.display = 'flex'
     chooseDifferentResponse.style.flexDirection = 'column'
     chooseDifferentResponse.style.alignItems = 'center'
@@ -298,6 +304,12 @@ function tryDifferentResponseOrNext(){
 function showPart2Again(){
     //update next
     next = "part2"
+    //update aria-hidden on conversation
+    conversation.setAttribute('aria-hidden', 'false')
+    //hide choose a different response
+    chooseDifferentResponse.style.display = 'none'
+    //aria-hidden for choose a different response
+    chooseDifferentResponse.setAttribute('aria-hidden', 'true')
     //adjust speedind to 0 to show all text of part 2
     let part2Messages = messageData[next].messages
     for (let i = 0; i < part2Messages.length; i++){
@@ -324,7 +336,7 @@ function getDotAnimation(){
     } else {
         dotInd = 0
     }
-    setTimeout(getDotAnimation, 60)
+    setTimeout(getDotAnimation, 65)
 }
 
 function getMessageElement(name, messageText, side, speedInd){
@@ -332,18 +344,18 @@ function getMessageElement(name, messageText, side, speedInd){
     const messageContainer = document.createElement("div")
     messageContainer.style.marginTop = '10px'
     messageContainer.setAttribute('role', 'text')
-    messageContainer.setAttribute('aria-hidden', 'true')
+    messageContainer.setAttribute('tabindex', '0')
     //name div
     const nameContainer = document.createElement("div")
     nameContainer.setAttribute('class', 'name')
     nameContainer.setAttribute('role', 'text')
-    nameContainer.setAttribute('aria-hidden', 'true')
+    nameContainer.setAttribute('aria-label', name)
     nameContainer.innerHTML = name
     nameContainer.style.fontWeight = 'bold'
     //face-text div
     const faceTextContainer = document.createElement("div")
     faceTextContainer.setAttribute('class', 'face-text')
-    faceTextContainer.setAttribute('aria-hidden', 'true')
+    faceTextContainer.setAttribute('aria-label', messageText)
     faceTextContainer.style.display = 'flex'
     faceTextContainer.style.alignItems = 'center'
     faceTextContainer.style.width = '100%'

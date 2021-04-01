@@ -18,16 +18,16 @@
             <img id="group2" aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210192/Group_105_aulqkx.svg" />
             <div role="container" class="introToBias" aria-label="Introduction to Bias">
                 <div class="dots" aria-label="Clickable dots">
-                    <div class="each-dot active" role="button" aria-label="Active one" onclick="showText(0)"></div>
-                    <div class="each-dot" role="button" onclick="showText(1)"></div>
-                    <div class="each-dot" role="button" onclick="showText(2)"></div>
+                    <div class="each-dot active" tabindex="1" role="button" aria-label="Active one" onclick="showText(0)"></div>
+                    <div class="each-dot" tabindex="3" role="button" onclick="showText(1)"></div>
+                    <div class="each-dot" tabindex="5" role="button" onclick="showText(2)"></div>
                 </div>
-                <p role="text" id="info">
+                <p role="text" id="info" tabindex="2">
                     There are many types of unconscious bias that negatively affect people— and all of them operate below the surface of our awareness to influence how we treat those around us.
                 </p>
             </div>
-            <img id="leftSlide" role="button" alt="Click to go back" onclick="preSlide()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
-            <img id="rightSlide" role="button" alt="Click to go next" onclick="nextSlide()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            <img id="leftSlide" tabindex="7" role="button" alt="Press to go to previous page" onclick="preSlide()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            <img id="rightSlide" tabindex="8" role="button" alt="Press to go to next page" onclick="nextSlide()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
         </div>
         <script src="intro.js">
             
