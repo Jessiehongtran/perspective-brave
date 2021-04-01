@@ -145,8 +145,8 @@ function handleKeyDown(e){
         //check enter sparkling
         if (charPos.x + charSize.w/2 >= sparkPos.x 
                 && charPos.x + charSize.w/2 <= sparkPos.x + sparkSize.w
-                && charPos.y + charSize.h >= sparkPos.y + sparkSize.h*0.75 
-                && charPos.y + charSize.h <= sparkPos.y + sparkSize.h*0.9){
+                && charPos.y + charSize.h >= sparkPos.y + sparkSize.h*0.85 
+                && charPos.y + charSize.h <= sparkPos.y + sparkSize.h*0.97){
                     console.log('inSparkReminder', inSparkReminder)
                     if (inSparkReminder){
                         intheSpark = true
