@@ -69,7 +69,8 @@ body {
 .character {
     position: absolute;
     left: 55%;
-    top: 50%
+    top: 50%;
+    z-index: 16;
 }
 
 

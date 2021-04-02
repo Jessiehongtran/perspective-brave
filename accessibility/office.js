@@ -220,8 +220,6 @@ function handleKeyDown(e){
 
 }
 
-//assemble sparkling animation
-
 //path limit
 for (let r = 0; r < rows; r++){
     let squareRows = []
