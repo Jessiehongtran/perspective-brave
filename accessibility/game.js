@@ -22,6 +22,7 @@ const winning = document.getElementsByClassName("winning")[0]
 const mainGame = document.getElementsByClassName("main-game")[0]
 const charInWinning = document.getElementsByClassName("character")[1]
 const landing = document.getElementsByClassName("landing")[0]
+const cheerStuff = document.getElementsByClassName("cheer-stuff")[0]
 
 let charPos = {
     x: 55,
@@ -55,6 +56,11 @@ const balloonSize = {
     h: 25
 }
 
+const cheerStuffPos = {
+    x: 40,
+    y: 20
+}
+
 char.style.left = `${charPos.x}%`
 char.style.top = `${charPos.y}%`
 char.style.width = `${charSize.w}%`
@@ -68,6 +74,8 @@ yellowBalloon.style.left = `${yellowBalloonPos.x}%`
 yellowBalloon.style.top = `${yellowBalloonPos.y}%`
 greenBalloon.style.width = redBalloon.style.width = yellowBalloon.style.width = `${balloonSize.w}%`
 greenBalloon.style.height = redBalloon.style.height = yellowBalloon.style.height = `${balloonSize.h}%`
+cheerStuff.style.left = `${cheerStuffPos.x}%`
+cheerStuff.style.top = `${cheerStuffPos.y}%`
 
 let countStep = 0
 const totalStep = 10
@@ -251,6 +259,8 @@ function showCheerImg(){
             cheerImgInd = cheerInd
         }
         landing.src = `../asset/winning/winning_${cheerImgInd}.svg`
+        cheerStuffPos.y += cheerInd*3/4
+        cheerStuff.style.top = `${cheerStuffPos.y}%`
         cheerInd += 1
         setTimeout(showCheerImg, 60)
     }
@@ -260,7 +270,3 @@ function showCheerImg(){
 document.addEventListener('keydown', handleKeyDown)
 
 //path limit
-
-//maybe allow choosing balloon by just tabing
-
-//wrong or correct indication
