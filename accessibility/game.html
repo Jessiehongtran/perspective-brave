@@ -23,6 +23,29 @@
                     <p class="each-line">Press <span class="key-btn">J</span> to select a balloon</p>
                 </div>
             </div>
+            <div class="wrong-indicate" aria-hidden="true" style="display: none">
+                <div class="message" aria-label="Error message">
+                    <div class="close-icon" role="button" aria-label="Click to close" onclick="removeError()" >
+                        <img class="closeIconImg" onclick="hideError()" alt="Close button" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615419806/closeIcon_qxfmm0.svg"/>
+                    </div>
+                    <div class="wrong-text">
+                        <img class="wrong-icon" aria-label="Error icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615422025/Group_275_vngtwc.svg" />
+                        <div class="message-tag" role="text" >
+                            Wrong answer! Please try again!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="winning" aria-hidden="true" style="display: none">
+                <img id="roundie" aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500396/Group_219_abwqg3.svg"/>
+                <img id="ellipse-big-dark"  aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500527/Ellipse_27_ziv5qs.svg"/>
+                <img id="ellipse-big-light" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500443/Ellipse_26_oz69uu.svg"/>
+                <img id="ellipse-small"  aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500417/Ellipse_25_mtasw2.svg" />
+                <img id="ellipse-small-empty" aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500573/Ellipse_28_cpsbdw.svg" />
+                <img id="pollygon"  aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500969/Polygon_8_eyeakp.svg" />
+                <img id="rectie" aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615500588/Group_53_bajwhb.svg"/>
+                <img class="landing" aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615502210/Group_277_a5vwuo.svg"/>
+            </div>
         </div>
         <script src="./game.js"></script>
     </body>

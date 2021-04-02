@@ -5,6 +5,7 @@ let canWalk = {
     "UP": true
 }
 let curDir 
+let audio 
 const charFace = {
     "UP": "../asset/Yang_Walk_UP/Yang_Walk_UP_00000.png",
     "DOWN": "../asset/Yang_Walk_DN/Yang_Walk_DN_00000.png",
@@ -16,6 +17,9 @@ const greenBalloon = document.getElementsByClassName("balloon green")[0]
 const redBalloon = document.getElementsByClassName("balloon red")[0]
 const yellowBalloon = document.getElementsByClassName("balloon yellow")[0]
 const instruction = document.getElementsByClassName("instruction")[0]
+const wrongIndicate = document.getElementsByClassName("wrong-indicate")[0]
+const winning = document.getElementsByClassName("winning")[0]
+const mainGame = document.getElementsByClassName("main-game")[0]
 
 let charPos = {
     x: 55,
@@ -65,7 +69,7 @@ greenBalloon.style.height = redBalloon.style.height = yellowBalloon.style.height
 
 let countStep = 0
 const totalStep = 10
-const flyingSpeed = 2
+const flyingSpeed = 3
 
 const widthScreenReader = sessionStorage.getItem('screen-reader')
 if (widthScreenReader === "true"){
@@ -182,6 +186,10 @@ function flyGreenBalloon(){
         greenBalloonPos.y -= flyingSpeed
         greenBalloon.style.top = `${greenBalloonPos.y}%`
         setTimeout(flyGreenBalloon, 80)
+    } else {
+        audio = new Audio('../asset/sounds/Explode.mp3')
+        audio.play()
+        showError()
     }
 }
 
@@ -190,6 +198,10 @@ function flyRedBalloon(){
         redBalloonPos.y -= flyingSpeed
         redBalloon.style.top = `${redBalloonPos.y}%`
         setTimeout(flyRedBalloon, 80)
+    } else {
+        audio = new Audio('../asset/sounds/Cheer.mp3')
+        audio.play()
+        showWinning()
     }
 }
 
@@ -198,8 +210,26 @@ function flyYellowBalloon(){
         yellowBalloonPos.y -= flyingSpeed
         yellowBalloon.style.top = `${yellowBalloonPos.y}%`
         setTimeout(flyYellowBalloon, 80)
+    } else {
+        audio = new Audio('../asset/sounds/Explode.mp3')
+        audio.play()
+        showError()
     }
 }
+
+function showError(){
+    wrongIndicate.style.display = 'flex'
+}
+
+function hideError(){
+    wrongIndicate.style.display = 'none'
+}
+
+function showWinning(){
+    winning.style.display = 'flex'
+    mainGame.style.display = 'none'
+}
+
 
 document.addEventListener('keydown', handleKeyDown)
 
