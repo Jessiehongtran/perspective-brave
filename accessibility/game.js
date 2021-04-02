@@ -12,6 +12,15 @@ const charFace = {
     "LEFT": "../asset/Yang_walk_LR/Yang_Walk_LR_00000.png",
     "RIGHT": "../asset/Yang_walk_LR/Yang_Walk_LR_00000.png"
 }
+
+ //Initiate variables to keep track image index
+ let moveInd = {
+    "UP": 0,
+    "DOWN": 0,
+    "LEFT": 0,
+    "RIGHT": 0
+  }
+
 const char = document.getElementsByClassName("character")[0]
 const greenBalloon = document.getElementsByClassName("balloon green")[0]
 const redBalloon = document.getElementsByClassName("balloon red")[0]
@@ -24,6 +33,10 @@ const charInWinning = document.getElementsByClassName("character")[1]
 const landing = document.getElementsByClassName("landing")[0]
 const cheerStuff = document.getElementsByClassName("cheer-stuff")[0]
 const rightSlide = document.getElementById("rightSlide")
+
+setTimeout(function(){
+    instruction.style.display = 'block'
+}, 2000)
 
 let charPos = {
     x: 55,
@@ -94,37 +107,56 @@ if (widthScreenReader === "true"){
     instruction.setAttribute('aria-label', 'Press G to select green balloon, press R to select red balloon, press Y to select yellow balloon')
 }
 
+//Function to get character image file (that is stored locally)
+function getCharacterImg(dir, id){
+    if (id < 10){
+      id = "0" + id.toString()
+    } 
+    if (dir === "UP"){
+      return `../asset/Yang_Walk_UP/Yang_Walk_UP_000${id}.png`
+    } else if (dir === "DOWN"){
+      return `../asset/Yang_Walk_DN/Yang_Walk_DN_000${id}.png`
+    } else if (dir === "LEFT" || dir === "RIGHT"){
+      return `../asset/Yang_Walk_LR/Yang_Walk_LR_000${id}.png`
+    } 
+  }
+  
+const maxImageInd = 15
+
+//Function to get a movement
+function getCharacterMove(dir){
+    charFace[dir] = getCharacterImg(dir, moveInd[dir])
+    moveInd[dir] += 1
+    if (moveInd[dir] >= maxImageInd){
+        moveInd[dir] = 0
+    } 
+}
+
 function handleKeyDown(e){
     if (e.key === "a" && canWalk["LEFT"]){
-        //move left
         curDir = "LEFT"
         charPos.x -= changeX
         charPos.y -= changeY
-        char.src = charFace["LEFT"]
         char.style.transform = 'rotateY(180deg)'
     }
     if (e.key === "d" && canWalk["RIGHT"]){
-        //move right
         curDir = "RIGHT"
         charPos.x += changeX
         charPos.y += changeY
-        char.src = charFace["RIGHT"]
         char.style.transform = 'rotateY(360deg)'
     }
     if (e.key === "w" && canWalk["UP"]){
         curDir = "UP"
-        //move up
         charPos.x += changeX
         charPos.y -= changeY
-        char.src = charFace["UP"]
     }
     if (e.key === "s" && canWalk["DOWN"]){
         curDir = "DOWN"
-        //move down
         charPos.x -= changeX
         charPos.y += changeY
-        char.src = charFace["DOWN"]
     }
+    getCharacterMove(curDir)
+    char.src = charFace[curDir]
 
     charSize = {
         w: 5,

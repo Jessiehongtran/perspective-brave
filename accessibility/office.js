@@ -8,6 +8,10 @@ const charImg = document.getElementById("playerImg")
 const sparkling = document.getElementById("sparkling")
 const instruction = document.getElementsByClassName("instruction")[0]
 
+setTimeout(function(){
+    instruction.style.display = 'block'
+}, 2000)
+
 //variables
 const charPos = {
     x: 750,
@@ -20,6 +24,14 @@ const charFace = {
     "LEFT": "../asset/Yang_walk_LR/Yang_Walk_LR_00000.png",
     "RIGHT": "../asset/Yang_walk_LR/Yang_Walk_LR_00000.png"
 }
+
+//Initiate variables to keep track image index
+let moveInd = {
+    "UP": 0,
+    "DOWN": 0,
+    "LEFT": 0,
+    "RIGHT": 0
+  }
 
 let canWalk = {
     "UP": true,
@@ -68,8 +80,30 @@ sparkling.style.top = `${sparkPos.y}px`
 sparkling.style.width = `${sparkSize.w}px`
 sparkling.style.height = `${sparkSize.h}px`
 
-//VO intro environment
+//Function to get character image file (that is stored locally)
+function getCharacterImg(dir, id){
+    if (id < 10){
+      id = "0" + id.toString()
+    } 
+    if (dir === "UP"){
+      return `../asset/Yang_Walk_UP/Yang_Walk_UP_000${id}.png`
+    } else if (dir === "DOWN"){
+      return `../asset/Yang_Walk_DN/Yang_Walk_DN_000${id}.png`
+    } else if (dir === "LEFT" || dir === "RIGHT"){
+      return `../asset/Yang_Walk_LR/Yang_Walk_LR_000${id}.png`
+    } 
+  }
+  
+const maxImageInd = 15
 
+//Function to get a movement
+function getCharacterMove(dir){
+    charFace[dir] = getCharacterImg(dir, moveInd[dir])
+    moveInd[dir] += 1
+    if (moveInd[dir] >= maxImageInd){
+        moveInd[dir] = 0
+    } 
+}
 
 function handleKeyDown(e){
     if (e.key === "e"){
@@ -84,35 +118,30 @@ function handleKeyDown(e){
     } else {
         if (!intheSpark){
             if (e.key === "a" && canWalk["LEFT"]){
-                //move left
                 curDir = "LEFT"
                 charPos.x -= changeX
                 charPos.y -= changeY
-                charImg.src = charFace["LEFT"]
                 charImg.style.transform = 'rotateY(180deg)'
             }
             if (e.key === "d" && canWalk["RIGHT"]){
-                //move right
                 curDir = "RIGHT"
                 charPos.x += changeX
                 charPos.y += changeY
-                charImg.src = charFace["RIGHT"]
                 charImg.style.transform = 'rotateY(360deg)'
             }
             if (e.key === "w" && canWalk["UP"]){
                 curDir = "UP"
-                //move up
                 charPos.x += changeX
                 charPos.y -= changeY
-                charImg.src = charFace["UP"]
             }
             if (e.key === "s" && canWalk["DOWN"]){
                 curDir = "DOWN"
-                //move down
                 charPos.x -= changeX
                 charPos.y += changeY
-                charImg.src = charFace["DOWN"]
             }
+
+            getCharacterMove(curDir)
+            charImg.src = charFace[curDir]
 
             const curRow = Math.floor((charPos.y + charSize.h)/squareSize)
             const curCol = Math.floor((charPos.x + charSize.w/2)/squareSize)

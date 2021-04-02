@@ -32,6 +32,15 @@ body {
     background-color:#DCEBEB
 }
 
+#leftSlide {
+    z-index: 1; 
+    position: absolute; 
+    left: 2%; 
+    top: 45%; 
+    width: 5%;
+    cursor: pointer;
+}
+
 .key-btn {
     color: white;
     background-color: #1E0604;
