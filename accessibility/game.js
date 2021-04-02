@@ -23,6 +23,7 @@ const mainGame = document.getElementsByClassName("main-game")[0]
 const charInWinning = document.getElementsByClassName("character")[1]
 const landing = document.getElementsByClassName("landing")[0]
 const cheerStuff = document.getElementsByClassName("cheer-stuff")[0]
+const rightSlide = document.getElementById("rightSlide")
 
 let charPos = {
     x: 55,
@@ -81,6 +82,7 @@ let countStep = 0
 const totalStep = 10
 const flyingSpeed = 3
 let cheerInd = 1
+let isJumping = false
 
 const widthScreenReader = sessionStorage.getItem('screen-reader')
 if (widthScreenReader === "true"){
@@ -158,6 +160,7 @@ function handleKeyDown(e){
 }
 
 function jump(){
+    isJumping = true
     console.log(countStep)
     if (countStep < totalStep) {
         charPos.y -= 1
@@ -179,6 +182,7 @@ function jump(){
 
     if (charPos.x + charSize.w/2 >= redBalloonPos.x && charPos.x + charSize.w/2 <= redBalloonPos.x + balloonSize.w
         && charPos.y  >= redBalloonPos.y && charPos.y <= redBalloonPos.y + balloonSize.h){
+            isJumping = false
             flyRedBalloon()
         }
 
@@ -187,7 +191,7 @@ function jump(){
             flyYellowBalloon()
         }
 
-    if (countStep <= totalStep*2) {
+    if (isJumping && countStep <= totalStep*2) {
         setTimeout(jump, 50)
     } 
 }
@@ -263,6 +267,8 @@ function showCheerImg(){
         cheerStuff.style.top = `${cheerStuffPos.y}%`
         cheerInd += 1
         setTimeout(showCheerImg, 60)
+    } else {
+        rightSlide.style.display = 'block'
     }
 }
 

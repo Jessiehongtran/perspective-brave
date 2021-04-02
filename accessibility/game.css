@@ -184,3 +184,12 @@ body {
 .cheer-stuff {
     position: absolute;
 }
+
+#rightSlide {
+    z-index: 1; 
+    position: absolute; 
+    left: 93.5%; 
+    top: 45%; 
+    width: 5%;
+    cursor: pointer;
+}
