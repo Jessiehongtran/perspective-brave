@@ -6,6 +6,7 @@ const container = document.getElementById("container")
 const char = document.getElementById("player")
 const charImg = document.getElementById("playerImg")
 const sparkling = document.getElementById("sparkling")
+const sparklingImage = document.getElementsByClassName("sparklingImage")[0]
 const instruction = document.getElementsByClassName("instruction")[0]
 
 setTimeout(function(){
@@ -57,6 +58,7 @@ const sparkSize = {
 
 const changeX = 20
 const changeY = 12
+let sparklingInd = 0
 
 const squareSize = 10
 const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
@@ -79,6 +81,26 @@ sparkling.style.left = `${sparkPos.x}px`
 sparkling.style.top = `${sparkPos.y}px`
 sparkling.style.width = `${sparkSize.w}px`
 sparkling.style.height = `${sparkSize.h}px`
+
+
+function displaySparklingImg(){
+    let fillInd = sparklingInd
+    if (sparklingInd < 150){
+        if (sparklingInd < 10){
+            fillInd = "00" + sparklingInd.toString()
+        } else if (sparklingInd >= 10 && sparklingInd < 100){
+            fillInd = "0" + sparklingInd.toString()
+        } 
+        sparklingImage.src = `../asset/Blue_Sparkles/Sparkles_00${fillInd}.png`
+        sparklingInd += 1
+    } else {
+        sparklingInd = 0
+    }
+
+    setTimeout(displaySparklingImg, 30)
+
+}
+displaySparklingImg()
 
 //Function to get character image file (that is stored locally)
 function getCharacterImg(dir, id){

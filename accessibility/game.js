@@ -13,8 +13,8 @@ const charFace = {
     "RIGHT": "../asset/Yang_walk_LR/Yang_Walk_LR_00000.png"
 }
 
- //Initiate variables to keep track image index
- let moveInd = {
+//Initiate variables to keep track image index
+let moveInd = {
     "UP": 0,
     "DOWN": 0,
     "LEFT": 0,
