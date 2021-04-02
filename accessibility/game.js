@@ -20,6 +20,8 @@ const instruction = document.getElementsByClassName("instruction")[0]
 const wrongIndicate = document.getElementsByClassName("wrong-indicate")[0]
 const winning = document.getElementsByClassName("winning")[0]
 const mainGame = document.getElementsByClassName("main-game")[0]
+const charInWinning = document.getElementsByClassName("character")[1]
+const landing = document.getElementsByClassName("landing")[0]
 
 let charPos = {
     x: 55,
@@ -70,6 +72,7 @@ greenBalloon.style.height = redBalloon.style.height = yellowBalloon.style.height
 let countStep = 0
 const totalStep = 10
 const flyingSpeed = 3
+let cheerInd = 1
 
 const widthScreenReader = sessionStorage.getItem('screen-reader')
 if (widthScreenReader === "true"){
@@ -197,10 +200,17 @@ function flyRedBalloon(){
     if (redBalloonPos.y > - balloonSize.h){
         redBalloonPos.y -= flyingSpeed
         redBalloon.style.top = `${redBalloonPos.y}%`
+        charPos.y -= flyingSpeed
+        char.style.top = `${charPos.y}%`
         setTimeout(flyRedBalloon, 80)
     } else {
         audio = new Audio('../asset/sounds/Cheer.mp3')
         audio.play()
+        charInWinning.style.top = `48%`
+        charInWinning.style.left = `41%`
+        charInWinning.style.width = `18%`
+        charInWinning.style.height = `18%`
+        charInWinning.style.position = 'absolute'
         showWinning()
     }
 }
@@ -228,6 +238,22 @@ function hideError(){
 function showWinning(){
     winning.style.display = 'flex'
     mainGame.style.display = 'none'
+    showCheerImg()
+}
+
+function showCheerImg(){
+    charInWinning.style.display = 'none'
+    if (cheerInd < 11){
+        let cheerImgInd
+        if (cheerInd < 10){
+            cheerImgInd = "0" + cheerInd.toString()
+        } else {
+            cheerImgInd = cheerInd
+        }
+        landing.src = `../asset/winning/winning_${cheerImgInd}.svg`
+        cheerInd += 1
+        setTimeout(showCheerImg, 60)
+    }
 }
 
 
