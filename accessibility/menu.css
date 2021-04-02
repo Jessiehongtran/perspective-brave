@@ -6,9 +6,15 @@ body {
     background-color: #0C193B;
     width: 100%;
     min-height: 100vh;
-    padding: 5% 20%;
+    padding: 0 20% 5% 20%;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: Montserrat; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
 }
 
 .back-button {
@@ -25,22 +31,36 @@ body {
     text-decoration: underline;
 }
 
+.logo-container {
+    margin-top: 40px;
+    margin-bottom: 7%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 80%
+}
+
 .header {
-    margin-bottom: 60px;
+    margin-bottom: 10%;
     font-size: 36px;
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
-    
-    
+    width: 100%;
+    /* border: 1px solid yellow; */
+    justify-content: space-between;
 }
 
 .each-mode {
-    margin-right: 60px;
-    min-width: 700px;
-    margin-bottom: 40px;
+    /* margin-right: 60px; */
+    min-width: 450px;
+    width: 30%;
+    margin-bottom: 60px;
+    /* border: 1px solid white */
 }
 
 label {
@@ -54,12 +74,12 @@ input[type="checkbox"]{
 
 .title {
     margin-bottom: 40px;
-    font-size: 32px;
+    font-size: 28px;
 }
 
 .options {
     margin-left: 10px;
-    font-size: 26px;
+    font-size: 24px;
 }
 
 #leftSlide {
@@ -81,8 +101,8 @@ input[type="checkbox"]{
 }
 
 .each-option {
-    display: flex; 
-    align-items: center;
+    /* display: flex; 
+    align-items: center; */
     margin: 10px 0
 }
 

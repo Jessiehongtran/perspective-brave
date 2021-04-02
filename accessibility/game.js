@@ -5,16 +5,38 @@ let canWalk = {
     "UP": true
 }
 let curDir 
+let audio 
 const charFace = {
     "UP": "../asset/Yang_Walk_UP/Yang_Walk_UP_00000.png",
     "DOWN": "../asset/Yang_Walk_DN/Yang_Walk_DN_00000.png",
     "LEFT": "../asset/Yang_walk_LR/Yang_Walk_LR_00000.png",
     "RIGHT": "../asset/Yang_walk_LR/Yang_Walk_LR_00000.png"
 }
+
+//Initiate variables to keep track image index
+let moveInd = {
+    "UP": 0,
+    "DOWN": 0,
+    "LEFT": 0,
+    "RIGHT": 0
+  }
+
 const char = document.getElementsByClassName("character")[0]
 const greenBalloon = document.getElementsByClassName("balloon green")[0]
 const redBalloon = document.getElementsByClassName("balloon red")[0]
 const yellowBalloon = document.getElementsByClassName("balloon yellow")[0]
+const instruction = document.getElementsByClassName("instruction")[0]
+const wrongIndicate = document.getElementsByClassName("wrong-indicate")[0]
+const winning = document.getElementsByClassName("winning")[0]
+const mainGame = document.getElementsByClassName("main-game")[0]
+const charInWinning = document.getElementsByClassName("character")[1]
+const landing = document.getElementsByClassName("landing")[0]
+const cheerStuff = document.getElementsByClassName("cheer-stuff")[0]
+const rightSlide = document.getElementById("rightSlide")
+
+setTimeout(function(){
+    instruction.style.display = 'block'
+}, 2000)
 
 let charPos = {
     x: 55,
@@ -48,6 +70,11 @@ const balloonSize = {
     h: 25
 }
 
+const cheerStuffPos = {
+    x: 40,
+    y: 20
+}
+
 char.style.left = `${charPos.x}%`
 char.style.top = `${charPos.y}%`
 char.style.width = `${charSize.w}%`
@@ -61,42 +88,75 @@ yellowBalloon.style.left = `${yellowBalloonPos.x}%`
 yellowBalloon.style.top = `${yellowBalloonPos.y}%`
 greenBalloon.style.width = redBalloon.style.width = yellowBalloon.style.width = `${balloonSize.w}%`
 greenBalloon.style.height = redBalloon.style.height = yellowBalloon.style.height = `${balloonSize.h}%`
+cheerStuff.style.left = `${cheerStuffPos.x}%`
+cheerStuff.style.top = `${cheerStuffPos.y}%`
 
 let countStep = 0
 const totalStep = 10
-const flyingSpeed = 2
+const flyingSpeed = 3
+let cheerInd = 1
+let isJumping = false
+
+const widthScreenReader = sessionStorage.getItem('screen-reader')
+if (widthScreenReader === "true"){
+    instruction.innerHTML = `
+    <p class="each-line">Press <span class="key-btn">G</span> to select green balloon</p>
+    <p class="each-line">Press <span class="key-btn">R</span> to select red balloon</p>
+    <p class="each-line">Press <span class="key-btn">Y</span> to select yellow balloon</p>
+    `
+    instruction.setAttribute('aria-label', 'Press G to select green balloon, press R to select red balloon, press Y to select yellow balloon')
+}
+
+//Function to get character image file (that is stored locally)
+function getCharacterImg(dir, id){
+    if (id < 10){
+      id = "0" + id.toString()
+    } 
+    if (dir === "UP"){
+      return `../asset/Yang_Walk_UP/Yang_Walk_UP_000${id}.png`
+    } else if (dir === "DOWN"){
+      return `../asset/Yang_Walk_DN/Yang_Walk_DN_000${id}.png`
+    } else if (dir === "LEFT" || dir === "RIGHT"){
+      return `../asset/Yang_Walk_LR/Yang_Walk_LR_000${id}.png`
+    } 
+  }
+  
+const maxImageInd = 15
+
+//Function to get a movement
+function getCharacterMove(dir){
+    charFace[dir] = getCharacterImg(dir, moveInd[dir])
+    moveInd[dir] += 1
+    if (moveInd[dir] >= maxImageInd){
+        moveInd[dir] = 0
+    } 
+}
 
 function handleKeyDown(e){
     if (e.key === "a" && canWalk["LEFT"]){
-        //move left
         curDir = "LEFT"
         charPos.x -= changeX
         charPos.y -= changeY
-        char.src = charFace["LEFT"]
         char.style.transform = 'rotateY(180deg)'
     }
     if (e.key === "d" && canWalk["RIGHT"]){
-        //move right
         curDir = "RIGHT"
         charPos.x += changeX
         charPos.y += changeY
-        char.src = charFace["RIGHT"]
         char.style.transform = 'rotateY(360deg)'
     }
     if (e.key === "w" && canWalk["UP"]){
         curDir = "UP"
-        //move up
         charPos.x += changeX
         charPos.y -= changeY
-        char.src = charFace["UP"]
     }
     if (e.key === "s" && canWalk["DOWN"]){
         curDir = "DOWN"
-        //move down
         charPos.x -= changeX
         charPos.y += changeY
-        char.src = charFace["DOWN"]
     }
+    getCharacterMove(curDir)
+    char.src = charFace[curDir]
 
     charSize = {
         w: 5,
@@ -132,6 +192,7 @@ function handleKeyDown(e){
 }
 
 function jump(){
+    isJumping = true
     console.log(countStep)
     if (countStep < totalStep) {
         charPos.y -= 1
@@ -153,6 +214,7 @@ function jump(){
 
     if (charPos.x + charSize.w/2 >= redBalloonPos.x && charPos.x + charSize.w/2 <= redBalloonPos.x + balloonSize.w
         && charPos.y  >= redBalloonPos.y && charPos.y <= redBalloonPos.y + balloonSize.h){
+            isJumping = false
             flyRedBalloon()
         }
 
@@ -161,7 +223,7 @@ function jump(){
             flyYellowBalloon()
         }
 
-    if (countStep <= totalStep*2) {
+    if (isJumping && countStep <= totalStep*2) {
         setTimeout(jump, 50)
     } 
 }
@@ -171,6 +233,10 @@ function flyGreenBalloon(){
         greenBalloonPos.y -= flyingSpeed
         greenBalloon.style.top = `${greenBalloonPos.y}%`
         setTimeout(flyGreenBalloon, 80)
+    } else {
+        audio = new Audio('../asset/sounds/Explode.mp3')
+        audio.play()
+        showError()
     }
 }
 
@@ -178,7 +244,18 @@ function flyRedBalloon(){
     if (redBalloonPos.y > - balloonSize.h){
         redBalloonPos.y -= flyingSpeed
         redBalloon.style.top = `${redBalloonPos.y}%`
+        charPos.y -= flyingSpeed
+        char.style.top = `${charPos.y}%`
         setTimeout(flyRedBalloon, 80)
+    } else {
+        audio = new Audio('../asset/sounds/Cheer.mp3')
+        audio.play()
+        charInWinning.style.top = `48%`
+        charInWinning.style.left = `41%`
+        charInWinning.style.width = `18%`
+        charInWinning.style.height = `18%`
+        charInWinning.style.position = 'absolute'
+        showWinning()
     }
 }
 
@@ -187,13 +264,47 @@ function flyYellowBalloon(){
         yellowBalloonPos.y -= flyingSpeed
         yellowBalloon.style.top = `${yellowBalloonPos.y}%`
         setTimeout(flyYellowBalloon, 80)
+    } else {
+        audio = new Audio('../asset/sounds/Explode.mp3')
+        audio.play()
+        showError()
     }
 }
+
+function showError(){
+    wrongIndicate.style.display = 'flex'
+}
+
+function hideError(){
+    wrongIndicate.style.display = 'none'
+}
+
+function showWinning(){
+    winning.style.display = 'flex'
+    mainGame.style.display = 'none'
+    showCheerImg()
+}
+
+function showCheerImg(){
+    charInWinning.style.display = 'none'
+    if (cheerInd < 11){
+        let cheerImgInd
+        if (cheerInd < 10){
+            cheerImgInd = "0" + cheerInd.toString()
+        } else {
+            cheerImgInd = cheerInd
+        }
+        landing.src = `../asset/winning/winning_${cheerImgInd}.svg`
+        cheerStuffPos.y += cheerInd*3/4
+        cheerStuff.style.top = `${cheerStuffPos.y}%`
+        cheerInd += 1
+        setTimeout(showCheerImg, 60)
+    } else {
+        rightSlide.style.display = 'block'
+    }
+}
+
 
 document.addEventListener('keydown', handleKeyDown)
 
 //path limit
-
-//maybe allow choosing balloon by just tabing
-
-//wrong or correct indication

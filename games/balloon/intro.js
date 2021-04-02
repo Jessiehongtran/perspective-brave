@@ -32,6 +32,7 @@ let i = 0
 const info = document.getElementById("info")
 const dots = document.getElementsByClassName("each-dot")
 const rightSlide = document.getElementById("rightSlide")
+const withScreenreader = sessionStorage.getItem("screen-reader")
 
 let curId = 0
 
@@ -48,7 +49,9 @@ function showText(id){
         dots[curId].setAttribute('aria-label', "Inactive")
     }
     curId = id
-    speak(`../../asset/VOfiles/PerspectivesVO_balloonIntro_${id + 1}.wav`)
+    if (withScreenreader === "false"){
+        speak(`../../asset/VOfiles/PerspectivesVO_balloonIntro_${id + 1}.wav`)
+    }
 }
 
 function nextSlide(){
