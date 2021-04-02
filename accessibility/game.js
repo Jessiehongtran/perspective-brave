@@ -1,3 +1,5 @@
+const squareSize = 1
+
 let canWalk = {
     "LEFT": true,
     "RIGHT": true,
@@ -107,6 +109,32 @@ if (widthScreenReader === "true"){
     instruction.setAttribute('aria-label', 'Press G to select green balloon, press R to select red balloon, press Y to select yellow balloon')
 }
 
+const rows = 100
+const cols = 100
+const squares = []
+for (let r = 0; r < rows; r++){
+let squareRows = []
+    for (let c = 0; c < cols; c++){
+        eachSquare = document.createElement('div')
+        eachSquare.setAttribute('id', 'eachSquare')
+        eachSquare.style.width = `${squareSize}%`
+        eachSquare.style.height = `${squareSize}%`
+        eachSquare.style.position = 'absolute'
+        eachSquare.style.left = `${c*squareSize}%`
+        eachSquare.style.top = `${r*squareSize}%`
+        eachSquare.style.border = '1px solid grey'
+        eachSquare.style.zIndex = '5'
+
+        squareRows.push({
+            element: eachSquare,
+            walkable: false
+        })
+
+        // container.appendChild(eachSquare)
+    }
+    squares.push(squareRows)
+}
+
 //Function to get character image file (that is stored locally)
 function getCharacterImg(dir, id){
     if (id < 10){
@@ -133,6 +161,25 @@ function getCharacterMove(dir){
 }
 
 function handleKeyDown(e){
+    let flex = 0
+    if (curDir === "LEFT" || curDir === "DOWN"){
+        flex = -2
+    } else if (curDir === "RIGHT" || curDir === "UP"){
+        flex = 2
+    } 
+    if (!squares[charPos.y + charSize.h ][charPos.x + Math.floor(charSize.w/2) + flex].walkable){
+        canWalk[curDir] = false
+        audio = new Audio('../asset/VOfiles/PerspectivesVO_hit.mp3');
+        audio.play()
+    } else {
+        canWalk = {
+            "LEFT": true,
+            "RIGHT": true,
+            "DOWN": true,
+            "UP": true
+        }
+    }
+    
     if (e.key === "a" && canWalk["LEFT"]){
         curDir = "LEFT"
         charPos.x -= changeX
@@ -155,18 +202,20 @@ function handleKeyDown(e){
         charPos.x -= changeX
         charPos.y += changeY
     }
-    getCharacterMove(curDir)
-    char.src = charFace[curDir]
 
-    charSize = {
-        w: 5,
-        h: 12
+    if (e.key === "a" || e.key === "d" || e.key === "w" || e.key === "s"){
+        getCharacterMove(curDir)
+        char.src = charFace[curDir]
+        charSize = {
+            w: 6,
+            h: 12
+        }
+        char.style.left = `${charPos.x}%`
+        char.style.top = `${charPos.y}%`
+        char.style.width = `${charSize.w}%`
+        char.style.height = `${charSize.h}%`
     }
 
-    char.style.left = `${charPos.x}%`
-    char.style.top = `${charPos.y}%`
-    char.style.width = `${charSize.w}%`
-    char.style.height = `${charSize.h}%`
 
     if (e.key === "j"){
         if (countStep === 0 || countStep === totalStep*2 + 1){
@@ -273,6 +322,8 @@ function flyYellowBalloon(){
 
 function showError(){
     wrongIndicate.style.display = 'flex'
+    audio = new Audio('../asset/VOfiles/PerspectivesVO_wrong_answer.wav');
+    audio.play()
 }
 
 function hideError(){
@@ -305,6 +356,79 @@ function showCheerImg(){
 }
 
 
+function drawParallelogram(topRow, bottomRow, leftCol, rightCol){
+    const midCol = Math.floor((leftCol + rightCol)/2)
+    const midRow = Math.floor((topRow + bottomRow)/2)
+    const increaseGap = Math.floor((rightCol - midCol)/(midRow - topRow))
+    let increase = 0
+    for (let i = topRow; i < midRow; i++ ){
+        let j = midCol - increase
+        while (j < midCol + increase + 1){
+            if (i < rows && j < cols && squares[i][j]){
+                squares[i][j].element.style.backgroundColor = 'red'
+                squares[i][j].walkable = true
+            }
+            j += 1
+        }
+        increase += increaseGap
+    }
+
+    increase = 0
+    for (let i = bottomRow ; i > midRow - 1; i-- ){
+        let j = midCol - increase
+        while (j < midCol + increase + 1){
+            if (i < rows && j < cols && squares[i][j]){
+                squares[i][j].element.style.backgroundColor = 'red'
+                squares[i][j].walkable = true
+            }
+            j += 1
+        }
+        increase += increaseGap
+    }
+}
+
+
+function drawACol(col, startRow, endRow){
+    for (let i = startRow; i < endRow + 1; i++){
+        if (i < rows && col < cols){
+            squares[i][col].element.style.backgroundColor = 'orange'
+            squares[i][col].walkable = true
+        }
+    }
+}
+
+function drawStair(topRow, leftCol, rightCol, stepLength, stepWidth, dimension){
+    let dimenInd = 1
+    if (dimension === "UP"){
+        dimenInd  = -1
+    } 
+    let i = leftCol
+    let j = topRow
+    let count = 0
+    while (i < rightCol){
+        //draw that column
+        drawACol(i, j, j + stepLength)
+        i += 1
+        count += 1
+        if (count === stepWidth){
+            count = 0
+            j = j + dimenInd
+        }
+    }
+}
+
+drawParallelogram(25, 57, 25, 75)
+drawParallelogram(50, 78, 10, 53)
+drawParallelogram(49, 80, 48, 87)
+drawParallelogram(68, 96, 34, 65)
+drawStair(55, 40, 48, 12, 1, "UP")
+drawStair(76, 34, 40, 7, 1, "UP")
+drawStair(73, 59, 65, 6, 1, "DOWN")
+drawStair(46, 62, 67, 7, 1, "UP")
+drawStair(43, 67, 72, 7, 1, "DOWN")
+drawStair(88, 40, 47, 9, 1, "DOWN")
+drawStair(95, 35, 42, 8, 1, "UP")
+
 document.addEventListener('keydown', handleKeyDown)
 
-//path limit
+
