@@ -98,6 +98,7 @@ const totalStep = 10
 const flyingSpeed = 3
 let cheerInd = 1
 let isJumping = false
+let exploded = false
 
 const widthScreenReader = sessionStorage.getItem('screen-reader')
 if (widthScreenReader === "true"){
@@ -283,11 +284,10 @@ function flyGreenBalloon(){
         greenBalloon.style.top = `${greenBalloonPos.y}%`
         setTimeout(flyGreenBalloon, 80)
     } else {
-        audio = new Audio('../asset/sounds/Explode.mp3')
-        audio.play()
         showError()
     }
 }
+
 
 function flyRedBalloon(){
     if (redBalloonPos.y > - balloonSize.h){
@@ -314,16 +314,27 @@ function flyYellowBalloon(){
         yellowBalloon.style.top = `${yellowBalloonPos.y}%`
         setTimeout(flyYellowBalloon, 80)
     } else {
-        audio = new Audio('../asset/sounds/Explode.mp3')
-        audio.play()
         showError()
     }
 }
 
+
 function showError(){
+    if (!exploded){
+        audio = new Audio('../asset/sounds/Explode.mp3')
+        audio.play()
+        exploded = true
+    }
     wrongIndicate.style.display = 'flex'
-    audio = new Audio('../asset/VOfiles/PerspectivesVO_wrong_answer.wav');
-    audio.play()
+    setTimeout(function(){
+        audio = new Audio('../asset/VOfiles/PerspectivesVO_wrong_answer.wav');
+        audio.play()
+    }, 3000)
+
+    setTimeout(function(){
+        exploded = false
+    }, 10000)
+    
 }
 
 function hideError(){
