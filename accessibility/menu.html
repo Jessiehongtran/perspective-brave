@@ -38,15 +38,15 @@
                     <div class="options">
                         <div class="each-option">
                             <label class="text" tabindex="0" aria-label="small" for="text-size" >Small</label>
-                            <input type="checkbox" value="text-size" role="check box" id="text-small" onChange="updateAccessibility('text-small')"/>
+                            <input type="checkbox" name="text-size" value="text-size" role="check box" id="text-small" onChange="updateAccessibility('text-small')"/>
                         </div>
                         <div class="each-option">
                             <label class="text" tabindex="0" aria-label="medium" for="text-size" >Regular</label>
-                            <input type="checkbox" value="text-size" role="check box" id="text-regular" checked onChange="updateAccessibility('text-regular')"/>
+                            <input type="checkbox" name="text-size"  value="text-size" role="check box" id="text-regular" checked onChange="updateAccessibility('text-regular')"/>
                         </div>
                         <div class="each-option">
                             <label class="text" tabindex="0" aria-label="large" for="text-size" >Large</label>
-                            <input type="checkbox" value="text-size" role="check box" id="text-large"  onChange="updateAccessibility('text-large')"/>
+                            <input type="checkbox" name="text-size"  value="text-size" role="check box" id="text-large"  onChange="updateAccessibility('text-large')"/>
                         </div>
                     </div>
                 </div>
@@ -89,6 +89,27 @@
                 const activeFeature = document.getElementById(feature)
                 console.log(feature, activeFeature.checked)
                 sessionStorage.setItem(feature, activeFeature.checked)
+                if (feature === "text-small" &&  document.getElementById(feature).checked === true){
+                    document.getElementById("text-regular").checked = false
+                    document.getElementById("text-large").checked = false
+                } else if (feature === "text-regular" &&  document.getElementById(feature).checked === true){
+                    document.getElementById("text-small").checked = false
+                    document.getElementById("text-large").checked = false
+                }  else if (feature === "text-large" &&  document.getElementById(feature).checked === true){
+                    document.getElementById("text-small").checked = false
+                    document.getElementById("text-regular").checked = false
+                }
+
+                if (feature === "contrast-regular" &&  document.getElementById(feature).checked === true){
+                    document.getElementById("contrast-medium").checked = false
+                    document.getElementById("contrast-dark").checked = false
+                } else if (feature === "contrast-medium" &&  document.getElementById(feature).checked === true){
+                    document.getElementById("contrast-regular").checked = false
+                    document.getElementById("contrast-dark").checked = false
+                }  else if (feature === "contrast-dark" &&  document.getElementById(feature).checked === true){
+                    document.getElementById("contrast-regular").checked = false
+                    document.getElementById("contrast-medium").checked = false
+                }
             }
             
         </script>

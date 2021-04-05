@@ -49,8 +49,8 @@ let charSize = {
     w: 12,
     h: 12
 }
-const changeX = 2
-const changeY = 2
+const changeX = 1
+const changeY = 1
 
 const greenBalloonPos = {
     x: 18,
@@ -131,7 +131,7 @@ let squareRows = []
             walkable: false
         })
 
-        // container.appendChild(eachSquare)
+        //container.appendChild(eachSquare)
     }
     squares.push(squareRows)
 }
@@ -209,7 +209,7 @@ function handleKeyDown(e){
         char.src = charFace[curDir]
         charSize = {
             w: 6,
-            h: 12
+            h: 14
         }
         char.style.left = `${charPos.x}%`
         char.style.top = `${charPos.y}%`

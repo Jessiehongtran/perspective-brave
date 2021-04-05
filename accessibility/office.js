@@ -132,90 +132,83 @@ function handleKeyDown(e){
         window.location.href = "../scenario/scenario1/yangConversation.html"
     }
 
-    if (firstWalk && e.key !== "Tab" && withScreenReader === "false"){
-        //describe environment
-        audio = new Audio('../asset/VOfiles/PerspectivesVO_officeDescribe.wav')
-        audio.play()
-        firstWalk = false
-    } else {
-        if (!intheSpark){
-            if (e.key === "a" && canWalk["LEFT"]){
-                curDir = "LEFT"
-                charPos.x -= changeX
-                charPos.y -= changeY
-                charImg.style.transform = 'rotateY(180deg)'
-            }
-            if (e.key === "d" && canWalk["RIGHT"]){
-                curDir = "RIGHT"
-                charPos.x += changeX
-                charPos.y += changeY
-                charImg.style.transform = 'rotateY(360deg)'
-            }
-            if (e.key === "w" && canWalk["UP"]){
-                curDir = "UP"
-                charPos.x += changeX
-                charPos.y -= changeY
-            }
-            if (e.key === "s" && canWalk["DOWN"]){
-                curDir = "DOWN"
-                charPos.x -= changeX
-                charPos.y += changeY
-            }
-
-            getCharacterMove(curDir)
-            charImg.src = charFace[curDir]
-
-            const curRow = Math.floor((charPos.y + charSize.h)/squareSize)
-            const curCol = Math.floor((charPos.x + charSize.w/2)/squareSize)
-
-            if (isWalkable(curRow, curCol)){
-                canWalk = {
-                    "UP": true,
-                    "DOWN": true,
-                    "LEFT": true,
-                    "RIGHT": true
-                }
-                char.style.left = `${charPos.x}px`
-                char.style.top = `${charPos.y}px`
-
-                charSize = {
-                    w: 65,
-                    h: 80
-                }
-                charImg.style.width = `${charSize.w}px`
-                charImg.style.height = `${charSize.h}px`
-            } else {
-                canWalk[curDir] = false
-                //hit sound
-                audio = new Audio('../asset/VOfiles/PerspectivesVO_hit.mp3');
-                audio.play()
-            }
+    if (!intheSpark){
+        if (e.key === "a" && canWalk["LEFT"]){
+            curDir = "LEFT"
+            charPos.x -= changeX
+            charPos.y -= changeY
+            charImg.style.transform = 'rotateY(180deg)'
         }
-        console.log(e.key)
-
-        //check enter sparkling
-        if (charPos.x + charSize.w/2 >= sparkPos.x 
-                && charPos.x + charSize.w/2 <= sparkPos.x + sparkSize.w
-                && charPos.y + charSize.h >= sparkPos.y + sparkSize.h*0.85 
-                && charPos.y + charSize.h <= sparkPos.y + sparkSize.h*0.97){
-                    console.log('inSparkReminder', inSparkReminder)
-                    if (inSparkReminder){
-                        intheSpark = true
-                        inSparkReminder = false
-                        audio = new Audio('../asset/VOfiles/PerspectivesVO_inTheSpark.wav');
-                        audio.onloadedmetadata = function() {
-                            setTimeout(function(){
-                                inSparkReminder = true
-                            }, audio.duration*1000)
-                        };
-                        audio.play()
-                    }
-                    if (e.key === "Enter"){
-                        //move to next page
-                        window.location.href = "../scenario/scenario1/yangConversation.html"
-                    }
-                }
+        if (e.key === "d" && canWalk["RIGHT"]){
+            curDir = "RIGHT"
+            charPos.x += changeX
+            charPos.y += changeY
+            charImg.style.transform = 'rotateY(360deg)'
         }
+        if (e.key === "w" && canWalk["UP"]){
+            curDir = "UP"
+            charPos.x += changeX
+            charPos.y -= changeY
+        }
+        if (e.key === "s" && canWalk["DOWN"]){
+            curDir = "DOWN"
+            charPos.x -= changeX
+            charPos.y += changeY
+        }
+
+        getCharacterMove(curDir)
+        charImg.src = charFace[curDir]
+
+        const curRow = Math.floor((charPos.y + charSize.h)/squareSize)
+        const curCol = Math.floor((charPos.x + charSize.w/2)/squareSize)
+
+        if (isWalkable(curRow, curCol)){
+            canWalk = {
+                "UP": true,
+                "DOWN": true,
+                "LEFT": true,
+                "RIGHT": true
+            }
+            char.style.left = `${charPos.x}px`
+            char.style.top = `${charPos.y}px`
+
+            charSize = {
+                w: 65,
+                h: 80
+            }
+            charImg.style.width = `${charSize.w}px`
+            charImg.style.height = `${charSize.h}px`
+        } else {
+            canWalk[curDir] = false
+            //hit sound
+            audio = new Audio('../asset/VOfiles/PerspectivesVO_hit.mp3');
+            audio.play()
+        }
+    }
+    console.log(e.key)
+
+    //check enter sparkling
+    if (charPos.x + charSize.w/2 >= sparkPos.x 
+            && charPos.x + charSize.w/2 <= sparkPos.x + sparkSize.w
+            && charPos.y + charSize.h >= sparkPos.y + sparkSize.h*0.85 
+            && charPos.y + charSize.h <= sparkPos.y + sparkSize.h*0.97){
+                console.log('inSparkReminder', inSparkReminder)
+                if (inSparkReminder){
+                    intheSpark = true
+                    inSparkReminder = false
+                    audio = new Audio('../asset/VOfiles/PerspectivesVO_inTheSpark.wav');
+                    audio.onloadedmetadata = function() {
+                        setTimeout(function(){
+                            inSparkReminder = true
+                        }, audio.duration*1000)
+                    };
+                    audio.play()
+                }
+                if (e.key === "Enter"){
+                    //move to next page
+                    window.location.href = "../scenario/scenario1/yangConversation.html"
+                }
+    }
     
 
 }

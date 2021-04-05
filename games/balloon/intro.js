@@ -49,9 +49,9 @@ function showText(id){
         dots[curId].setAttribute('aria-label', "Inactive")
     }
     curId = id
-    if (withScreenreader === "false"){
-        speak(`../../asset/VOfiles/PerspectivesVO_balloonIntro_${id + 1}.wav`)
-    }
+    // if (withScreenreader === "false"){
+    //     speak(`../../asset/VOfiles/PerspectivesVO_balloonIntro_${id + 1}.wav`)
+    // }
 }
 
 function nextSlide(){
