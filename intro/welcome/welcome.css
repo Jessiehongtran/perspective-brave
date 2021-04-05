@@ -75,6 +75,7 @@ body {
     left: 94%; 
     top: 80%; 
     width: 10%; 
+    transform: rotate(80deg);
 }
 
 .header {
