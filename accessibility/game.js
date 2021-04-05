@@ -49,8 +49,8 @@ let charSize = {
     w: 12,
     h: 12
 }
-const changeX = 2
-const changeY = 2
+const changeX = 1
+const changeY = 1
 
 const greenBalloonPos = {
     x: 18,
@@ -98,6 +98,7 @@ const totalStep = 10
 const flyingSpeed = 3
 let cheerInd = 1
 let isJumping = false
+let exploded = false
 
 const widthScreenReader = sessionStorage.getItem('screen-reader')
 if (widthScreenReader === "true"){
@@ -130,7 +131,7 @@ let squareRows = []
             walkable: false
         })
 
-        // container.appendChild(eachSquare)
+        //container.appendChild(eachSquare)
     }
     squares.push(squareRows)
 }
@@ -208,7 +209,7 @@ function handleKeyDown(e){
         char.src = charFace[curDir]
         charSize = {
             w: 6,
-            h: 12
+            h: 14
         }
         char.style.left = `${charPos.x}%`
         char.style.top = `${charPos.y}%`
@@ -283,11 +284,10 @@ function flyGreenBalloon(){
         greenBalloon.style.top = `${greenBalloonPos.y}%`
         setTimeout(flyGreenBalloon, 80)
     } else {
-        audio = new Audio('../asset/sounds/Explode.mp3')
-        audio.play()
         showError()
     }
 }
+
 
 function flyRedBalloon(){
     if (redBalloonPos.y > - balloonSize.h){
@@ -314,16 +314,28 @@ function flyYellowBalloon(){
         yellowBalloon.style.top = `${yellowBalloonPos.y}%`
         setTimeout(flyYellowBalloon, 80)
     } else {
-        audio = new Audio('../asset/sounds/Explode.mp3')
-        audio.play()
         showError()
     }
 }
 
+
 function showError(){
+    if (!exploded){
+        audio = new Audio('../asset/sounds/Explode.mp3')
+        audio.play()
+        exploded = true
+    }
     wrongIndicate.style.display = 'flex'
-    audio = new Audio('../asset/VOfiles/PerspectivesVO_wrong_answer.wav');
-    audio.play()
+    setTimeout(function(){
+        audio = new Audio('../asset/VOfiles/PerspectivesVO_wrong_answer.wav');
+        audio.play()
+        setTimeout(hideError, 3000)
+    }, 3000)
+
+    setTimeout(function(){
+        exploded = false
+    }, 10000)
+    
 }
 
 function hideError(){

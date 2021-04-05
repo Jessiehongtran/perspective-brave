@@ -69,3 +69,7 @@ body {
     max-width: 150px;
     display: none
 }
+
+.key-btn.control {
+    background-color: #F64141;
+}

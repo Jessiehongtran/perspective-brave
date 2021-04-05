@@ -272,7 +272,12 @@ function showEachMessage(){
             //update choose a different response to be aria-hidden
             chooseDifferentResponse.setAttribute('aria-hidden', 'false')
             //show try a different respond or next
-            tryDifferentResponseOrNext()
+            const withScreenReader = sessionStorage.getItem('screen-reader')
+            if (withScreenReader === "true"){
+                setTimeout(tryDifferentResponseOrNext, 7000)
+            } else {
+                tryDifferentResponseOrNext()
+            }
             //update conversation to be aria-hidden
             conversation.setAttribute('aria-hidden', 'true')
         }

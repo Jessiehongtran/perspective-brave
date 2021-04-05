@@ -41,6 +41,7 @@ function showText(id){
         stopVO()
     }
     info.innerHTML = texts[id]
+    info.setAttribute('tabindex', 2*(id+1))
     dots[id].setAttribute('class', "each-dot active")
     dots[id].setAttribute('aria-label', "Active")
     if (id !== curId){
@@ -48,9 +49,9 @@ function showText(id){
         dots[curId].setAttribute('aria-label', "Inactive")
     }
     curId = id
-    if (withScreenreader === "false"){
-        speak(`../../asset/VOfiles/PerspectivesVO_bias_summary${id + 1}.wav`)
-    }
+    // if (withScreenreader === "false"){
+    //     speak(`../../asset/VOfiles/PerspectivesVO_bias_summary${id + 1}.wav`)
+    // }
 }
 
 function nextSlide(){

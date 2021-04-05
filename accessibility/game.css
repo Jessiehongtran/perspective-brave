@@ -49,6 +49,10 @@ body {
     padding: 4px 10px
 }
 
+.key-btn.control {
+    background-color: #F64141;
+}
+
 .each-line {
     margin: 20px;
     line-height: 28px;
