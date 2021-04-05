@@ -329,6 +329,7 @@ function showError(){
     setTimeout(function(){
         audio = new Audio('../asset/VOfiles/PerspectivesVO_wrong_answer.wav');
         audio.play()
+        setTimeout(hideError, 3000)
     }, 3000)
 
     setTimeout(function(){
