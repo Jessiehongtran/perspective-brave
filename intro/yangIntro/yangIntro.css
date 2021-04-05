@@ -68,6 +68,13 @@ body {
     width: 5%
 }
 
+#ellipseBig {
+    position: absolute; 
+    left: 85%; 
+    top: -12%; 
+    width: 10%
+}
+
 #group2 {
     position: absolute; 
     left: 92%; 
