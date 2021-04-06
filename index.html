@@ -8,6 +8,13 @@
     </head>
     <body>
         <div role="container" class="container">
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox"/>
+                    <div class="slider round"></div>
+                </label>
+                <em>Enable Dark Mode!</em>
+            </div>
             <div class="header" role="header">
                 <img  class="logo"  tabindex= "0" alt="Perspectives logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
             </div>
@@ -24,9 +31,12 @@
             <img id="group3" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg" />
         </div>
         <script>
-            
+            const container = document.getElementsByClassName('container')[0]
+            const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]')
             const startButton = document.getElementsByClassName("start-button")[0]
             const startButtonImg = document.getElementsByClassName("startButton-img")[0]
+            const subtitle = document.getElementsByClassName('subtitle')[0]
+            const logo = document.getElementsByClassName('logo')[0]
             function handleMouseOver(){
                 startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615932581/startButton-hovered_djktcj.svg"
             }
@@ -40,6 +50,32 @@
                 let audio = new Audio('./asset/VOfiles/Pluckandplay - Kwon.mp3');
                 audio.autoplay = true
             }
+
+            function switchTheme(e){
+                if (e.target.checked){
+                    sessionStorage.setItem('data-theme', 'dark')
+                    container.style.backgroundColor = '#000000'
+                    ellipse.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Ellipse_25-dark_wakufz.svg"
+                    polygon.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Polygon_8-dark_q9vsw6.svg"
+                    rect.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Rectangle_99-dark_pjux5g.svg"
+                    group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_53-dark_sznhrp.svg"
+                    startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Component_5_3-dark_xwecoe.svg"
+                    subtitle.style.color = '#FFFFFF'
+                    logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+                } else {
+                    sessionStorage.setItem('data-theme', 'light')
+                    container.style.backgroundColor = '#D9ECEC'
+                    ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1614210277/Ellipse_26_ymtmeq.svg"
+                    polygon.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1614210343/Polygon_8.1_p0fjwm.svg"
+                    rect.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1614210382/Rectangle_99.1_sjioka.svg"
+                    group3.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_105-dark_n6co6r.svg"
+                    startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614019871/Group_65_yjvasr.png"
+                    subtitle.style.color = '#000000'
+                    logo.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg"
+                }
+            }
+
+            toggleSwitch.addEventListener('change', switchTheme, false)
         </script>
     </body>
 </html>
