@@ -54,17 +54,17 @@ const changeY = 1
 
 const greenBalloonPos = {
     x: 18,
-    y: 35
+    y: 50
 }
 
 const redBalloonPos = {
     x: 45,
-    y: 5
+    y: 20
 }
 
 const yellowBalloonPos = {
     x: 73,
-    y: 35
+    y: 50
 }
 
 const balloonSize = {
@@ -76,6 +76,7 @@ const cheerStuffPos = {
     x: 40,
     y: 20
 }
+
 
 char.style.left = `${charPos.x}%`
 char.style.top = `${charPos.y}%`
@@ -92,6 +93,44 @@ greenBalloon.style.width = redBalloon.style.width = yellowBalloon.style.width = 
 greenBalloon.style.height = redBalloon.style.height = yellowBalloon.style.height = `${balloonSize.h}%`
 cheerStuff.style.left = `${cheerStuffPos.x}%`
 cheerStuff.style.top = `${cheerStuffPos.y}%`
+
+let balloonCoor = 1
+
+function initialFlyGreen(){
+    greenBalloonPos.y -= balloonCoor
+    greenBalloon.style.top = `${greenBalloonPos.y}%`
+    balloonCoor += 1
+    if (balloonCoor < 6){
+        setTimeout(initialFlyGreen, 120)
+    } else {
+        balloonCoor = 1
+        initialFlyRed()
+    }
+}
+
+function initialFlyRed(){
+    redBalloonPos.y -= balloonCoor
+    redBalloon.style.top = `${redBalloonPos.y}%`
+    balloonCoor += 1
+    if (balloonCoor < 6){
+        setTimeout(initialFlyRed, 120)
+    } else {
+        balloonCoor = 1
+        initialFlyYellow()
+    }
+}
+
+function initialFlyYellow(){
+    yellowBalloonPos.y -= balloonCoor
+    yellowBalloon.style.top = `${yellowBalloonPos.y}%`
+    balloonCoor += 1
+    if (balloonCoor < 6){
+        setTimeout(initialFlyYellow, 120)
+    }
+}
+
+
+initialFlyGreen()
 
 let countStep = 0
 const totalStep = 10
