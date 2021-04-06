@@ -38,11 +38,16 @@
             const subtitle = document.getElementsByClassName('subtitle')[0]
             const logo = document.getElementsByClassName('logo')[0]
             function handleMouseOver(){
-                startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615932581/startButton-hovered_djktcj.svg"
+                if (sessionStorage.getItem('data-theme') && sessionStorage.getItem('data-theme') === "dark"){
+                    startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Component_5_3-dark_xwecoe.svg"
+                } else {
+                    startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615932581/startButton-hovered_djktcj.svg"
+                }
             }
             function handleMouseOut(){
                 startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615932589/startButton-default_aiknwm.svg"
             }
+
             startButton.addEventListener('mouseover', handleMouseOver)
             startButton.addEventListener('mouseout', handleMouseOut)
 
