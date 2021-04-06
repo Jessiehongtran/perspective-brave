@@ -90,6 +90,20 @@
             function stopVO(){
                 audio.pause()
             }
+            const curMode = sessionStorage.getItem('data-theme')
+            const container = document.getElementsByClassName('container')[0]
+            const direction = document.getElementsByClassName('direction')[0]
+            const logo = document.getElementsByClassName('logo')[0]
+            if (curMode && curMode === "dark"){
+                container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/charSelectionBG-dark_bmdl73.svg)"
+                rect.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Rectangle_137_green-dark_x9ugqg.svg"
+                ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Ellipse_yellow-dark_li42vk.svg"
+                polygon.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/Polygon_pink-dark_cy8ukd.svg"
+                leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
+                direction.style.color = "#FFFFFF"
+                group4.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_53-dark_sznhrp.svg"
+                logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+            }
         </script>
     </body>
 </html>

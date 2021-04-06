@@ -46,5 +46,25 @@
                 <img id="rightSlide" alt="Press to go to next page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
             </a>
         </div>
+        <script>
+            const curMode = sessionStorage.getItem('data-theme')
+            const container = document.getElementsByClassName('container')[0]
+            const direction = document.getElementsByClassName('direction')[0]
+            const logo = document.getElementsByClassName('logo')[0]
+            const bioWrapper = document.getElementsByClassName('bio-wrapper')[0]
+            if (curMode && curMode === "dark"){
+                container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/charSelectionBG-dark_bmdl73.svg)"
+                ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Rectangle_137_green-dark_x9ugqg.svg"
+                ellipseBig.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Ellipse_yellow-dark_li42vk.svg"
+                polygon.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617749725/Polygon_blue-dark_lloy5c.svg"
+                leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
+                direction.style.color = "#FFFFFF"
+                group2.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_105-dark_n6co6r.svg"
+                rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/rightSlide-dark_iltwbn.svg"
+                logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+                bioWrapper.style.backgroundColor = "#000000"
+                bioWrapper.style.color = "#FFFFFF"
+            }
+        </script>
     </body>
 </html>
