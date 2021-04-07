@@ -434,7 +434,11 @@ function showCheerImg(){
         cheerInd += 1
         setTimeout(showCheerImg, 60)
     } else {
-        rightSlide.style.display = 'block'
+        setTimeout(function(){
+            rightSlide.style.transition = 'all 0.3s ease'
+            rightSlide.style.display = 'block'
+        }, 2000)
+       
     }
 }
 
