@@ -385,6 +385,38 @@ function showWinning(){
     winning.style.display = 'flex'
     mainGame.style.display = 'none'
     showCheerImg()
+    showCorrectRain()
+}
+
+function showCorrectRain(){
+    for (let i =0; i < 8; i++){
+        const correctWord = document.createElement('div')
+        correctWord.innerHTML = "Correct"
+        correctWord.style.fontSize = '20px'
+        correctWord.style.transition = 'all 0.3s ease'
+        correctWord.style.position = 'absolute'
+        correctWord.style.left = `${Math.floor(Math.random()*100)}%`
+        let correctWordPos = {
+            y: Math.floor(Math.random()*80)
+        }
+        setTimeout(function(){
+            winning.appendChild(correctWord)
+            let i = 0
+            function rainEffect(){
+                if (i < 10){
+                    correctWordPos.y -= 1
+                    correctWord.style.top = `${correctWordPos.y}%`
+                    setTimeout(rainEffect, 50)
+                    i += 1
+                } else {
+                    setTimeout(function(){
+                        winning.removeChild(correctWord)
+                    }, 300)
+                }
+            }
+            rainEffect()
+        }, i*50)
+    }
 }
 
 function showCheerImg(){
@@ -402,7 +434,11 @@ function showCheerImg(){
         cheerInd += 1
         setTimeout(showCheerImg, 60)
     } else {
-        rightSlide.style.display = 'block'
+        setTimeout(function(){
+            rightSlide.style.transition = 'all 0.3s ease'
+            rightSlide.style.display = 'block'
+        }, 2000)
+       
     }
 }
 

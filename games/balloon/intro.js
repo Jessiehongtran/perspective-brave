@@ -49,9 +49,6 @@ function showText(id){
         dots[curId].setAttribute('aria-label', "Inactive")
     }
     curId = id
-    // if (withScreenreader === "false"){
-    //     speak(`../../asset/VOfiles/PerspectivesVO_balloonIntro_${id + 1}.wav`)
-    // }
 }
 
 function nextSlide(){
@@ -62,7 +59,7 @@ function nextSlide(){
         const nextId = curId + 1
         showText(nextId)
     } else {
-        window.location.href= "../../accessibility/game.html"
+        window.location.href= "../../accessibility/gameTutorial.html"
     }
 }
 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Perspective 2.0</title>
+        <link rel="stylesheet" href="./officeTutorial.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container" role="container">
+            <div id="header" role="header" >
+                <img  class="logo" aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
+            </div>
+            <div id="welcome" role="text">
+                Welcome to Yang's office!
+            </div>
+            <div class="wrapper" >
+                <div id="instruction" aria-label="Instruction">
+                    <div class="tutorial" >
+                        <p class="detail-tutorial">You are about to enter Yang's office.</p>
+                        <p >Once you are there, use these keys to navigate Yang to sparkling area.</p>
+                    </div>
+                    <div id="arrowKeyHolder" aria-hidden="true" aria-label="Arrow keys container">
+                        <div id="arrow-keys" role="keys" aria-label="Arrow keys" >
+                            <div class="row-top" >
+                                <div id="arrow-up" role="icon"  aria-hidden="true">
+                                    W
+                                </div>
+                            </div>
+                            <div class="row-bottom" >
+                                <div id="arrow-left" role="icon" aria-hidden="true">
+                                    A
+                                </div>
+                                <div id="arrow-down"  role="icon" aria-hidden="true" >
+                                    S
+                                </div>
+                                <div id="arrow-right" role="icon" aria-hidden="true" > 
+                                    D
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="office" role="image" aria-label="Office image">
+                
+            </div>
+            <div id="sparkling" aria-label="Sparkling area" >
+                <img class="sparklingImage" alt="Sparkling image" src="../asset/Blue_Sparkles/Sparkles_00000.png"/>
+            </div>
+            <a href="../intro/yangIntro/yangIntro.html" role="button">
+                <img id="leftSlide"  alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            </a>
+            <a href="./office.html" role="button">
+                <img id="rightSlide"  alt="Press to go to next page"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            </a>
+        </div>
+        <script>
+            const sparklingImage = document.getElementsByClassName("sparklingImage")[0]
+            let sparklingInd = 0
+            function displaySparklingImg(){
+                let fillInd = sparklingInd
+                if (sparklingInd < 150){
+                    if (sparklingInd < 10){
+                    fillInd = "00" + sparklingInd.toString()
+                    } else if (sparklingInd >= 10 && sparklingInd < 100){
+                    fillInd = "0" + sparklingInd.toString()
+                    } 
+                    sparklingImage.src = `../asset/Blue_Sparkles/Sparkles_00${fillInd}.png`
+                    sparklingInd += 1
+                } else {
+                    sparklingInd = 0
+                }
+
+                setTimeout(displaySparklingImg, 30)
+
+            }
+            displaySparklingImg()
+        </script>
+    </body>
+</html>

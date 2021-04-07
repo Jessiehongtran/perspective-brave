@@ -80,23 +80,24 @@ body {
 
 .each-balloon {
     position: absolute;
+    width: 8%;
     z-index:2
 }
 
 .each-balloon.red {
-    left: 850px;
-    top: -8%
+    left: 63%;
+    top: 5%
 
 }
 
 .each-balloon.yellow {
-    left: 1180px;
-    top: 20%
+    left: 88%;
+    top: 32%
 }
 
 .each-balloon.green {
-    left: 550px;
-    top: 20%
+    left: 40%;
+    top: 32%
 }
 
 #welcome {
@@ -134,8 +135,7 @@ body {
     z-index: 2
 }
 
-#leftSlide2 {
-    display: none; 
+#leftSlide {
     z-index: 10; 
     position: absolute; 
     left: 2%; 
@@ -144,32 +144,13 @@ body {
     cursor: pointer
 }
 
-#leftSlide3 {
-    display: none; 
-    z-index: 10; 
-    position: absolute; 
-    left: 2%; 
-    top: 45%; 
-    width: 5%; 
-    cursor: pointer
-}
 
-#rightSlide1 {
+#rightSlide {
     z-index: 10; 
     position: absolute; 
     left: 93.5%; 
     top: 45%; 
     width: 5%; 
-    cursor: pointer
-}
-
-#rightSlide2 {
-    display: none; 
-    z-index: 10; 
-    position: absolute; 
-    left: 93.5%; 
-    top: 45%; 
-    width: 5%;
     cursor: pointer
 }
 
@@ -195,20 +176,36 @@ body {
     align-items: flex-start; 
     justify-content: flex-start; 
     position: absolute;
-    left: 10%; 
+    left: 15%; 
     top: 25%;
 }
 
 #instruction {
-    max-width: 250px; 
+    max-width: 270px; 
     background-color: #A9D3D0; 
-    border-radius: 10px; 
+    border-radius: 20px; 
     padding: 30px; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     margin-right: 20px; 
+    position: relative;
 }
+
+#instruction:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -40px;
+    top: 30%;
+    bottom: auto;
+    border: 20px solid;
+    z-index: 1;
+    border-color:  transparent transparent transparent #A8D0CE ;
+}
+
 
 .tutorial {
     font-weight: bolder; 
@@ -316,10 +313,10 @@ body {
     height: 100%;
     display: flex; 
     position: absolute;
-    top: 30%;
-    left: 35%;
+    top: 27%;
+    left: 30%;
     flex-direction: column;
-    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614642396/Group_146_pkvvon.png); 
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617835319/officesmall_scitna.svg); 
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: 100% 100%;
@@ -340,7 +337,8 @@ body {
 
 #sparkling {
     position: absolute; 
-    display: none;
+    top: 65%;
+    left: 55%;
     z-index: 4
 }
 

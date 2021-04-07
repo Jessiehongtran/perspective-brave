@@ -28,5 +28,22 @@
         </div>
         <script src="../../speak.js">
         </script>
+        <script>
+            const curMode = sessionStorage.getItem('data-theme')
+            const container = document.getElementsByClassName('container')[0]
+            const subtitle = document.getElementsByClassName('subtitle')[0]
+            const logo = document.getElementsByClassName('logo')[0]
+            if (curMode && curMode === "dark"){
+                container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/welcomeBG-dark_j2bamy.svg)"
+                rect.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Rectangle_137_green-dark_x9ugqg.svg"
+                ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Ellipse_yellow-dark_li42vk.svg"
+                leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
+                rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/rightSlide-dark_iltwbn.svg"
+                subtitle.style.color = "#FFFFFF"
+                group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_53-dark_sznhrp.svg"
+                group2.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_105-dark_n6co6r.svg"
+                logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+            }
+        </script>
     </body>
 </html>
