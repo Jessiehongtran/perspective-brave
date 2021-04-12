@@ -24,8 +24,8 @@ setTimeout(function(){
 
 //variables
 const charPos = {
-    x: 750,
-    y: 600
+    x: 1200,
+    y: 400
 }
 
 const charFace = {
