@@ -10,7 +10,6 @@ body {
     display: flex;  
     flex-direction: column; 
     align-items: center; 
-    justify-content: center; 
     font-family: Montserrat; 
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613512200/Group_100_df9sqr.png); 
     background-size: cover; 
@@ -21,7 +20,7 @@ body {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    margin-bottom: 5%;
+    margin-bottom: 4%;
 }
 
 #hamburger-menu {
@@ -135,10 +134,10 @@ body {
     background-size: 90% 100%; 
     background-position: center; 
     background-repeat: no-repeat;
-    padding: 20px;
+    padding: 20px ;
 }
 
-#yangImage {
+#charImage {
     z-index: 1; 
     width: 35%; 
     height: 75%; 
@@ -181,7 +180,8 @@ body {
     border-radius: 20px; 
     width: 70%; 
     color: black; 
-    padding: 10px 40px
+    padding: 20px 40px;
+    line-height: 30px;
 }
 
 @media only screen and (max-width: 1200px) {

@@ -185,7 +185,7 @@ body {
     position: relative;
 }
 
-#text-message-left:before {
+#text-message-left:before, #text-message-left-dark:before {
     content: ' ';
     position: absolute;
     width: 0;
@@ -196,10 +196,18 @@ body {
     bottom: auto;
     border: 15px solid;
     z-index: 1;
+}
+
+#text-message-left:before {
     border-color:   #DCEBEB transparent  transparent   transparent ;
 }
 
-#text-message-right:before {
+#text-message-left-dark:before {
+    border-color:   #4BD8AD transparent  transparent   transparent ;
+}
+
+
+#text-message-right:before, #text-message-right-dark:before {
     content: ' ';
     position: absolute;
     width: 0;
@@ -210,7 +218,14 @@ body {
     bottom: auto;
     border: 15px solid;
     z-index: 1;
+}
+
+#text-message-right:before {
     border-color:   #A8D0CE transparent  transparent   transparent ;
+}
+
+#text-message-right-dark:before {
+    border-color:   #4B8FFF transparent  transparent   transparent ;
 }
 
 @media only screen and (max-width: 800px) {

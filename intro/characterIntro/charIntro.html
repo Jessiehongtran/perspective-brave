@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Perspective 2.0</title> 
-        <link rel="stylesheet" href="./yangIntro.css">
+        <link rel="stylesheet" href="./charIntro.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     </head>
@@ -13,23 +13,27 @@
                     <img class="logo" aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
                 </div>
                 <div class="direction" role="direction" tabindex="1">
-                    You will be playing the role of Yang. 
-                    <br/>Welcome to a day in her life.
+                    <!-- You will be playing the role of Yang. 
+                    <br/>Welcome to a day in her life. -->
                 </div>
             </div>
             <div class="intro-wrapper" >
-                <img id="yangImage"  alt="Yang's image" tabindex="2" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg"/>
+                <img id="charImage"  alt="Character image" tabindex="2" />
                 <div class="intro" >
-                    <p class="name" role="text" tabindex="3" aria-label="Character name: Yang">YANG</p>
-                    <p class="title" role="text" tabindex="4" aria-label="Character title: Software Developer">Software Developer</p>
+                    <p class="name" role="text" tabindex="3" aria-label="Character name: Yang">
+                        <!-- YANG -->
+                    </p>
+                    <p class="title" role="text" tabindex="4" aria-label="Character title: Software Developer">
+                        <!-- Software Developer -->
+                    </p>
                     <div class="bio" role="text" tabindex="5" aria-label="Character biography: Yang feels that she is treated unfairly at work due to her gender. She is the only woman on her team and, in meetings, she is always asked to take notes even though there is always a project manager present.  She also feels her work is scrutinized more stringently against her male counterparts. For example, if she makes a mistake, it is called out in front of her peers. She doesn’t see that happening with her male peers." >
                         <div class="bio-wrapper" role="text" > 
-                            <p>
+                            <!-- <p>
                                 Yang feels that she is treated unfairly at work due to her gender. She is the only woman on her team and, in meetings, she is always asked to take notes even though there is always a project manager present. 
                             </p>
                             <p> 
                                 She also feels her work is scrutinized more stringently against her male counterparts. For example, if she makes a mistake, it is called out in front of her peers. She doesn’t see that happening with her male peers.
-                            </p>
+                            </p> -->
                         </div> 
                     </div>
                 </div>
@@ -46,25 +50,7 @@
                 <img id="rightSlide" alt="Press to go to next page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
             </a>
         </div>
-        <script>
-            const curMode = sessionStorage.getItem('data-theme')
-            const container = document.getElementsByClassName('container')[0]
-            const direction = document.getElementsByClassName('direction')[0]
-            const logo = document.getElementsByClassName('logo')[0]
-            const bioWrapper = document.getElementsByClassName('bio-wrapper')[0]
-            if (curMode && curMode === "dark"){
-                container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/charSelectionBG-dark_bmdl73.svg)"
-                ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Rectangle_137_green-dark_x9ugqg.svg"
-                ellipseBig.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Ellipse_yellow-dark_li42vk.svg"
-                polygon.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617749725/Polygon_blue-dark_lloy5c.svg"
-                leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
-                direction.style.color = "#FFFFFF"
-                group2.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_105-dark_n6co6r.svg"
-                rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/rightSlide-dark_iltwbn.svg"
-                logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
-                bioWrapper.style.backgroundColor = "#000000"
-                bioWrapper.style.color = "#FFFFFF"
-            }
+        <script src="charIntro.js">
         </script>
     </body>
 </html>

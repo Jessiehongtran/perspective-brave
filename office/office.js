@@ -9,6 +9,15 @@ const sparkling = document.getElementById("sparkling")
 const sparklingImage = document.getElementsByClassName("sparklingImage")[0]
 const instruction = document.getElementsByClassName("instruction")[0]
 
+const curMode = sessionStorage.getItem('data-theme')
+const bigOffice = document.getElementsByClassName("bigOffice")[0]
+
+if (curMode && curMode === "dark"){
+    bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1617916958/bigOffice_ooougg.svg'
+    instruction.style.backgroundColor = "#4BD8AD"
+    
+}
+
 setTimeout(function(){
     instruction.style.display = 'block'
 }, 2000)
