@@ -152,10 +152,13 @@ const textWrapper = document.getElementById("text-wrapper")
 const rightSlideWrapper = document.getElementById("rightSlideWrapper")
 const speakerIcon = document.getElementsByClassName('speakerIcon')[0]
 const logo = document.getElementsByClassName("logo")[0]
+const tryButton = document.getElementsByClassName("tryButton")[0]
+const  differentChooseText = document.getElementsByClassName("choose-text")[0]
+const  differentNextText = document.getElementsByClassName("next-text")[0]
 
 const curMode = sessionStorage.getItem('data-theme')
 if (curMode && curMode === "dark"){
-    intro.style.backgroundColor = "#4B8FFF"
+    intro.style.backgroundColor = chooseDifferentResponse.style.backgroundColor = "#4B8FFF"
     intro.style.color = "black"
     container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617917809/converIntroBG-dark_j6fstf.png)"
     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
@@ -312,7 +315,14 @@ function tryDifferentResponseOrNext(){
     //hide conversation
     conversation.style.display = 'none'
     //change background for container
-    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png)"
+    if (curMode && curMode === "dark"){
+        container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617917809/converIntroBG-dark_j6fstf.png)"
+        differentChooseText.style.color = differentNextText.style.color = 'black'
+        tryButton.style.backgroundColor = "#F64141"
+        tryButton.style.color = "#FFFFFF"
+    } else {
+        container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png)"
+    }
     //remove slide left 
     leftSlide.style.display = 'none'
     //hide rightSlide1 and show rightSlide2
@@ -492,7 +502,12 @@ function addButtons(){
             let button = document.createElement('button')
             button.setAttribute('aria-label', buttons[i].text)
             button.style.padding = '12px 30px'
-            button.style.backgroundColor = '#111F47'
+            button.style.border = 'none'
+            if (curMode && curMode === "dark"){
+                button.style.backgroundColor = '#F64141'
+            } else {
+                button.style.backgroundColor = '#111F47'
+            }
             button.style.color = 'white'
             button.setAttribute('id', 'message-btn')
             setTimeout(function(){
