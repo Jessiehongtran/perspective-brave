@@ -9,7 +9,7 @@ body {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    justify-content: center; 
+    justify-content: flex-start;
     font-family: Montserrat; 
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614273137/Mask_Group_5_uimgni.svg); 
     background-size: cover; 
@@ -67,7 +67,7 @@ body {
     width: 100%; 
     display: flex; 
     justify-content: center; 
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 .logo {
