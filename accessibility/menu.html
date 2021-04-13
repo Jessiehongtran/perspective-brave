@@ -86,13 +86,16 @@
             sessionStorage.setItem('contrast-dark', false)
 
             const curMode = sessionStorage.getItem('data-theme')
+            const container = document.getElementsByClassName('container')[0]
 
             if (curMode && curMode === "dark"){
                 leftSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
                 rightSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/rightSlide-dark_iltwbn.svg"
+                container.style.backgroundColor = "#000000"
             } else {
                 leftSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"
                 rightSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1616191237/rightSlide2_oogagn.svg"
+                container.style.backgroundColor = "#0C193B"
             }
 
             function updateAccessibility(feature){
