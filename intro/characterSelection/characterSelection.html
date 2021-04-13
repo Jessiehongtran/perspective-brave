@@ -77,10 +77,10 @@
         </div>
         <script>
             let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
-            const speakerIcon = document.getElementsByClassName("speaker-icon")[0]
-            if (playAudioForAccessibility){
-               speakerIcon.style.display = 'block'
-            }
+            // const speakerIcon = document.getElementsByClassName("speaker-icon")[0]
+            // if (playAudioForAccessibility){
+            //    speakerIcon.style.display = 'block'
+            // }
             let audio 
             function speak(file){
                 audio = new Audio(file);
