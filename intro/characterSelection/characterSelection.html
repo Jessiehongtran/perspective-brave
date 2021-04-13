@@ -23,11 +23,11 @@
                         <div class="title" role="title" >
                             Black man
                         </div>
-                        <a href="" class="characterImage-link" role="link">
-                            <img alt="black male image" onclick="stopVO()" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
+                        <a href="../characterIntro/charIntro.html" class="characterImage-link" role="link" onclick="sessionStorage.setItem('charId', 0)">
+                            <img alt="black male image" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
                         </a>
-                        <a href="" class="characterButton-link" role="link">
-                            <button disabled class="characterButton" aria-label="Jevon, not available to select" onclick="stopVO()">
+                        <a href="../characterIntro/charIntro.html" class="characterButton-link" role="link" onclick="sessionStorage.setItem('charId', 0)">
+                            <button disabled class="characterButton" aria-label="Jevon, not available to select" >
                                 Jevon
                             </button>
                         </a>
@@ -40,11 +40,11 @@
                         <div class="title" role="title"  >
                             Woman in tech
                         </div>
-                        <a href="../yangIntro/yangIntro.html" class="characterImage-link" role="link">
-                            <img alt="women in tech image" id="characterImage" onclick="stopVO()" alt="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
+                        <a href="../characterIntro/charIntro.html" class="characterImage-link" role="link" onclick="sessionStorage.setItem('charId', 1)">
+                            <img alt="women in tech image" id="characterImage" alt="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
                         </a>
-                        <a href="../yangIntro/yangIntro.html" class="characterButton-link" role="link" tabindex="6">
-                            <button class="characterButton" onclick="stopVO()" aria-label="Yang, press to select and play a role of this character">
+                        <a href="../characterIntro/charIntro.html" class="characterButton-link" role="link" tabindex="6" onclick="sessionStorage.setItem('charId', 1)">
+                            <button class="characterButton" aria-label="Yang, press to select and play a role of this character">
                                 Yang
                             </button>
                         </a>
@@ -53,13 +53,13 @@
                 <div class="character trans-gender" tabindex="4" aria-label="Transgender person, not available to select" >
                     <div class="content" role="content" >
                         <div class="title" role="title" >
-                            Transgender person
+                            Transgender woman
                         </div>
-                        <a href="" class="characterImage-link" role="link" >
-                            <img alt="transgender person image" id="characterImage"  onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
+                        <a href="../characterIntro/charIntro.html" class="characterImage-link" role="link" onclick="sessionStorage.setItem('charId', 2)">
+                            <img alt="transgender person image" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
                         </a>
-                        <a href="" class="characterButton-link" role="link">
-                            <button class="characterButton" aria-label="Elijah, not available to select" disabled onclick="stopVO()">
+                        <a href="../characterIntro/charIntro.html" class="characterButton-link" role="link" onclick="sessionStorage.setItem('charId', 2)">
+                            <button class="characterButton" aria-label="Elijah, not available to select" >
                                 Elijah
                             </button>
                         </a>
@@ -94,6 +94,9 @@
             const container = document.getElementsByClassName('container')[0]
             const direction = document.getElementsByClassName('direction')[0]
             const logo = document.getElementsByClassName('logo')[0]
+            const womenInTechBG = document.getElementsByClassName('character women-in-tech')[0]
+            const blackMaleBG = document.getElementsByClassName('character black-male')[0]
+            const transgenderBG = document.getElementsByClassName('character trans-gender')[0]
             if (curMode && curMode === "dark"){
                 container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/charSelectionBG-dark_bmdl73.svg)"
                 rect.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Rectangle_137_green-dark_x9ugqg.svg"
@@ -103,6 +106,9 @@
                 direction.style.color = "#FFFFFF"
                 group4.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_53-dark_sznhrp.svg"
                 logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+                womenInTechBG.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617913112/yangIntroBG_j7n5uh.png)'
+                blackMaleBG.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617913304/jevonBG-dark_coyi1j.png)'
+                transgenderBG.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617913303/elijahBG-dark_isobhz.png)'
             }
         </script>
     </body>

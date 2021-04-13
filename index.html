@@ -13,7 +13,7 @@
                     <input type="checkbox" id="checkbox"/>
                     <div class="slider round"></div>
                 </label>
-                <em>Enable Dark Mode!</em>
+                <em class="dark-enable">Enable Dark Mode!</em>
             </div>
             <div class="header" role="header">
                 <img  class="logo"  tabindex= "0" alt="Perspectives logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
@@ -31,12 +31,14 @@
             <img id="group3" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg" />
         </div>
         <script>
+            sessionStorage.setItem('data-theme', 'light')
             const container = document.getElementsByClassName('container')[0]
             const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]')
             const startButton = document.getElementsByClassName("start-button")[0]
             const startButtonImg = document.getElementsByClassName("startButton-img")[0]
             const subtitle = document.getElementsByClassName('subtitle')[0]
             const logo = document.getElementsByClassName('logo')[0]
+            const darkEnable = document.getElementsByClassName('dark-enable')[0]
             function handleMouseOver(){
                 if (sessionStorage.getItem('data-theme') && sessionStorage.getItem('data-theme') === "dark"){
                     startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Component_5_3-dark_xwecoe.svg"
@@ -45,7 +47,11 @@
                 }
             }
             function handleMouseOut(){
-                startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615932589/startButton-default_aiknwm.svg"
+                if (sessionStorage.getItem('data-theme') && sessionStorage.getItem('data-theme') === "dark"){
+                    startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Component_5_3-dark_xwecoe.svg"
+                } else {
+                    startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615932589/startButton-default_aiknwm.svg"
+                }
             }
 
             startButton.addEventListener('mouseover', handleMouseOver)
@@ -68,6 +74,8 @@
                     startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Component_5_3-dark_xwecoe.svg"
                     subtitle.style.color = '#FFFFFF'
                     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+                    darkEnable.style.color = '#FFFFFF'
+                    darkEnable.innerHTML = 'Enable Light Mode!'
                 } else {
                     sessionStorage.setItem('data-theme', 'light')
                     container.style.backgroundColor = '#D9ECEC'
@@ -78,6 +86,8 @@
                     group3.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg"
                     startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614019871/Group_65_yjvasr.png"
                     subtitle.style.color = '#000000'
+                    darkEnable.innerHTML = 'Enable Dark Mode!'
+                    darkEnable.style.color = '#000000'
                     logo.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg"
                 }
             }

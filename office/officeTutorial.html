@@ -48,7 +48,7 @@
             <div id="sparkling" aria-label="Sparkling area" >
                 <img class="sparklingImage" alt="Sparkling image" src="../asset/Blue_Sparkles/Sparkles_00000.png"/>
             </div>
-            <a href="../intro/yangIntro/yangIntro.html" role="button">
+            <a href="../intro/characterIntro/charIntro.html" role="button">
                 <img id="leftSlide"  alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
             </a>
             <a href="./office.html" role="button">
@@ -76,6 +76,24 @@
 
             }
             displaySparklingImg()
+
+            const curMode = sessionStorage.getItem('data-theme')
+            const logo = document.getElementsByClassName("logo")[0]
+            const arrowUp = document.getElementById("arrow-up")
+            const arrowDown = document.getElementById("arrow-down")
+            const arrowLeft = document.getElementById("arrow-left")
+            const arrowRight = document.getElementById("arrow-right")
+            if (curMode && curMode === "dark"){
+                container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617916287/officeTutorialBG-dark_jqnhov.png)'
+                welcome.style.color = "white"
+                office.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617916411/officeSmall-dark_he6sn2.svg)'
+                leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
+                rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/rightSlide-dark_iltwbn.svg"
+                logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+                instruction.style.backgroundColor = "white"
+                arrowUp.style.backgroundColor = arrowDown.style.backgroundColor = arrowLeft.style.backgroundColor = arrowRight.style.backgroundColor = "#4BD8AD"
+                arrowUp.style.color = arrowDown.style.color = arrowLeft.style.color = arrowRight.style.color = 'black'
+            }
         </script>
     </body>
 </html>

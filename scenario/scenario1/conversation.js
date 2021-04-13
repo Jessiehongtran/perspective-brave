@@ -146,10 +146,26 @@ const conversation = document.getElementById("conversation")
 const leftSlide = document.getElementById("leftSlide")
 const rightSlide1 = document.getElementById("rightSlide1")
 const rightSlide2 = document.getElementById("rightSlide2")
+const rightSlide2Icon = document.getElementsByClassName("rightSlide2-icon")[0]
 const chooseDifferentResponse = document.getElementById("choose-different-response")
 const textWrapper = document.getElementById("text-wrapper")
 const rightSlideWrapper = document.getElementById("rightSlideWrapper")
 const speakerIcon = document.getElementsByClassName('speakerIcon')[0]
+const logo = document.getElementsByClassName("logo")[0]
+const tryButton = document.getElementsByClassName("tryButton")[0]
+const  differentChooseText = document.getElementsByClassName("choose-text")[0]
+const  differentNextText = document.getElementsByClassName("next-text")[0]
+
+const curMode = sessionStorage.getItem('data-theme')
+if (curMode && curMode === "dark"){
+    intro.style.backgroundColor = chooseDifferentResponse.style.backgroundColor = "#4B8FFF"
+    intro.style.color = "black"
+    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617917809/converIntroBG-dark_j6fstf.png)"
+    logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+    leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
+    rightSlide1.src= rightSlide2Icon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/rightSlide-dark_iltwbn.svg"
+    
+}
 
 
 let audio
@@ -214,13 +230,24 @@ const characterFace = {
 
 }
 
+const characterFaceDark = {
+    JERRY: "https://res.cloudinary.com/dfulxq7so/image/upload/v1617918535/jerryAva-dark_lwhyjz.svg",
+    DEVON: "https://res.cloudinary.com/dfulxq7so/image/upload/v1617918535/devonAva-dark_vkznfj.svg",
+    BOB: "https://res.cloudinary.com/dfulxq7so/image/upload/v1617918536/bobAva-dark_eyxtnd.svg",
+    YANG: "https://res.cloudinary.com/dfulxq7so/image/upload/v1617918534/yangAva_m2zi3q.svg"
+}
+
 let next = 'part1'
 let messages = []
 let buttons = []
 
 function showConversation(){
     intro.style.display = 'none'
-    container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613859076/Group_181_tuayld.png)'
+    if (curMode && curMode === "dark"){
+        container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617918352/converBG-dark_zfaodo.png)'
+    } else {
+        container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613859076/Group_181_tuayld.png)'
+    }
     conversation.style.display = 'block'
     setTimeout(getMessagesForEachPart, 1000)
     //hide rightSlide1
@@ -288,7 +315,14 @@ function tryDifferentResponseOrNext(){
     //hide conversation
     conversation.style.display = 'none'
     //change background for container
-    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png)"
+    if (curMode && curMode === "dark"){
+        container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617917809/converIntroBG-dark_j6fstf.png)"
+        differentChooseText.style.color = differentNextText.style.color = 'black'
+        tryButton.style.backgroundColor = "#F64141"
+        tryButton.style.color = "#FFFFFF"
+    } else {
+        container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png)"
+    }
     //remove slide left 
     leftSlide.style.display = 'none'
     //hide rightSlide1 and show rightSlide2
@@ -357,6 +391,9 @@ function getMessageElement(name, messageText, side, speedInd){
     nameContainer.setAttribute('aria-label', name)
     nameContainer.innerHTML = name
     nameContainer.style.fontWeight = 'bold'
+    if (curMode && curMode === "dark"){
+        nameContainer.style.color = "white"
+    }
     //face-text div
     const faceTextContainer = document.createElement("div")
     faceTextContainer.setAttribute('class', 'face-text')
@@ -375,7 +412,11 @@ function getMessageElement(name, messageText, side, speedInd){
     const faceImg = document.createElement("img")
     faceImg.setAttribute('alt', 'Face image')
     faceImg.style.width = '100%'
-    faceImg.src = `${characterFace[name]}`
+    if (curMode && curMode === "dark"){
+        faceImg.src = `${characterFaceDark[name]}`
+    } else {
+        faceImg.src = `${characterFace[name]}`
+    }
     //text message div
     const textMessageContainer = document.createElement("div")
     textMessageContainer.setAttribute('aria-hidden', 'true')
@@ -401,8 +442,13 @@ function getMessageElement(name, messageText, side, speedInd){
         nameContainer.style.textAlign = 'left'
         faceTextContainer.style.justifyContent = 'flex-start'
         faceContainer.style.marginRight = '20px'
-        textMessageContainer.setAttribute('id', 'text-message-left')
-        textMessageContainer.style.backgroundColor = '#DCEBEB'
+        if (curMode && curMode === "dark"){
+            // textMessageContainer.setAttribute('id', 'text-message-left-dark')
+            textMessageContainer.style.backgroundColor = "#4BD8AD"
+        } else {
+            textMessageContainer.setAttribute('id', 'text-message-left')
+            textMessageContainer.style.backgroundColor = '#DCEBEB'
+        }
         faceTextContainer.appendChild(faceContainer)
         faceTextContainer.appendChild(textMessageContainer)
     } else {
@@ -411,8 +457,13 @@ function getMessageElement(name, messageText, side, speedInd){
         nameContainer.style.textAlign = 'right'
         faceTextContainer.style.justifyContent = 'flex-end'
         faceContainer.style.marginLeft = '20px'
-        textMessageContainer.setAttribute('id', 'text-message-right')
-        textMessageContainer.style.backgroundColor = '#A8D0CE'
+        if (curMode && curMode === "dark"){
+            textMessageContainer.style.backgroundColor = "#4B8FFF"
+            // textMessageContainer.setAttribute('id', 'text-message-right-dark')
+        } else {
+            textMessageContainer.style.backgroundColor = '#A8D0CE'
+            textMessageContainer.setAttribute('id', 'text-message-right')
+        }
         faceTextContainer.appendChild(faceContainer)
         faceTextContainer.insertBefore(textMessageContainer, faceContainer)
     }
@@ -451,7 +502,12 @@ function addButtons(){
             let button = document.createElement('button')
             button.setAttribute('aria-label', buttons[i].text)
             button.style.padding = '12px 30px'
-            button.style.backgroundColor = '#111F47'
+            button.style.border = 'none'
+            if (curMode && curMode === "dark"){
+                button.style.backgroundColor = '#F64141'
+            } else {
+                button.style.backgroundColor = '#111F47'
+            }
             button.style.color = 'white'
             button.setAttribute('id', 'message-btn')
             setTimeout(function(){

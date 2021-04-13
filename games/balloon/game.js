@@ -181,11 +181,11 @@ function getCharacterImg(dir, id){
       id = "0" + id.toString()
     } 
     if (dir === "UP"){
-      return `../asset/Yang_Walk_UP/Yang_Walk_UP_000${id}.png`
+      return `../../asset/Yang_Walk_UP/Yang_Walk_UP_000${id}.png`
     } else if (dir === "DOWN"){
-      return `../asset/Yang_Walk_DN/Yang_Walk_DN_000${id}.png`
+      return `../../asset/Yang_Walk_DN/Yang_Walk_DN_000${id}.png`
     } else if (dir === "LEFT" || dir === "RIGHT"){
-      return `../asset/Yang_Walk_LR/Yang_Walk_LR_000${id}.png`
+      return `../../asset/Yang_Walk_LR/Yang_Walk_LR_000${id}.png`
     } 
   }
   
@@ -209,7 +209,7 @@ function handleKeyDown(e){
     } 
     if (!squares[charPos.y + charSize.h ][charPos.x + Math.floor(charSize.w/2) + flex].walkable){
         canWalk[curDir] = false
-        audio = new Audio('../asset/VOfiles/PerspectivesVO_hit.mp3');
+        audio = new Audio('../../asset/VOfiles/PerspectivesVO_hit.mp3');
         audio.play()
     } else {
         canWalk = {
@@ -336,7 +336,7 @@ function flyRedBalloon(){
         char.style.top = `${charPos.y}%`
         setTimeout(flyRedBalloon, 80)
     } else {
-        audio = new Audio('../asset/sounds/Cheer.mp3')
+        audio = new Audio('../../asset/sounds/Cheer.mp3')
         audio.play()
         charInWinning.style.top = `48%`
         charInWinning.style.left = `41%`
@@ -360,13 +360,13 @@ function flyYellowBalloon(){
 
 function showError(){
     if (!exploded){
-        audio = new Audio('../asset/sounds/Explode.mp3')
+        audio = new Audio('../../asset/sounds/Explode.mp3')
         audio.play()
         exploded = true
     }
     wrongIndicate.style.display = 'flex'
     setTimeout(function(){
-        audio = new Audio('../asset/VOfiles/PerspectivesVO_wrong_answer.wav');
+        audio = new Audio('../../asset/VOfiles/PerspectivesVO_wrong_answer.wav');
         audio.play()
         setTimeout(hideError, 3000)
     }, 3000)
@@ -428,7 +428,7 @@ function showCheerImg(){
         } else {
             cheerImgInd = cheerInd
         }
-        landing.src = `../asset/winning/winning_${cheerImgInd}.svg`
+        landing.src = `../../asset/winning/winning_${cheerImgInd}.svg`
         cheerStuffPos.y += cheerInd*3/4
         cheerStuff.style.top = `${cheerStuffPos.y}%`
         cheerInd += 1
