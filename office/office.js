@@ -145,24 +145,48 @@ function handleKeyDown(e){
         if (e.key === "a" && canWalk["LEFT"]){
             curDir = "LEFT"
             charPos.x -= changeX
-            charPos.y -= changeY
             charImg.style.transform = 'rotateY(180deg)'
+
+            if (e.key === "w" && canWalk["UP"]){
+                charPos.y -= changeY
+            }
+            if (e.key === "s" && canWalk["DOWN"]){
+                charPos.y += changeY
+            }
         }
         if (e.key === "d" && canWalk["RIGHT"]){
             curDir = "RIGHT"
             charPos.x += changeX
-            charPos.y += changeY
             charImg.style.transform = 'rotateY(360deg)'
+
+            if (e.key === "w" && canWalk["UP"]){
+                charPos.y -= changeY
+            }
+            if (e.key === "s" && canWalk["DOWN"]){
+                charPos.y += changeY
+            }
         }
         if (e.key === "w" && canWalk["UP"]){
             curDir = "UP"
-            charPos.x += changeX
             charPos.y -= changeY
+
+            if (e.key === "a" && canWalk["LEFT"]){
+                charPos.x -= changeX
+            }
+            if (e.key === "d" && canWalk["RIGHT"]){
+                charPos.x += changeX
+            }
         }
         if (e.key === "s" && canWalk["DOWN"]){
             curDir = "DOWN"
-            charPos.x -= changeX
             charPos.y += changeY
+
+            if (e.key === "a" && canWalk["LEFT"]){
+                charPos.x -= changeX
+            }
+            if (e.key === "d" && canWalk["RIGHT"]){
+                charPos.x += changeX
+            }
         }
 
         getCharacterMove(curDir)
