@@ -159,7 +159,7 @@ const  differentNextText = document.getElementsByClassName("next-text")[0]
 const curMode = sessionStorage.getItem('data-theme')
 if (curMode && curMode === "dark"){
     intro.style.backgroundColor = chooseDifferentResponse.style.backgroundColor = "#4B8FFF"
-    intro.style.color = "black"
+    intro.style.color = "#FFFFFF"
     container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617917809/converIntroBG-dark_j6fstf.png)"
     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
     leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
@@ -317,7 +317,8 @@ function tryDifferentResponseOrNext(){
     //change background for container
     if (curMode && curMode === "dark"){
         container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617917809/converIntroBG-dark_j6fstf.png)"
-        differentChooseText.style.color = differentNextText.style.color = 'black'
+        differentChooseText.style.color  = '#000000'
+        differentNextText.style.color = '#FFFFFF'
         tryButton.style.backgroundColor = "#F64141"
         tryButton.style.color = "#FFFFFF"
     } else {

@@ -12,10 +12,14 @@ const instruction = document.getElementsByClassName("instruction")[0]
 const curMode = sessionStorage.getItem('data-theme')
 const bigOffice = document.getElementsByClassName("bigOffice")[0]
 
+const controlKey = document.getElementsByClassName("key-btn control")[0]
+
 if (curMode && curMode === "dark"){
     bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1617916958/bigOffice_ooougg.svg'
-    instruction.style.backgroundColor = "#4BD8AD"
-    
+    instruction.style.backgroundColor = "#015EF4"
+    instruction.style.color = '#FFFFFF'
+    controlKey.style.backgroundColor = '#FF2EE0'
+    controlKey.style.color = '#000000'
 }
 
 setTimeout(function(){
