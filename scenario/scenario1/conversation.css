@@ -20,6 +20,62 @@ body {
     box-sizing: border-box;
 }
 
+.volume-icon {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 24px;
+}
+
+.audioToolTip {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 20px;
+    position: absolute;
+    font-size: 14px;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-family: Montserrat; 
+  }
+
+.audioToolTip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+.fas {
+    margin-right: 20%;
+    cursor: pointer;
+    position: relative;
+    display: inline-block
+}
+
+.fas.fa-volume-off:hover .audioToolTip.off {
+    visibility: visible;
+    opacity: 1;
+    z-index: 10;
+  }
+
+.fas.fa-volume-up:hover .audioToolTip.on {
+    visibility: visible;
+    opacity: 1;
+    z-index: 10;
+  }
+
+
 #hamburger-menu {
     position: absolute;
     left: 95%;

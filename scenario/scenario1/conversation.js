@@ -155,6 +155,12 @@ const logo = document.getElementsByClassName("logo")[0]
 const tryButton = document.getElementsByClassName("tryButton")[0]
 const  differentChooseText = document.getElementsByClassName("choose-text")[0]
 const  differentNextText = document.getElementsByClassName("next-text")[0]
+const volumeOff = document.getElementsByClassName('fas fa-volume-off')[0]
+const volumeOn = document.getElementsByClassName('fas fa-volume-up')[0]
+
+volumeOff.style.display = 'none'
+volumeOn.style.display = 'block'
+localStorage.setItem('muted', "False")
 
 const curMode = sessionStorage.getItem('data-theme')
 if (curMode && curMode === "dark"){
@@ -173,11 +179,14 @@ let audio1
 let audio2
 let audioIsBeingPlayed = false
 function speak(file){
+    const muted = localStorage.getItem('muted')
     if (!audioIsBeingPlayed){
         let duration
         audio = new Audio(file);
         audio.volume = 1;
-        audio.play()
+        if (muted === "False"){
+            audio.play()
+        }
         audio.onloadedmetadata = function() {
             duration = audio.duration*1000
         };
@@ -188,16 +197,21 @@ function speak(file){
 }
 
 function speakDouble(file1, file2){
+    const muted = localStorage.getItem('muted')
     if (!audioIsBeingPlayed){
         let duration 
         audio1 = new Audio(file1);
         audio1.volume = 1;
-        audio1.play()
+        if (muted === "False"){
+            audio1.play()
+        }
 
         setTimeout(function(){
             audio2 = new Audio(file2);
             audio2.volume = 1;
-            audio2.play()
+            if (muted === "False"){
+                audio2.play()
+            }
             audio2.onloadedmetadata = function() {
                 duration = audio2.duration*1000
             };
@@ -208,6 +222,20 @@ function speakDouble(file1, file2){
         }, duration)
     }
     
+}
+
+function onAudio(){
+    volumeOff.style.display = 'none'
+    volumeOn.style.display = 'block'
+    audio.muted = false
+    localStorage.setItem('muted', "False")
+}
+
+function offAudio(){
+    volumeOff.style.display = 'block'
+    volumeOn.style.display = 'none'
+    audio.muted = true
+    localStorage.setItem('muted', "True")
 }
 
 function stopVO(){
@@ -542,7 +570,10 @@ function addButtons(){
 
 //Function to play audio
 function playAudio(file){
+    const muted = localStorage.getItem('muted')
     audio = new Audio(file);
-    audio.play()
+    if (muted === "False"){
+        audio.play()
+    }
     audio.volume = 1;
 }

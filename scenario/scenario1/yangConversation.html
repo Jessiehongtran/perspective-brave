@@ -4,6 +4,7 @@
         <title>Perspective 2.0</title>
         <link rel="stylesheet" href="./conversation.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -25,6 +26,14 @@
             </a>
             <img tabindex="0" id="rightSlide1" alt="Press to go to next page"  onclick="showConversation()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
             <div id="conversation" aria-label="Conversation container" tabindex="0" >
+                <div class="volume-icon">
+                    <i class="fas fa-volume-off" onclick="onAudio()">
+                        <span class="audioToolTip off">Muted</span>
+                    </i>
+                    <i class="fas fa-volume-up" onclick="offAudio()">
+                        <span class="audioToolTip on">Unmuted</span>
+                    </i>
+                </div>
                 <div id="characters" >
                     <img id="character-table" alt="A group of people sit on a table" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615582975/round_table_unxgcj.svg" />
                 </div>
