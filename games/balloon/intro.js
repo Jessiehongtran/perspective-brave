@@ -59,7 +59,7 @@ function nextSlide(){
         const nextId = curId + 1
         showText(nextId)
     } else {
-        window.location.href= "./gameTutorial.html"
+        window.location.href= "./game.html"
     }
 }
 
