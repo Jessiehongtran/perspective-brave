@@ -5,17 +5,22 @@ body {
 
 .container {
     width: 100%; 
-    height: 100vh; 
+    min-height: 100vh; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: flex-start;
     font-family: Montserrat; 
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614273137/Mask_Group_5_uimgni.svg); 
-    background-size: cover; 
+    background-size: cover 100%; 
     background-repeat: no-repeat; 
     position: relative;
-    overflow: hidden
+    overflow: auto;
+    padding: 60px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+   
 }
 
 
@@ -78,7 +83,7 @@ body {
 }
 
 .logo {
-    width: 20%; 
+    width: 30%; 
     z-index: 1;
 }
 
