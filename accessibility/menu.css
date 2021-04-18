@@ -3,11 +3,11 @@ body {
   }
 
 .container {
-    background-color: #0C193B;
+    background-color: #DCEBEB;
     width: 100%;
     min-height: 100vh;
     padding: 0 20% 5% 20%;
-    color: white;
+    color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +39,7 @@ body {
 }
 
 .logo {
-    width: 80%
+    width: 35%
 }
 
 .header {

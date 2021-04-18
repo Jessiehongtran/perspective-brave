@@ -7,20 +7,45 @@ const char = document.getElementById("player")
 const charImg = document.getElementById("playerImg")
 const sparkling = document.getElementById("sparkling")
 const sparklingImage = document.getElementsByClassName("sparklingImage")[0]
-const instruction = document.getElementsByClassName("instruction")[0]
+const instruction = document.getElementById("instruction")
+const root = document.querySelector(":root")
+const arrows = document.getElementsByClassName("arrow")
+const infoIcon = document.getElementsByClassName("infoIcon")[0]
+infoIcon.style.display = 'none'
 
 const curMode = sessionStorage.getItem('data-theme')
 const bigOffice = document.getElementsByClassName("bigOffice")[0]
 
+const controlKey = document.getElementsByClassName("control key")[0]
+
+
 if (curMode && curMode === "dark"){
     bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1617916958/bigOffice_ooougg.svg'
-    instruction.style.backgroundColor = "#4BD8AD"
-    
+    instruction.style.backgroundColor = "#015EF4"
+    instruction.style.color = '#FFFFFF'
+    for (let i = 0; i < arrows.length; i++){
+        arrows[i].style.backgroundColor = "#000000"
+    }
+    controlKey.style.backgroundColor = '#FF2EE0'
+    controlKey.style.color = '#000000'
+    root.style.setProperty("--pseudo-bordercolor", "#015EF4")
 }
 
-setTimeout(function(){
+
+function showInstruction(){
     instruction.style.display = 'block'
-}, 2000)
+    infoIcon.style.display = 'none'
+    setTimeout(hideInstruction, 7000)
+}
+
+function hideInstruction(){
+    instruction.style.display = 'none'
+    infoIcon.style.display = 'block'
+
+}
+
+showInstruction()
+
 
 //variables
 const charPos = {
@@ -145,24 +170,48 @@ function handleKeyDown(e){
         if (e.key === "a" && canWalk["LEFT"]){
             curDir = "LEFT"
             charPos.x -= changeX
-            charPos.y -= changeY
             charImg.style.transform = 'rotateY(180deg)'
+
+            if (e.key === "w" && canWalk["UP"]){
+                charPos.y -= changeY
+            }
+            if (e.key === "s" && canWalk["DOWN"]){
+                charPos.y += changeY
+            }
         }
         if (e.key === "d" && canWalk["RIGHT"]){
             curDir = "RIGHT"
             charPos.x += changeX
-            charPos.y += changeY
             charImg.style.transform = 'rotateY(360deg)'
+
+            if (e.key === "w" && canWalk["UP"]){
+                charPos.y -= changeY
+            }
+            if (e.key === "s" && canWalk["DOWN"]){
+                charPos.y += changeY
+            }
         }
         if (e.key === "w" && canWalk["UP"]){
             curDir = "UP"
-            charPos.x += changeX
             charPos.y -= changeY
+
+            if (e.key === "a" && canWalk["LEFT"]){
+                charPos.x -= changeX
+            }
+            if (e.key === "d" && canWalk["RIGHT"]){
+                charPos.x += changeX
+            }
         }
         if (e.key === "s" && canWalk["DOWN"]){
             curDir = "DOWN"
-            charPos.x -= changeX
             charPos.y += changeY
+
+            if (e.key === "a" && canWalk["LEFT"]){
+                charPos.x -= changeX
+            }
+            if (e.key === "d" && canWalk["RIGHT"]){
+                charPos.x += changeX
+            }
         }
 
         getCharacterMove(curDir)

@@ -9,14 +9,16 @@
     </head>
     <body>
         <div class="container" role="container" >
-            <div class="header" role="header" >
-                <img class="logo" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
+            <div class="top">
+                <div class="header" role="header" >
+                    <img class="logo" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
+                </div>
+                <div class="direction" role="text" tabindex="2" aria-label="Below are 3 characters for you to select and play a role of. Please select the character you would like to start with." style="display: block">
+                    <p>Below are 3 characters for you to select and play a role of. 
+                    <br/>Please select the character you would like to start with.</p>
+                </div>
             </div>
-            <div class="direction" role="text" tabindex="2" aria-label="Below are 3 characters for you to select and play a role of. Please select the character you would like to start with." style="display: block">
-                <p>Below are 3 characters for you to select and play a role of. 
-                <br/>Please select the character you would like to start with.</p>
-            </div>
-            <div class="fake-container" aria-hidden="true"  role="wrapper"></div>
+
             <div class="characters"  aria-label="Here are 3 characters for you to select and play a role of">
                 <div class="character black-male"  tabindex="3" aria-label="Black male, not available to select" >
                     <div class="content" role="content" >
@@ -27,13 +29,13 @@
                             <img alt="black male image" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
                         </a>
                         <a href="../characterIntro/charIntro.html" class="characterButton-link" role="link" onclick="sessionStorage.setItem('charId', 0)">
-                            <button disabled class="characterButton" aria-label="Jevon, not available to select" >
+                            <button disabled class="characterButton" aria-label="Jevon, not available to select" style="opacity: 0.5" >
                                 Jevon
                             </button>
                         </a>
                     </div>
                 </div>
-                <div class="cover blackMale" aria-label="This character is not available to select yet"></div>
+                
 
                 <div class="character women-in-tech"  tabindex="5" aria-label="Woman in tech, available to select">
                     <div class="content" role="content" >
@@ -53,19 +55,19 @@
                 <div class="character trans-gender" tabindex="4" aria-label="Transgender person, not available to select" >
                     <div class="content" role="content" >
                         <div class="title" role="title" >
-                            Transgender woman
+                            Transgender man
                         </div>
                         <a href="../characterIntro/charIntro.html" class="characterImage-link" role="link" onclick="sessionStorage.setItem('charId', 2)">
                             <img alt="transgender person image" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
                         </a>
                         <a href="../characterIntro/charIntro.html" class="characterButton-link" role="link" onclick="sessionStorage.setItem('charId', 2)">
-                            <button class="characterButton" aria-label="Elijah, not available to select" >
+                            <button class="characterButton" aria-label="Elijah, not available to select" style="opacity: 0.5">
                                 Elijah
                             </button>
                         </a>
                     </div>
                 </div>
-                <div class="cover transgender" aria-label="This character is not available to select yet" ></div>
+               
             </div>
             <img id="group4" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg" />
             <img id="rect" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213857/Rectangle_137.1_ckfftx.svg" />
@@ -77,10 +79,6 @@
         </div>
         <script>
             let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
-            // const speakerIcon = document.getElementsByClassName("speaker-icon")[0]
-            // if (playAudioForAccessibility){
-            //    speakerIcon.style.display = 'block'
-            // }
             let audio 
             function speak(file){
                 audio = new Audio(file);
