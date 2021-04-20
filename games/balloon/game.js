@@ -92,22 +92,22 @@ const changeX = 1
 const changeY = 1
 
 const greenBalloonPos = {
-    x: 16,
+    x: 17,
     y: 45
 }
 
 const redBalloonPos = {
-    x: 43,
+    x: 44,
     y: 15
 }
 
 const yellowBalloonPos = {
-    x: 71,
+    x: 72,
     y: 45
 }
 
 const balloonSize = {
-    w: 10,
+    w: 8,
     h: 25
 }
 
@@ -250,6 +250,7 @@ function handleKeyDown(e){
         canWalk[curDir] = false
         audio = new Audio('../../asset/VOfiles/PerspectivesVO_hit.mp3');
         audio.play()
+        audio.volume = 0.5
     } else {
         canWalk = {
             "LEFT": true,
@@ -450,10 +451,11 @@ function showWinning(){
     winning.style.display = 'flex'
     mainGame.style.display = 'none'
     showCheerImg()
+    showCorrectRain()
 }
 
 function showCorrectRain(){
-    for (let i =0; i < 8; i++){
+    for (let i =0; i < 4; i++){
         const correctWord = document.createElement('div')
         correctWord.innerHTML = "Correct"
         correctWord.setAttribute('class', 'correct')
