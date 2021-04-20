@@ -32,11 +32,13 @@ const dots = document.getElementsByClassName("each-dot")
 const rightSlide = document.getElementById("rightSlide")
 const container = document.getElementById("container")
 const logo = document.getElementsByClassName("logo")[0]
-
+const activeDot = document.getElementsByClassName("each-dot active")[0]
+const eachDots = document.getElementsByClassName("each-dot")
 
 const curMode = sessionStorage.getItem('data-theme')
 if (curMode && curMode === "dark"){
-    container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618872746/gameIntro-bg-dark_us1yhf.png)'
+    container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618944700/gameStartEndBG-dark_lj6epu.svg)'
+    container.style.color = '#FFFFFF'
     polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/Polygon_8-darkkk_vvux2v.svg"
     rect.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/Rectangle_137-darkkk_ztvtae.svg"
     ellipse.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/Ellipse_25-darkkk_dkdlbp.svg"
@@ -47,6 +49,10 @@ if (curMode && curMode === "dark"){
     logo.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
     group1.style.transform= "rotate(360deg)";
     group2.style.transform= "rotate(360deg)";
+    for (let i = 0; i < eachDots.length ; i++){
+        eachDots[i].style.backgroundColor = "#015EF4"
+    }
+    activeDot.style.backgroundColor = "#FF2EE0"
 } else {
     container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614352554/Mask_Group_6_sqgbyy.svg)'
     polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614355001/Polygon_8.8_aac0rb.svg"
@@ -72,14 +78,17 @@ function showText(id){
     info.setAttribute('tabindex', 2*(id+1))
     dots[id].setAttribute('class', "each-dot active")
     dots[id].setAttribute('aria-label', "Active")
+    if (curMode && curMode === "dark"){
+        dots[id].style.backgroundColor = "#FF2EE0"
+    }
     if (id !== curId){
         dots[curId].setAttribute('class', "each-dot")
         dots[curId].setAttribute('aria-label', "Inactive")
+        if (curMode && curMode === "dark"){
+            dots[curId].style.backgroundColor = "#015EF4"
+        }
     }
     curId = id
-    // if (withScreenreader === "false"){
-    //     speak(`../../asset/VOfiles/PerspectivesVO_bias_summary${id + 1}.wav`)
-    // }
 }
 
 function nextSlide(){

@@ -396,12 +396,16 @@ function getDotAnimation(){
         } else {
             ind = dotInd
         }
-        dotImage.src = `../../asset/Speech_dots/Speech_dots_000${ind}.png`
+        if (curMode && curMode === "dark"){
+            dotImage.src = `../../asset/Speech_dots/white/Speech_dots_white_000${ind}.png`
+        } else {
+            dotImage.src = `../../asset/Speech_dots/Speech_dots_000${ind}.png`
+        }
         dotInd += 1
     } else {
         dotInd = 0
     }
-    setTimeout(getDotAnimation, 65)
+    setTimeout(getDotAnimation, 70)
 }
 
 function getMessageElement(name, messageText, side, speedInd){

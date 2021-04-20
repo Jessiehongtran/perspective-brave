@@ -68,6 +68,9 @@ if (curMode && curMode === "dark"){
     rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
     bioWrapper.style.backgroundColor = "#000000"
+    bioWrapper.style.border = "1px solid #FFFFFF"
     bioWrapper.style.color = "#FFFFFF"
-    introWrapper.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618874806/yangIntrobg-darkkkk_fqwmdz.svg)'
-}
+    introWrapper.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618942390/Group_90_jdp60y.svg)'
+    introWrapper.style.color = "#FFFFFF"
+
+} 

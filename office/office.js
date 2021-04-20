@@ -19,7 +19,7 @@ const controlKey = document.getElementById("control-key")
 
 
 if (curMode && curMode === "dark"){
-    bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1618874407/office-darkkk_ekkkfu.svg'
+    bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1618942774/office-dark_ofafkt.svg'
     instruction.style.backgroundColor = "#015EF4"
     instruction.style.color = '#FFFFFF'
     for (let i = 0; i < arrows.length; i++){
@@ -28,6 +28,7 @@ if (curMode && curMode === "dark"){
     controlKey.style.backgroundColor = '#FF2EE0'
     controlKey.style.color = '#000000'
     root.style.setProperty("--pseudo-bordercolor", "#015EF4")
+    infoIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618942661/infoIcon-dark_lrr5uj.svg"
 }
 
 function toggleInstruction(){

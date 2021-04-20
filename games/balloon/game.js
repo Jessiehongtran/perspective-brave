@@ -44,6 +44,15 @@ const controlKey = document.getElementById("control-key")
 const platform = document.getElementsByClassName("platform")[0]
 const wrongIcon = document.getElementsByClassName("wrong-icon")[0]
 const curMode = sessionStorage.getItem('data-theme')
+const wrongMessage = document.getElementsByClassName('message')[0]
+const wrongCloseIcon = document.getElementsByClassName('closeIconImg')[0]
+const roundieShape = document.getElementById('roundie')
+const ellipseBigDark =  document.getElementById('ellipse-big-dark')
+const ellipseBigLight =  document.getElementById('ellipse-big-light')
+const ellipseSmall = document.getElementById('ellipse-small')
+const ellipseSmalleEmpty = document.getElementById('ellipse-small-empty')
+const polygon = document.getElementById('pollygon')
+const rectie = document.getElementById('rectie')
 
 
 if (curMode && curMode === "dark"){
@@ -52,9 +61,12 @@ if (curMode && curMode === "dark"){
     redBalloon.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/pinkBalloon-darkkkk_j5csde.svg)"
     yellowBalloon.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/yellowBalloon-darkkkk_luzk1p.svg)"
     greenBalloon.style.color = redBalloon.style.color =  yellowBalloon.style.color = "#000000"
-    platform.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618931106/Group_292_o8wcib.svg"
-    wrongIndicate.style.backgroundColor = 'rgba(0,0,0, 0.95)'
+    platform.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618945372/gamePlatform_dark_mbqtwh.svg"
+    wrongIndicate.style.backgroundColor = 'rgba(0,0,0, 0.85)'
     wrongIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618879831/Group_275-ddd_da74gg.svg"
+    wrongCloseIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618945640/close-white_idy09c.svg"
+    wrongMessage.style.backgroundColor = "#000000"
+    wrongMessage.style.color = "#FFFFFF"
     question.style.color = "#FFFFFF"
     instruction.style.backgroundColor = "#015EF4"
     instruction.style.color = '#FFFFFF'
@@ -68,6 +80,16 @@ if (curMode && curMode === "dark"){
     greenBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/greenBalloon-darkkkk_t0funu.svg"
     redBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/pinkBalloon-darkkkk_j5csde.svg"
     yellowBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/yellowBalloon-darkkkk_luzk1p.svg"
+    infoIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618942661/infoIcon-dark_lrr5uj.svg"
+    winning.style.backgroundColor = "#000000"
+    roundieShape.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948230/Group_219-winning_yi906m.svg"
+    rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
+    ellipseBigDark.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948568/Ellipse_25-darkkkk_etvbyn.svg"
+    ellipseBigLight.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948623/Ellipse_25-smaller-darkk_n0rk0i.svg"
+    ellipseSmall.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948678/Ellipse_25-daaakkkk_bf1y1x.svg"
+    ellipseSmalleEmpty.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948677/Ellipse_25-dakkkkkkk_nqrtqk.svg"
+    polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948738/Polygon_8-darkkkkkk_saygwc.svg"
+    rectie.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948778/Group_53-rectie-dark_swuyio.svg"
 }
 
 function toggleInstruction(){
@@ -488,7 +510,7 @@ function showCorrectRain(){
 
 function showCheerImg(){
     charInWinning.style.display = 'none'
-    if (cheerInd < 11){
+    if (curMode && curMode !== "dark" && cheerInd < 11){
         let cheerImgInd
         if (cheerInd < 10){
             cheerImgInd = "0" + cheerInd.toString()
@@ -496,6 +518,18 @@ function showCheerImg(){
             cheerImgInd = cheerInd
         }
         landing.src = `../../asset/winning/winning_${cheerImgInd}.svg`
+        cheerStuffPos.y += cheerInd*3/4
+        cheerStuff.style.top = `${cheerStuffPos.y}%`
+        cheerInd += 1
+        setTimeout(showCheerImg, 60)
+    } else if (curMode && curMode === "dark" && cheerInd < 8){
+        let cheerImgInd
+        if (cheerInd < 10){
+            cheerImgInd = "0" + cheerInd.toString()
+        } else {
+            cheerImgInd = cheerInd
+        }
+        landing.src = `../../asset/winning/dark/winning_dark_${cheerImgInd}.svg`
         cheerStuffPos.y += cheerInd*3/4
         cheerStuff.style.top = `${cheerStuffPos.y}%`
         cheerInd += 1
