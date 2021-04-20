@@ -14,15 +14,18 @@
                 </a>
                 <img class="platform" tabindex="0" alt="Game platform" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615483006/platformOfficial_p2y7ho.svg"/>
                 <p role="text" tabindex="0" aria-label="question: How many employees do you think leave their job when they do perceive bias in the workplace?" class="question">How many employees do you think leave their job when they do perceive bias in the workplace?</p>
-                <img class="balloon green" tabindex="0" alt="green balloon - answer: 1 out of 10" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617204429/greenBalloonWithText_dkgqpy.svg"/>
-                <img class="balloon red" tabindex="0" alt="red balloon - answer: 3 out of 10" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617204429/redBalloonWithText_ukbdib.svg"/>
-                <img class="balloon yellow" tabindex="0" alt="yellow balloon - answer: 5 out of 10" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617204429/yellowBalloonWithText_vk25jb.svg"/>
+                <div class="balloon green" aria-label="green balloon - answer: 1 out of 10">
+                    1 out of 10
+                </div>
+                <div class="balloon red" aria-label="red balloon - answer: 3 out of 10">
+                    3 out of 10
+                </div>
+                <div class="balloon yellow" aria-label="yellow balloon - answer: 5 out of 10">
+                    5 out of 10
+                </div>
                 <img class="character" tabindex="0" alt="you" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg"/>
-                <img class="infoIcon" alt="Press to see instruction" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615403814/info_icon_kffauc.svg" onclick="showInstruction()"/>
-                <div id="instruction" aria-label="Game instruction" onclick="hideInstruction()">
-                    <div class="instruction-close">
-                        <div class="close-icon">x</div>
-                    </div>
+                <img class="infoIcon" alt="Press to see instruction" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615403814/info_icon_kffauc.svg" onclick="toggleInstruction()"/>
+                <div id="instruction" aria-label="Game instruction" onclick="toggleInstruction()">
                     <div class="tutorial" >
                         <p class="detail-tutorial" role="text">You are in a game platform.</p>
                         <p role="text" >Use these keys to navigate Yang to and select the balloon with correct answer for the question.</p>

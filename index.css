@@ -22,11 +22,15 @@ body {
   z-index: 20
 }
 
+.dark-enable {
+  font-size: 16px;
+  font-weight: 500;
+}
 
 .theme-switch-wrapper {
   position: absolute;
   top: 3%;
-  left: 85%;
+  left: 2%;
   display: flex;
   align-items: center;
 }
@@ -44,7 +48,7 @@ body {
 }
 
 .slider {
-  background-color: #ccc;
+  background-color: #A9D3D0;
   bottom: 0;
   cursor: pointer;
   left: 0;
@@ -55,7 +59,7 @@ body {
 }
 
 .slider:before {
-  background-color: #fff;
+  background-color: #0C193B;
   bottom: 4px;
   content: "";
   height: 26px;
@@ -66,7 +70,11 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #0C193B;
+  background-color: #015EF4;
+}
+
+input:checked + .slider:before {
+  background-color: #FFFFFF
 }
 
 input:checked + .slider:before {
@@ -104,7 +112,7 @@ input:checked + .slider:before {
   width: 100%;
   display: flex; 
   justify-content: center;
-
+  margin-top: 40px;
 }
 
 

@@ -55,7 +55,7 @@
                 <div class="character trans-gender" tabindex="4" aria-label="Transgender person, not available to select" >
                     <div class="content" role="content" >
                         <div class="title" role="title" >
-                            Transgender man
+                            Transgender person
                         </div>
                         <a href="../characterIntro/charIntro.html" class="characterImage-link" role="link" onclick="sessionStorage.setItem('charId', 2)">
                             <img alt="transgender person image" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
@@ -95,18 +95,23 @@
             const womenInTechBG = document.getElementsByClassName('character women-in-tech')[0]
             const blackMaleBG = document.getElementsByClassName('character black-male')[0]
             const transgenderBG = document.getElementsByClassName('character trans-gender')[0]
+            const characterButton = document.getElementsByClassName('characterButton')
             if (curMode && curMode === "dark"){
                 container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/charSelectionBG-dark_bmdl73.svg)"
-                rect.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Rectangle_137_green-dark_x9ugqg.svg"
-                ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Ellipse_yellow-dark_li42vk.svg"
-                polygon.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/Polygon_pink-dark_cy8ukd.svg"
-                leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
+                rect.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618875396/Rectangle_111-darkkk_nl9z7m.svg"
+                ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/Ellipse_25-darkkk_dkdlbp.svg"
+                polygon.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618875437/Polygon_8-darkkkk_vifwr4.svg"
+                leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
                 direction.style.color = "#FFFFFF"
-                group4.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_53-dark_sznhrp.svg"
+                group4.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618875271/Group_55_jmdhwb.svg"
                 logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
-                womenInTechBG.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617913112/yangIntroBG_j7n5uh.png)'
-                blackMaleBG.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617913304/jevonBG-dark_coyi1j.png)'
-                transgenderBG.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617913303/elijahBG-dark_isobhz.png)'
+                womenInTechBG.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618941350/womanintech_dar_iobxit.svg)'
+                blackMaleBG.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618941350/blackman_dar_h6du7t.svg)'
+                transgenderBG.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618941350/transgender_dark_mwc0hg.svg)'
+                womenInTechBG.style.color = blackMaleBG.style.color = transgenderBG.style.color = "#FFFFFF"
+                for (let i = 0; i < characterButton.length ; i++){
+                    characterButton[i].style.backgroundColor = "#015EF4"
+                }
             }
         </script>
     </body>

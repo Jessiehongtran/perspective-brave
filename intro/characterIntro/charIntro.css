@@ -14,6 +14,11 @@ body {
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613512200/Group_100_df9sqr.png); 
     background-size: cover; 
     background-repeat: no-repeat; 
+    overflow: auto;
+    padding: 60px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .top {

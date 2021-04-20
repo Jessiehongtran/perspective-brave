@@ -13,7 +13,7 @@
                     <input type="checkbox" id="checkbox"/>
                     <div class="slider round"></div>
                 </label>
-                <em class="dark-enable">Enable Dark Mode!</em>
+                <p class="dark-enable">Dark Mode</p>
             </div>
             <div class="header" role="header">
                 <img  class="logo"  tabindex= "0" alt="Perspectives logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
@@ -41,7 +41,7 @@
             const darkEnable = document.getElementsByClassName('dark-enable')[0]
             function handleMouseOver(){
                 if (sessionStorage.getItem('data-theme') && sessionStorage.getItem('data-theme') === "dark"){
-                    startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Component_5_3-dark_xwecoe.svg"
+                    startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618941738/start-btn-hover-dark_nvvioa.svg"
                 } else {
                     startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615932581/startButton-hovered_djktcj.svg"
                 }
@@ -66,16 +66,15 @@
                 if (e.target.checked){
                     sessionStorage.setItem('data-theme', 'dark')
                     container.style.backgroundColor = '#000000'
-                    ellipse.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Ellipse_25-dark_wakufz.svg"
-                    polygon.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Polygon_8-dark_q9vsw6.svg"
+                    ellipse.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618874636/ellipse-green-darkkk_srjznt.svg"
+                    polygon.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618876740/Polygon_8-darkkkkkkkkk_fwzjfd.svg"
                     rect.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Rectangle_99-dark_pjux5g.svg"
-                    group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_53-dark_sznhrp.svg"
-                    group3.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_105-dark_n6co6r.svg"
-                    startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Component_5_3-dark_xwecoe.svg"
+                    group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618876667/Group_53-darkkkk_p3tw4l.svg"
+                    group3.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618876600/Group_105-darkkkk_upljhd.svg"
+                    startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618876527/Component_5_3_ucuivy.svg"
                     subtitle.style.color = '#FFFFFF'
-                    logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+                    logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618931513/Perspectives-logo-darkkk_iup0gd.svg"
                     darkEnable.style.color = '#FFFFFF'
-                    darkEnable.innerHTML = 'Enable Light Mode!'
                 } else {
                     sessionStorage.setItem('data-theme', 'light')
                     container.style.backgroundColor = '#D9ECEC'
@@ -86,7 +85,6 @@
                     group3.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg"
                     startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614019871/Group_65_yjvasr.png"
                     subtitle.style.color = '#000000'
-                    darkEnable.innerHTML = 'Enable Dark Mode!'
                     darkEnable.style.color = '#000000'
                     logo.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg"
                 }

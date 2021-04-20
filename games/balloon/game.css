@@ -49,7 +49,7 @@ body {
     align-items: center; 
     margin-right: 20px; 
     position: relative;
-    margin: -7% 0% 2% 72%;
+    margin: -5.8% 0 0 80%;
 }
 
 .instruction-close {
@@ -93,12 +93,12 @@ body {
     width: 0;
     height: 0;
     right: auto;
-    left: -40px;
-    top: 30%;
+    right: 30px;
+    top: -7%;
     bottom: auto;
-    border: 20px solid;
+    border: 15px solid;
     z-index: 1;
-    border-color:  transparent var(--pseudo-bordercolor) transparent transparent  ;
+    border-color:  transparent  transparent  var(--pseudo-bordercolor) transparent ;
 }
 
 
@@ -253,6 +253,30 @@ body {
 
 .balloon {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 80px 40px 0 40px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.balloon.green {
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615253383/greenBalloon_qcw6vp.svg);
+    
+}
+
+.balloon.red {
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615253483/redBalloon_y8vli5.svg);
+    
+}
+
+.balloon.yellow {
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615253509/yellowBalloon_aw1vyl.svg);
+    
 }
 
 .character {

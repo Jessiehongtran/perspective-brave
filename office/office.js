@@ -11,16 +11,15 @@ const instruction = document.getElementById("instruction")
 const root = document.querySelector(":root")
 const arrows = document.getElementsByClassName("arrow")
 const infoIcon = document.getElementsByClassName("infoIcon")[0]
-infoIcon.style.display = 'none'
 
 const curMode = sessionStorage.getItem('data-theme')
 const bigOffice = document.getElementsByClassName("bigOffice")[0]
 
-const controlKey = document.getElementsByClassName("control key")[0]
+const controlKey = document.getElementById("control-key")
 
 
 if (curMode && curMode === "dark"){
-    bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1617916958/bigOffice_ooougg.svg'
+    bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1618942774/office-dark_ofafkt.svg'
     instruction.style.backgroundColor = "#015EF4"
     instruction.style.color = '#FFFFFF'
     for (let i = 0; i < arrows.length; i++){
@@ -29,22 +28,17 @@ if (curMode && curMode === "dark"){
     controlKey.style.backgroundColor = '#FF2EE0'
     controlKey.style.color = '#000000'
     root.style.setProperty("--pseudo-bordercolor", "#015EF4")
+    infoIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618942661/infoIcon-dark_lrr5uj.svg"
 }
 
-
-function showInstruction(){
-    instruction.style.display = 'block'
-    infoIcon.style.display = 'none'
-    setTimeout(hideInstruction, 7000)
+function toggleInstruction(){
+    if (instruction.style.display === 'block'){
+        instruction.style.display = 'none'
+    } else {
+        instruction.style.display = 'block'
+    }
 }
 
-function hideInstruction(){
-    instruction.style.display = 'none'
-    infoIcon.style.display = 'block'
-
-}
-
-showInstruction()
 
 
 //variables
