@@ -16,11 +16,11 @@ infoIcon.style.display = 'none'
 const curMode = sessionStorage.getItem('data-theme')
 const bigOffice = document.getElementsByClassName("bigOffice")[0]
 
-const controlKey = document.getElementsByClassName("control key")[0]
+const controlKey = document.getElementById("control-key")
 
 
 if (curMode && curMode === "dark"){
-    bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1617916958/bigOffice_ooougg.svg'
+    bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1618874407/office-darkkk_ekkkfu.svg'
     instruction.style.backgroundColor = "#015EF4"
     instruction.style.color = '#FFFFFF'
     for (let i = 0; i < arrows.length; i++){

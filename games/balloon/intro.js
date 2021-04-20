@@ -33,6 +33,34 @@ const info = document.getElementById("info")
 const dots = document.getElementsByClassName("each-dot")
 const rightSlide = document.getElementById("rightSlide")
 const withScreenreader = sessionStorage.getItem("screen-reader")
+const container = document.getElementById("container")
+const logo = document.getElementsByClassName("logo")[0]
+
+
+const curMode = sessionStorage.getItem('data-theme')
+if (curMode && curMode === "dark"){
+    container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618872746/gameIntro-bg-dark_us1yhf.png)'
+    polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/Polygon_8-darkkk_vvux2v.svg"
+    rect.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/Rectangle_137-darkkk_ztvtae.svg"
+    ellipse.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/Ellipse_25-darkkk_dkdlbp.svg"
+    group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/groupppp-darkkk_tntrcx.svg"
+    group2.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/groupp-darkkk_r9yqfg.svg"
+    leftSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
+    rightSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
+    logo.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+    group1.style.transform= "rotate(360deg)";
+    group2.style.transform= "rotate(360deg)";
+} else {
+    container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614352554/Mask_Group_6_sqgbyy.svg)'
+    polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614355001/Polygon_8.8_aac0rb.svg"
+    rect.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614355146/Rectangle_137.111_tjtria.svg"
+    ellipse.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614213869/Ellipse_25.1_c18oph.svg"
+    group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614210431/Group_53.1_wqvelu.svg"
+    group2.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614210192/Group_105_aulqkx.svg"
+    leftSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"
+    rightSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"
+    logo.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg"
+}
 
 let curId = 0
 

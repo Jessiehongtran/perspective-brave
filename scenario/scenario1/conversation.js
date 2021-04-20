@@ -164,12 +164,13 @@ localStorage.setItem('muted', "False")
 
 const curMode = sessionStorage.getItem('data-theme')
 if (curMode && curMode === "dark"){
-    intro.style.backgroundColor = chooseDifferentResponse.style.backgroundColor = "#4B8FFF"
+    intro.style.backgroundColor = chooseDifferentResponse.style.backgroundColor = "#015EF4"
     intro.style.color = "#FFFFFF"
+    volumeOn.style.color = volumeOff.style.color = "#FFFFFF"
     container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617917809/converIntroBG-dark_j6fstf.png)"
     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
-    leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
-    rightSlide1.src= rightSlide2Icon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/rightSlide-dark_iltwbn.svg"
+    leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
+    rightSlide1.src= rightSlide2Icon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
     
 }
 
@@ -272,7 +273,7 @@ let buttons = []
 function showConversation(){
     intro.style.display = 'none'
     if (curMode && curMode === "dark"){
-        container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617918352/converBG-dark_zfaodo.png)'
+        container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618872100/conversBG-dark_hjbzun.png)'
     } else {
         container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613859076/Group_181_tuayld.png)'
     }
@@ -345,9 +346,9 @@ function tryDifferentResponseOrNext(){
     //change background for container
     if (curMode && curMode === "dark"){
         container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617917809/converIntroBG-dark_j6fstf.png)"
-        differentChooseText.style.color  = '#000000'
+        differentChooseText.style.color  = '#FFFFFF'
         differentNextText.style.color = '#FFFFFF'
-        tryButton.style.backgroundColor = "#F64141"
+        tryButton.style.backgroundColor = "#000000"
         tryButton.style.color = "#FFFFFF"
     } else {
         container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1613854499/Rectangle_170_fbizae.png)"
@@ -357,10 +358,6 @@ function tryDifferentResponseOrNext(){
     //hide rightSlide1 and show rightSlide2
     rightSlide1.style.display = 'none'
     rightSlide2.style.display = 'block'
-    //append choose-different-response to intro
-    // intro.style.display = 'flex'
-    // intro.removeChild(textWrapper)
-    // intro.appendChild(chooseDifferentResponse)
     intro.style.display = 'none'
     chooseDifferentResponse.style.display = 'flex'
     chooseDifferentResponse.style.flexDirection = 'column'
@@ -421,7 +418,7 @@ function getMessageElement(name, messageText, side, speedInd){
     nameContainer.innerHTML = name
     nameContainer.style.fontWeight = 'bold'
     if (curMode && curMode === "dark"){
-        nameContainer.style.color = "white"
+        nameContainer.style.color = "#FFFFFF"
     }
     //face-text div
     const faceTextContainer = document.createElement("div")
@@ -472,8 +469,7 @@ function getMessageElement(name, messageText, side, speedInd){
         faceTextContainer.style.justifyContent = 'flex-start'
         faceContainer.style.marginRight = '20px'
         if (curMode && curMode === "dark"){
-            // textMessageContainer.setAttribute('id', 'text-message-left-dark')
-            textMessageContainer.style.backgroundColor = "#4BD8AD"
+            textMessageContainer.style.backgroundColor = "#00E09D"
         } else {
             textMessageContainer.setAttribute('id', 'text-message-left')
             textMessageContainer.style.backgroundColor = '#DCEBEB'
@@ -487,8 +483,8 @@ function getMessageElement(name, messageText, side, speedInd){
         faceTextContainer.style.justifyContent = 'flex-end'
         faceContainer.style.marginLeft = '20px'
         if (curMode && curMode === "dark"){
-            textMessageContainer.style.backgroundColor = "#4B8FFF"
-            // textMessageContainer.setAttribute('id', 'text-message-right-dark')
+            textMessageContainer.style.backgroundColor = "#015EF4"
+            textMessageContainer.style.color = "#FFFFFF"
         } else {
             textMessageContainer.style.backgroundColor = '#A8D0CE'
             textMessageContainer.setAttribute('id', 'text-message-right')
@@ -533,11 +529,12 @@ function addButtons(){
             button.style.padding = '12px 30px'
             button.style.border = 'none'
             if (curMode && curMode === "dark"){
-                button.style.backgroundColor = '#F64141'
+                button.style.backgroundColor = '#FF2EE0'
+                button.style.color = '#FFFFFF'
             } else {
                 button.style.backgroundColor = '#111F47'
+                button.style.color = '#FFFFFF'
             }
-            button.style.color = 'white'
             button.setAttribute('id', 'message-btn')
             setTimeout(function(){
                 button.style.animation = 'pulse 2s infinite'

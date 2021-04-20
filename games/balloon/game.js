@@ -38,12 +38,30 @@ const arrows = document.getElementsByClassName("arrow")
 const instruction = document.getElementById("instruction")
 const root = document.querySelector(":root")
 const infoIcon = document.getElementsByClassName("infoIcon")[0]
+const container = document.getElementById("container")
+const question = document.getElementsByClassName("question")[0]
+const controlKey = document.getElementById("control-key")
+const platform = document.getElementsByClassName("platform")[0]
+const wrongIcon = document.getElementsByClassName("wrong-icon")[0]
 infoIcon.style.display = 'none'
 
 const curMode = sessionStorage.getItem('data-theme')
 
 
 if (curMode && curMode === "dark"){
+    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877036/Mask_Group_10-darkkkkkkkk_rxr8vw.svg)"
+    greenBalloon.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/greenBalloon-darkkkk_t0funu.svg)"
+    redBalloon.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/pinkBalloon-darkkkk_j5csde.svg)"
+    yellowBalloon.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/yellowBalloon-darkkkk_luzk1p.svg)"
+    greenBalloon.style.color = redBalloon.style.color =  yellowBalloon.style.color = "#000000"
+    platform.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618879099/platform-darkkk_v3ves0.svg"
+    platform.style.width = '90%'
+    platform.style.top = '-10%'
+    platform.style.left = '5%'
+    correct.style.color = '#FFFFFF'
+    wrongIndicate.style.backgroundColor = 'rgba(0,0,0, 0.95)'
+    wrongIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618879831/Group_275-ddd_da74gg.svg"
+    question.style.color = "#FFFFFF"
     instruction.style.backgroundColor = "#015EF4"
     instruction.style.color = '#FFFFFF'
     for (let i = 0; i < arrows.length; i++){
@@ -52,6 +70,10 @@ if (curMode && curMode === "dark"){
     controlKey.style.backgroundColor = '#FF2EE0'
     controlKey.style.color = '#000000'
     root.style.setProperty("--pseudo-bordercolor", "#015EF4")
+    leftSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
+    greenBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/greenBalloon-darkkkk_t0funu.svg"
+    redBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/pinkBalloon-darkkkk_j5csde.svg"
+    yellowBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/yellowBalloon-darkkkk_luzk1p.svg"
 }
 
 function showInstruction(){
@@ -82,18 +104,18 @@ const changeX = 1
 const changeY = 1
 
 const greenBalloonPos = {
-    x: 18,
-    y: 50
+    x: 16,
+    y: 45
 }
 
 const redBalloonPos = {
-    x: 45,
-    y: 20
+    x: 43,
+    y: 15
 }
 
 const yellowBalloonPos = {
-    x: 73,
-    y: 50
+    x: 71,
+    y: 45
 }
 
 const balloonSize = {
@@ -373,7 +395,7 @@ function jump(){
 }
 
 function flyGreenBalloon(){
-    if (greenBalloonPos.y > - balloonSize.h){
+    if (greenBalloonPos.y > - balloonSize.h - 10){
         greenBalloonPos.y -= flyingSpeed
         greenBalloon.style.top = `${greenBalloonPos.y}%`
         setTimeout(flyGreenBalloon, 80)
@@ -384,7 +406,7 @@ function flyGreenBalloon(){
 
 
 function flyRedBalloon(){
-    if (redBalloonPos.y > - balloonSize.h){
+    if (redBalloonPos.y > - balloonSize.h - 10){
         redBalloonPos.y -= flyingSpeed
         redBalloon.style.top = `${redBalloonPos.y}%`
         charPos.y -= flyingSpeed
@@ -403,7 +425,7 @@ function flyRedBalloon(){
 }
 
 function flyYellowBalloon(){
-    if (yellowBalloonPos.y > - balloonSize.h){
+    if (yellowBalloonPos.y > - balloonSize.h - 10){
         yellowBalloonPos.y -= flyingSpeed
         yellowBalloon.style.top = `${yellowBalloonPos.y}%`
         setTimeout(flyYellowBalloon, 80)
@@ -447,6 +469,7 @@ function showCorrectRain(){
     for (let i =0; i < 8; i++){
         const correctWord = document.createElement('div')
         correctWord.innerHTML = "Correct"
+        correctWord.setAttribute('class', 'correct')
         correctWord.style.fontSize = '20px'
         correctWord.style.transition = 'all 0.3s ease'
         correctWord.style.position = 'absolute'

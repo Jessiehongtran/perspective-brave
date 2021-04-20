@@ -59,15 +59,15 @@ charImage.src = chars[selectedCharInd].avatar
 
 if (curMode && curMode === "dark"){
     container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/charSelectionBG-dark_bmdl73.svg)"
-    ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Rectangle_137_green-dark_x9ugqg.svg"
-    ellipseBig.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/Ellipse_yellow-dark_li42vk.svg"
-    polygon.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617749725/Polygon_blue-dark_lloy5c.svg"
-    leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/leftSlide-dark_fggzk5.svg"
+    ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/Ellipse_25-darkkk_dkdlbp.svg"
+    ellipseBig.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618874636/ellipse-green-darkkk_srjznt.svg"
+    leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
+    polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618874801/Polygon_14-darkkkk_cpnyuw.svg"
     direction.style.color = "#FFFFFF"
     group2.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Group_105-dark_n6co6r.svg"
-    rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617747582/rightSlide-dark_iltwbn.svg"
+    rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
     bioWrapper.style.backgroundColor = "#000000"
     bioWrapper.style.color = "#FFFFFF"
-    introWrapper.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617913920/yangIntroBG-dark_bn4ksc.png)'
+    introWrapper.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618874806/yangIntrobg-darkkkk_fqwmdz.svg)'
 }
