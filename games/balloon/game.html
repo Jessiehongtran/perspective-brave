@@ -24,11 +24,8 @@
                     5 out of 10
                 </div>
                 <img class="character" tabindex="0" alt="you" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg"/>
-                <img class="infoIcon" alt="Press to see instruction" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615403814/info_icon_kffauc.svg" onclick="showInstruction()"/>
-                <div id="instruction" aria-label="Game instruction" onclick="hideInstruction()">
-                    <div class="instruction-close">
-                        <div class="close-icon">x</div>
-                    </div>
+                <img class="infoIcon" alt="Press to see instruction" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615403814/info_icon_kffauc.svg" onclick="toggleInstruction()"/>
+                <div id="instruction" aria-label="Game instruction" onclick="toggleInstruction()">
                     <div class="tutorial" >
                         <p class="detail-tutorial" role="text">You are in a game platform.</p>
                         <p role="text" >Use these keys to navigate Yang to and select the balloon with correct answer for the question.</p>

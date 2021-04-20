@@ -73,14 +73,14 @@ body {
     align-items: center; 
     margin-right: 20px; 
     position: relative;
-    margin: 2%;
+    margin: 3.5% 0 0 2.5%;
 }
 
 .infoIcon {
     width: 6%;
     position: absolute;
-    left: 2%;
-    top: 2%;
+    left: 1%;
+    top: 1%;
     cursor: pointer;
 }
 
@@ -94,12 +94,12 @@ body {
     width: 0;
     height: 0;
     right: auto;
-    left: -40px;
-    top: 30%;
+    left: 30px;
+    top: -7%;
     bottom: auto;
-    border: 20px solid;
+    border: 15px solid;
     z-index: 1;
-    border-color:  transparent  var(--pseudo-bordercolor) transparent transparent ;
+    border-color:  transparent  transparent  var(--pseudo-bordercolor) transparent ;
 }
 
 .instruction-close {

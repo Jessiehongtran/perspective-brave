@@ -11,7 +11,6 @@ const instruction = document.getElementById("instruction")
 const root = document.querySelector(":root")
 const arrows = document.getElementsByClassName("arrow")
 const infoIcon = document.getElementsByClassName("infoIcon")[0]
-infoIcon.style.display = 'none'
 
 const curMode = sessionStorage.getItem('data-theme')
 const bigOffice = document.getElementsByClassName("bigOffice")[0]
@@ -31,20 +30,14 @@ if (curMode && curMode === "dark"){
     root.style.setProperty("--pseudo-bordercolor", "#015EF4")
 }
 
-
-function showInstruction(){
-    instruction.style.display = 'block'
-    infoIcon.style.display = 'none'
-    setTimeout(hideInstruction, 7000)
+function toggleInstruction(){
+    if (instruction.style.display === 'block'){
+        instruction.style.display = 'none'
+    } else {
+        instruction.style.display = 'block'
+    }
 }
 
-function hideInstruction(){
-    instruction.style.display = 'none'
-    infoIcon.style.display = 'block'
-
-}
-
-showInstruction()
 
 
 //variables

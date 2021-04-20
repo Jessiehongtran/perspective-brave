@@ -43,8 +43,6 @@ const question = document.getElementsByClassName("question")[0]
 const controlKey = document.getElementById("control-key")
 const platform = document.getElementsByClassName("platform")[0]
 const wrongIcon = document.getElementsByClassName("wrong-icon")[0]
-infoIcon.style.display = 'none'
-
 const curMode = sessionStorage.getItem('data-theme')
 
 
@@ -54,11 +52,7 @@ if (curMode && curMode === "dark"){
     redBalloon.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/pinkBalloon-darkkkk_j5csde.svg)"
     yellowBalloon.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/yellowBalloon-darkkkk_luzk1p.svg)"
     greenBalloon.style.color = redBalloon.style.color =  yellowBalloon.style.color = "#000000"
-    platform.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618879099/platform-darkkk_v3ves0.svg"
-    platform.style.width = '90%'
-    platform.style.top = '-10%'
-    platform.style.left = '5%'
-    correct.style.color = '#FFFFFF'
+    platform.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618931106/Group_292_o8wcib.svg"
     wrongIndicate.style.backgroundColor = 'rgba(0,0,0, 0.95)'
     wrongIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618879831/Group_275-ddd_da74gg.svg"
     question.style.color = "#FFFFFF"
@@ -76,19 +70,13 @@ if (curMode && curMode === "dark"){
     yellowBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/yellowBalloon-darkkkk_luzk1p.svg"
 }
 
-function showInstruction(){
-    instruction.style.display = 'block'
-    infoIcon.style.display = 'none'
-    setTimeout(hideInstruction, 7000)
+function toggleInstruction(){
+    if (instruction.style.display === 'block'){
+        instruction.style.display = 'none'
+    } else {
+        instruction.style.display = 'block'
+    }
 }
-
-function hideInstruction(){
-    instruction.style.display = 'none'
-    infoIcon.style.display = 'block'
-
-}
-
-showInstruction()
 
 
 let charPos = {
@@ -462,7 +450,6 @@ function showWinning(){
     winning.style.display = 'flex'
     mainGame.style.display = 'none'
     showCheerImg()
-    showCorrectRain()
 }
 
 function showCorrectRain(){
