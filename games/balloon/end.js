@@ -34,6 +34,8 @@ const container = document.getElementById("container")
 const logo = document.getElementsByClassName("logo")[0]
 const activeDot = document.getElementsByClassName("each-dot active")[0]
 const eachDots = document.getElementsByClassName("each-dot")
+const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
+const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
 
 const curMode = sessionStorage.getItem('data-theme')
 if (curMode && curMode === "dark"){
@@ -53,6 +55,8 @@ if (curMode && curMode === "dark"){
         eachDots[i].style.backgroundColor = "#015EF4"
     }
     activeDot.style.backgroundColor = "#FF2EE0"
+    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
+    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
 } else {
     container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614352554/Mask_Group_6_sqgbyy.svg)'
     polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614355001/Polygon_8.8_aac0rb.svg"

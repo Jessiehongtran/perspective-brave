@@ -43,7 +43,6 @@ body {
 }
 
 .header {
-    margin-top: 20px; 
     width: 100%; 
     display: flex; 
     justify-content: center; 
@@ -123,24 +122,24 @@ body {
 
 #ellipse {
     position: absolute; 
-    left: 85%; 
-    top: -12%; 
+    left: 75%; 
+    top: -14%; 
     width: 10%
 }
 
 #group1 {
     position: absolute; 
-    left: 90%; 
-    top: 90%;
-    width: 10%;
+    left: 85%; 
+    top: 85%;
+    width: 12%;
     transform: rotate(180deg);
 }
 
 #group2 {
     position: absolute; 
-    left: 20%; 
-    top: 90%; 
-    width: 10%; 
+    left: 15%; 
+    top: 80%; 
+    width: 20%; 
     transform: rotate(180deg);
 }
 

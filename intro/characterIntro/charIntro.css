@@ -74,7 +74,7 @@ body {
 
 #ellipseBig {
     position: absolute; 
-    left: 85%; 
+    left: 70%; 
     top: -12%; 
     width: 10%
 }
@@ -112,7 +112,6 @@ body {
     width: 100%; 
     display: flex; 
     justify-content: center; 
-    margin-top: 60px;
 }
 
 .logo {
@@ -124,9 +123,7 @@ body {
     width: 40%; 
     margin: 40px 40px 0px 40px;  
     text-align: center; 
-    font-size: 26px; 
     color: #1E2228;
-    line-height: 38px;
 }
 
 .intro-wrapper {
@@ -159,12 +156,10 @@ body {
 }
 
 .name {
-    font-size: 40px; 
     margin-top: 0;
 }
 
 .title {
-    font-size: 20px; 
     margin-top: -20px; 
     font-weight: bolder;
 }
@@ -180,13 +175,11 @@ body {
 
 .bio-wrapper {
     font-weight: 500; 
-    font-size: 18px; 
     background-color: #DCEBEB; 
     border-radius: 20px; 
     width: 70%; 
     color: black; 
     padding: 20px 40px;
-    line-height: 30px;
 }
 
 @media only screen and (max-width: 1200px) {

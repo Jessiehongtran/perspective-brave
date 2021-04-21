@@ -157,6 +157,8 @@ const  differentChooseText = document.getElementsByClassName("choose-text")[0]
 const  differentNextText = document.getElementsByClassName("next-text")[0]
 const volumeOff = document.getElementsByClassName('fas fa-volume-off')[0]
 const volumeOn = document.getElementsByClassName('fas fa-volume-up')[0]
+const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
+const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
 
 volumeOff.style.display = 'none'
 volumeOn.style.display = 'block'
@@ -171,7 +173,8 @@ if (curMode && curMode === "dark"){
     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
     leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
     rightSlide1.src= rightSlide2Icon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
-    
+    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
+                decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
 }
 
 

@@ -3,17 +3,27 @@
     <head>
         <title>Perspective 2.0</title>
         <link rel="stylesheet" href="./index.css">
+        <link rel="stylesheet" href="./sizeAdjust.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" >
     </head>
     <body>
         <div role="container" class="container">
+            <div class="size-change">
+                <button class="text decrease" onclick="decreaseSize()">
+                    <img class="icon decrease-size" alt="decrease size icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1619019366/decreaseSize_yygyij.svg"/>
+                    <span class="tooltiptext decrease">make text smaller</span>
+                </button>
+                <button class="text increase" onclick="increaseSize()">
+                    <img class="icon increase-size" alt="increase size icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1619019367/increaseSizeIcon_ykvc6c.svg" />
+                    <span class="tooltiptext increase">make text bigger</span>
+                </button>
+            </div>
             <div class="theme-switch-wrapper">
                 <label class="theme-switch" for="checkbox">
                     <input type="checkbox" id="checkbox"/>
                     <div class="slider round"></div>
                 </label>
-                <p class="dark-enable">Dark Mode</p>
             </div>
             <div class="header" role="header">
                 <img  class="logo"  tabindex= "0" alt="Perspectives logo" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
@@ -21,7 +31,7 @@
             <div class="subtitle" tabindex= "0"  role="text" aria-label="A look at bias in the workplace">
                 A look at bias in the workplace
             </div>
-            <a href="./accessibility/menu.html" tabindex= "0"  class="start-button"  role="link">
+            <a href="./intro/welcome/welcome.html" tabindex= "0"  class="start-button"  role="link">
                 <img class="startButton-img" alt="Press to start the experience" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614019871/Group_65_yjvasr.png" />
             </a>
             <img id="polygon" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210343/Polygon_8.1_p0fjwm.svg" /> 
@@ -31,6 +41,7 @@
             <img id="group3" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg" />
         </div>
         <script>
+            let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
             sessionStorage.setItem('data-theme', 'light')
             const container = document.getElementsByClassName('container')[0]
             const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]')
@@ -39,6 +50,8 @@
             const subtitle = document.getElementsByClassName('subtitle')[0]
             const logo = document.getElementsByClassName('logo')[0]
             const darkEnable = document.getElementsByClassName('dark-enable')[0]
+            const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
+            const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
             function handleMouseOver(){
                 if (sessionStorage.getItem('data-theme') && sessionStorage.getItem('data-theme') === "dark"){
                     startButtonImg.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618941738/start-btn-hover-dark_nvvioa.svg"
@@ -74,7 +87,8 @@
                     startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618876527/Component_5_3_ucuivy.svg"
                     subtitle.style.color = '#FFFFFF'
                     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618931513/Perspectives-logo-darkkk_iup0gd.svg"
-                    darkEnable.style.color = '#FFFFFF'
+                    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
+                    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
                 } else {
                     sessionStorage.setItem('data-theme', 'light')
                     container.style.backgroundColor = '#D9ECEC'
@@ -85,12 +99,32 @@
                     group3.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614210143/Group_105_du9lra.svg"
                     startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614019871/Group_65_yjvasr.png"
                     subtitle.style.color = '#000000'
-                    darkEnable.style.color = '#000000'
                     logo.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg"
+                    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619019367/increaseSizeIcon_ykvc6c.svg"
+                    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619019366/decreaseSize_yygyij.svg"
                 }
             }
 
             toggleSwitch.addEventListener('change', switchTheme, false)
+
+            //set sizes
+            subtitle.style.fontSize = `${36 + sizeElastic}px`
+
+            function updateSize(){
+                if (sizeElastic > -35 && sizeElastic < 50){
+                    subtitle.style.fontSize = `${36 + sizeElastic}px`
+                }
+                localStorage.setItem('sizeElastic', sizeElastic)
+            }
+
+            function increaseSize(){
+                sizeElastic += 1
+                updateSize()
+            }
+            function decreaseSize(){
+                sizeElastic -= 1
+                updateSize()
+            }
         </script>
     </body>
 </html>
