@@ -126,13 +126,10 @@ body {
 .title {
     width: 100%; 
     text-align: center; 
-    font-size: 40px;
 }
 
 .scenario-text {
     margin-top: 40px; 
-    line-height: 2; 
-    font-size: 22px; 
     text-align: center;
 }
 
@@ -157,8 +154,6 @@ body {
 
 .choose-text {
     color: white; 
-    font-size: 20px;
-    line-height: 1.8;
 }
 
 .speakerIcon {
@@ -177,14 +172,11 @@ body {
     cursor: pointer; 
     border: none; 
     font-family: Montserrat; 
-    font-size: 18px;
 }
 
 .next-text {
     color: white; 
-    font-size: 20px; 
     margin-top: 60px;
-    line-height: 1.8;
 }
 
 #conversation {

@@ -119,9 +119,9 @@ input:checked + .slider:before {
 #rect{
     animation: rotation 40s infinite linear !important;
     position: absolute; 
-    left: 90%; 
-    top: 10%; 
-    width: 7%
+    left: 80%; 
+    top: 15%; 
+    width: 5%
 }
 
 #ellipse {

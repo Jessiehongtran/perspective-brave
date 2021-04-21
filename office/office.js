@@ -24,7 +24,6 @@ const arrowKeyHolder = document.getElementById("arrowKeyHolder")
 
 let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
 
-
 if (curMode && curMode === "dark"){
     bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1618942774/office-dark_ofafkt.svg'
     instruction.style.backgroundColor = "#015EF4"
@@ -35,7 +34,8 @@ if (curMode && curMode === "dark"){
     controlKey.style.backgroundColor = '#FF2EE0'
     controlKey.style.color = '#000000'
     root.style.setProperty("--pseudo-bordercolor", "#015EF4")
-    infoIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618942661/infoIcon-dark_lrr5uj.svg"
+    infoIcon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619027718/infoIcon-noword-dark_sqcaou.svg)'
+    infoIcon.style.color = "#FFFFFF"
     increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
     decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
 }
@@ -371,14 +371,20 @@ function showExit(){
 toolTipText.style.fontSize = `${14 + sizeElastic}px`
 tutorial.style.fontSize = `${18 + sizeElastic}px`
 arrowKeyHolder.style.fontSize = `${16 + sizeElastic}px`
+infoIcon.style.width = `${6 + sizeElastic/10}%`
+infoIcon.style.fontSize = `${14 + sizeElastic}px`
+infoIcon.style.height = `${5 + sizeElastic/10}%`
 
 function updateSize(){
-    if (sizeElastic > -13 && sizeElastic < 30){
+    if (sizeElastic > -5 && sizeElastic < 5){
         toolTipText.style.fontSize = `${14 + sizeElastic}px`
         tutorial.style.fontSize = `${18 + sizeElastic}px`
-        arrowKeyHolder.style.fontSize = `${16 + sizeElastic}px`
         tutorial.style.lineHeight = `${38 + sizeElastic}px`
+        arrowKeyHolder.style.fontSize = `${16 + sizeElastic}px`
         arrowKeyHolder.style.lineHeight = `${23 + sizeElastic}px`
+        infoIcon.style.width = `${6 + sizeElastic/10}%`
+        infoIcon.style.fontSize = `${14 + sizeElastic}px`
+        infoIcon.style.height = `${5 + sizeElastic/10}%`
     }
     localStorage.setItem('sizeElastic', sizeElastic)
 }

@@ -29,6 +29,7 @@ const VOs = [
 
 
 let i = 0
+let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
 const info = document.getElementById("info")
 const dots = document.getElementsByClassName("each-dot")
 const rightSlide = document.getElementById("rightSlide")
@@ -118,4 +119,25 @@ function preSlide(){
     } else {
         window.location.href= "../../scenario/scenario1/yangConversation.html"
     }
+}
+
+//reset size
+info.style.fontSize = `${26 + sizeElastic}px`
+info.style.lineHeight = `${44 + sizeElastic}px`
+
+function updateSize(){
+    if (sizeElastic > -25 && sizeElastic < 20){
+        info.style.fontSize = `${26 + sizeElastic}px`
+        info.style.lineHeight = `${44 + sizeElastic}px`
+    }
+    localStorage.setItem('sizeElastic', sizeElastic)
+}
+
+function increaseSize(){
+    sizeElastic += 1
+    updateSize()
+}
+function decreaseSize(){
+    sizeElastic -= 1
+    updateSize()
 }
