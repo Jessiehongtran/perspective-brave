@@ -1,10 +1,20 @@
+.setup {
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    z-index: 9;
+    
+  }
+  
+
 .size-change {
     display: flex;
     align-items: flex-end;
-    position: absolute;
-    right: 2%;
-    top: 5%;
     z-index: 10;
+    border-radius: 60px;
+    background-color: #A9D3D0;
+    padding: 4px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
   
 .text {
@@ -12,6 +22,21 @@
     background-color: transparent;
     cursor: pointer;
 }
+
+.text.decrease {
+    padding: 2px 12px;
+    display: flex;
+    align-items: flex-end;
+    font-size: 12px;
+    font-family: Montserrat; 
+  }
+  
+  .text.increase {
+    font-size: 20px;
+    font-family: Montserrat;
+    padding: 1px 12px; 
+    border-left: 1px solid white;
+  }
 
 .tooltiptext {
     visibility: hidden;
@@ -24,20 +49,26 @@
     width: 120px;
     background-color: #555;
     width: 100px;
-    bottom: 105%;
+    bottom: 100%;
     font-size: 12px;
     transition: opacity 0.3s;
     font-family: Montserrat; 
 }
 
 .tooltiptext.decrease {
-    left: -80%;
+    left: -50%;
     margin-left: 5px;
 }
 
 .tooltiptext.increase {
-    left: -33%;
+    left: -10%;
     margin-left: 10px;
+}
+
+.tooltiptext.mode {
+    left: -30%;
+    margin-left: 10px;
+    bottom: 90%;
 }
 
 .tooltiptext::after {
@@ -59,4 +90,10 @@
 .text.increase:hover .tooltiptext.increase {
     visibility: visible;
     opacity: 1;
+}
+
+.theme-switch:hover .tooltiptext.mode {
+    visibility: visible;
+    opacity: 1;
+    z-index: 15;
 }

@@ -44,7 +44,7 @@ const messageData= {
             {
                 name: "JERRY",
                 text: "You do not understand how these tests go Yang. Sure, it does not look like much, but we got some feedback that some of these folks like the direction we are taking. Sometimes you cannot rely on the data.",
-                speedInd: 50
+                speedInd: 40
             },
             {
                 name: "YANG",
@@ -327,11 +327,8 @@ function showEachMessage(){
         j += 1
         setTimeout(showEachMessage, durationToNextMessage) //apply recursion
     } else {
-        if (buttons.length >0){
-            let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
-            if (playAudioForAccessibility === "true"){
-                playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.wav`)
-            }
+        if (buttons.length >0){  
+            playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.wav`)
             addButtons()
         } else {
             //update choose a different response to be aria-hidden
@@ -397,6 +394,7 @@ function showPart2Again(){
 let dotInd = 0
 const dotImage = document.createElement('img')
 dotImage.style.width = '100%'
+let showingDots = true
 function getDotAnimation(){
     if (dotInd < 17){
         let ind
@@ -414,7 +412,9 @@ function getDotAnimation(){
     } else {
         dotInd = 0
     }
-    setTimeout(getDotAnimation, 70)
+    if (showingDots){
+        setTimeout(getDotAnimation, 70)
+    }
 }
 
 function getMessageElement(name, messageText, side, speedInd){
@@ -461,6 +461,7 @@ function getMessageElement(name, messageText, side, speedInd){
     textMessageContainer.setAttribute('aria-hidden', 'true')
     if (name === "YANG" && messageText[0] === "."){
         textMessageContainer.appendChild(dotImage)
+        showingDots = true
         getDotAnimation()
         textMessageContainer.style.height = '60px'
     } else {
@@ -507,8 +508,8 @@ function getMessageElement(name, messageText, side, speedInd){
     }
 
     //initiate VO
-    const withScreenReader = sessionStorage.getItem('screen-reader')
-    if (withScreenReader === "false" && messageText[0] != "." && speedInd !== 0){
+    // const withScreenReader = sessionStorage.getItem('screen-reader')
+    if (messageText[0] != "." && speedInd !== 0){
         if (name === "JERRY"){
             playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
         } else if (name === "YANG"){
@@ -569,6 +570,7 @@ function addButtons(){
                 } else {
                     window.location.href = "../../games/balloon/intro.html"
                 }
+                showingDots = false
             })
             buttonsContainer.appendChild(button)
             buttonList.push(button)
@@ -583,7 +585,9 @@ function addButtons(){
 function playAudio(file){
     const muted = localStorage.getItem('muted')
     audio = new Audio(file);
+    console.log('playaudio', file, audio)
     if (muted === "False"){
+
         audio.play()
     }
     audio.volume = 1;

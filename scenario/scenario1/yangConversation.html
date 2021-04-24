@@ -10,15 +10,17 @@
     </head>
     <body>
         <div id="conversation-container" role="container" >
-            <div class="size-change">
-                <button class="text decrease" onclick="decreaseSize()">
-                    <img class="icon decrease-size" alt="decrease size icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1619019366/decreaseSize_yygyij.svg"/>
-                    <span class="tooltiptext decrease">make text smaller</span>
-                </button>
-                <button class="text increase" onclick="increaseSize()">
-                    <img class="icon increase-size" alt="increase size icon" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1619019367/increaseSizeIcon_ykvc6c.svg" />
-                    <span class="tooltiptext increase">make text bigger</span>
-                </button>
+            <div class="setup">
+                <div class="size-change">
+                    <button class="text decrease" onclick="decreaseSize()">
+                        <div class="icon decrease-size">A</div>
+                        <span class="tooltiptext decrease">make text smaller</span>
+                    </button>
+                    <button class="text increase" onclick="increaseSize()">
+                        <div class="icon increase-size">A</div>
+                        <span class="tooltiptext increase">make text bigger</span>
+                    </button>
+                </div>
             </div>
             <div class="header" role="header" >
                 <img  class="logo" aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />

@@ -45,7 +45,7 @@ body {
     width: 100%; 
     display: flex; 
     justify-content: center; 
-    margin-bottom: 100px; 
+    margin-bottom: 8%; 
 }
 
 .logo {
@@ -136,8 +136,8 @@ body {
 #group2 {
     position: absolute; 
     left: 15%; 
-    top: 80%; 
-    width: 20%; 
+    top: 87%; 
+    width: 17%; 
     transform: rotate(180deg);
 }
 
