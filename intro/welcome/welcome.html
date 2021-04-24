@@ -3,11 +3,24 @@
     <head>
         <title>Perspective 2.0</title>
         <link rel="stylesheet" href="./welcome.css">
+        <link rel="stylesheet" href="../../sizeAdjust.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class="container" role="container" >
+            <div class="setup">
+                <div class="size-change">
+                    <button class="text decrease" onclick="decreaseSize()">
+                        <div class="icon decrease-size">A</div>
+                        <span class="tooltiptext decrease">make text smaller</span>
+                    </button>
+                    <button class="text increase" onclick="increaseSize()">
+                        <div class="icon increase-size">A</div>
+                        <span class="tooltiptext increase">make text bigger</span>
+                    </button>
+                </div>
+            </div>
             <div class="header" role="header" >
                 <img class="logo" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
             </div>
@@ -19,7 +32,7 @@
             <img id="ellipse" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614213869/Ellipse_25.1_c18oph.svg" />
             <img id="group1" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210431/Group_53.1_wqvelu.svg" />
             <img id="group2" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210192/Group_105_aulqkx.svg" />
-            <a href="../../accessibility/menu.html" role="link" tabindex="0">
+            <a href="../../index.html" role="link" tabindex="0">
                 <img id="leftSlide" alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
             </a>
             <a href="../characterSelection/characterSelection.html" role="link" tabindex="0">
@@ -27,10 +40,14 @@
             </a>
         </div>
         <script>
+            let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
             const curMode = sessionStorage.getItem('data-theme')
             const container = document.getElementsByClassName('container')[0]
             const subtitle = document.getElementsByClassName('subtitle')[0]
             const logo = document.getElementsByClassName('logo')[0]
+            const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
+            const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
+
             if (curMode && curMode === "dark"){
                 container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618876135/Group_247-darkkk_cjchge.svg)"
                 polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618876404/Polygon_8-darkkkkk_li0twk.svg"
@@ -42,7 +59,28 @@
                 group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618876202/Group_53-darkkk_ypy8mm.svg"
                 group2.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618876254/Group_102-darkkk_hwx4xi.svg"
                 logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+                increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
+                decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
             } 
+            //set sizes
+            subtitle.style.fontSize = `${26 + sizeElastic}px`
+
+            function updateSize(){
+                if (sizeElastic > -25 && sizeElastic < 46){
+                    subtitle.style.fontSize = `${26 + sizeElastic}px`
+                    subtitle.style.lineHeight = `${38 + sizeElastic}px`
+                }
+                localStorage.setItem('sizeElastic', sizeElastic)
+            }
+
+            function increaseSize(){
+                sizeElastic += 1
+                updateSize()
+            }
+            function decreaseSize(){
+                sizeElastic -= 1
+                updateSize()
+            }
         </script>
     </body>
 </html>

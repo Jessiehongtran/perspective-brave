@@ -59,7 +59,7 @@ body {
 
 #ellipse {
     position: absolute; 
-    left: 85%; 
+    left: 75%; 
     top: -12%; 
     width: 10%
 }
@@ -97,7 +97,7 @@ body {
     text-align: center; 
     font-size: 26px; 
     color: #1E2228;
-    line-height: 38px;
+    
 }
 
 .speakerIcon {

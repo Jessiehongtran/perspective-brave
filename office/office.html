@@ -2,16 +2,27 @@
 <html>
     <head>
         <title>Perspective 2.0</title>
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="../sizeAdjust.css">
         <link rel="stylesheet" href="./office.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="container" role="container">
-            <div class="main-office">
-                <img class="bigOffice" tabindex="0" alt="Welcome to Yang’s office. You are standing on the floor. On the left of you is a big table with 3 seats. Behind you are walls, be careful to not touch them. On the right of you are 5 laptop desks. Next to those are some drawers. There are edges of the office too, do not cross them." src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615935271/bigOfficeMap_rfbakj.svg"/>
-                <img class="infoIcon" alt="Press to see instruction" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615403814/info_icon_kffauc.svg" onclick="toggleInstruction()"/>
+            <div class="setup">
+                <div class="size-change">
+                    <button class="text decrease" onclick="decreaseSize()">
+                        <div class="icon decrease-size">A</div>
+                        <span class="tooltiptext decrease">make text smaller</span>
+                    </button>
+                    <button class="text increase" onclick="increaseSize()">
+                        <div class="icon increase-size">A</div>
+                        <span class="tooltiptext increase">make text bigger</span>
+                    </button>
+                </div>
+                <button class="infoIcon" onclick="toggleInstruction()">
+                    Info
+                </button>
                 <div id="instruction" aria-label="Instruction" onclick="toggleInstruction()">
                     <div class="tutorial" >
                         <p class="detail-tutorial">You are in Yang's office.</p>
@@ -46,6 +57,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="main-office">
+                <img class="bigOffice" tabindex="0" alt="Welcome to Yang’s office. You are standing on the floor. On the left of you is a big table with 3 seats. Behind you are walls, be careful to not touch them. On the right of you are 5 laptop desks. Next to those are some drawers. There are edges of the office too, do not cross them." src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615935271/bigOfficeMap_rfbakj.svg"/>
                 <div id="player" tabindex="0" aria-label="Character" style="position: absolute; width: 100px; height: 120px" >
                     <img id="playerImg" alt="Character image" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
                 </div>

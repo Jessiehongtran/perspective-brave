@@ -3,12 +3,25 @@
     <head>
         <title>Perspective 2.0</title>
         <link rel="stylesheet" href="./conversation.css">
+        <link rel="stylesheet" href="../../sizeAdjust.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="conversation-container" role="container" >
+            <div class="setup">
+                <div class="size-change">
+                    <button class="text decrease" onclick="decreaseSize()">
+                        <div class="icon decrease-size">A</div>
+                        <span class="tooltiptext decrease">make text smaller</span>
+                    </button>
+                    <button class="text increase" onclick="increaseSize()">
+                        <div class="icon increase-size">A</div>
+                        <span class="tooltiptext increase">make text bigger</span>
+                    </button>
+                </div>
+            </div>
             <div class="header" role="header" >
                 <img  class="logo" aria-hidden="true" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
             </div>

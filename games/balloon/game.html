@@ -3,28 +3,26 @@
     <head>
         <title>Perspective 2.0</title>
         <link rel="stylesheet" href="./game.css">
+        <link rel="stylesheet" href="../../sizeAdjust.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="container" role="container" >
-            <div class="main-game" tabindex="0" aria-label="You are standing on a game platform which has 3 floors connected by staircases. There are 3 balloons containing answers of a question you are going to know. You should follow the instruction to go to and select the balloon containing the answer you think is correct" >
-                <a href="./intro.html" role="link">
-                    <img id="leftSlide" alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
-                </a>
-                <img class="platform" tabindex="0" alt="Game platform" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615483006/platformOfficial_p2y7ho.svg"/>
-                <p role="text" tabindex="0" aria-label="question: How many employees do you think leave their job when they do perceive bias in the workplace?" class="question">How many employees do you think leave their job when they do perceive bias in the workplace?</p>
-                <div class="balloon green" aria-label="green balloon - answer: 1 out of 10">
-                    1 out of 10
+            <div class="setup">
+                <div class="size-change">
+                    <button class="text decrease" onclick="decreaseSize()">
+                        <div class="icon decrease-size">A</div>
+                        <span class="tooltiptext decrease">make text smaller</span>
+                    </button>
+                    <button class="text increase" onclick="increaseSize()">
+                        <div class="icon increase-size">A</div>
+                        <span class="tooltiptext increase">make text bigger</span>
+                    </button>
                 </div>
-                <div class="balloon red" aria-label="red balloon - answer: 3 out of 10">
-                    3 out of 10
-                </div>
-                <div class="balloon yellow" aria-label="yellow balloon - answer: 5 out of 10">
-                    5 out of 10
-                </div>
-                <img class="character" tabindex="0" alt="you" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg"/>
-                <img class="infoIcon" alt="Press to see instruction" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615403814/info_icon_kffauc.svg" onclick="toggleInstruction()"/>
+                <button class="infoIcon" onclick="toggleInstruction()">
+                    Info
+                </button>
                 <div id="instruction" aria-label="Game instruction" onclick="toggleInstruction()">
                     <div class="tutorial" >
                         <p class="detail-tutorial" role="text">You are in a game platform.</p>
@@ -59,6 +57,23 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="main-game" tabindex="0" aria-label="You are standing on a game platform which has 3 floors connected by staircases. There are 3 balloons containing answers of a question you are going to know. You should follow the instruction to go to and select the balloon containing the answer you think is correct" >
+                <a href="./intro.html" role="link">
+                    <img id="leftSlide" alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+                </a>
+                <img class="platform" tabindex="0" alt="Game platform" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615483006/platformOfficial_p2y7ho.svg"/>
+                <p role="text" tabindex="0" aria-label="question: How many employees do you think leave their job when they do perceive bias in the workplace?" class="question">How many employees do you think leave their job when they do perceive bias in the workplace?</p>
+                <div class="balloon green" aria-label="green balloon - answer: 1 out of 10">
+                    1 out of 10
+                </div>
+                <div class="balloon red" aria-label="red balloon - answer: 3 out of 10">
+                    3 out of 10
+                </div>
+                <div class="balloon yellow" aria-label="yellow balloon - answer: 5 out of 10">
+                    5 out of 10
+                </div>
+                <img class="character" tabindex="0" alt="you" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg"/>
             </div>
             <div class="wrong-indicate" aria-hidden="true" style="display: none">
                 <div class="message" aria-label="Error message">

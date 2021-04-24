@@ -33,6 +33,7 @@ const chars = [
 
 // let charId = parseInt(location.search.substring(1));
 
+let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
 
 const curMode = sessionStorage.getItem('data-theme')
 const container = document.getElementsByClassName('container')[0]
@@ -43,6 +44,9 @@ const title = document.getElementsByClassName("title")[0]
 const bioWrapper = document.getElementsByClassName("bio-wrapper")[0]
 const charImage = document.getElementById("charImage")
 const introWrapper = document.getElementsByClassName("intro-wrapper")[0]
+const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
+            const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
+
 
 const selectedCharInd = parseInt(sessionStorage.getItem('charId'))
 direction.innerHTML = `
@@ -72,5 +76,38 @@ if (curMode && curMode === "dark"){
     bioWrapper.style.color = "#FFFFFF"
     introWrapper.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618942390/Group_90_jdp60y.svg)'
     introWrapper.style.color = "#FFFFFF"
-
+    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
+                decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
 } 
+
+//set sizes
+direction.style.fontSize = `${26 + sizeElastic}px`
+name.style.fontSize = `${40 + sizeElastic}px`
+title.style.fontSize = `${20 + sizeElastic}px`
+bioWrapper.style.fontSize = `${18 + sizeElastic}px`
+bioWrapper.style.lineHeight = `${30 + sizeElastic}px`
+
+function updateSize(){
+    if (sizeElastic > -25 && sizeElastic < 40){
+        direction.style.fontSize = `${26 + sizeElastic}px`
+        direction.style.lineHeight = `${38 + sizeElastic}px`
+    }
+    if (sizeElastic > -39 && sizeElastic < 60){
+        name.style.fontSize = `${40 + sizeElastic}px`
+    }
+    if (sizeElastic > -17 && sizeElastic < 30){
+        name.style.fontSize = `${40 + sizeElastic}px`
+        bioWrapper.style.fontSize = `${18 + sizeElastic}px`
+        bioWrapper.style.lineHeight = `${30 + sizeElastic}px`
+    }
+    localStorage.setItem('sizeElastic', sizeElastic)
+}
+
+function increaseSize(){
+    sizeElastic += 1
+    updateSize()
+}
+function decreaseSize(){
+    sizeElastic -= 1
+    updateSize()
+}

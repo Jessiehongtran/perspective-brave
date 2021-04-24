@@ -33,7 +33,6 @@ body {
     width: 25%; 
     height: 500px;
     /* border: 1px solid grey;  */
-    font-size: 26px; 
     line-height: 2.0;
     display: flex;
     flex-direction: column;
@@ -43,11 +42,10 @@ body {
 }
 
 .header {
-    margin-top: 20px; 
     width: 100%; 
     display: flex; 
     justify-content: center; 
-    margin-bottom: 100px; 
+    margin-bottom: 8%; 
 }
 
 .logo {
@@ -80,7 +78,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    line-height: 1.8;
 }
 
 .speakerIcon {
@@ -123,24 +120,24 @@ body {
 
 #ellipse {
     position: absolute; 
-    left: 85%; 
-    top: -12%; 
+    left: 75%; 
+    top: -14%; 
     width: 10%
 }
 
 #group1 {
     position: absolute; 
-    left: 90%; 
-    top: 90%;
-    width: 10%;
+    left: 85%; 
+    top: 85%;
+    width: 12%;
     transform: rotate(180deg);
 }
 
 #group2 {
     position: absolute; 
-    left: 20%; 
-    top: 90%; 
-    width: 10%; 
+    left: 15%; 
+    top: 87%; 
+    width: 17%; 
     transform: rotate(180deg);
 }
 

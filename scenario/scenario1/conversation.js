@@ -44,7 +44,7 @@ const messageData= {
             {
                 name: "JERRY",
                 text: "You do not understand how these tests go Yang. Sure, it does not look like much, but we got some feedback that some of these folks like the direction we are taking. Sometimes you cannot rely on the data.",
-                speedInd: 50
+                speedInd: 40
             },
             {
                 name: "YANG",
@@ -139,6 +139,8 @@ const messageData= {
     }
 }
 
+let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
+
 const container = document.getElementById("conversation-container")
 const intro = document.getElementById("intro")
 const chat = document.getElementById("chat")
@@ -153,10 +155,15 @@ const rightSlideWrapper = document.getElementById("rightSlideWrapper")
 const speakerIcon = document.getElementsByClassName('speakerIcon')[0]
 const logo = document.getElementsByClassName("logo")[0]
 const tryButton = document.getElementsByClassName("tryButton")[0]
-const  differentChooseText = document.getElementsByClassName("choose-text")[0]
-const  differentNextText = document.getElementsByClassName("next-text")[0]
-const volumeOff = document.getElementsByClassName('fas fa-volume-off')[0]
-const volumeOn = document.getElementsByClassName('fas fa-volume-up')[0]
+const differentChooseText = document.getElementsByClassName("choose-text")[0]
+const differentNextText = document.getElementsByClassName("next-text")[0]
+const volumeOff = document.getElementsByClassName("fas fa-volume-off")[0]
+const volumeOn = document.getElementsByClassName("fas fa-volume-up")[0]
+const decreaseSizeIcon = document.getElementsByClassName("icon decrease-size")[0]
+const increaseSizeIcon = document.getElementsByClassName("icon increase-size")[0]
+const scenarioText = document.getElementsByClassName("scenario-text")[0]
+const title = document.getElementsByClassName("title")[0]
+let buttonsContainer 
 
 volumeOff.style.display = 'none'
 volumeOn.style.display = 'block'
@@ -171,7 +178,8 @@ if (curMode && curMode === "dark"){
     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
     leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
     rightSlide1.src= rightSlide2Icon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
-    
+    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
+    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
 }
 
 
@@ -269,6 +277,7 @@ const characterFaceDark = {
 let next = 'part1'
 let messages = []
 let buttons = []
+let buttonList = []
 
 function showConversation(){
     intro.style.display = 'none'
@@ -318,11 +327,8 @@ function showEachMessage(){
         j += 1
         setTimeout(showEachMessage, durationToNextMessage) //apply recursion
     } else {
-        if (buttons.length >0){
-            let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
-            if (playAudioForAccessibility === "true"){
-                playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.wav`)
-            }
+        if (buttons.length >0){  
+            playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.wav`)
             addButtons()
         } else {
             //update choose a different response to be aria-hidden
@@ -388,6 +394,7 @@ function showPart2Again(){
 let dotInd = 0
 const dotImage = document.createElement('img')
 dotImage.style.width = '100%'
+let showingDots = true
 function getDotAnimation(){
     if (dotInd < 17){
         let ind
@@ -405,7 +412,9 @@ function getDotAnimation(){
     } else {
         dotInd = 0
     }
-    setTimeout(getDotAnimation, 70)
+    if (showingDots){
+        setTimeout(getDotAnimation, 70)
+    }
 }
 
 function getMessageElement(name, messageText, side, speedInd){
@@ -452,6 +461,7 @@ function getMessageElement(name, messageText, side, speedInd){
     textMessageContainer.setAttribute('aria-hidden', 'true')
     if (name === "YANG" && messageText[0] === "."){
         textMessageContainer.appendChild(dotImage)
+        showingDots = true
         getDotAnimation()
         textMessageContainer.style.height = '60px'
     } else {
@@ -498,8 +508,8 @@ function getMessageElement(name, messageText, side, speedInd){
     }
 
     //initiate VO
-    const withScreenReader = sessionStorage.getItem('screen-reader')
-    if (withScreenReader === "false" && messageText[0] != "." && speedInd !== 0){
+    // const withScreenReader = sessionStorage.getItem('screen-reader')
+    if (messageText[0] != "." && speedInd !== 0){
         if (name === "JERRY"){
             playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
         } else if (name === "YANG"){
@@ -528,7 +538,7 @@ function addButtons(){
     buttonsContainer.style.marginBottom= '30px'
     for (let i = 0; i < buttons.length; i++){
         if (buttons[i].text){
-            let button = document.createElement('button')
+            button = document.createElement('button')
             button.setAttribute('aria-label', buttons[i].text)
             button.style.padding = '12px 30px'
             button.style.border = 'none'
@@ -549,7 +559,7 @@ function addButtons(){
             button.style.cursor = 'pointer'
             button.style.marginRight = '20px'
             button.style.marginBottom = '20px'
-            button.style.fontSize = '16px'
+            button.style.fontSize = `${16 + sizeElastic}px`
             button.style.fontFamily = 'Montserrat'
             button.addEventListener('click', () => {
                 stopVO()
@@ -560,8 +570,10 @@ function addButtons(){
                 } else {
                     window.location.href = "../../games/balloon/intro.html"
                 }
+                showingDots = false
             })
             buttonsContainer.appendChild(button)
+            buttonList.push(button)
         }
     }
     chat.appendChild(buttonsContainer)
@@ -573,8 +585,56 @@ function addButtons(){
 function playAudio(file){
     const muted = localStorage.getItem('muted')
     audio = new Audio(file);
+    console.log('playaudio', file, audio)
     if (muted === "False"){
+
         audio.play()
     }
     audio.volume = 1;
+}
+
+
+//Set sizes
+title.style.fontSize = `${40 + sizeElastic}px`
+scenarioText.style.fontSize = `${22 + sizeElastic}px`
+scenarioText.style.lineHeight = `${39 + sizeElastic}px`
+tryButton.style.fontSize = `${18 + sizeElastic}px`
+differentChooseText.style.fontSize = differentNextText.style.fontSize = `${20 + sizeElastic}px`
+differentChooseText.style.lineHeight = differentNextText.style.lineHeight = `${36 + sizeElastic}px`
+chat.style.fontSize = `${16 + sizeElastic}px`
+chat.style.lineHeight = `${28 + sizeElastic}px`
+
+function updateSize(){
+    if (sizeElastic > -39 && sizeElastic < 20){
+        title.style.fontSize = `${40 + sizeElastic}px`
+    }
+    if (sizeElastic > -21 && sizeElastic < 20){
+        scenarioText.style.fontSize = `${22 + sizeElastic}px`
+        scenarioText.style.lineHeight = `${39 + sizeElastic}px`
+    }
+    if (sizeElastic > -19 && sizeElastic < 20){
+        tryButton.style.fontSize = `${18 + sizeElastic}px`
+        differentChooseText.style.fontSize = differentNextText.style.fontSize = `${20 + sizeElastic}px`
+        differentChooseText.style.lineHeight = differentNextText.style.lineHeight = `${36 + sizeElastic}px`
+    }
+    if (sizeElastic > -15 && sizeElastic < 20){
+        chat.style.fontSize =  `${16 + sizeElastic}px`
+        chat.style.lineHeight =  `${28 + sizeElastic}px`
+        if (buttonList.length > 0){
+            for (let i = 0; i < buttonList.length; i++){
+                buttonList[i].style.fontSize = `${16 + sizeElastic}px`
+                buttonList[i].style.lineHeight = `${28 + sizeElastic}px`
+            }
+        }
+    }
+    localStorage.setItem('sizeElastic', sizeElastic)
+}
+
+function increaseSize(){
+    sizeElastic += 1
+    updateSize()
+}
+function decreaseSize(){
+    sizeElastic -= 1
+    updateSize()
 }

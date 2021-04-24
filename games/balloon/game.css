@@ -31,12 +31,24 @@ body {
     cursor: pointer;
 }
 
+
 .infoIcon {
-    width: 6%;
-    position: absolute;
-    right: 2%;
-    top: 2%;
     cursor: pointer;
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619027718/infoIcon-noword_qgt0ty.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: none;
+    background-color: transparent;
+    padding: 28px 28px 28px 42px;
+    margin-top: -8px;
+    margin-right: -8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 500;
+    font-family: Montserrat; 
 }
 
 #instruction {
@@ -47,9 +59,9 @@ body {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    margin-right: 20px; 
     position: relative;
-    margin: -5.8% 0 0 80%;
+    margin-right: -8px;
+    margin-top: -15px;
 }
 
 .instruction-close {
@@ -92,7 +104,7 @@ body {
     position: absolute;
     width: 0;
     height: 0;
-    right: auto;
+    left: auto;
     right: 30px;
     top: -7%;
     bottom: auto;
@@ -104,7 +116,6 @@ body {
 
 .tutorial {
     font-weight: bolder; 
-    font-size: 18px; 
     display: flex; 
     flex-direction: column; 
     align-items: flex-start; 
@@ -247,8 +258,6 @@ body {
     margin-left: 4%;
     margin-top: 2%;
     max-width: 500px;
-    font-size: 22px;
-    line-height: 40px;
 }
 
 .balloon {
@@ -261,7 +270,6 @@ body {
     padding: 80px 40px 0 40px;
     color: white;
     font-weight: bold;
-    font-size: 20px;
 }
 
 .balloon.green {
@@ -338,7 +346,6 @@ body {
 
 .message-tag {
     margin-bottom: 40px; 
-    font-size: 26px; 
     text-align: center
 }
 
@@ -366,14 +373,14 @@ body {
 
 #ellipse-big-light {
     position: absolute; 
-    left: 85%; 
+    left: 72%; 
     top: -20%; 
     width: 15%
 }
 
 #ellipse-small {
     position: absolute; 
-    left: 70%; 
+    left: 60%; 
     top: -5%; 
     width: 5%
 }

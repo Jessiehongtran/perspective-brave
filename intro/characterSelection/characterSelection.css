@@ -79,7 +79,6 @@ body {
     width: 100%; 
     display: flex; 
     justify-content: center; 
-    margin-top: 60px;
 }
 
 .logo {
@@ -91,7 +90,6 @@ body {
     width: 60%; 
     margin: 20px 0; 
     text-align: center; 
-    font-size: 26px; 
     color: #1E2228;
     line-height: 45px;
 }

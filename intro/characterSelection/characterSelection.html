@@ -4,11 +4,24 @@
         <title>Perspective 2.0</title>
         <link rel="stylesheet" href="../../index.css">
         <link rel="stylesheet" href="./characterSelection.css">
+        <link rel="stylesheet" href="../../sizeAdjust.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class="container" role="container" >
+            <div class="setup">
+                <div class="size-change">
+                    <button class="text decrease" onclick="decreaseSize()">
+                        <div class="icon decrease-size">A</div>
+                        <span class="tooltiptext decrease">make text smaller</span>
+                    </button>
+                    <button class="text increase" onclick="increaseSize()">
+                        <div class="icon increase-size">A</div>
+                        <span class="tooltiptext increase">make text bigger</span>
+                    </button>
+                </div>
+            </div>
             <div class="top">
                 <div class="header" role="header" >
                     <img class="logo" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
@@ -78,6 +91,7 @@
             </a>
         </div>
         <script>
+            let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
             let playAudioForAccessibility = localStorage.getItem('playAudioForAccessibility')
             let audio 
             function speak(file){
@@ -96,6 +110,10 @@
             const blackMaleBG = document.getElementsByClassName('character black-male')[0]
             const transgenderBG = document.getElementsByClassName('character trans-gender')[0]
             const characterButton = document.getElementsByClassName('characterButton')
+            const title = document.getElementsByClassName('title')
+            const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
+            const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
+
             if (curMode && curMode === "dark"){
                 container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/charSelectionBG-dark_bmdl73.svg)"
                 rect.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618875396/Rectangle_111-darkkk_nl9z7m.svg"
@@ -112,6 +130,42 @@
                 for (let i = 0; i < characterButton.length ; i++){
                     characterButton[i].style.backgroundColor = "#015EF4"
                 }
+                increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
+                decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
+            }
+
+            //set sizes
+            direction.style.fontSize = `${26 + sizeElastic}px`
+            for (let i = 0; i < characterButton.length ; i++){
+                    characterButton[i].style.fontSize = `${16 + sizeElastic}px`
+                }
+            for (let i = 0; i < title.length ; i++){
+                    title[i].style.fontSize = `${20 + sizeElastic}px`
+                }
+
+            function updateSize(){
+                if (sizeElastic > -25 && sizeElastic < 40){
+                    direction.style.fontSize = `${26 + sizeElastic}px`
+                    direction.style.lineHeight = `${45 + sizeElastic}px`
+                }
+                if (sizeElastic > -15 && sizeElastic < 30){
+                    for (let i = 0; i < characterButton.length ; i++){
+                    characterButton[i].style.fontSize = `${16 + sizeElastic}px`
+                    }
+                    for (let i = 0; i < title.length ; i++){
+                            title[i].style.fontSize = `${16 + sizeElastic}px`
+                        }
+                }
+                localStorage.setItem('sizeElastic', sizeElastic)
+            }
+
+            function increaseSize(){
+                sizeElastic += 1
+                updateSize()
+            }
+            function decreaseSize(){
+                sizeElastic -= 1
+                updateSize()
             }
         </script>
     </body>
