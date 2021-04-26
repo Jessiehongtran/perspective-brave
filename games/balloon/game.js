@@ -634,6 +634,7 @@ instruction.style.fontSize = `${18 + sizeElastic}px`
 instruction.style.lineHeight = `${34 + sizeElastic}px`
 question.style.fontSize = `${22 + sizeElastic}px`
 question.style.lineHeight = `${40 + sizeElastic}px`
+infoIcon.style.fontSize = `${14 + sizeElastic}px`
 for (let i = 0; i < balloons.length; i++){
     balloons[i].style.fontSize = `${20 + sizeElastic}px`
     balloons[i].style.lineHeight = `${36 + sizeElastic}px`
@@ -654,6 +655,10 @@ function updateSize(){
             balloons[i].style.lineHeight = `${36 + sizeElastic}px`
         }
     }
+    if (sizeElastic > -13 && sizeElastic < 20){
+        infoIcon.style.fontSize = `${14 + sizeElastic}px`
+    }
+
     localStorage.setItem('sizeElastic', sizeElastic)
 }
 

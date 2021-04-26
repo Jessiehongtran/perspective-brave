@@ -40,7 +40,7 @@ body {
     background-size: 100%;
     border: none;
     background-color: transparent;
-    padding: 28px 28px 28px 42px;
+    padding: 26px 27px 26px 41px;
     margin-top: -8px;
     margin-right: -8px;
     display: flex;
@@ -106,7 +106,7 @@ body {
     height: 0;
     left: auto;
     right: 30px;
-    top: -7%;
+    top: -5%;
     bottom: auto;
     border: 15px solid;
     z-index: 1;
