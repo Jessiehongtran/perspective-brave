@@ -59,6 +59,12 @@
             const logo = document.getElementsByClassName('logo')[0] 
             const option = document.getElementsByClassName('option')[0]
             sessionStorage.setItem('screen-reader', 'false')
+            if (sessionStorage.getItem('screen-reader') && sessionStorage.getItem('screen-reader') === 'true'){
+                document.getElementById('screen-reader').checked = true
+            } else {
+                document.getElementById('screen-reader').checked = false
+            }
+            
 
             if (curMode && curMode === "dark"){
                 container.style.background = "#121212"
