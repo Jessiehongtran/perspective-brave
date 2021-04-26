@@ -555,7 +555,6 @@ function showCheerImg(){
         landing.src = `../../asset/winning/winning_${cheerImgInd}.svg`
         cheerStuffPos.y += cheerInd*3/4
         cheerStuff.style.top = `${cheerStuffPos.y}%`
-        console.log(landing)
         cheerInd += 1
         setTimeout(showCheerImg, 60)
     } else if (curMode && curMode === "dark" && cheerInd < 8){
