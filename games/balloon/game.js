@@ -54,8 +54,9 @@ const ellipseSmall = document.getElementById('ellipse-small')
 const ellipseSmalleEmpty = document.getElementById('ellipse-small-empty')
 const polygon = document.getElementById('pollygon')
 const rectie = document.getElementById('rectie')
-const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
-const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
+const sizeChange = document.getElementsByClassName('size-change')[0] 
+const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
+const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
 
 if (curMode && curMode === "dark"){
     container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877036/Mask_Group_10-darkkkkkkkk_rxr8vw.svg)"
@@ -92,8 +93,8 @@ if (curMode && curMode === "dark"){
     ellipseSmalleEmpty.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948677/Ellipse_25-dakkkkkkk_nqrtqk.svg"
     polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948738/Polygon_8-darkkkkkk_saygwc.svg"
     rectie.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948778/Group_53-rectie-dark_swuyio.svg"
-    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
-    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
+    sizeChange.style.backgroundColor = '#015EF4'
+    decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
 }
 
 function toggleInstruction(){

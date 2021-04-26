@@ -40,9 +40,9 @@ body {
     background-size: 100%;
     border: none;
     background-color: transparent;
-    padding: 26px 27px 26px 41px;
+    padding: 26px 24.5px 26px 39.5px;
     margin-top: -8px;
-    margin-right: -8px;
+    margin-right: -6px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -270,6 +270,7 @@ body {
     padding: 80px 40px 0 40px;
     color: white;
     font-weight: bold;
+    text-align: center ;
 }
 
 .balloon.green {

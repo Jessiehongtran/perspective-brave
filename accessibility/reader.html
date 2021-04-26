@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Perspective 2.0</title>
+        <link rel="stylesheet" href="./reader.css">
+        <link rel="stylesheet" href="../sizeAdjust.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" >
+    </head>
+    <body>
+        <div role="container" class="container">
+            <div class="setup">
+                <div class="size-change">
+                    <button class="text decrease" onclick="decreaseSize()">
+                        <div class="icon decrease-size">A</div>
+                        <span class="tooltiptext decrease">make text smaller</span>
+                    </button>
+                    <button class="text increase" onclick="increaseSize()">
+                        <div class="icon increase-size">A</div>
+                        <span class="tooltiptext increase">make text bigger</span>
+                    </button>
+                </div>
+            </div>
+            <div class="logo-container" role="header">
+                <img class="logo" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg" />
+            </div>
+            <div class="main">
+                <div class="wrapper">
+                    <div class="question">
+                        Check the box if it applies to you:
+                        <br/>Are you using screen reader?
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" value="screen-reader" role="check box" id="screen-reader"/>
+                        <label class="text" tabindex="0" aria-label="yes" for="screen-reader" >Yes</label>
+                    </div>
+                </div>
+            </div>
+            <img id="polygon" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1619455756/Polygon_8_mrqmt1.svg" /> 
+            <img id="group1" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1619455756/Group_105_dkcsme.svg" /> 
+            <img id="group2" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1619455756/Group_53_iwtutz.svg" /> 
+            <img id="ellipse" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1619455756/Ellipse_25_lnqo2a.svg" /> 
+            <a href="../index.html" role="link" tabindex="0">
+                <img id="leftSlide" alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+            </a>
+            <a href="../intro/welcome/welcome.html" role="link" tabindex="0">
+                <img id="rightSlide"  alt="Press to go to next page" onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            </a>
+        </div>
+        <script>
+            let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
+            const container = document.getElementsByClassName('container')[0]
+            const main = document.getElementsByClassName('main')[0]
+            const curMode = sessionStorage.getItem('data-theme')
+            const question = document.getElementsByClassName('question')[0]
+            const sizeChange = document.getElementsByClassName('size-change')[0] 
+            const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
+            const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
+            const logo = document.getElementsByClassName('logo')[0] 
+
+            if (curMode && curMode === "dark"){
+                container.style.background = "#121212"
+                main.style.background = "#000000"
+                main.style.color = "#FFFFFF"
+                polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619462526/Polygon_8_l1vcqw.svg"
+                ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1619462526/Ellipse_25_qslkws.svg"
+                leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
+                rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
+                question.style.color = "#FFFFFF"
+                group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619462526/Group_298_motkia.svg"
+                group2.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619462526/Group_105_zt2oti.svg"
+                logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
+                sizeChange.style.backgroundColor = '#015EF4'
+                decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
+            } 
+        </script>
+    </body>
+</html>

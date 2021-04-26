@@ -44,8 +44,9 @@ const title = document.getElementsByClassName("title")[0]
 const bioWrapper = document.getElementsByClassName("bio-wrapper")[0]
 const charImage = document.getElementById("charImage")
 const introWrapper = document.getElementsByClassName("intro-wrapper")[0]
-const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
-            const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
+const sizeChange = document.getElementsByClassName('size-change')[0] 
+const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
+const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
 
 
 const selectedCharInd = parseInt(sessionStorage.getItem('charId'))
@@ -76,8 +77,8 @@ if (curMode && curMode === "dark"){
     bioWrapper.style.color = "#FFFFFF"
     introWrapper.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618942390/Group_90_jdp60y.svg)'
     introWrapper.style.color = "#FFFFFF"
-    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
-                decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
+    sizeChange.style.backgroundColor = '#015EF4'
+    decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
 } 
 
 //set sizes
