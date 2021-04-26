@@ -42,12 +42,14 @@ if (curMode && curMode === "dark"){
 }
 
 function toggleInstruction(){
-    if (instruction.style.display === 'block'){
+    if (instruction.style.display !== 'none'){
         instruction.style.display = 'none'
     } else {
-        instruction.style.display = 'block'
+        instruction.style.display = 'flex'
     }
 }
+
+setTimeout(toggleInstruction, 7000)
 
 
 
