@@ -102,12 +102,14 @@ if (curMode && curMode === "dark"){
 }
 
 function toggleInstruction(){
-    if (instruction.style.display === 'block'){
+    if (instruction.style.display !== 'none'){
         instruction.style.display = 'none'
     } else {
-        instruction.style.display = 'block'
+        instruction.style.display = 'flex'
     }
 }
+
+setTimeout(toggleInstruction, 7000)
 
 
 let charPos = {
@@ -553,6 +555,7 @@ function showCheerImg(){
         landing.src = `../../asset/winning/winning_${cheerImgInd}.svg`
         cheerStuffPos.y += cheerInd*3/4
         cheerStuff.style.top = `${cheerStuffPos.y}%`
+        console.log(landing)
         cheerInd += 1
         setTimeout(showCheerImg, 60)
     } else if (curMode && curMode === "dark" && cheerInd < 8){
