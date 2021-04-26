@@ -368,7 +368,7 @@ function handleKeyDown(e){
         char.src = charFace[curDir]
         charSize = {
             w: 6,
-            h: 14
+            h: 12
         }
         char.style.left = `${charPos.x}%`
         char.style.top = `${charPos.y}%`
