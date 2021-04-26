@@ -424,3 +424,8 @@ body {
     width: 5%;
     cursor: pointer;
 }
+
+#good-job {
+    position: absolute;
+    width: 30%
+}
