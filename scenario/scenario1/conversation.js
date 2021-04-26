@@ -328,8 +328,11 @@ function showEachMessage(){
         j += 1
         setTimeout(showEachMessage, durationToNextMessage) //apply recursion
     } else {
-        if (buttons.length >0){  
-            playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.wav`)
+        if (buttons.length >0){ 
+            const screenReader = sessionStorage.getItem('screen-reader') 
+            if (screenReader && screenReader === "false"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.wav`)
+            }
             addButtons()
         } else {
             //update choose a different response to be aria-hidden
@@ -511,15 +514,18 @@ function getMessageElement(name, messageText, side, speedInd){
     //initiate VO
     // const withScreenReader = sessionStorage.getItem('screen-reader')
     if (messageText[0] != "." && speedInd !== 0){
-        if (name === "JERRY"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
-        } else if (name === "YANG"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
-        } else if (name === "DEVON"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_devon${audioInd}.mp3`)
-        } else if (name === "BOB"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_bob${audioInd}.mp3`)
-        } 
+        const screenReader = sessionStorage.getItem('screen-reader') 
+        if (screenReader && screenReader === "false"){
+            if (name === "JERRY"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
+            } else if (name === "YANG"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
+            } else if (name === "DEVON"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_devon${audioInd}.mp3`)
+            } else if (name === "BOB"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_bob${audioInd}.mp3`)
+            } 
+        }
     }
 
 

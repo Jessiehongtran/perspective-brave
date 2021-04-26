@@ -31,8 +31,8 @@
                         <br/>Are you using screen reader?
                     </div>
                     <div class="option">
-                        <input type="checkbox" value="screen-reader" role="check box" id="screen-reader"/>
-                        <label class="text" tabindex="0" aria-label="yes" for="screen-reader" >Yes</label>
+                        <input type="checkbox" value="screen-reader" role="check box" id="screen-reader" onChange="updateScreenReader()"/>
+                        <label class="text"  tabindex="0" aria-label="yes" for="screen-reader" >Yes</label>
                     </div>
                 </div>
             </div>
@@ -57,6 +57,8 @@
             const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
             const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
             const logo = document.getElementsByClassName('logo')[0] 
+            const option = document.getElementsByClassName('option')[0]
+            sessionStorage.setItem('screen-reader', 'false')
 
             if (curMode && curMode === "dark"){
                 container.style.background = "#121212"
@@ -73,6 +75,26 @@
                 sizeChange.style.backgroundColor = '#015EF4'
                 decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
             } 
+            question.style.fontSize = option.style.fontSize = `${26 + sizeElastic}px`
+            function updateSize(){
+                if (sizeElastic > -25 && sizeElastic < 20){
+                    question.style.fontSize = option.style.fontSize = `${26 + sizeElastic}px`
+                }
+                localStorage.setItem('sizeElastic', sizeElastic)
+            }
+
+            function increaseSize(){
+                sizeElastic += 1
+                updateSize()
+            }
+            function decreaseSize(){
+                sizeElastic -= 1
+                updateSize()
+            }
+
+            function updateScreenReader(){
+                sessionStorage.setItem('screen-reader', document.getElementById('screen-reader').checked)
+            }
         </script>
     </body>
 </html>

@@ -39,7 +39,6 @@ body {
 
 
 .question {
-    font-size: 26px;
     line-height: 42px;
     margin-bottom: 20px;
     text-align: center;
@@ -54,7 +53,6 @@ body {
 }
 
 .option {
-    font-size: 26px;
     font-weight: 500;
 }
 
