@@ -14,12 +14,12 @@ const messageData= {
             {
                 name: "BOB",
                 text: "Oh, this is above my pay grade!",
-                speedInd: 50
+                speedInd: 60
             },
             {
                 name: "YANG",
                 text: "...",
-                speedInd: 0
+                speedInd: 50
             },
         ],
         buttons: [
@@ -44,7 +44,7 @@ const messageData= {
             {
                 name: "JERRY",
                 text: "You do not understand how these tests go Yang. Sure, it does not look like much, but we got some feedback that some of these folks like the direction we are taking. Sometimes you cannot rely on the data.",
-                speedInd: 40
+                speedInd: 50
             },
             {
                 name: "YANG",
