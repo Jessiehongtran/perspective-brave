@@ -24,11 +24,9 @@ body {
 
 .theme-switch {
   display: inline-block;
-  height: 34px;
+  height: 30px;
   position: relative;
-  width: 80px;
-  margin-right: 3px;
-
+  width: 78px;
 }
 
 .theme-switch input {
@@ -44,6 +42,7 @@ body {
   right: 0;
   top: 0;
   transition: .4s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .slider:before {
@@ -52,9 +51,9 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 60%;
-  bottom: 4px;
+  bottom: 2px;
   content: "";
-  height: 26px;
+  height: 25px;
   left: 4px;
   position: absolute;
   transition: .4s;
@@ -71,7 +70,7 @@ input:checked + .slider:before {
 }
 
 input:checked + .slider:before {
-  transform: translateX(46px);
+  transform: translateX(44px);
 }
 
 .slider.round {

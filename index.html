@@ -34,7 +34,7 @@
             <div class="subtitle" tabindex= "0"  role="text" aria-label="A look at bias in the workplace">
                 A look at bias in the workplace
             </div>
-            <a href="./intro/welcome/welcome.html" tabindex= "0"  class="start-button"  role="link">
+            <a href="./accessibility/reader.html" tabindex= "0"  class="start-button"  role="link">
                 <img class="startButton-img" alt="Press to start the experience" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614019871/Group_65_yjvasr.png" />
             </a>
             <img id="polygon" aria-hidden="true"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614210343/Polygon_8.1_p0fjwm.svg" /> 
@@ -53,9 +53,10 @@
             const subtitle = document.getElementsByClassName('subtitle')[0]
             const logo = document.getElementsByClassName('logo')[0]
             const darkEnable = document.getElementsByClassName('dark-enable')[0]
-            const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
-            const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
             const toolTipTextMode = document.getElementsByClassName('tooltiptext mode')[0]
+            const sizeChange = document.getElementsByClassName('size-change')[0] 
+            const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
+            const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
 
             function handleMouseOver(){
                 if (sessionStorage.getItem('data-theme') && sessionStorage.getItem('data-theme') === "dark"){
@@ -92,8 +93,8 @@
                     startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618876527/Component_5_3_ucuivy.svg"
                     subtitle.style.color = '#FFFFFF'
                     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618931513/Perspectives-logo-darkkk_iup0gd.svg"
-                    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
-                    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
+                    sizeChange.style.backgroundColor = '#015EF4'
+                    decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
                     toolTipTextMode.innerHTML = 'enable light mode'
                 } else {
                     sessionStorage.setItem('data-theme', 'light')
@@ -106,8 +107,8 @@
                     startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614019871/Group_65_yjvasr.png"
                     subtitle.style.color = '#000000'
                     logo.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg"
-                    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619019367/increaseSizeIcon_ykvc6c.svg"
-                    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619019366/decreaseSize_yygyij.svg"
+                    sizeChange.style.backgroundColor = '#A9D3D0'
+                    decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#000000'
                     toolTipTextMode.innerHTML = 'enable dark mode'
                 }
             }

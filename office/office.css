@@ -89,9 +89,9 @@ body {
     background-size: 100%;
     border: none;
     background-color: transparent;
-    padding: 38px 35px 38px 60px;
+    padding: 35.5px 33px 35.5px 59px;
     margin-top: -18px;
-    margin-right: -8px;
+    margin-right: -7px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,7 +111,7 @@ body {
     height: 0;
     left: auto;
     right: 30px;
-    top: -7%;
+    top: -6%;
     bottom: auto;
     border: 15px solid;
     z-index: 1;

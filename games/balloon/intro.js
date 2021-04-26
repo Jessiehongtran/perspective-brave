@@ -38,8 +38,9 @@ const container = document.getElementById("container")
 const logo = document.getElementsByClassName("logo")[0]
 const activeDot = document.getElementsByClassName("each-dot active")[0]
 const eachDots = document.getElementsByClassName("each-dot")
-const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
-const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
+const sizeChange = document.getElementsByClassName('size-change')[0] 
+const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
+const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
 
 const curMode = sessionStorage.getItem('data-theme')
 if (curMode && curMode === "dark"){
@@ -59,19 +60,9 @@ if (curMode && curMode === "dark"){
         eachDots[i].style.backgroundColor = "#015EF4"
     }
     activeDot.style.backgroundColor = "#FF2EE0"
-    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
-    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
-} else {
-    container.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1614352554/Mask_Group_6_sqgbyy.svg)'
-    polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614355001/Polygon_8.8_aac0rb.svg"
-    rect.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614355146/Rectangle_137.111_tjtria.svg"
-    ellipse.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614213869/Ellipse_25.1_c18oph.svg"
-    group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614210431/Group_53.1_wqvelu.svg"
-    group2.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614210192/Group_105_aulqkx.svg"
-    leftSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"
-    rightSlide.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"
-    logo.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1615933174/PerspectiveLogo_c61yxb.svg"
-}
+    sizeChange.style.backgroundColor = '#015EF4'
+    decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
+} 
 
 let curId = 0
 

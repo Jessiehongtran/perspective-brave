@@ -13,8 +13,9 @@ const arrows = document.getElementsByClassName("arrow")
 const infoIcon = document.getElementsByClassName("infoIcon")[0]
 const tutorial = document.getElementsByClassName("tutorial")[0]
 const toolTipText = document.getElementsByClassName("tooltiptext")[0]
-const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
-const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
+const sizeChange = document.getElementsByClassName('size-change')[0] 
+const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
+const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
 const curMode = sessionStorage.getItem('data-theme')
 const bigOffice = document.getElementsByClassName("bigOffice")[0]
 
@@ -36,8 +37,8 @@ if (curMode && curMode === "dark"){
     root.style.setProperty("--pseudo-bordercolor", "#015EF4")
     infoIcon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619027718/infoIcon-noword-dark_sqcaou.svg)'
     infoIcon.style.color = "#FFFFFF"
-    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
-    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
+    sizeChange.style.backgroundColor = '#015EF4'
+    decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
 }
 
 function toggleInstruction(){

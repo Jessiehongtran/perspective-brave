@@ -40,9 +40,9 @@ body {
     background-size: 100%;
     border: none;
     background-color: transparent;
-    padding: 28px 28px 28px 42px;
+    padding: 26px 24.5px 26px 39.5px;
     margin-top: -8px;
-    margin-right: -8px;
+    margin-right: -6px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,7 +106,7 @@ body {
     height: 0;
     left: auto;
     right: 30px;
-    top: -7%;
+    top: -5%;
     bottom: auto;
     border: 15px solid;
     z-index: 1;
@@ -270,6 +270,7 @@ body {
     padding: 80px 40px 0 40px;
     color: white;
     font-weight: bold;
+    text-align: center ;
 }
 
 .balloon.green {
@@ -422,4 +423,9 @@ body {
     top: 45%; 
     width: 5%;
     cursor: pointer;
+}
+
+#good-job {
+    position: absolute;
+    width: 30%
 }

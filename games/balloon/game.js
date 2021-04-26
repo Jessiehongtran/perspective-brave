@@ -54,8 +54,12 @@ const ellipseSmall = document.getElementById('ellipse-small')
 const ellipseSmalleEmpty = document.getElementById('ellipse-small-empty')
 const polygon = document.getElementById('pollygon')
 const rectie = document.getElementById('rectie')
-const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0]
-const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0]
+const sizeChange = document.getElementsByClassName('size-change')[0] 
+const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
+const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
+const goodJob = document.getElementById('good-job')
+const setup = document.getElementsByClassName('setup')[0]
+setup.style.display = 'flex'
 
 if (curMode && curMode === "dark"){
     container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877036/Mask_Group_10-darkkkkkkkk_rxr8vw.svg)"
@@ -92,8 +96,9 @@ if (curMode && curMode === "dark"){
     ellipseSmalleEmpty.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948677/Ellipse_25-dakkkkkkk_nqrtqk.svg"
     polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948738/Polygon_8-darkkkkkk_saygwc.svg"
     rectie.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948778/Group_53-rectie-dark_swuyio.svg"
-    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
-    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
+    sizeChange.style.backgroundColor = '#015EF4'
+    decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
+    goodJob.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619466531/Group_303-dark_ubb6px.svg"
 }
 
 function toggleInstruction(){
@@ -114,6 +119,12 @@ let charSize = {
     w: 12,
     h: 12
 }
+
+let goodJobPos = {
+    y: -40,
+    x: 35 
+}
+
 const changeX = 1
 const changeY = 1
 
@@ -158,8 +169,25 @@ greenBalloon.style.width = redBalloon.style.width = yellowBalloon.style.width = 
 greenBalloon.style.height = redBalloon.style.height = yellowBalloon.style.height = `${balloonSize.h}%`
 cheerStuff.style.left = `${cheerStuffPos.x}%`
 cheerStuff.style.top = `${cheerStuffPos.y}%`
+goodJob.style.left = `${goodJobPos.x}%`
+goodJob.style.top = `${goodJobPos.y}%`
 
 let balloonCoor = 1
+
+let goodJobInd = 0
+
+function showGoodJob(){
+    if (goodJobInd < 6){
+        goodJobPos.y += 4
+        goodJob.style.left = `${goodJobPos.x}%`
+        goodJob.style.top = `${goodJobPos.y}%`
+        setTimeout(showGoodJob, 100)
+        goodJobInd += 1
+    }
+    
+}
+
+
 
 function initialFlyGreen(){
     greenBalloonPos.y -= balloonCoor
@@ -476,8 +504,9 @@ function hideError(){
 function showWinning(){
     winning.style.display = 'flex'
     mainGame.style.display = 'none'
+    setup.style.display = 'none'
     showCheerImg()
-    showCorrectRain()
+    showGoodJob()
 }
 
 function showCorrectRain(){
@@ -634,6 +663,7 @@ instruction.style.fontSize = `${18 + sizeElastic}px`
 instruction.style.lineHeight = `${34 + sizeElastic}px`
 question.style.fontSize = `${22 + sizeElastic}px`
 question.style.lineHeight = `${40 + sizeElastic}px`
+infoIcon.style.fontSize = `${14 + sizeElastic}px`
 for (let i = 0; i < balloons.length; i++){
     balloons[i].style.fontSize = `${20 + sizeElastic}px`
     balloons[i].style.lineHeight = `${36 + sizeElastic}px`
@@ -654,6 +684,10 @@ function updateSize(){
             balloons[i].style.lineHeight = `${36 + sizeElastic}px`
         }
     }
+    if (sizeElastic > -13 && sizeElastic < 20){
+        infoIcon.style.fontSize = `${14 + sizeElastic}px`
+    }
+
     localStorage.setItem('sizeElastic', sizeElastic)
 }
 

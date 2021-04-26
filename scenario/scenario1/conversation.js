@@ -159,8 +159,9 @@ const differentChooseText = document.getElementsByClassName("choose-text")[0]
 const differentNextText = document.getElementsByClassName("next-text")[0]
 const volumeOff = document.getElementsByClassName("fas fa-volume-off")[0]
 const volumeOn = document.getElementsByClassName("fas fa-volume-up")[0]
-const decreaseSizeIcon = document.getElementsByClassName("icon decrease-size")[0]
-const increaseSizeIcon = document.getElementsByClassName("icon increase-size")[0]
+const sizeChange = document.getElementsByClassName('size-change')[0] 
+const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
+const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
 const scenarioText = document.getElementsByClassName("scenario-text")[0]
 const title = document.getElementsByClassName("title")[0]
 let buttonsContainer 
@@ -178,8 +179,8 @@ if (curMode && curMode === "dark"){
     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
     leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
     rightSlide1.src= rightSlide2Icon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
-    increaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/increaseText-icon-dark_q2g7qj.svg"
-    decreaseSizeIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619023453/decreaseText-icon-dark_e2uv48.svg"
+    sizeChange.style.backgroundColor = '#015EF4'
+    decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
 }
 
 
@@ -327,8 +328,11 @@ function showEachMessage(){
         j += 1
         setTimeout(showEachMessage, durationToNextMessage) //apply recursion
     } else {
-        if (buttons.length >0){  
-            playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.wav`)
+        if (buttons.length >0){ 
+            const screenReader = sessionStorage.getItem('screen-reader') 
+            if (screenReader && screenReader === "false"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_chooseAReaction.wav`)
+            }
             addButtons()
         } else {
             //update choose a different response to be aria-hidden
@@ -510,15 +514,18 @@ function getMessageElement(name, messageText, side, speedInd){
     //initiate VO
     // const withScreenReader = sessionStorage.getItem('screen-reader')
     if (messageText[0] != "." && speedInd !== 0){
-        if (name === "JERRY"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
-        } else if (name === "YANG"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
-        } else if (name === "DEVON"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_devon${audioInd}.mp3`)
-        } else if (name === "BOB"){
-            playAudio(`../../asset/VOfiles/PerspectivesVO_bob${audioInd}.mp3`)
-        } 
+        const screenReader = sessionStorage.getItem('screen-reader') 
+        if (screenReader && screenReader === "false"){
+            if (name === "JERRY"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_jerry${audioInd}.wav`)
+            } else if (name === "YANG"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_yang${audioInd}.mp3`)
+            } else if (name === "DEVON"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_devon${audioInd}.mp3`)
+            } else if (name === "BOB"){
+                playAudio(`../../asset/VOfiles/PerspectivesVO_bob${audioInd}.mp3`)
+            } 
+        }
     }
 
 
