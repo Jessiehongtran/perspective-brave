@@ -26,7 +26,8 @@ const arrowKeyHolder = document.getElementById("arrowKeyHolder")
 let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
 
 if (curMode && curMode === "dark"){
-    bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1618942774/office-dark_ofafkt.svg'
+    bigOffice.src = 'https://res.cloudinary.com/dfulxq7so/image/upload/v1619548447/Group_305_scs2ey.svg'
+    container.style.backgroundColor = "#1D1D1D"
     instruction.style.backgroundColor = "#015EF4"
     instruction.style.color = '#FFFFFF'
     for (let i = 0; i < arrows.length; i++){
