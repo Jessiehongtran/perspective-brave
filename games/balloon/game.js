@@ -50,7 +50,7 @@ const wrongCloseIcon = document.getElementsByClassName('closeIconImg')[0]
 const roundieShape = document.getElementById('roundie')
 const ellipseBigDark =  document.getElementById('ellipse-big-dark')
 const ellipseBigLight =  document.getElementById('ellipse-big-light')
-const ellipseSmall = document.getElementById('ellipse-small')
+// const ellipseSmall = document.getElementById('ellipse-small')
 const ellipseSmalleEmpty = document.getElementById('ellipse-small-empty')
 const polygon = document.getElementById('pollygon')
 const rectie = document.getElementById('rectie')
@@ -92,7 +92,6 @@ if (curMode && curMode === "dark"){
     rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
     ellipseBigDark.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948568/Ellipse_25-darkkkk_etvbyn.svg"
     ellipseBigLight.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948623/Ellipse_25-smaller-darkk_n0rk0i.svg"
-    ellipseSmall.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948678/Ellipse_25-daaakkkk_bf1y1x.svg"
     ellipseSmalleEmpty.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948677/Ellipse_25-dakkkkkkk_nqrtqk.svg"
     polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948738/Polygon_8-darkkkkkk_saygwc.svg"
     rectie.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948778/Group_53-rectie-dark_swuyio.svg"
@@ -558,6 +557,7 @@ function showCheerImg(){
         cheerInd += 1
         setTimeout(showCheerImg, 60)
     } else if (curMode && curMode === "dark" && cheerInd < 8){
+        cheerStuff.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619536649/conffetti_ggtont.svg"
         let cheerImgInd
         if (cheerInd < 10){
             cheerImgInd = "0" + cheerInd.toString()
