@@ -545,7 +545,7 @@ function showCorrectRain(){
 
 function showCheerImg(){
     charInWinning.style.display = 'none'
-    if (curMode && curMode !== "dark" && cheerInd < 11){
+    if ((curMode === null || (curMode && curMode !== "dark")) && cheerInd < 11){
         let cheerImgInd
         if (cheerInd < 10){
             cheerImgInd = "0" + cheerInd.toString()
