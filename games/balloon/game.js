@@ -86,7 +86,6 @@ if (curMode && curMode === "dark"){
     greenBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/greenBalloon-darkkkk_t0funu.svg"
     redBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/pinkBalloon-darkkkk_j5csde.svg"
     yellowBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/yellowBalloon-darkkkk_luzk1p.svg"
-    infoIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618942661/infoIcon-dark_lrr5uj.svg"
     winning.style.backgroundColor = "#000000"
     roundieShape.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948230/Group_219-winning_yi906m.svg"
     rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
@@ -98,6 +97,8 @@ if (curMode && curMode === "dark"){
     sizeChange.style.backgroundColor = '#015EF4'
     decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
     goodJob.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619466531/Group_303-dark_ubb6px.svg"
+    infoIcon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619538404/infoIcon-dark_nchudy.svg)'
+    infoIcon.style.color = "#FFFFFF"
 }
 
 function toggleInstruction(){

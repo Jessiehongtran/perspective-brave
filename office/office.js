@@ -35,7 +35,7 @@ if (curMode && curMode === "dark"){
     controlKey.style.backgroundColor = '#FF2EE0'
     controlKey.style.color = '#000000'
     root.style.setProperty("--pseudo-bordercolor", "#015EF4")
-    infoIcon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619027718/infoIcon-noword-dark_sqcaou.svg)'
+    infoIcon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619538404/infoIcon-dark_nchudy.svg)'
     infoIcon.style.color = "#FFFFFF"
     sizeChange.style.backgroundColor = '#015EF4'
     decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
