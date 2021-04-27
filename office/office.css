@@ -23,6 +23,10 @@ body {
     margin: 0 8px 
 }
 
+.main-office {
+    width: 100%
+}
+
 .bigOffice {
     position: absolute; 
     top: 0; 
