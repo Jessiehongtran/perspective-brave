@@ -31,7 +31,8 @@ body {
     position: absolute; 
     top: 0; 
     left: -0.3%; 
-    margin-top: -10%
+    margin-top: -10%; 
+    width: 100%
 }
 
 #player {
