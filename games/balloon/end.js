@@ -122,7 +122,7 @@ function preSlide(){
     }
 }
 
-sessionStorag.clear()
+sessionStorage.clear()
 
 //reset size
 info.style.fontSize = `${26 + sizeElastic}px`
