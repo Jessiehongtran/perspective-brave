@@ -86,18 +86,23 @@ body {
     background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619538404/infoIcon-light_vkqouv.svg);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% ;
     border: none;
     background-color: transparent;
-    padding: 35.5px 33px 35.5px 59px;
-    margin-top: -18px;
-    margin-right: -10px;
+    border-radius: 60px;
+    padding: 35px 33px 35px 59px; 
+    margin-top: -18px; 
+    margin-right: -7px; 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-weight: 500;
     font-family: Montserrat; 
+}
+
+.i-icon {
+    width: 30px
 }
 
 :root {
@@ -116,6 +121,7 @@ body {
     border: 15px solid;
     z-index: 1;
     border-color:  transparent  transparent  var(--pseudo-bordercolor) transparent ;
+    
 }
 
 .instruction-close {
