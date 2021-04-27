@@ -34,7 +34,7 @@ body {
 
 .infoIcon {
     cursor: pointer;
-    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619027718/infoIcon-noword_qgt0ty.svg);
+    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619538404/infoIcon-light_vkqouv.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -42,7 +42,7 @@ body {
     background-color: transparent;
     padding: 26px 24.5px 26px 39.5px;
     margin-top: -8px;
-    margin-right: -6px;
+    margin-right: -8px;
     display: flex;
     justify-content: center;
     align-items: center;

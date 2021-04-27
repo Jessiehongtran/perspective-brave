@@ -164,6 +164,7 @@ const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0
 const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
 const scenarioText = document.getElementsByClassName("scenario-text")[0]
 const title = document.getElementsByClassName("title")[0]
+const characterTable = document.getElementById("character-table")
 let buttonsContainer 
 
 volumeOff.style.display = 'none'
@@ -180,6 +181,7 @@ if (curMode && curMode === "dark"){
     leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
     rightSlide1.src= rightSlide2Icon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
     sizeChange.style.backgroundColor = '#015EF4'
+    characterTable.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619537302/charsInConversations_giynkt.svg"
     decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
 }
 

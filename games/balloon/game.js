@@ -50,7 +50,7 @@ const wrongCloseIcon = document.getElementsByClassName('closeIconImg')[0]
 const roundieShape = document.getElementById('roundie')
 const ellipseBigDark =  document.getElementById('ellipse-big-dark')
 const ellipseBigLight =  document.getElementById('ellipse-big-light')
-const ellipseSmall = document.getElementById('ellipse-small')
+// const ellipseSmall = document.getElementById('ellipse-small')
 const ellipseSmalleEmpty = document.getElementById('ellipse-small-empty')
 const polygon = document.getElementById('pollygon')
 const rectie = document.getElementById('rectie')
@@ -86,19 +86,19 @@ if (curMode && curMode === "dark"){
     greenBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/greenBalloon-darkkkk_t0funu.svg"
     redBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/pinkBalloon-darkkkk_j5csde.svg"
     yellowBalloon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/yellowBalloon-darkkkk_luzk1p.svg"
-    infoIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618942661/infoIcon-dark_lrr5uj.svg"
     winning.style.backgroundColor = "#000000"
     roundieShape.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948230/Group_219-winning_yi906m.svg"
     rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
     ellipseBigDark.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948568/Ellipse_25-darkkkk_etvbyn.svg"
     ellipseBigLight.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948623/Ellipse_25-smaller-darkk_n0rk0i.svg"
-    ellipseSmall.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948678/Ellipse_25-daaakkkk_bf1y1x.svg"
     ellipseSmalleEmpty.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948677/Ellipse_25-dakkkkkkk_nqrtqk.svg"
     polygon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948738/Polygon_8-darkkkkkk_saygwc.svg"
     rectie.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618948778/Group_53-rectie-dark_swuyio.svg"
     sizeChange.style.backgroundColor = '#015EF4'
     decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
     goodJob.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619466531/Group_303-dark_ubb6px.svg"
+    infoIcon.style.backgroundImage = 'url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619538404/infoIcon-dark_nchudy.svg)'
+    infoIcon.style.color = "#FFFFFF"
 }
 
 function toggleInstruction(){
@@ -545,7 +545,7 @@ function showCorrectRain(){
 
 function showCheerImg(){
     charInWinning.style.display = 'none'
-    if (curMode && curMode !== "dark" && cheerInd < 11){
+    if ((curMode === null || (curMode && curMode !== "dark")) && cheerInd < 11){
         let cheerImgInd
         if (cheerInd < 10){
             cheerImgInd = "0" + cheerInd.toString()
@@ -558,6 +558,7 @@ function showCheerImg(){
         cheerInd += 1
         setTimeout(showCheerImg, 60)
     } else if (curMode && curMode === "dark" && cheerInd < 8){
+        cheerStuff.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619536649/conffetti_ggtont.svg"
         let cheerImgInd
         if (cheerInd < 10){
             cheerImgInd = "0" + cheerInd.toString()

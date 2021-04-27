@@ -68,7 +68,8 @@ body {
     position: absolute; 
     left: 5%; 
     top: 5%; 
-    width: 10%
+    width: 10%;
+    transform: rotate(180deg)
 }
 
 #group2 {
