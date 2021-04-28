@@ -251,13 +251,13 @@ function handleKeyDown(e){
             audio.play()
         }
     }
-    
+
 
     //check enter sparkling
     if (charPos.x + charSize.w/2 >= sparkPos.x 
             && charPos.x + charSize.w/2 <= sparkPos.x + sparkSize.w
-            && charPos.y + charSize.h >= sparkPos.y + sparkSize.h*0.85 
-            && charPos.y + charSize.h <= sparkPos.y + sparkSize.h*0.97){
+            && charPos.y + charSize.h >= sparkPos.y + sparkSize.h + 2
+            && charPos.y + charSize.h <= sparkPos.y + sparkSize.h + 5){
                 console.log('inSparkReminder', inSparkReminder)
                 if (inSparkReminder){
                     intheSpark = true
