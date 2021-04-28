@@ -18,6 +18,7 @@ const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0
 const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
 const curMode = sessionStorage.getItem('data-theme')
 const bigOffice = document.getElementsByClassName("bigOffice")[0]
+let rowAdjust = 0
 
 const controlKey = document.getElementById("control-key")
 
@@ -56,8 +57,8 @@ setTimeout(toggleInstruction, 7000)
 
 //variables
 const charPos = {
-    x: 1200,
-    y: 400
+    x: 65,
+    y: 30
 }
 
 const charFace = {
@@ -83,45 +84,51 @@ let canWalk = {
 }
 
 let charSize = {
-    w: 100,
-    h: 120
+    w: 7,
+    h: 9
 }
 
 const sparkPos = {
-    x: 600,
-    y: 600
+    x: 30,
+    y: 50
 }
 
 const sparkSize = {
-    w: 120,
-    h: 120
+    w: 6,
+    h: 6
 }
 
-const changeX = 20
-const changeY = 12
+const changeX = 1
+const changeY = 1
 let sparklingInd = 0
 
-const squareSize = 10
+const squareSize = 1
 const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-const cols = Math.floor(vw/squareSize)
-const rows = Math.floor(vh/squareSize)
+if (vw < 1300){
+    rowAdjust = -10
+}
+
+
+const cols = 100
+const rows = 100
 const squares = []
 let eachSquare
 let firstWalk = true
 let intheSpark = false
 let inSparkReminder = true
+let curDir
 const withScreenReader = sessionStorage.getItem('screen-reader')
 
 //setup
-char.style.left = `${charPos.x}px`
-char.style.top = `${charPos.y}px`
-char.style.width = `${charSize.w}px`
-char.style.height = `${charSize.h}px`
-sparkling.style.left = `${sparkPos.x}px`
-sparkling.style.top = `${sparkPos.y}px`
-sparkling.style.width = `${sparkSize.w}px`
-sparkling.style.height = `${sparkSize.h}px`
+char.style.left = `${charPos.x}%`
+char.style.top = `${charPos.y}%`
+char.style.width = `${charSize.w}%`
+char.style.height = `${charSize.h}%`
+sparkling.style.left = `${sparkPos.x}%`
+sparkling.style.top = `${sparkPos.y}%`
+sparkling.style.width = `${sparkSize.w}%`
+sparkling.style.height = `${sparkSize.h}%`
 
 
 function displaySparklingImg(){
@@ -234,15 +241,9 @@ function handleKeyDown(e){
                 "LEFT": true,
                 "RIGHT": true
             }
-            char.style.left = `${charPos.x}px`
-            char.style.top = `${charPos.y}px`
+            char.style.left = `${charPos.x}%`
+            char.style.top = `${charPos.y}%`
 
-            charSize = {
-                w: 65,
-                h: 80
-            }
-            charImg.style.width = `${charSize.w}px`
-            charImg.style.height = `${charSize.h}px`
         } else {
             canWalk[curDir] = false
             //hit sound
@@ -250,7 +251,7 @@ function handleKeyDown(e){
             audio.play()
         }
     }
-    console.log(e.key)
+    
 
     //check enter sparkling
     if (charPos.x + charSize.w/2 >= sparkPos.x 
@@ -284,11 +285,11 @@ for (let r = 0; r < rows; r++){
     for (let c = 0; c < cols; c++){
         eachSquare = document.createElement('div')
         eachSquare.setAttribute('id', 'eachSquare')
-        eachSquare.style.width = `${squareSize}px`
-        eachSquare.style.height = `${squareSize}px`
+        eachSquare.style.width = `${squareSize}%`
+        eachSquare.style.height = `${squareSize}%`
         eachSquare.style.position = 'absolute'
-        eachSquare.style.left = `${c*squareSize}px`
-        eachSquare.style.top = `${r*squareSize}px`
+        eachSquare.style.left = `${c*squareSize}%`
+        eachSquare.style.top = `${r*squareSize}%`
         eachSquare.style.border = '1px solid grey'
         eachSquare.style.zIndex = '5'
 
@@ -331,27 +332,22 @@ function drawStair(leftRow, leftCol, rightCol, stepLength, stepWidth,stepGap, di
     }
 }
 
-drawStair(60, 2, 96, 2, 4, 2, "DOWN")
-drawStair(58, 4, 96, 4, 4, 2, "DOWN")
-drawStair(56, 8, 96, 4, 4, 2, "DOWN")
-drawStair(54, 12, 96, 4, 4, 2, "DOWN")
-drawStair(51, 16, 27, 6, 4, 2, "DOWN")
-drawStair(49, 20, 27, 6, 4, 2, "DOWN")
-drawStair(64, 45, 96, 7, 4, 2, "DOWN")
-drawStair(62, 49, 96, 7, 4, 2, "DOWN")
-drawStair(58, 56, 96, 7, 4, 2, "DOWN")
-drawStair(40, 56, 96, 17, 4, 2, "DOWN")
-drawStair(33, 46, 60, 11, 3, 2, "DOWN")
-drawStair(43, 32, 46, 7, 3, 2, "UP")
-drawStair(27, 71, 96, 20, 4, 2, "DOWN")
-drawStair(27, 83, 96, 10, 4, 2, "DOWN")
-drawStair(54, 96, 139, 26, 4, 2, "UP")
-drawStair(30, 126, 134, 26, 4, 2, "UP")
-drawStair(28, 134, 139, 26, 3, 2, "DOWN")
-drawStair(37, 139, 154, 22, 3, 2, "DOWN")
-drawStair(77, 101, 117, 11, 3, 2, "UP")
-drawStair(69, 121, 135, 11, 3, 2, "UP")
+drawStair(45, 10, 50, 18 + rowAdjust, 2, 2, "DOWN")
+drawStair(27, 24, 60, 12 , 2, 2, "DOWN")
+drawStair(40, 28, 50, 24 , 2, 2, "DOWN")
+drawStair(20, 36, 50, 24 , 2, 2, "DOWN")
+drawStair(40, 50, 60, 20 , 2, 2, "DOWN")
+drawStair(44, 52, 72, 22 , 2, 2, "UP")
+drawStair(32, 72, 80, 20 , 2, 2, "DOWN")
 
+if (rowAdjust === 0){
+    drawStair(66, 50, 80, 12 , 2, 2, "UP")
+    drawStair(55, 23, 30, 11 , 5, 2, "DOWN")
+} else {
+    drawStair(38, 54, 72, 4 , 2, 2, "UP")
+    drawStair(28, 72, 80, 4 , 2, 2, "DOWN")
+    drawStair(49, 23, 30, 11 , 5, 0, "DOWN")
+}
 
 //checkWalkable
 function isWalkable(r,c){
