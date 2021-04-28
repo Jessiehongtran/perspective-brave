@@ -39,7 +39,7 @@
                             Black man
                         </div>
                         <a href="../characterIntro/charIntro.html" class="characterImage-link" role="link" onclick="sessionStorage.setItem('charId', 0)">
-                            <img alt="black male image" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
+                            <img alt="black male image" id="jevon" class="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262123/Jevon_zb3caa.svg" />
                         </a>
                         <a href="../characterIntro/charIntro.html" class="characterButton-link" role="link" onclick="sessionStorage.setItem('charId', 0)">
                             <button disabled class="characterButton" aria-label="Jevon, not available to select" style="opacity: 0.5" >
@@ -56,7 +56,7 @@
                             Woman in tech
                         </div>
                         <a href="../characterIntro/charIntro.html" class="characterImage-link" role="link" onclick="sessionStorage.setItem('charId', 1)">
-                            <img alt="women in tech image" id="characterImage" alt="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
+                            <img alt="women in tech image" id="yang"  class="characterImage" alt="" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg" />
                         </a>
                         <a href="../characterIntro/charIntro.html" class="characterButton-link" role="link" tabindex="6" onclick="sessionStorage.setItem('charId', 1)">
                             <button class="characterButton" aria-label="Yang, press to select and play a role of this character">
@@ -71,7 +71,7 @@
                             Transgender person
                         </div>
                         <a href="../characterIntro/charIntro.html" class="characterImage-link" role="link" onclick="sessionStorage.setItem('charId', 2)">
-                            <img alt="transgender person image" id="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
+                            <img alt="transgender person image" id="elijah"  class="characterImage" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262303/elijah_xmsqid.svg" />
                         </a>
                         <a href="../characterIntro/charIntro.html" class="characterButton-link" role="link" onclick="sessionStorage.setItem('charId', 2)">
                             <button class="characterButton" aria-label="Elijah, not available to select" style="opacity: 0.5">
@@ -114,6 +114,11 @@
             const sizeChange = document.getElementsByClassName('size-change')[0] 
             const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
             const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
+            const characters = {
+                "elijah": document.getElementById('elijah'),
+                "yang": document.getElementById('yang'),
+                "jevon": document.getElementById('jevon')
+            }
 
             if (curMode && curMode === "dark"){
                 container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/charSelectionBG-dark_bmdl73.svg)"
@@ -168,6 +173,67 @@
                 sizeElastic -= 1
                 updateSize()
             }
+
+            function getChaNameWithUpperFirstCase(name){
+                let transformedName = name[0].toUpperCase() + name.slice(1, name.length + 1)
+                return transformedName
+            }
+
+            let characterName = ""
+            let waveInd = 0
+
+            function characterWave(){
+                let afterWaveInd 
+                if (waveInd < 149){
+                    if (waveInd < 10){
+                        afterWaveInd = "00" + waveInd.toString()
+                    } else if (waveInd >= 10 && waveInd < 100 ){
+                        afterWaveInd = "0" + waveInd.toString()
+                    } else {
+                        afterWaveInd = waveInd
+                    }
+                    if (characterName){
+                        let charNameUppered = getChaNameWithUpperFirstCase(characterName)
+                        characters[characterName].src = `../../asset/${charNameUppered}_Front_Idle/${charNameUppered}_Front_Idle_00${afterWaveInd}.png`
+                        characters[characterName].style.width = '70%'
+                    }
+                    waveInd += 1
+                    setTimeout(characterWave, 20)
+                } 
+
+            }
+
+            characters["elijah"].addEventListener('mouseover', () => {
+                characterName = "elijah"
+                waveInd = 0
+                characterWave()
+            })
+
+            characters["jevon"].addEventListener('mouseover', () => {
+                characterName = "jevon"
+                waveInd = 0
+                characterWave()
+            })
+
+            characters["yang"].addEventListener('mouseover', () => {
+                characterName = "yang"
+                waveInd = 0
+                characterWave()
+            })
+
+            characters["elijah"].addEventListener('mouseout', () => {
+                waveInd = 150
+            })
+
+            characters["jevon"].addEventListener('mouseout', () => {
+                waveInd = 150
+            })
+
+            characters["yang"].addEventListener('mouseout', () => {
+                waveInd = 150
+            })
+
+            
         </script>
     </body>
 </html>
