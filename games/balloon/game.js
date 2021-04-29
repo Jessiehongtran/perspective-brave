@@ -439,11 +439,30 @@ function jump(){
     } 
 }
 
+let costumeInd = {
+    "green": 0,
+    "yellow": 0
+}
+
 function flyGreenBalloon(){
     if (greenBalloonPos.y > - balloonSize.h - 10){
         greenBalloonPos.y -= flyingSpeed
         greenBalloon.style.top = `${greenBalloonPos.y}%`
-        setTimeout(flyGreenBalloon, 80)
+
+        if (costumeInd["green"] < 17){
+            let greenBalInd = costumeInd["green"]
+            if (costumeInd["green"] < 10){
+                greenBalInd = "0" + costumeInd["green"].toString()
+            } 
+            if (curMode === "dark"){
+                greenBalloon.style.backgroundImage = `url(../../asset/Balloon_green_pop-DM/Balloon_green_pop-DM_000${greenBalInd}.png)`
+            } else {
+                greenBalloon.style.backgroundImage = `url(../../asset/Balloon_green_pop/Balloon_green_pop000${greenBalInd}.png)`
+            }
+            costumeInd["green"]  += 1
+        }
+
+        setTimeout(flyGreenBalloon, 100)
     } else {
         showError()
     }
@@ -473,6 +492,20 @@ function flyYellowBalloon(){
     if (yellowBalloonPos.y > - balloonSize.h - 10){
         yellowBalloonPos.y -= flyingSpeed
         yellowBalloon.style.top = `${yellowBalloonPos.y}%`
+
+        if (costumeInd["yellow"] < 17){
+            let yellowBalInd = costumeInd["yellow"]
+            if (costumeInd["yellow"] < 10){
+                yellowBalInd = "0" + costumeInd["yellow"].toString()
+            } 
+            if (curMode === "dark"){
+                yellowBalloon.style.backgroundImage = `url(../../asset/Balloon_yellow_pop-DM/Balloon_yellow_pop-DM_000${yellowBalInd}.png)`
+            } else {
+                yellowBalloon.style.backgroundImage = `url(../../asset/Balloon_yellow_pop/Balloon_yellow_pop000${yellowBalInd}.png)`
+            }
+            costumeInd["yellow"]  += 1
+        }
+
         setTimeout(flyYellowBalloon, 80)
     } else {
         showError()
