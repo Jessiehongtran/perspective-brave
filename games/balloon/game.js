@@ -137,18 +137,18 @@ const changeX = 1
 const changeY = 1
 
 let greenBalloonPos = {
-    x: 17,
-    y: 30
+    x: 14,
+    y: 17
 }
 
 let redBalloonPos = {
-    x: 44,
-    y: 0
+    x: 40.5,
+    y: -12
 }
 
 let yellowBalloonPos = {
-    x: 72,
-    y: 30
+    x: 69,
+    y: 17
 }
 
 let balloonSize = {
@@ -180,12 +180,12 @@ cheerStuff.style.top = `${cheerStuffPos.y}%`
 goodJob.style.left = `${goodJobPos.x}%`
 goodJob.style.top = `${goodJobPos.y}%`
 
-greenAnswer.style.left = `${greenBalloonPos.x + 3}%`
-greenAnswer.style.top = `${greenBalloonPos.y + 7}%`
-redAnswer.style.left = `${redBalloonPos.x + 3}%`
-redAnswer.style.top = `${redBalloonPos.y + 7}%`
-yellowAnswer.style.left = `${yellowBalloonPos.x + 3}%`
-yellowAnswer.style.top = `${yellowBalloonPos.y + 7}%`
+greenAnswer.style.left = `${greenBalloonPos.x + 6}%`
+greenAnswer.style.top = `${greenBalloonPos.y + 22}%`
+redAnswer.style.left = `${redBalloonPos.x + 6}%`
+redAnswer.style.top = `${redBalloonPos.y + 22}%`
+yellowAnswer.style.left = `${yellowBalloonPos.x + 6}%`
+yellowAnswer.style.top = `${yellowBalloonPos.y + 22}%`
 
 let balloonCoor = 1
 
@@ -237,8 +237,64 @@ function initialFlyYellow(){
     }
 }
 
+let floatInd = 0
+let curGreenAnswerPos = {
+    x: greenBalloonPos.x + 6,
+    y: greenBalloonPos.y + 22
+}
+let curRedAnswerPos = {
+    x: redBalloonPos.x + 6,
+    y: redBalloonPos.y + 22
+}
+let curYellowAnswerPos = {
+    x: yellowBalloonPos.x + 6,
+    y: yellowBalloonPos.y + 22
+}
 
-// initialFlyGreen()
+let textFloatSpeed = 0.145
+
+function balloonFloats(){
+    let balloonSize = {
+        w: 18,
+        h: 50
+    }
+    greenBalloon.style.width = yellowBalloon.style.width = redBalloon.style.width = `${balloonSize.w}%`
+    greenBalloon.style.height = yellowBalloon.style.height = redBalloon.style.height = `${balloonSize.h}%`
+
+    if (floatInd < 120){
+        let processedInd
+        if (floatInd < 10){
+            processedInd = "00" + floatInd.toString()
+        } else if (floatInd >= 10 && floatInd < 100){
+            processedInd = "0" + floatInd.toString()
+        } else {
+            processedInd = floatInd
+        }
+
+        if (floatInd < 30 || floatInd > 60 && floatInd <= 90 ){
+            curGreenAnswerPos.y += textFloatSpeed
+            curRedAnswerPos.y += textFloatSpeed
+            curYellowAnswerPos.y += textFloatSpeed
+        } else if (floatInd >= 30 && floatInd  <= 60 || floatInd >90 ) {
+            curGreenAnswerPos.y -= textFloatSpeed
+            curRedAnswerPos.y -= textFloatSpeed
+            curYellowAnswerPos.y -= textFloatSpeed
+        }
+        greenAnswer.style.top = `${curGreenAnswerPos.y}%`
+        redAnswer.style.top = `${curRedAnswerPos.y}%`
+        yellowAnswer.style.top = `${curYellowAnswerPos.y}%`
+
+        greenBalloon.src = `../../asset/Balloon_teal/Balloon_teal_00${processedInd}.png`
+        redBalloon.src = `../../asset/Balloon_red/Balloon_red_00${processedInd}.png`
+        yellowBalloon.src = `../../asset/Balloon_yellow/Balloon_yellow_00${processedInd}.png`
+        floatInd += 1
+    } else {
+        floatInd  = 0
+    }
+    setTimeout(balloonFloats, 60)
+}
+
+balloonFloats()
 
 let countStep = 0
 const totalStep = 10
