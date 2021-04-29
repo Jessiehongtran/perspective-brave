@@ -84,8 +84,8 @@ let canWalk = {
 }
 
 let charSize = {
-    w: 7,
-    h: 9
+    w: 6,
+    h: 8.7
 }
 
 const sparkPos = {

@@ -23,6 +23,12 @@ let moveInd = {
     "RIGHT": 0
   }
 
+let floating = {
+    "green": true,
+    "yellow": true,
+    "red": true
+}
+
 let fly = true
 
 let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
@@ -69,10 +75,7 @@ setup.style.display = 'flex'
 
 if (curMode && curMode === "dark"){
     container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877036/Mask_Group_10-darkkkkkkkk_rxr8vw.svg)"
-    greenBalloon.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/greenBalloon-darkkkk_t0funu.svg)"
-    redBalloon.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/pinkBalloon-darkkkk_j5csde.svg)"
-    yellowBalloon.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1618877679/yellowBalloon-darkkkk_luzk1p.svg)"
-    greenBalloon.style.color = redBalloon.style.color =  yellowBalloon.style.color = "#000000"
+    greenAnswer.style.color = redAnswer.style.color =  yellowAnswer.style.color = "#000000"
     platform.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618945372/gamePlatform_dark_mbqtwh.svg"
     wrongIndicate.style.backgroundColor = 'rgba(0,0,0, 0.85)'
     wrongIcon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618879831/Group_275-ddd_da74gg.svg"
@@ -259,8 +262,6 @@ function balloonFloats(){
         w: 19,
         h: 50
     }
-    greenBalloon.style.width = yellowBalloon.style.width = redBalloon.style.width = `${balloonSize.w}%`
-    greenBalloon.style.height = yellowBalloon.style.height = redBalloon.style.height = `${balloonSize.h}%`
 
     if (floatInd < 120){
         let processedInd
@@ -281,13 +282,39 @@ function balloonFloats(){
             curRedAnswerPos.y -= textFloatSpeed
             curYellowAnswerPos.y -= textFloatSpeed
         }
-        greenAnswer.style.top = `${curGreenAnswerPos.y}%`
-        redAnswer.style.top = `${curRedAnswerPos.y}%`
-        yellowAnswer.style.top = `${curYellowAnswerPos.y}%`
 
-        greenBalloon.src = `../../asset/Balloon_teal/Balloon_teal_00${processedInd}.png`
-        redBalloon.src = `../../asset/Balloon_red/Balloon_red_00${processedInd}.png`
-        yellowBalloon.src = `../../asset/Balloon_yellow/Balloon_yellow_00${processedInd}.png`
+        if (floating["green"]){
+            greenBalloon.style.width = `${balloonSize.w}%`
+            greenBalloon.style.height = `${balloonSize.h}%`
+            greenAnswer.style.top = `${curGreenAnswerPos.y}%`
+            if (curMode && curMode === "dark"){
+                greenBalloon.src = `../../asset/Balloon_teal-DM/Balloon_teal-DM_00${processedInd}.png`
+            } else {
+                greenBalloon.src = `../../asset/Balloon_teal/Balloon_teal_00${processedInd}.png`
+            }
+        }
+
+        if (floating["red"]){
+            redBalloon.style.width = `${balloonSize.w}%`
+            redBalloon.style.height = `${balloonSize.h}%`
+            redAnswer.style.top = `${curRedAnswerPos.y}%`
+            if (curMode && curMode === "dark"){
+                redBalloon.src = `../../asset/Balloon_red-DM/Balloon_red-DM_00${processedInd}.png`
+            } else {
+                redBalloon.src = `../../asset/Balloon_red/Balloon_red_00${processedInd}.png`
+            }
+        }
+
+        if (floating["yellow"]){
+            yellowBalloon.style.width = `${balloonSize.w}%`
+            yellowBalloon.style.height = `${balloonSize.h}%`
+            yellowAnswer.style.top = `${curYellowAnswerPos.y}%`
+            if (curMode && curMode === "dark"){
+                yellowBalloon.src = `../../asset/Balloon_yellow-DM/Balloon_yellow-DM_00${processedInd}.png`
+            } else {
+                yellowBalloon.src = `../../asset/Balloon_yellow/Balloon_yellow_00${processedInd}.png`
+            }
+        }
         floatInd += 1
     } else {
         floatInd  = 0
@@ -458,15 +485,18 @@ function handleKeyDown(e){
 
     if (e.key === "g"){
         //fly green
+        floating["green"] = false
         flyGreenBalloon()
 
     }
     if (e.key === "r"){
         //fly red
+        floating["red"] = false
         flyRedBalloon()
     }
     if (e.key === "y"){
         //fly yellow
+        floating["yellow"] = false
         flyYellowBalloon()
     }
 
@@ -491,6 +521,7 @@ function jump(){
         && charPos.y  >= greenBalloonPos.y && charPos.y <= greenBalloonPos.y + balloonSize.h
         ){
             if (fly){
+                floating["green"] = false
                 flyGreenBalloon()
             }
         }
@@ -498,11 +529,13 @@ function jump(){
     if (charPos.x + charSize.w/2 >= redBalloonPos.x && charPos.x + charSize.w/2 <= redBalloonPos.x + balloonSize.w
         && charPos.y  >= redBalloonPos.y && charPos.y <= redBalloonPos.y + balloonSize.h){
             isJumping = false
+            floating["red"] = false
             flyRedBalloon()
         }
 
     if (charPos.x + charSize.w/2 >= yellowBalloonPos.x && charPos.x + charSize.w/2 <= yellowBalloonPos.x + balloonSize.w
         && charPos.y  >= yellowBalloonPos.y && charPos.y <= yellowBalloonPos.y + balloonSize.h){
+            floating["yellow"] = false
             flyYellowBalloon()
         }
 
@@ -519,6 +552,7 @@ let costumeInd = {
 function flyGreenBalloon(){
     fly = false
     greenAnswer.style.display = 'none'
+    console.log(costumeInd["green"])
     balloonSize = {
         w: 16,
         h: 40
@@ -546,11 +580,12 @@ function flyGreenBalloon(){
         greenBalloonPos.y -= flyingSpeed -4
         greenBalloon.style.top = `${greenBalloonPos.y}%`
         costumeInd["green"]  += 1
-        setTimeout(flyGreenBalloon, 80)
+        setTimeout(flyGreenBalloon, 60)
         
     }  else {
         showError()
         fly = true
+        greenBalloon.style.display = 'none'
     }
 }
 
@@ -558,8 +593,9 @@ function flyGreenBalloon(){
 function flyRedBalloon(){
     if (redBalloonPos.y > - balloonSize.h - 10){
         redBalloonPos.y -= flyingSpeed
+        curRedAnswerPos.y -= flyingSpeed
         redBalloon.style.top = `${redBalloonPos.y}%`
-        redAnswer.style.top = `${redBalloonPos.y + 8}%`
+        redAnswer.style.top = `${curRedAnswerPos.y}%`
         charPos.y -= flyingSpeed
         char.style.top = `${charPos.y}%`
         setTimeout(flyRedBalloon, 80)
@@ -603,7 +639,7 @@ function flyYellowBalloon(){
         yellowBalloonPos.y -= flyingSpeed -4
         yellowBalloon.style.top = `${yellowBalloonPos.y}%`
         costumeInd["yellow"]  += 1
-        setTimeout(flyYellowBalloon, 80)
+        setTimeout(flyYellowBalloon, 60)
     } else {
         showError()
         fly = true

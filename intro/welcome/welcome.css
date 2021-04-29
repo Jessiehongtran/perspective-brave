@@ -16,7 +16,7 @@ body {
     background-position: center; 
     background-size: cover; 
     background-repeat: no-repeat; 
-    overflow: auto;
+    overflow: hidden;
 }
 
 #hamburger-menu {
