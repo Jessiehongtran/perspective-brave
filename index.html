@@ -45,7 +45,6 @@
         </div>
         <script>
             let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
-            sessionStorage.setItem('data-theme', 'light')
             const container = document.getElementsByClassName('container')[0]
             const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]')
             const startButton = document.getElementsByClassName("start-button")[0]
@@ -57,6 +56,14 @@
             const sizeChange = document.getElementsByClassName('size-change')[0] 
             const decreaseSizeIcon = document.getElementsByClassName('icon decrease-size')[0] 
             const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0] 
+            const checkbox = document.getElementById('checkbox')
+
+            const curMode = sessionStorage.getItem('data-theme')
+            if (curMode === null){
+                sessionStorage.setItem('data-theme', 'light')
+            } else if (curMode === "dark"){
+                setThemeDark()
+            }
 
             function handleMouseOver(){
                 if (sessionStorage.getItem('data-theme') && sessionStorage.getItem('data-theme') === "dark"){
@@ -81,21 +88,28 @@
                 audio.autoplay = true
             }
 
+            function setThemeDark(){
+                container.style.backgroundColor = '#000000'
+                ellipse.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618874636/ellipse-green-darkkk_srjznt.svg"
+                polygon.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618876740/Polygon_8-darkkkkkkkkk_fwzjfd.svg"
+                rect.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Rectangle_99-dark_pjux5g.svg"
+                group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618876667/Group_53-darkkkk_p3tw4l.svg"
+                group3.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618876600/Group_105-darkkkk_upljhd.svg"
+                startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618876527/Component_5_3_ucuivy.svg"
+                subtitle.style.color = '#FFFFFF'
+                logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618931513/Perspectives-logo-darkkk_iup0gd.svg"
+                sizeChange.style.backgroundColor = '#015EF4'
+                decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
+                toolTipTextMode.innerHTML = 'enable light mode'
+                checkbox.checked = true
+            }
+
+
+
             function switchTheme(e){
                 if (e.target.checked){
                     sessionStorage.setItem('data-theme', 'dark')
-                    container.style.backgroundColor = '#000000'
-                    ellipse.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618874636/ellipse-green-darkkk_srjznt.svg"
-                    polygon.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618876740/Polygon_8-darkkkkkkkkk_fwzjfd.svg"
-                    rect.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1617745715/Rectangle_99-dark_pjux5g.svg"
-                    group1.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618876667/Group_53-darkkkk_p3tw4l.svg"
-                    group3.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618876600/Group_105-darkkkk_upljhd.svg"
-                    startButtonImg.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618876527/Component_5_3_ucuivy.svg"
-                    subtitle.style.color = '#FFFFFF'
-                    logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1618931513/Perspectives-logo-darkkk_iup0gd.svg"
-                    sizeChange.style.backgroundColor = '#015EF4'
-                    decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
-                    toolTipTextMode.innerHTML = 'enable light mode'
+                    setThemeDark()
                 } else {
                     sessionStorage.setItem('data-theme', 'light')
                     container.style.backgroundColor = '#D9ECEC'
