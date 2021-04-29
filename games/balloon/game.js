@@ -23,11 +23,17 @@ let moveInd = {
     "RIGHT": 0
   }
 
+let fly = true
+
 let sizeElastic = parseInt(localStorage.getItem('sizeElastic')) || 0
 const char = document.getElementsByClassName("character")[0]
 const greenBalloon = document.getElementsByClassName("balloon green")[0]
 const redBalloon = document.getElementsByClassName("balloon red")[0]
 const yellowBalloon = document.getElementsByClassName("balloon yellow")[0]
+const greenAnswer = document.getElementsByClassName("answer green")[0]
+const redAnswer = document.getElementsByClassName("answer red")[0]
+const yellowAnswer = document.getElementsByClassName("answer yellow")[0]
+const answers = document.getElementsByClassName('answer')
 const wrongIndicate = document.getElementsByClassName("wrong-indicate")[0]
 const winning = document.getElementsByClassName("winning")[0]
 const mainGame = document.getElementsByClassName("main-game")[0]
@@ -130,27 +136,27 @@ let goodJobPos = {
 const changeX = 1
 const changeY = 1
 
-const greenBalloonPos = {
+let greenBalloonPos = {
     x: 17,
-    y: 45
+    y: 30
 }
 
-const redBalloonPos = {
+let redBalloonPos = {
     x: 44,
-    y: 15
+    y: 0
 }
 
-const yellowBalloonPos = {
+let yellowBalloonPos = {
     x: 72,
-    y: 45
+    y: 30
 }
 
-const balloonSize = {
-    w: 8,
-    h: 25
+let balloonSize = {
+    w: 12,
+    h: 30
 }
 
-const cheerStuffPos = {
+let cheerStuffPos = {
     x: 40,
     y: 20
 }
@@ -173,6 +179,13 @@ cheerStuff.style.left = `${cheerStuffPos.x}%`
 cheerStuff.style.top = `${cheerStuffPos.y}%`
 goodJob.style.left = `${goodJobPos.x}%`
 goodJob.style.top = `${goodJobPos.y}%`
+
+greenAnswer.style.left = `${greenBalloonPos.x + 3}%`
+greenAnswer.style.top = `${greenBalloonPos.y + 7}%`
+redAnswer.style.left = `${redBalloonPos.x + 3}%`
+redAnswer.style.top = `${redBalloonPos.y + 7}%`
+yellowAnswer.style.left = `${yellowBalloonPos.x + 3}%`
+yellowAnswer.style.top = `${yellowBalloonPos.y + 7}%`
 
 let balloonCoor = 1
 
@@ -225,11 +238,11 @@ function initialFlyYellow(){
 }
 
 
-initialFlyGreen()
+// initialFlyGreen()
 
 let countStep = 0
 const totalStep = 10
-const flyingSpeed = 3
+const flyingSpeed = 2
 let cheerInd = 1
 let isJumping = false
 let exploded = false
@@ -404,7 +417,7 @@ function handleKeyDown(e){
 
 function jump(){
     isJumping = true
-    console.log(countStep)
+    console.log('jump')
     if (countStep < totalStep) {
         charPos.y -= 1
     } else if (countStep >= totalStep && countStep < totalStep*2){
@@ -420,7 +433,9 @@ function jump(){
     if (charPos.x + charSize.w/2 >= greenBalloonPos.x && charPos.x + charSize.w/2 <= greenBalloonPos.x + balloonSize.w
         && charPos.y  >= greenBalloonPos.y && charPos.y <= greenBalloonPos.y + balloonSize.h
         ){
-            flyGreenBalloon()
+            if (fly){
+                flyGreenBalloon()
+            }
         }
 
     if (charPos.x + charSize.w/2 >= redBalloonPos.x && charPos.x + charSize.w/2 <= redBalloonPos.x + balloonSize.w
@@ -440,31 +455,45 @@ function jump(){
 }
 
 let costumeInd = {
-    "green": 0,
-    "yellow": 0
+    "green": 5,
+    "yellow": 5
 }
 
 function flyGreenBalloon(){
-    if (greenBalloonPos.y > - balloonSize.h - 10){
-        greenBalloonPos.y -= flyingSpeed
-        greenBalloon.style.top = `${greenBalloonPos.y}%`
-
-        if (costumeInd["green"] < 17){
-            let greenBalInd = costumeInd["green"]
-            if (costumeInd["green"] < 10){
-                greenBalInd = "0" + costumeInd["green"].toString()
-            } 
-            if (curMode === "dark"){
-                greenBalloon.style.backgroundImage = `url(../../asset/Balloon_green_pop-DM/Balloon_green_pop-DM_000${greenBalInd}.png)`
-            } else {
-                greenBalloon.style.backgroundImage = `url(../../asset/Balloon_green_pop/Balloon_green_pop000${greenBalInd}.png)`
-            }
-            costumeInd["green"]  += 1
+    fly = false
+    greenAnswer.style.display = 'none'
+    balloonSize = {
+        w: 16,
+        h: 40
+    }
+    greenBalloon.style.width = `${balloonSize.w}%`
+    greenBalloon.style.height = `${balloonSize.h}%`
+    greenBalloonPos = {
+        x: 15,
+        y: 20
+    }
+    greenBalloon.style.left = `${greenBalloonPos.x}%`
+    greenBalloon.style.top = `${greenBalloonPos.y}%`
+    if (costumeInd["green"] < 18){
+        let greenBalInd
+        if (costumeInd["green"] < 10){
+            greenBalInd = "0" + costumeInd["green"].toString()
+        } else {
+            greenBalInd = costumeInd["green"]
         }
-
-        setTimeout(flyGreenBalloon, 100)
-    } else {
+        if (curMode === "dark"){
+            greenBalloon.src = `../../asset/Balloon_green_pop-DM/Balloon_green_pop-DM_000${greenBalInd}.png`
+        } else {
+            greenBalloon.src = `../../asset/Balloon_green_pop/Balloon_green_pop000${greenBalInd}.png`
+        }
+        greenBalloonPos.y -= flyingSpeed -4
+        greenBalloon.style.top = `${greenBalloonPos.y}%`
+        costumeInd["green"]  += 1
+        setTimeout(flyGreenBalloon, 80)
+        
+    }  else {
         showError()
+        fly = true
     }
 }
 
@@ -473,6 +502,7 @@ function flyRedBalloon(){
     if (redBalloonPos.y > - balloonSize.h - 10){
         redBalloonPos.y -= flyingSpeed
         redBalloon.style.top = `${redBalloonPos.y}%`
+        redAnswer.style.top = `${redBalloonPos.y + 8}%`
         charPos.y -= flyingSpeed
         char.style.top = `${charPos.y}%`
         setTimeout(flyRedBalloon, 80)
@@ -489,26 +519,37 @@ function flyRedBalloon(){
 }
 
 function flyYellowBalloon(){
-    if (yellowBalloonPos.y > - balloonSize.h - 10){
-        yellowBalloonPos.y -= flyingSpeed
-        yellowBalloon.style.top = `${yellowBalloonPos.y}%`
-
-        if (costumeInd["yellow"] < 17){
-            let yellowBalInd = costumeInd["yellow"]
-            if (costumeInd["yellow"] < 10){
-                yellowBalInd = "0" + costumeInd["yellow"].toString()
-            } 
-            if (curMode === "dark"){
-                yellowBalloon.style.backgroundImage = `url(../../asset/Balloon_yellow_pop-DM/Balloon_yellow_pop-DM_000${yellowBalInd}.png)`
-            } else {
-                yellowBalloon.style.backgroundImage = `url(../../asset/Balloon_yellow_pop/Balloon_yellow_pop000${yellowBalInd}.png)`
-            }
-            costumeInd["yellow"]  += 1
+    fly = false
+    yellowAnswer.style.display = 'none'
+    balloonSize = {
+        w: 16,
+        h: 40
+    }
+    yellowBalloon.style.width = `${balloonSize.w}%`
+    yellowBalloon.style.height = `${balloonSize.h}%`
+    yellowBalloonPos = {
+        x: 70,
+        y: 20
+    }
+    yellowBalloon.style.left = `${yellowBalloonPos.x}%`
+    yellowBalloon.style.top = `${yellowBalloonPos.y}%`
+    if (costumeInd["yellow"] < 18){
+        let yellowBalInd = costumeInd["yellow"]
+        if (costumeInd["yellow"] < 10){
+            yellowBalInd = "0" + costumeInd["yellow"].toString()
+        } 
+        if (curMode === "dark"){
+            yellowBalloon.src= `../../asset/Balloon_yellow_pop-DM/Balloon_yellow_pop-DM_000${yellowBalInd}.png`
+        } else {
+            yellowBalloon.src = `../../asset/Balloon_yellow_pop/Balloon_yellow_pop000${yellowBalInd}.png`
         }
-
+        yellowBalloonPos.y -= flyingSpeed -4
+        yellowBalloon.style.top = `${yellowBalloonPos.y}%`
+        costumeInd["yellow"]  += 1
         setTimeout(flyYellowBalloon, 80)
     } else {
         showError()
+        fly = true
     }
 }
 
@@ -517,14 +558,14 @@ function showError(){
     if (!exploded){
         audio = new Audio('../../asset/sounds/Explode.mp3')
         audio.play()
+        wrongIndicate.style.display = 'flex'
+        setTimeout(function(){
+            audio = new Audio('../../asset/VOfiles/PerspectivesVO_wrong_answer.wav');
+            audio.play()
+            setTimeout(hideError, 3000)
+        }, 3000)
         exploded = true
     }
-    wrongIndicate.style.display = 'flex'
-    setTimeout(function(){
-        audio = new Audio('../../asset/VOfiles/PerspectivesVO_wrong_answer.wav');
-        audio.play()
-        setTimeout(hideError, 3000)
-    }, 3000)
 
     setTimeout(function(){
         exploded = false
@@ -700,10 +741,12 @@ instruction.style.lineHeight = `${34 + sizeElastic}px`
 question.style.fontSize = `${22 + sizeElastic}px`
 question.style.lineHeight = `${40 + sizeElastic}px`
 infoIcon.style.fontSize = `${14 + sizeElastic}px`
+
 for (let i = 0; i < balloons.length; i++){
     balloons[i].style.fontSize = `${20 + sizeElastic}px`
     balloons[i].style.lineHeight = `${36 + sizeElastic}px`
 }
+
 
 function updateSize(){
     if (sizeElastic > -25 && sizeElastic < 20){
@@ -718,6 +761,10 @@ function updateSize(){
         for (let i = 0; i < balloons.length; i++){
             balloons[i].style.fontSize = `${20 + sizeElastic}px`
             balloons[i].style.lineHeight = `${36 + sizeElastic}px`
+        }
+        for (let i = 0; i < answers.length; i++){
+            answers[i].style.fontSize = `${22 + sizeElastic}px`
+            answers[i].style.lineHeight = `${36 + sizeElastic}px`
         }
     }
     if (sizeElastic > -13 && sizeElastic < 20){

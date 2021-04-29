@@ -264,28 +264,15 @@ body {
     position: absolute;
     display: flex;
     justify-content: center;
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    padding: 80px 40px 0 40px;
+}
+
+.answer {
     color: white;
     font-weight: bold;
     text-align: center ;
-}
-
-.balloon.green {
-    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615253383/greenBalloon_qcw6vp.svg);
-    
-}
-
-.balloon.red {
-    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615253483/redBalloon_y8vli5.svg);
-    
-}
-
-.balloon.yellow {
-    background-image: url(https://res.cloudinary.com/dfulxq7so/image/upload/v1615253509/yellowBalloon_aw1vyl.svg);
-    
+    position: absolute;
+    font-size: 22px;
+    max-width: 100px;
 }
 
 .character {
@@ -428,4 +415,18 @@ body {
 #good-job {
     position: absolute;
     width: 30%
+}
+
+@media only screen and (max-width: 1200px) {
+    .answer {
+        font-size: 16px;
+        max-width: 70px;
+    }
+}
+  
+@media only screen and (max-width: 700px) {
+    .answer {
+        font-size: 12px;
+        max-width: 40px;
+    }  
 }
