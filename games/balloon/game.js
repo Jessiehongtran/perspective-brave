@@ -137,17 +137,17 @@ const changeX = 1
 const changeY = 1
 
 let greenBalloonPos = {
-    x: 14,
+    x: 13.5,
     y: 17
 }
 
 let redBalloonPos = {
-    x: 40.5,
+    x: 40,
     y: -12
 }
 
 let yellowBalloonPos = {
-    x: 69,
+    x: 68.5,
     y: 17
 }
 
@@ -180,12 +180,25 @@ cheerStuff.style.top = `${cheerStuffPos.y}%`
 goodJob.style.left = `${goodJobPos.x}%`
 goodJob.style.top = `${goodJobPos.y}%`
 
-greenAnswer.style.left = `${greenBalloonPos.x + 6}%`
-greenAnswer.style.top = `${greenBalloonPos.y + 22}%`
-redAnswer.style.left = `${redBalloonPos.x + 6}%`
-redAnswer.style.top = `${redBalloonPos.y + 22}%`
-yellowAnswer.style.left = `${yellowBalloonPos.x + 6}%`
-yellowAnswer.style.top = `${yellowBalloonPos.y + 22}%`
+let curGreenAnswerPos = {
+    x: greenBalloonPos.x + 6.5,
+    y: greenBalloonPos.y + 22
+}
+let curRedAnswerPos = {
+    x: redBalloonPos.x + 6.5,
+    y: redBalloonPos.y + 22
+}
+let curYellowAnswerPos = {
+    x: yellowBalloonPos.x + 6.5,
+    y: yellowBalloonPos.y + 22
+}
+
+greenAnswer.style.left = `${curGreenAnswerPos.x}%`
+greenAnswer.style.top = `${curGreenAnswerPos.y}%`
+redAnswer.style.left = `${curRedAnswerPos.x}%`
+redAnswer.style.top = `${curRedAnswerPos.y}%`
+yellowAnswer.style.left = `${curYellowAnswerPos.x}%`
+yellowAnswer.style.top = `${curYellowAnswerPos.y}%`
 
 let balloonCoor = 1
 
@@ -238,24 +251,12 @@ function initialFlyYellow(){
 }
 
 let floatInd = 0
-let curGreenAnswerPos = {
-    x: greenBalloonPos.x + 6,
-    y: greenBalloonPos.y + 22
-}
-let curRedAnswerPos = {
-    x: redBalloonPos.x + 6,
-    y: redBalloonPos.y + 22
-}
-let curYellowAnswerPos = {
-    x: yellowBalloonPos.x + 6,
-    y: yellowBalloonPos.y + 22
-}
 
 let textFloatSpeed = 0.145
 
 function balloonFloats(){
     let balloonSize = {
-        w: 18,
+        w: 19,
         h: 50
     }
     greenBalloon.style.width = yellowBalloon.style.width = redBalloon.style.width = `${balloonSize.w}%`
