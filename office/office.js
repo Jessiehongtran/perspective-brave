@@ -192,6 +192,8 @@ function handleKeyDown(e){
             if (e.key === "s" && canWalk["DOWN"]){
                 charPos.y += changeY
             }
+            getCharacterMove(curDir)
+            charImg.src = charFace[curDir]
         }
         if (e.key === "d" && canWalk["RIGHT"]){
             curDir = "RIGHT"
@@ -204,6 +206,8 @@ function handleKeyDown(e){
             if (e.key === "s" && canWalk["DOWN"]){
                 charPos.y += changeY
             }
+            getCharacterMove(curDir)
+            charImg.src = charFace[curDir]
         }
         if (e.key === "w" && canWalk["UP"]){
             curDir = "UP"
@@ -215,6 +219,8 @@ function handleKeyDown(e){
             if (e.key === "d" && canWalk["RIGHT"]){
                 charPos.x += changeX
             }
+            getCharacterMove(curDir)
+            charImg.src = charFace[curDir]
         }
         if (e.key === "s" && canWalk["DOWN"]){
             curDir = "DOWN"
@@ -226,11 +232,11 @@ function handleKeyDown(e){
             if (e.key === "d" && canWalk["RIGHT"]){
                 charPos.x += changeX
             }
+            getCharacterMove(curDir)
+            charImg.src = charFace[curDir]
         }
 
-        getCharacterMove(curDir)
-        charImg.src = charFace[curDir]
-
+       
         const curRow = Math.floor((charPos.y + charSize.h)/squareSize)
         const curCol = Math.floor((charPos.x + charSize.w/2)/squareSize)
 
