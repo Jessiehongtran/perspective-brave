@@ -504,7 +504,6 @@ function handleKeyDown(e){
 
 function jump(){
     isJumping = true
-    console.log('jump')
     if (countStep < totalStep) {
         charPos.y -= 1
     } else if (countStep >= totalStep && countStep < totalStep*2){
@@ -552,7 +551,6 @@ let costumeInd = {
 function flyGreenBalloon(){
     fly = false
     greenAnswer.style.display = 'none'
-    console.log(costumeInd["green"])
     balloonSize = {
         w: 16,
         h: 40
@@ -580,6 +578,7 @@ function flyGreenBalloon(){
         greenBalloonPos.y -= flyingSpeed -4
         greenBalloon.style.top = `${greenBalloonPos.y}%`
         costumeInd["green"]  += 1
+        console.log('greenBalloon', greenBalloon.src)
         setTimeout(flyGreenBalloon, 60)
         
     }  else {
@@ -640,6 +639,7 @@ function flyYellowBalloon(){
         yellowBalloon.style.top = `${yellowBalloonPos.y}%`
         costumeInd["yellow"]  += 1
         setTimeout(flyYellowBalloon, 60)
+        console.log('yellowBalloon', yellowBalloon.src)
     } else {
         setTimeout(showError, 3000)
         fly = true
