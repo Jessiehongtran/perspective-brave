@@ -1,4 +1,5 @@
 document.addEventListener('keydown', handleKeyDown)
+document.addEventListener('keyup', handleKeyUp)
 setTimeout(showExit, 60000)
 
 //DOM elements
@@ -19,6 +20,8 @@ const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0
 const curMode = sessionStorage.getItem('data-theme')
 const bigOffice = document.getElementsByClassName("bigOffice")[0]
 let rowAdjust = 0
+
+let audioBeingPlayed = false
 
 const controlKey = document.getElementById("control-key")
 
@@ -173,6 +176,46 @@ function getCharacterMove(dir){
     if (moveInd[dir] >= maxImageInd){
         moveInd[dir] = 0
     } 
+}
+
+function isCloserToSparklingSpot(nextX, nextY, curX, curY){
+    if (getDistance(nextX, nextY, sparkPos.x + sparkSize.w/2, sparkPos.y + sparkSize.h + 1.5) 
+        < getDistance(curX, curY, sparkPos.x + sparkSize.w/2, sparkPos.y + sparkSize.h + 1.5)){
+            return true
+    }
+    return false
+}
+
+function handleKeyUp(){
+    const screenReader = sessionStorage.getItem('screen-reader')
+    let nextX, nextY
+    if (curDir === "LEFT"){
+        nextX = charPos.x - changeX
+        nextY = charPos.y
+    } else if (curDir === "RIGHT"){
+        nextX = charPos.x + changeX
+        nextY = charPos.y
+    } else if (curDir === "UP"){
+        nextX = charPos.x 
+        nextY = charPos.y - changeY
+    } else if (curDir === "DOWN"){
+        nextX = charPos.x 
+        nextY = charPos.y + changeY
+    }
+
+    if (!audioBeingPlayed && screenReader && screenReader === "true" && isCloserToSparklingSpot(nextX, nextY, charPos.x, charPos.y)){
+        //hint you are closer to sparkling spot
+        audio = new Audio('../asset/VOfiles/PerspectivesVO_closeToSpot2.mp3')
+        audioBeingPlayed = true
+        audio.play()
+        audio.onloadedmetadata = function(){
+            setTimeout(function(){
+                audioBeingPlayed = false
+            }, audio.duration*1000)
+        }
+        
+
+    }
 }
 
 function handleKeyDown(e){
@@ -402,4 +445,8 @@ function increaseSize(){
 function decreaseSize(){
     sizeElastic -= 1
     updateSize()
+}
+
+function getDistance(x1, y1, x2, y2){
+    return Math.sqrt(Math.pow(x1-x2, 2) + Math.pow(y1-y2, 2))
 }
