@@ -583,7 +583,7 @@ function flyGreenBalloon(){
         setTimeout(flyGreenBalloon, 60)
         
     }  else {
-        showError()
+        setTimeout(showError, 3000)
         fly = true
         greenBalloon.style.display = 'none'
     }
@@ -641,8 +641,9 @@ function flyYellowBalloon(){
         costumeInd["yellow"]  += 1
         setTimeout(flyYellowBalloon, 60)
     } else {
-        showError()
+        setTimeout(showError, 3000)
         fly = true
+        yellowBalloon.style.display = 'none'
     }
 }
 
