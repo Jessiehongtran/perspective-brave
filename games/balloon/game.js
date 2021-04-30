@@ -584,7 +584,7 @@ function flyGreenBalloon(){
     }  else {
         // showError()
         fly = true
-        greenBalloon.style.display = 'none'
+        // greenBalloon.style.display = 'none'
     }
 }
 
@@ -642,7 +642,7 @@ function flyYellowBalloon(){
     } else {
         // showError()
         fly = true
-        yellowBalloon.style.display = 'none'
+        // yellowBalloon.style.display = 'none'
     }
 }
 
