@@ -579,10 +579,10 @@ function flyGreenBalloon(){
         greenBalloon.style.top = `${greenBalloonPos.y}%`
         costumeInd["green"]  += 1
         console.log('greenBalloon', greenBalloon.src)
-        setTimeout(flyGreenBalloon, 100)
+        setTimeout(flyGreenBalloon, 500)
         
     }  else {
-        showError()
+        // showError()
         fly = true
         greenBalloon.style.display = 'none'
     }
@@ -638,9 +638,9 @@ function flyYellowBalloon(){
         yellowBalloonPos.y -= flyingSpeed -4
         yellowBalloon.style.top = `${yellowBalloonPos.y}%`
         costumeInd["yellow"]  += 1
-        setTimeout(flyYellowBalloon, 100)
+        setTimeout(flyYellowBalloon, 500)
     } else {
-        showError()
+        // showError()
         fly = true
         yellowBalloon.style.display = 'none'
     }
