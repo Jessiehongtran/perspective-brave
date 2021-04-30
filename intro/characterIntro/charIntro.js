@@ -63,7 +63,7 @@ charImage.src = chars[selectedCharInd].avatar
 
 
 if (curMode && curMode === "dark"){
-    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617748796/charSelectionBG-dark_bmdl73.svg)"
+    container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1619756589/Mask_Group_10_qwxtpl.svg)"
     ellipse.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/Ellipse_25-darkkk_dkdlbp.svg"
     ellipseBig.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618874636/ellipse-green-darkkk_srjznt.svg"
     leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
