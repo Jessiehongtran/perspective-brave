@@ -9,20 +9,20 @@
     </head>
     <body>
         <div role="container" class="container">
-            <div class="setup">
+            <div class="setup" role="setup">
                 <div class="size-change">
-                    <button class="text decrease" onclick="decreaseSize()">
+                    <button class="text decrease" role="adjust size" aria-label="Press to decrease text size"  onclick="decreaseSize()">
                         <div class="icon decrease-size">A</div>
                         <span class="tooltiptext decrease">make text smaller</span>
                     </button>
-                    <button class="text increase" onclick="increaseSize()">
+                    <button class="text increase" role="adjust size" aria-label="Press to increase text size" onclick="increaseSize()">
                         <div class="icon increase-size">A</div>
                         <span class="tooltiptext increase">make text bigger</span>
                     </button>
                 </div>
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox"/>
+                <div class="theme-switch-wrapper" tabindex="0">
+                    <label class="theme-switch" for="checkbox" tabindex="1">
+                        <input type="checkbox" id="checkbox" tabindex="2" aria-label="Switch to dark or light mode"/>
                         <div class="slider round"></div>
                         <span class="tooltiptext mode">enable dark mode</span>
                     </label>
