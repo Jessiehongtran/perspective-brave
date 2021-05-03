@@ -27,22 +27,6 @@ body {
     z-index: 20
   }
 
-#leftSlide {
-    z-index: 1; 
-    position: absolute; 
-    left: 2%; 
-    top: 45%; 
-    width: 5%
-}
-
-#rightSlide {
-    z-index: 1; 
-    position: absolute; 
-    left: 93.5%; 
-    top: 45%; 
-    width: 5%
-}
-
 #polygon {
     position: absolute; 
     left: 11%; 

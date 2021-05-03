@@ -45,7 +45,7 @@
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 3px;
+    padding: 5px;
     position: absolute;
     z-index: 1;
     width: 120px;
@@ -73,6 +73,10 @@
     bottom: 90%;
 }
 
+.tooltiptext.leftSlide, .tooltiptext.rightSlide {
+    margin-top: -40px
+}
+
 .tooltiptext::after {
     content: "";
     position: absolute;
@@ -98,4 +102,44 @@
     visibility: visible;
     opacity: 1;
     z-index: 15;
+}
+
+
+.leftSlideContainer:hover .tooltiptext.leftSlide {
+    visibility: visible;
+    opacity: 1;
+    z-index: 15;
+}
+
+.rightSlideContainer:hover .tooltiptext.rightSlide {
+    visibility: visible;
+    opacity: 1;
+    z-index: 15;
+}
+
+.leftSlideContainer  {
+    position: absolute;
+    left: 2%; 
+    top: 45%; 
+    width: 5%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.rightSlideContainer  {
+    position: absolute;
+    left: 93.5%; 
+    top: 45%; 
+    width: 5%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#leftSlide, #rightSlide {
+    z-index: 1; 
+    width: 100%
 }

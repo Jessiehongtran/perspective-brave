@@ -60,7 +60,10 @@
             </div>
             <div class="main-game" tabindex="0" aria-label="You are standing on a game platform which has 3 floors connected by staircases. There are 3 balloons containing answers of a question you are going to know. You should follow the instruction to go to and select the balloon containing the answer you think is correct" >
                 <a href="./intro.html" role="link">
-                    <img id="leftSlide" alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+                    <div class="leftSlideContainer">
+                        <img id="leftSlide" alt="Press to go to previous page" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+                        <span class="tooltiptext leftSlide">click to go back</span>
+                    </div>
                 </a>
                 <img class="platform" tabindex="0" alt="Game platform" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615483006/platformOfficial_p2y7ho.svg"/>
                 <p role="text" tabindex="0" aria-label="question: How many employees do you think leave their job when they do perceive bias in the workplace?" class="question">How many employees do you think leave their job when they do perceive bias in the workplace?</p>
@@ -97,7 +100,10 @@
                 <img class="character" alt="you" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1613262323/yang_oyy0oi.svg"/>
                 <img class="cheer-stuff" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1615502165/Group_218_v7xguc.svg"/>
                 <a href="./end.html" role="link">
-                    <img id="rightSlide" tabindex="8" role="button" style="display: none" alt="Press to go to next page"  src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+                    <div class="rightSlideContainer">
+                        <img id="rightSlide"  alt="Press to go to next page" onclick="stopVO()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+                        <span class="tooltiptext rightSlide">click to go next</span>
+                    </div>
                 </a>
             </div>
         </div>

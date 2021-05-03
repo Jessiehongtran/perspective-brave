@@ -38,8 +38,14 @@
                     When bias is perceived in the workplace, 3 in ten people say they plan to leave their current job.
                 </p>
             </div>
-            <img id="leftSlide" tabindex="5" onclick="preSlide()" role="button" alt="Click to go back" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
-            <img id="rightSlide" tabindex="6" onclick="nextSlide()" role="button" alt="Click to go next" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            <div class="leftSlideContainer" tabindex="5">
+                <img id="leftSlide" alt="Press to go to previous page" onclick="preSlide()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+                <span class="tooltiptext leftSlide">click to go back</span>
+            </div>
+            <div class="rightSlideContainer" tabindex="6">
+                <img id="rightSlide"  alt="Press to go to next page" onclick="nextSlide()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+                <span class="tooltiptext rightSlide">click to go next</span>
+            </div>
         </div>
         <script src="end.js">
             

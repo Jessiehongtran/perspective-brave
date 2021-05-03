@@ -39,8 +39,14 @@
                     There are many types of unconscious bias that negatively affect people— and all of them operate below the surface of our awareness to influence how we treat those around us.
                 </p>
             </div>
-            <img id="leftSlide" tabindex="7" role="button" alt="Press to go to previous page" onclick="preSlide()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
-            <img id="rightSlide" tabindex="8" role="button" alt="Press to go to next page" onclick="nextSlide()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+            <div class="leftSlideContainer">
+                <img id="leftSlide" alt="Press to go to previous page" onclick="preSlide()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214027/Group_97.1_jfl1rz.svg"/>
+                <span class="tooltiptext leftSlide">click to go back</span>
+            </div>
+            <div class="rightSlideContainer">
+                <img id="rightSlide"  alt="Press to go to next page" onclick="nextSlide()" src="https://res.cloudinary.com/dfulxq7so/image/upload/v1614214021/Group_98.1_myyu8w.svg"/>
+                <span class="tooltiptext rightSlide">click to go next</span>
+            </div>
         </div>
         <script src="intro.js">
             

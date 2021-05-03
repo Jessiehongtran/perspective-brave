@@ -202,36 +202,6 @@ body {
     overflow-y: auto;
 }
 
-#leftSlide {
-    z-index: 1; 
-    position: absolute; 
-    left: 2%; 
-    top: 45%; 
-    width: 5%
-}
-
-#rightSlide1 {
-    z-index: 1; 
-    position: absolute; 
-    left: 93.5%; 
-    top: 45%; 
-    width:5%; 
-    cursor: pointer
-}
-
-#rightSlide2 {
-    display: none
-}
-
-.rightSlide2-icon {
-    z-index: 1; 
-    position: absolute; 
-    left: 93.5%; 
-    top: 45%; 
-    width:5%; 
-    cursor: pointer
-}
-
 #text-message-left, #text-message-right {
     position: relative;
 }
