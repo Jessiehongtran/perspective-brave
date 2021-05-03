@@ -146,9 +146,8 @@ const intro = document.getElementById("intro")
 const chat = document.getElementById("chat")
 const conversation = document.getElementById("conversation")
 const leftSlide = document.getElementById("leftSlide")
-const rightSlide1 = document.getElementById("rightSlide1")
-const rightSlide2 = document.getElementById("rightSlide2")
-const rightSlide2Icon = document.getElementsByClassName("rightSlide2-icon")[0]
+const rightSlide = document.getElementById("rightSlide")
+const rightSlideToolTip = document.getElementsByClassName("tooltiptext rightSlide")[0]
 const chooseDifferentResponse = document.getElementById("choose-different-response")
 const textWrapper = document.getElementById("text-wrapper")
 const rightSlideWrapper = document.getElementById("rightSlideWrapper")
@@ -179,7 +178,7 @@ if (curMode && curMode === "dark"){
     container.style.backgroundImage = "url(https://res.cloudinary.com/dfulxq7so/image/upload/v1617917809/converIntroBG-dark_j6fstf.png)"
     logo.src="https://res.cloudinary.com/dfulxq7so/image/upload/v1617746117/Group_45-dark_u84cig.svg"
     leftSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873211/leftSlide-darkkk_lkxxyl.svg"
-    rightSlide1.src= rightSlide2Icon.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
+    rightSlide.src= "https://res.cloudinary.com/dfulxq7so/image/upload/v1618873310/rightSlide-darkkk_nun33v.svg"
     sizeChange.style.backgroundColor = '#015EF4'
     characterTable.src = "https://res.cloudinary.com/dfulxq7so/image/upload/v1619537302/charsInConversations_giynkt.svg"
     decreaseSizeIcon.style.color = increaseSizeIcon.style.color = '#FFFFFF'
@@ -292,8 +291,9 @@ function showConversation(){
     conversation.style.display = 'block'
     setTimeout(getMessagesForEachPart, 1000)
     //hide rightSlide1
-    rightSlide1.style.display = 'none'
-    rightSlide1.setAttribute('aria-hidden', 'true')
+    rightSlide.style.display = 'none'
+    rightSlideToolTip.style.display = 'none'
+    rightSlide.setAttribute('aria-hidden', 'true')
     stopVO()
 }
 
@@ -368,8 +368,11 @@ function tryDifferentResponseOrNext(){
     //remove slide left 
     leftSlide.style.display = 'none'
     //hide rightSlide1 and show rightSlide2
-    rightSlide1.style.display = 'none'
-    rightSlide2.style.display = 'block'
+    rightSlide.style.display = 'block'
+    rightSlide.addEventListener('click', function(){
+        console.log('clicked event')
+        window.location.href = "../../games/balloon/intro.html"
+    })
     intro.style.display = 'none'
     chooseDifferentResponse.style.display = 'flex'
     chooseDifferentResponse.style.flexDirection = 'column'
@@ -594,7 +597,6 @@ function addButtons(){
 function playAudio(file){
     const muted = localStorage.getItem('muted')
     audio = new Audio(file);
-    console.log('playaudio', file, audio)
     if (muted === "False"){
 
         audio.play()

@@ -34,14 +34,6 @@ body {
     z-index: 20
   }
 
-#leftSlide {
-    z-index: 1; 
-    position: absolute; 
-    left: 2%; 
-    top: 45%; 
-    width: 5%
-}
-
 #group4 {
     position: absolute; 
     left: -5%; 

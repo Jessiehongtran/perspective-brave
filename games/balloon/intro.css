@@ -92,23 +92,6 @@ body {
     background-color: #F64141
 }
 
-#leftSlide {
-    z-index: 1; 
-    position: absolute; 
-    left: 2%; 
-    top: 45%; 
-    width: 5%;
-    cursor: pointer;
-}
-
-#rightSlide {
-    z-index: 1; 
-    position: absolute; 
-    left: 93.5%; 
-    top: 45%; 
-    width: 5%;
-    cursor: pointer;
-}
 
 .learnMoreIcon {
     padding: 8px 15px; 

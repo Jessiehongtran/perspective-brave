@@ -56,21 +56,6 @@ body {
     width: 9%;
 }
 
-#leftSlide {
-    z-index: 2; 
-    position: absolute; 
-    left: 2%; 
-    top: 45%; 
-    width: 5%
-}
-
-#rightSlide {
-    z-index: 2; 
-    position: absolute; 
-    left: 93.5%; 
-    top: 45%; 
-    width: 5%
-}
 
 #ellipseBig {
     position: absolute; 
