@@ -54,7 +54,6 @@ function toggleInstruction(){
     }
 }
 
-setTimeout(toggleInstruction, 7000)
 
 
 
@@ -219,6 +218,7 @@ function handleKeyUp(){
 }
 
 function handleKeyDown(e){
+    console.log('key in office', e.key)
     if (e.key === "e"){
         window.location.href = "../scenario/scenario1/yangConversation.html"
     }
@@ -303,11 +303,11 @@ function handleKeyDown(e){
 
 
     //check enter sparkling
-    if (charPos.x + charSize.w/2 >= sparkPos.x 
-            && charPos.x + charSize.w/2 <= sparkPos.x + sparkSize.w
-            && charPos.y + charSize.h >= sparkPos.y + sparkSize.h + 2
-            && charPos.y + charSize.h <= sparkPos.y + sparkSize.h + 5){
-                console.log('inSparkReminder', inSparkReminder)
+    if (charPos.x + charSize.w/2 >= sparkPos.x + 1
+            && charPos.x + charSize.w/2 <= sparkPos.x + sparkSize.w - 1
+            && charPos.y + charSize.h >= sparkPos.y + sparkSize.h + 2.5
+            && charPos.y + charSize.h <= sparkPos.y + sparkSize.h + 4.7){
+                // console.log('inSparkReminder', inSparkReminder)
                 if (inSparkReminder){
                     intheSpark = true
                     inSparkReminder = false
