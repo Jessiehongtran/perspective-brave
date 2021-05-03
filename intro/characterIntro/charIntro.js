@@ -51,8 +51,7 @@ const increaseSizeIcon = document.getElementsByClassName('icon increase-size')[0
 
 const selectedCharInd = parseInt(sessionStorage.getItem('charId'))
 direction.innerHTML = `
-    You will be playing a role of ${chars[selectedCharInd].name}
-    <br/>Welcome to a day in ${chars[selectedCharInd].pronounce} life
+  Welcome to a day in life of ${chars[selectedCharInd].name}
 `
 
 name.innerHTML = chars[selectedCharInd].name.toUpperCase()

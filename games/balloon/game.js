@@ -118,7 +118,6 @@ function toggleInstruction(){
     }
 }
 
-setTimeout(toggleInstruction, 7000)
 
 
 let charPos = {
@@ -476,7 +475,7 @@ function handleKeyDown(e){
     }
 
 
-    if (e.key === "j"){
+    if (e.key === "Enter"){
         if (countStep === 0 || countStep === totalStep*2 + 1){
             countStep = 0
             jump()
