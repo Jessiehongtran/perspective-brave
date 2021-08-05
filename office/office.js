@@ -47,13 +47,13 @@ if (curMode && curMode === "dark"){
 }
 
 function toggleInstruction(){
+    console.log('toggleInstruction')
     if (instruction.style.display !== 'none'){
         instruction.style.display = 'none'
     } else {
         instruction.style.display = 'flex'
     }
 }
-
 
 
 
