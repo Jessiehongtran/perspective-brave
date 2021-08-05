@@ -361,7 +361,7 @@ let squareRows = []
             walkable: false
         })
 
-        container.appendChild(eachSquare)
+        // container.appendChild(eachSquare)
     }
     squares.push(squareRows)
 }
